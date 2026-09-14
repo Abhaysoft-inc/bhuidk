@@ -1,0 +1,181 @@
+[
+  {
+    "id": 1,
+    "title": "Right to Fair Compensation and Transparency in Land Acquisition, Rehabilitation and Resettlement Act, 2013",
+    "document_number": "Act No. 30 of 2013",
+    "type": "Act / Legislation",
+    "ministry": "Ministry of Rural Development",
+    "state": "National",
+    "year": 2013,
+    "date_published": "2013-09-27",
+    "summary": "Comprehensive central legislation governing transparent acquisition of land parcels for public-private projects while mandating social impact assessment, consent clauses, and fair compensation calculated at market multiplier rates.",
+    "full_text": "An Act to ensure, in consultation with institutions of local self-government and Gram Sabhas, a humane, participatory, informed and transparent process for land acquisition for industrialisation, development of essential infrastructural facilities and urbanisation with the least disturbance to the owners of the land. Section 24 provides for land acquisition process under Act No. 1 of 1894 to be deemed to have lapsed in certain cases where physical possession has not been taken or compensation has not been paid for five years prior to commencement.",
+    "key_clauses": "Section 24(2): Lapse of acquisition proceedings after 5 years non-possession; Section 26: Determination of market value by collector; Section 16: Social Impact Assessment report scrutiny.",
+    "tags": "land acquisition, compensation, resettlement, social impact, public purpose",
+    "file_url": "/uploads/rfctlarr_act_2013.pdf",
+    "file_size": "2.4 MB",
+    "page_count": 84,
+    "citations": [
+      {
+        "target_doc_id": 2,
+        "citation_type": "interpreted_by",
+        "section_reference": "Section 24(2)",
+        "context_snippet": "Section 24(2) interpreted by the Supreme Court Constitution Bench regarding conditions under which acquisition proceedings lapse."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Indore Development Authority v. Manoharlal & Ors. (2020) 8 SCC 129",
+    "document_number": "Civil Appeal No. 20982/2017",
+    "type": "Judgement",
+    "ministry": "Supreme Court of India",
+    "state": "National",
+    "year": 2020,
+    "date_published": "2020-03-06",
+    "summary": "Landmark 5-Judge Constitution Bench verdict reconciling conflicting interpretations of Section 24(2) of RFCTLARR Act 2013. Clarified that land acquisition does not lapse if compensation was tendered in treasury or physical possession was taken.",
+    "full_text": "The 5-judge Constitution Bench held that Section 24(2) of the Right to Fair Compensation and Transparency in Land Acquisition, Rehabilitation and Resettlement Act, 2013 does not deem proceedings to lapse if either physical possession has been taken or compensation has been paid or deposited into the government treasury. Tender of amount into the treasury fulfils obligation if landowner refused acceptance.",
+    "key_clauses": "Holding (a): Word 'paid' in section 24(2) does not mandate deposit in court; Holding (b): Taking of possession by drawing panchnama suffices; Holding (c): Overruled Pune Municipal Corporation (2014) precedent.",
+    "tags": "supreme court, section 24, land acquisition, lapsement, constitution bench",
+    "file_url": "/uploads/indore_dev_authority_2020.pdf",
+    "file_size": "3.8 MB",
+    "page_count": 142,
+    "citations": [
+      {
+        "target_doc_id": 1,
+        "citation_type": "interprets",
+        "section_reference": "Section 24(2)",
+        "context_snippet": "Interpreted the conjunctive vs disjunctive meaning of taking possession and payment of compensation under RFCTLARR 2013 Section 24(2)."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "SVAMITVA Scheme Guidelines: Survey of Villages and Mapping with Improvised Technology in Village Areas",
+    "document_number": "MOPR/SVAMITVA/2021/01",
+    "type": "Policy Guideline",
+    "ministry": "Ministry of Panchayati Raj",
+    "state": "National",
+    "year": 2021,
+    "date_published": "2021-04-24",
+    "summary": "National drone surveying framework to provide accurate spatial property cards ('Sampatti Patra') to rural household owners in inhabited (Abadi) village areas across all Indian states.",
+    "full_text": "The SVAMITVA scheme is a collaborative effort of the Ministry of Panchayati Raj, State Panchayati Raj Departments, State Revenue Departments and Survey of India. The scheme aims to provide the 'Record of Rights' to village household owners possessing houses in inhabited rural areas in villages and issuance of Property cards to the property owners using Drone technology and Continuously Operating Reference Stations (CORS) network.",
+    "key_clauses": "Clause 3: Establishment of CORS network; Clause 5: Ground truthing and chunna marking of parcel boundaries; Clause 7: Dispute resolution through Gram Sabha notifications.",
+    "tags": "svamitva, drone survey, rural land, property card, CORS, cadastral mapping",
+    "file_url": "/uploads/svamitva_guidelines_2021.pdf",
+    "file_size": "4.1 MB",
+    "page_count": 62,
+    "citations": [
+      {
+        "target_doc_id": 4,
+        "citation_type": "references",
+        "section_reference": "Section 3.2",
+        "context_snippet": "Integrates cadastral data standards established under the Digital India Land Records Modernization Programme (DILRMP)."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Digital India Land Records Modernization Programme (DILRMP) Core Framework",
+    "document_number": "DoLR-DILRMP-CIR-2018-02",
+    "type": "Policy Guideline",
+    "ministry": "Ministry of Rural Development",
+    "state": "National",
+    "year": 2018,
+    "date_published": "2018-08-14",
+    "summary": "Comprehensive roadmap for computerized land records (RoR), digitisation of cadastral maps (BhuNaksha), integration of text and spatial data, and linkage between Sub-Registrar offices and Revenue departments.",
+    "full_text": "The main objective of DILRMP is to develop a modern, comprehensive and transparent land records management system with the ultimate goal of ushering in the system of conclusive titles with title guarantee. Key components include Computerization of land records, Survey/resurvey and updating of the survey & settlement records, Computerization of Registration, and Integration of Spatial and Textual data.",
+    "key_clauses": "Component 1: Computerization of RoRs; Component 2: Integration of Sub-Registrar Office (SRO) and Revenue Tehsil; Component 3: Modern record rooms at Tehsil levels.",
+    "tags": "dilrmp, land records, computerized ror, bhunaksha, registry integration, conclusive titling",
+    "file_url": "/uploads/dilrmp_framework_2018.pdf",
+    "file_size": "1.9 MB",
+    "page_count": 52,
+    "citations": []
+  },
+  {
+    "id": 5,
+    "title": "NITI Aayog Model Conclusive Land Titling Act, 2020",
+    "document_number": "NITI-POL-2020-09",
+    "type": "Policy Guideline",
+    "ministry": "NITI Aayog",
+    "state": "National",
+    "year": 2020,
+    "date_published": "2020-10-18",
+    "summary": "Model legal framework providing for conclusive land titles guaranteed by State Governments under the Torrens System, transitioning India from presumptive to state-backed definitive ownership.",
+    "full_text": "Under the current presumptive titling system, registration of land deeds merely confirms a transaction occurred, not that the seller held clean title. The Model Act establishes Land Titling Authorities with statutory powers to issue Guaranteed Conclusive Titles backed by state indemnification against title defects, barring civil courts once title is registered.",
+    "key_clauses": "Section 7: Establishment of Land Titling Authority; Section 14: Procedure for title determination; Section 29: State guarantee and Title Indemnification Fund.",
+    "tags": "conclusive titling, torrens system, niti aayog, state guarantee, land disputes, legal reform",
+    "file_url": "/uploads/niti_aayog_model_act_2020.pdf",
+    "file_size": "1.5 MB",
+    "page_count": 48,
+    "citations": [
+      {
+        "target_doc_id": 4,
+        "citation_type": "references",
+        "section_reference": "Section 4(1)",
+        "context_snippet": "Builds upon completed DILRMP digitized registries as a prerequisite for transitioning to conclusive title certification."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Supreme Court Ruling on Adverse Possession: Ravinder Kaur Grewal v. Manjit Kaur (2019) 8 SCC 729",
+    "document_number": "Civil Appeal No. 7764 of 2014",
+    "type": "Judgement",
+    "ministry": "Supreme Court of India",
+    "state": "National",
+    "year": 2019,
+    "date_published": "2019-08-07",
+    "summary": "Reversed earlier restrictive rulings by establishing that a plaintiff can file an affirmative suit for declaration of title based on adverse possession upon completing 12 years of continuous, hostile, undisturbed possession.",
+    "full_text": "A 3-Judge bench of the Supreme Court held that the plea of adverse possession can be used as a sword by the plaintiff to seek declaration of title and eviction of the true owner, and not merely as a shield of defense. The bench held that when once rights are extinguished under Section 27 of the Limitation Act 1963, title vests in the possessor.",
+    "key_clauses": "Holding 1: Adverse possession creates rights under Section 27 Limitation Act; Holding 2: Overrules Gurdwara Sahib v. Gram Panchayat (2014); Holding 3: Establishes active possessory rights.",
+    "tags": "adverse possession, limitation act, title dispute, supreme court, possession 12 years",
+    "file_url": "/uploads/ravinder_kaur_grewal_2019.pdf",
+    "file_size": "2.1 MB",
+    "page_count": 55,
+    "citations": []
+  },
+  {
+    "id": 7,
+    "title": "Maharashtra Land Revenue Code (Amendment) on E-Mutation & Real-Time Cadastral Sync",
+    "document_number": "MH-REV-ORD-2022-81",
+    "type": "Circular / Notification",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "state": "Maharashtra",
+    "year": 2022,
+    "date_published": "2022-05-15",
+    "summary": "Mandates automated real-time mutation notices (Ferfar) upon deed registration in Sub-Registrar offices, eliminating manual Talathi discretion and drastically cutting mutation disputes in Pune and Nashik.",
+    "full_text": "This circular operationalizes Section 149 and 154 of the Maharashtra Land Revenue Code 1966 through the electronic MahaDBT portal. When a registered sale deed is executed, an automated 15-day objection notice is served to all co-sharers via SMS and portal. If no objection is lodged within 15 days, computerized 7/12 extract is instantly updated.",
+    "key_clauses": "Rule 4: Automated 7/12 sync within 24 hours of notice expiry; Rule 7: Digital signature of Circle Officer; Rule 11: Mandatory online objection tracking.",
+    "tags": "maharashtra, 7/12 extract, e-mutation, ferfar, talathi, revenue code",
+    "file_url": "/uploads/mh_e_mutation_2022.pdf",
+    "file_size": "1.2 MB",
+    "page_count": 28,
+    "citations": [
+      {
+        "target_doc_id": 4,
+        "citation_type": "references",
+        "section_reference": "Rule 2",
+        "context_snippet": "Implements central DILRMP guidelines for SRO-Tehsil API integration within Maharashtra."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Forest Rights Act (FRA), 2006: Operational Guidelines for Land Titling (Pattas)",
+    "document_number": "Act No. 2 of 2007",
+    "type": "Act / Legislation",
+    "ministry": "Ministry of Rural Development",
+    "state": "National",
+    "year": 2006,
+    "date_published": "2006-12-29",
+    "summary": "Historic legislation recognizing the pre-existing customary land and forest rights of forest-dwelling Scheduled Tribes and other traditional forest dwellers over ancestral lands and common forest resources.",
+    "full_text": "An Act to recognise and vest the forest rights and occupation in forest land in forest dwelling Scheduled Tribes and other traditional forest dwellers who have been residing in such forests for generations but whose rights could not be recorded. Vests individual land titles up to 4 hectares and community forest rights through Gram Sabha verification.",
+    "key_clauses": "Section 3(1)(a): Right to hold and live in forest land for habitation or self-cultivation; Section 6: Gram Sabha as primary authority for initiating process of determining forest rights.",
+    "tags": "forest rights act, scheduled tribes, individual patta, community forest rights, gram sabha",
+    "file_url": "/uploads/fra_guidelines_2006.pdf",
+    "file_size": "1.7 MB",
+    "page_count": 42,
+    "citations": []
+  }
+]

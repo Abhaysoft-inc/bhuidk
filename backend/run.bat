@@ -1,0 +1,3 @@
+@echo off
+echo Starting Land Governance FastAPI Backend on http://localhost:8000 ...
+python main.py
