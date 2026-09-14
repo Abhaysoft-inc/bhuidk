@@ -17,6 +17,56 @@ export default function AppLayout({
   const pathname = usePathname();
   const router = useRouter();
 
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  // Voice Assistant Logic
+  const [transcript, setTranscript] = useState('');
+  const [isListening, setIsListening] = useState(false);
+
+  useEffect(() => {
+    if (!isVoiceAssistantOpen) {
+      setIsListening(false);
+      return;
+    }
+    
+    // Initialize Web Speech API
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (SpeechRecognition) {
+      const recognition = new SpeechRecognition();
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.lang = 'hi-IN'; // Multilingual default
+
+      recognition.onstart = () => setIsListening(true);
+      
+      recognition.onresult = (event: any) => {
+        let currentTranscript = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          currentTranscript += event.results[i][0].transcript;
+        }
+        setTranscript(currentTranscript);
+      };
+
+      recognition.onerror = (event: any) => {
+        console.error('Speech recognition error', event.error);
+        setIsListening(false);
+      };
+
+      recognition.onend = () => {
+        setIsListening(false);
+      };
+
+      try {
+        recognition.start();
+      } catch (e) {
+        console.error(e);
+      }
+
+      return () => {
+        recognition.stop();
+      };
+    }
+  }, [isVoiceAssistantOpen]);
+
   // Handle Cmd+K
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -197,16 +247,27 @@ export default function AppLayout({
                 <div className="bg-muted p-2 rounded-md rounded-tl-none text-xs text-foreground self-start shadow-sm max-w-[85%]">
                   Namaste! How can I assist you with BhoomiIntel today? Try saying "Show me Pune disputes".
                 </div>
+                {transcript && (
+                  <div className="bg-primary text-white p-2 rounded-md rounded-tr-none text-xs self-end shadow-sm max-w-[85%]">
+                    {transcript}
+                  </div>
+                )}
                 {/* Voice waves animation placeholder */}
-                <div className="mt-auto self-center flex items-center gap-1 opacity-50">
-                  <motion.div animate={{ height: [8, 16, 8] }} transition={{ repeat: Infinity, duration: 1 }} className="w-1 bg-accent rounded-full"></motion.div>
-                  <motion.div animate={{ height: [12, 24, 12] }} transition={{ repeat: Infinity, duration: 1, delay: 0.2 }} className="w-1 bg-accent rounded-full"></motion.div>
-                  <motion.div animate={{ height: [8, 16, 8] }} transition={{ repeat: Infinity, duration: 1, delay: 0.4 }} className="w-1 bg-accent rounded-full"></motion.div>
-                </div>
+                {isListening && (
+                  <div className="mt-auto self-center flex items-center gap-1 opacity-50">
+                    <motion.div animate={{ height: [8, 16, 8] }} transition={{ repeat: Infinity, duration: 1 }} className="w-1 bg-accent rounded-full"></motion.div>
+                    <motion.div animate={{ height: [12, 24, 12] }} transition={{ repeat: Infinity, duration: 1, delay: 0.2 }} className="w-1 bg-accent rounded-full"></motion.div>
+                    <motion.div animate={{ height: [8, 16, 8] }} transition={{ repeat: Infinity, duration: 1, delay: 0.4 }} className="w-1 bg-accent rounded-full"></motion.div>
+                  </div>
+                )}
               </div>
               <div className="p-3 bg-white border-t border-border flex justify-center">
-                <div className="text-xs text-mutedForeground font-medium flex items-center gap-2 animate-pulse">
-                  <div className="w-2 h-2 rounded-full bg-danger"></div> Listening...
+                <div className={`text-xs font-medium flex items-center gap-2 ${isListening ? 'text-danger animate-pulse' : 'text-mutedForeground'}`}>
+                  {isListening ? (
+                    <><div className="w-2 h-2 rounded-full bg-danger"></div> Listening...</>
+                  ) : (
+                    <><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg> Click to talk</>
+                  )}
                 </div>
               </div>
             </motion.div>

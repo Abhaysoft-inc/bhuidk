@@ -1,17 +1,18 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// This is your Prisma schema file for PostgreSQL
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
 }
 
 datasource db {
-  provider = "mongodb"
-  url      = env("DATABASE_URL")
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [vector]
 }
 
 model User {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String   @id @default(uuid())
   email     String   @unique
   password  String?
   name      String?
@@ -29,7 +30,7 @@ enum Role {
 }
 
 model LandParcel {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  id          String   @id @default(uuid())
   ulpin       String   @unique // Unique Land Parcel Identification Number
   state       String
   district    String
@@ -40,7 +41,7 @@ model LandParcel {
   landType    String   // Agricultural, Commercial, Residential, Forest, etc.
   status      String   // Clear, Disputed, Under Acquisition
   
-  // We use JSON for GeoJSON geometry in MongoDB
+  // JSONB for fast indexing of GeoJSON
   geometry    Json?    
   
   createdAt   DateTime @default(now())
@@ -48,16 +49,46 @@ model LandParcel {
 }
 
 model PolicyDocument {
-  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  id            String   @id @default(uuid())
   title         String
   description   String
   documentUrl   String?
   issuer        String   // Ministry, State Govt, etc.
   effectiveDate DateTime
   
-  // For RAG copilot, we might store embeddings in a separate collection or inside the document if using Atlas Vector Search
-  embedding     Float[]  
+  chunks        DocumentChunk[]
   
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+}
+
+model DocumentChunk {
+  id               String         @id @default(uuid())
+  policyDocumentId String
+  policyDocument   PolicyDocument @relation(fields: [policyDocumentId], references: [id])
+  content          String
+  metadata         Json
+  
+  // pgvector embedding (1536 dims for OpenAI)
+  embedding        Unsupported("vector(1536)")?
+}
+
+model AuditLog {
+  id           String   @id @default(uuid()) // Transaction ID
+  action       String   // e.g., "Simulation Run: Zonal FSI"
+  initiator    String   // User email or system ID
+  timestamp    DateTime @default(now())
+  
+  // Hash chaining for immutability
+  previousHash String
+  currentHash  String   @unique
+}
+
+model GovtScheme {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  budget      String
+  keywords    String[] // Tags for matchmaking
+  url         String?
 }
