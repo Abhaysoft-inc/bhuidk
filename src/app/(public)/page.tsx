@@ -9,7 +9,7 @@ export default function LandingPage() {
     <div className="flex flex-col w-full">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-background pt-24 pb-32">
-        <div className="absolute inset-0 z-0 opacity-[0.03] bg-[url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/India_relief_location_map.jpg/1024px-India_relief_location_map.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0 z-0 opacity-[0.03] bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80')] bg-cover bg-center" />
         
         <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-16">
           <div className="flex-1 flex flex-col gap-6">
@@ -75,7 +75,7 @@ export default function LandingPage() {
                   <div className="w-2 h-2 rounded-full bg-success" />
                 </div>
               </div>
-              <div className="flex-1 bg-[url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/India_relief_location_map.jpg/1024px-India_relief_location_map.jpg')] bg-cover bg-center mix-blend-multiply opacity-50 relative">
+              <div className="flex-1 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80')] bg-cover bg-center mix-blend-multiply opacity-50 relative">
                 {/* Mock live blips */}
                 <div className="absolute top-[40%] left-[30%] w-3 h-3 rounded-full bg-accent shadow-[0_0_15px_rgba(201,123,74,0.8)] animate-ping" />
                 <div className="absolute top-[60%] left-[40%] w-2 h-2 rounded-full bg-success shadow-[0_0_10px_rgba(35,79,53,0.8)] animate-ping" style={{ animationDelay: '0.5s' }} />
