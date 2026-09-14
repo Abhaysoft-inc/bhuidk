@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  password  String?
+  name      String?
+  role      Role     @default(PUBLIC)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  PUBLIC
+  RESEARCHER
+  POLICYMAKER
+  ADMIN
+  GIS_ANALYST
+}
+
+model LandParcel {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  ulpin       String   @unique // Unique Land Parcel Identification Number
+  state       String
+  district    String
+  subDistrict String
+  village     String
+  area        Float    // Area in hectares
+  ownerName   String
+  landType    String   // Agricultural, Commercial, Residential, Forest, etc.
+  status      String   // Clear, Disputed, Under Acquisition
+  
+  // We use JSON for GeoJSON geometry in MongoDB
+  geometry    Json?    
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model PolicyDocument {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  description   String
+  documentUrl   String?
+  issuer        String   // Ministry, State Govt, etc.
+  effectiveDate DateTime
+  
+  // For RAG copilot, we might store embeddings in a separate collection or inside the document if using Atlas Vector Search
+  embedding     Float[]  
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
