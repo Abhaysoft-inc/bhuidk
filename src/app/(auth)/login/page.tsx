@@ -18,8 +18,8 @@ export default function LoginPage() {
     <div className="min-h-screen bg-background flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md flex flex-col items-center">
         <Link href="/" className="flex items-center gap-2 mb-6">
-          <div className="w-10 h-10 bg-primary rounded-sm flex items-center justify-center shadow-card">
-            <span className="text-background font-serif font-bold text-lg">BI</span>
+          <div className="w-10 h-10 rounded-sm overflow-hidden flex items-center justify-center shadow-card border border-border">
+            <img src="/logo.jpg" alt="BhoomiIntel Logo" className="w-full h-full object-cover" />
           </div>
           <span className="text-2xl font-serif font-semibold text-primary">BhoomiIntel</span>
         </Link>

@@ -10,8 +10,8 @@ export default function PublicLayout({
     <div className="flex min-h-screen flex-col">
       <header className="border-b border-border bg-background px-6 py-4 flex items-center justify-between sticky top-0 z-50">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-primary rounded-sm flex items-center justify-center">
-            <span className="text-background font-serif font-bold">BI</span>
+          <div className="w-8 h-8 rounded-sm overflow-hidden flex items-center justify-center shadow-sm border border-border">
+            <img src="/logo.jpg" alt="BhoomiIntel Logo" className="w-full h-full object-cover" />
           </div>
           <Link href="/" className="text-xl font-serif font-semibold text-primary">BhoomiIntel</Link>
         </div>
@@ -35,8 +35,8 @@ export default function PublicLayout({
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-8">
           <div className="flex flex-col gap-4 max-w-sm">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-background rounded-sm flex items-center justify-center">
-                <span className="text-primary font-serif font-bold">BI</span>
+              <div className="w-8 h-8 rounded-sm overflow-hidden flex items-center justify-center shadow-sm border border-border/30">
+                <img src="/logo.jpg" alt="BhoomiIntel Logo" className="w-full h-full object-cover" />
               </div>
               <span className="text-xl font-serif font-semibold">BhoomiIntel</span>
             </div>

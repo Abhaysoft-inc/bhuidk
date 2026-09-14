@@ -40,8 +40,8 @@ export default function CopilotPage() {
         <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-6">
           {messages.map((msg, idx) => (
             <div key={idx} className={`flex gap-4 max-w-[85%] ${msg.role === 'user' ? 'ml-auto flex-row-reverse' : ''}`}>
-              <div className={`w-8 h-8 rounded-sm flex items-center justify-center shrink-0 shadow-sm ${msg.role === 'user' ? 'bg-primary text-background' : 'bg-accent/20 text-accent border border-accent/30'}`}>
-                {msg.role === 'user' ? 'U' : 'BI'}
+              <div className={`w-8 h-8 rounded-sm overflow-hidden flex items-center justify-center shrink-0 shadow-sm ${msg.role === 'user' ? 'bg-primary text-background' : 'border border-border'}`}>
+                {msg.role === 'user' ? 'U' : <img src="/logo.jpg" alt="BI" className="w-full h-full object-cover" />}
               </div>
               <div className={`p-4 rounded-md shadow-sm text-sm leading-relaxed ${msg.role === 'user' ? 'bg-primary text-background' : 'bg-white border border-border text-foreground'}`}>
                 {msg.text}

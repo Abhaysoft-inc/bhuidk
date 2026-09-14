@@ -8,7 +8,9 @@ export default function AboutPage() {
       <div className="max-w-4xl mx-auto px-6 py-16 flex flex-col gap-12">
         
         <section className="flex flex-col gap-4 text-center items-center">
-          <div className="w-16 h-16 bg-primary text-background rounded-sm flex items-center justify-center font-serif text-2xl font-bold mb-4 shadow-card">BI</div>
+          <div className="w-16 h-16 rounded-sm overflow-hidden flex items-center justify-center mb-4 shadow-card border border-border">
+            <img src="/logo.jpg" alt="BhoomiIntel Logo" className="w-full h-full object-cover" />
+          </div>
           <h1 className="text-4xl md:text-5xl font-serif text-primary">About BhoomiIntel</h1>
           <p className="text-lg text-mutedForeground text-balance max-w-2xl">
             A unified digital intelligence platform designed to transform land governance in India through data, artificial intelligence, and transparency.
