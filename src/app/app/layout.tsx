@@ -123,8 +123,8 @@ export default function AppLayout({
       >
         <div className="h-16 flex items-center justify-between px-4 border-b border-border shrink-0">
           <div className="flex items-center gap-2 overflow-hidden">
-            <div className="w-8 h-8 bg-primary rounded-sm flex items-center justify-center shrink-0">
-              <span className="text-background font-serif font-bold text-sm">BI</span>
+            <div className="w-8 h-8 rounded-sm overflow-hidden flex items-center justify-center shrink-0 shadow-sm border border-border">
+              <img src="/logo.jpg" alt="BhoomiIntel Logo" className="w-full h-full object-cover" />
             </div>
             {!isSidebarCollapsed && (
               <Link href="/app" className="font-serif font-semibold text-primary whitespace-nowrap">BhoomiIntel</Link>
@@ -183,8 +183,8 @@ export default function AppLayout({
         <header className="h-16 border-b border-border bg-white flex items-center px-6 justify-between sticky top-0 z-40 shrink-0 shadow-sm">
           <div className="flex items-center gap-4 flex-1">
             <div className="md:hidden flex items-center gap-2 mr-2">
-              <div className="w-8 h-8 bg-primary rounded-sm flex items-center justify-center">
-                <span className="text-background font-serif font-bold text-sm">BI</span>
+              <div className="w-8 h-8 rounded-sm overflow-hidden flex items-center justify-center shadow-sm border border-border">
+                <img src="/logo.jpg" alt="BhoomiIntel Logo" className="w-full h-full object-cover" />
               </div>
             </div>
             
