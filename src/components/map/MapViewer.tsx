@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import Map, { Source, Layer, NavigationControl, FullscreenControl } from 'react-map-gl/maplibre';
-import maplibregl from 'maplibre-gl';
+import * as maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
 // Mock GeoJSON data for Maharashtra Districts (Simplified for Demo)
