@@ -18,6 +18,10 @@ export function GovHeader({ language }: GovHeaderProps) {
           </div>
 
           <div className="h-14 w-[1px] bg-slate-200 hidden sm:block shrink-0" />
+          
+          <img src="/logo.jpg" alt="BhoomiIntel Logo" className="h-14 w-14 rounded-lg object-cover hidden sm:block shrink-0 shadow-sm" />
+
+          <div className="h-14 w-[1px] bg-slate-200 hidden sm:block shrink-0" />
 
           <div className="flex flex-col">
             {/* Ministry Line */}

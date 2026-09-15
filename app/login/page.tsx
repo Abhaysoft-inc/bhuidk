@@ -32,9 +32,7 @@ export default function LoginPage() {
           </Link>
           {/* Header */}
           <div className="text-center space-y-2">
-            <div className="w-14 h-14 rounded-full bg-[#0b2b50] text-white flex items-center justify-center text-xl font-black mx-auto shadow-sm">
-              भा
-            </div>
+            <img src="/logo.jpg" alt="BhoomiIntel Logo" className="w-16 h-16 rounded-xl mx-auto shadow-sm object-cover" />
             <div>
               <div className="text-[10px] font-semibold text-amber-700 uppercase tracking-widest">
                 DoLR • Ministry of Rural Development

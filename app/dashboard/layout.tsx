@@ -49,9 +49,7 @@ export default function DashboardLayout({
       >
         {/* Logo */}
         <div className="h-14 flex items-center gap-3 px-4 border-b border-white/10 shrink-0">
-          <div className="w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-sm font-black shrink-0">
-            भा
-          </div>
+          <img src="/logo.jpg" alt="BhoomiIntel Logo" className="w-8 h-8 rounded shrink-0 object-cover" />
           {!collapsed && (
             <div className="overflow-hidden">
               <div className="text-xs font-bold text-white leading-tight truncate">
@@ -137,9 +135,7 @@ export default function DashboardLayout({
         }`}
       >
         <div className="h-14 flex items-center gap-3 px-4 border-b border-white/10">
-          <div className="w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-sm font-black shrink-0">
-            भा
-          </div>
+          <img src="/logo.jpg" alt="BhoomiIntel Logo" className="w-8 h-8 rounded shrink-0 object-cover" />
           <div>
             <div className="text-xs font-bold text-white">Land Governance</div>
             <div className="text-[10px] text-slate-400">DoLR • PME Division</div>
