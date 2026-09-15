@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: "National Digital Platform for Research, Policy Innovation, and Evidence-Based Land Governance - Department of Land Resources, Ministry of Rural Development, Government of India.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-[family-name:var(--font-inter)]">{children}</body>
