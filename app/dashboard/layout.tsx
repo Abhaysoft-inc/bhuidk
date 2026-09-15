@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   LayoutDashboard,
   Database,
@@ -18,6 +18,10 @@ import {
   Bell,
   Search,
   Menu,
+  X,
+  CheckCheck,
+  ExternalLink,
+  HelpCircle,
 } from "lucide-react";
 
 const navItems = [
@@ -30,21 +34,91 @@ const navItems = [
   { href: "/dashboard/analytics", label: "Analytics", icon: BarChart3 },
 ];
 
+const searchableItems = [
+  { title: "Geospatial GIS Viewer", category: "Tool", href: "/dashboard/gis" },
+  { title: "Policy Simulator Engine", category: "Tool", href: "/dashboard/simulator" },
+  { title: "ULPIN Bhu-Aadhaar Study", category: "Paper", href: "/dashboard/repository" },
+  { title: "Cadastral Resurvey Datasets", category: "Dataset", href: "/dashboard/repository" },
+  { title: "Model Tenancy Act Framework", category: "Policy", href: "/dashboard/simulator" },
+  { title: "Pune Cadastral Resurvey Workspace", category: "Workspace", href: "/dashboard/workspaces" },
+  { title: "SVAMITVA Drone Resurvey SOP", category: "Document", href: "/dashboard/repository" },
+];
+
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const router = useRouter();
+
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  // Search state
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+
+  // Notifications state
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [notifications, setNotifications] = useState([
+    { id: 1, title: "Maharashtra Cadastral Dataset Updated", time: "2 hours ago", unread: true },
+    { id: 2, title: "Policy Simulation Result Ready", time: "5 hours ago", unread: true },
+    { id: 3, title: "Workspace Invitation: Pune Corridor", time: "1 day ago", unread: false },
+  ]);
+
+  // User menu state
+  const [showUserMenu, setShowUserMenu] = useState(false);
+
+  const searchRef = useRef<HTMLDivElement>(null);
+  const notifRef = useRef<HTMLDivElement>(null);
+  const userRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdowns on outside click
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
+        setIsSearchFocused(false);
+      }
+      if (notifRef.current && !notifRef.current.contains(e.target as Node)) {
+        setShowNotifications(false);
+      }
+      if (userRef.current && !userRef.current.contains(e.target as Node)) {
+        setShowUserMenu(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const filteredSearch = searchQuery.trim()
+    ? searchableItems.filter(
+      (item) =>
+        item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.category.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    : [];
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/dashboard/repository?query=${encodeURIComponent(searchQuery.trim())}`);
+      setIsSearchFocused(false);
+    }
+  };
+
+  const markAllNotifsRead = () => {
+    setNotifications((prev) => prev.map((n) => ({ ...n, unread: false })));
+  };
+
+  const unreadCount = notifications.filter((n) => n.unread).length;
+
   return (
-    <div className="min-h-screen flex bg-slate-50">
+    <div className="min-h-screen flex bg-slate-50 text-slate-900">
       {/* ─── Sidebar (Desktop) ─── */}
       <aside
         className={`fixed inset-y-0 left-0 z-40 flex flex-col bg-[#0b2b50] text-white transition-all duration-200 ${collapsed ? "w-16" : "w-56"
-          } hidden md:flex`}
+          } hidden md:flex shadow-lg`}
       >
         {/* Logo */}
         <div className="h-14 flex items-center gap-3 px-4 border-b border-white/10 shrink-0">
@@ -57,7 +131,7 @@ export default function DashboardLayout({
               <div className="text-[10px] text-slate-400 truncate">DoLR • PME Division</div>
             </div>
           )}
-        </div>
+        </Link>
 
         {/* Nav */}
         <nav className="flex-1 py-3 px-2 space-y-0.5 overflow-y-auto">
@@ -108,7 +182,7 @@ export default function DashboardLayout({
         <button
           type="button"
           onClick={() => setCollapsed(!collapsed)}
-          className="absolute -right-3 top-16 w-6 h-6 bg-white border border-slate-200 rounded-full shadow-sm flex items-center justify-center text-slate-500 hover:text-slate-900 cursor-pointer z-50"
+          className="absolute -right-3 top-16 w-6 h-6 bg-white border border-slate-200 rounded-full shadow-sm flex items-center justify-center text-slate-600 hover:text-slate-900 cursor-pointer z-50 transition-transform"
         >
           {collapsed ? (
             <ChevronRight className="w-3.5 h-3.5" />
@@ -128,7 +202,7 @@ export default function DashboardLayout({
 
       {/* ─── Mobile Sidebar ─── */}
       <aside
-        className={`fixed inset-y-0 left-0 z-40 w-56 bg-[#0b2b50] text-white flex flex-col transition-transform duration-200 md:hidden ${mobileOpen ? "translate-x-0" : "-translate-x-full"
+        className={`fixed inset-y-0 left-0 z-40 w-56 bg-[#0b2b50] text-white flex flex-col transition-transform duration-200 md:hidden shadow-2xl ${mobileOpen ? "translate-x-0" : "-translate-x-full"
           }`}
       >
         <div className="h-14 flex items-center gap-3 px-4 border-b border-white/10">
@@ -189,8 +263,8 @@ export default function DashboardLayout({
               <Menu className="w-5 h-5" />
             </button>
 
-            {/* Search */}
-            <div ref={searchRef} className="relative hidden sm:block">
+            {/* Interactive Search Input */}
+            <div ref={searchRef} className="relative w-full max-w-md hidden sm:block">
               <form onSubmit={handleSearchSubmit} className="relative">
                 <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
@@ -201,14 +275,14 @@ export default function DashboardLayout({
                     setIsSearchFocused(true);
                   }}
                   onFocus={() => setIsSearchFocused(true)}
-                  placeholder="Search..."
-                  className="pl-9 pr-4 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs w-56 focus:outline-none focus:ring-2 focus:ring-[#0b2b50]/20 focus:border-[#0b2b50]"
+                  placeholder="Search tools, land records, policy frameworks..."
+                  className="w-64 md:w-80 pl-9 pr-8 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0b2b50]/20 focus:border-[#0b2b50] focus:bg-white transition-all"
                 />
                 {searchQuery && (
                   <button
                     type="button"
                     onClick={() => setSearchQuery("")}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-800"
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-800"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
@@ -217,7 +291,7 @@ export default function DashboardLayout({
 
               {/* Live Search Results Dropdown */}
               {isSearchFocused && searchQuery.trim() && (
-                <div className="absolute top-full left-0 right-0 mt-2 w-80 bg-white border border-slate-200 rounded-xl shadow-xl overflow-hidden z-50">
+                <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-slate-200 rounded-xl shadow-xl overflow-hidden z-50">
                   {filteredSearch.length > 0 ? (
                     <div className="p-1.5 space-y-0.5">
                       {filteredSearch.map((res, i) => (
@@ -247,13 +321,15 @@ export default function DashboardLayout({
             </div>
           </div>
 
+          {/* Right Utilities */}
           <div className="flex items-center gap-3">
-            {/* Notifications */}
+            {/* Notifications Dropdown Container */}
             <div ref={notifRef} className="relative">
               <button
                 type="button"
                 onClick={() => setShowNotifications(!showNotifications)}
-                className="relative p-2 text-slate-500 hover:text-slate-900 cursor-pointer"
+                className="relative p-2 text-slate-500 hover:text-slate-900 cursor-pointer rounded-lg hover:bg-slate-100 transition-colors"
+                title="Notifications"
               >
                 <Bell className="w-4 h-4" />
                 {unreadCount > 0 && (
@@ -293,17 +369,17 @@ export default function DashboardLayout({
               )}
             </div>
 
-            {/* User */}
+            {/* User Profile Dropdown */}
             <div ref={userRef} className="relative">
               <button
                 type="button"
                 onClick={() => setShowUserMenu(!showUserMenu)}
-                className="flex items-center gap-2.5 cursor-pointer hover:opacity-90"
+                className="flex items-center gap-2.5 cursor-pointer hover:opacity-90 pl-1"
               >
                 <div className="w-7 h-7 rounded-full bg-[#0b2b50] text-white flex items-center justify-center text-[10px] font-bold">
                   AS
                 </div>
-                <div className="hidden sm:block">
+                <div className="hidden sm:block text-left">
                   <div className="text-xs font-semibold text-slate-800 leading-tight">
                     Dr. Ashok Sharma
                   </div>

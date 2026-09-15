@@ -30,6 +30,8 @@ interface MapComponentProps {
 
 const NEW_DELHI_CENTER: [number, number] = [28.6139, 77.209];
 
+const CARTO_API_KEY = "cb1_3mee_1_f30f15bf5fbf414a09921b6c";
+
 export default function MapComponent({
   activeLayers,
   isPredictorActive,
@@ -69,14 +71,16 @@ export default function MapComponent({
         scrollWheelZoom={true}
         style={{ height: "100%", width: "100%" }}
       >
-        {/* Base Map */}
+        {/* Base Map: CARTO Basemaps with API key */}
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
           url={
             timePeriod < 2024
-              ? "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" // Satellite imagery for past (simulated)
-              : "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              ? "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+              : `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key=${CARTO_API_KEY}`
           }
+          subdomains="abcd"
+          maxZoom={20}
         />
 
         {/* Land Use Layer */}
