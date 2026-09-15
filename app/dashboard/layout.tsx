@@ -131,7 +131,7 @@ export default function DashboardLayout({
               <div className="text-[10px] text-slate-400 truncate">DoLR • PME Division</div>
             </div>
           )}
-        </Link>
+        </div>
 
         {/* Nav */}
         <nav className="flex-1 py-3 px-2 space-y-0.5 overflow-y-auto">
@@ -211,7 +211,7 @@ export default function DashboardLayout({
             <div className="text-xs font-bold text-white">Land Governance</div>
             <div className="text-[10px] text-slate-400">DoLR • PME Division</div>
           </div>
-        </Link>
+        </div>
         <nav className="flex-1 py-3 px-2 space-y-0.5 overflow-y-auto">
           {navItems.map((item) => {
             const Icon = item.icon;
