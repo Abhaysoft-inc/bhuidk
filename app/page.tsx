@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import "./landing.css";
 
 const HERO_IMG = "/hero-image.jpg";
@@ -74,22 +75,23 @@ export default function Home() {
           HEADER
       =================================================== */}
       <header className="header">
-        <a href="#" className="logo">
+        <Link href="/" className="logo" style={{ textDecoration: 'none' }}>
           <span className="logo__symbol">✦</span>
           <span>GEO-INTELLIGENCE</span>
-        </a>
+        </Link>
 
         <nav className="nav">
-          <a href="#">REPOSITORY</a>
-          <a href="#">GIS ANALYTICS</a>
-          <a href="#">POLICY SIMULATOR</a>
-          <a href="#">INNOVATION PORTAL</a>
+          <Link href="/dashboard">DASHBOARD</Link>
+          <Link href="/dashboard/repository">REPOSITORY</Link>
+          <Link href="/dashboard/gis">GIS ANALYTICS</Link>
+          <Link href="/dashboard/simulator">POLICY SIMULATOR</Link>
+          <Link href="/dashboard/grants">INNOVATION PORTAL</Link>
         </nav>
 
-        <button className="menu">
+        <Link href="/login" className="menu" style={{ textDecoration: 'none' }}>
           <span className="menu__dot"></span>
           PLATFORM ACCESS
-        </button>
+        </Link>
       </header>
 
       {/* ===================================================
@@ -118,15 +120,15 @@ export default function Home() {
           </p>
 
           <div className="actions">
-            <a href="#" className="btn btn--primary">
+            <Link href="/dashboard/repository" className="btn btn--primary" style={{ textDecoration: 'none' }}>
               EXPLORE REPOSITORY
               <span>↗</span>
-            </a>
+            </Link>
 
-            <a href="#" className="btn btn--secondary">
+            <Link href="/dashboard/gis" className="btn btn--secondary" style={{ textDecoration: 'none' }}>
               VIEW GIS MODULES
               <span>→</span>
-            </a>
+            </Link>
           </div>
 
           <div className="meta">
