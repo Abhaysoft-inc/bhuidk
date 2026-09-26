@@ -1,11 +1,12 @@
-import { SandboxClient } from "@/components/simulator/sandbox-client";
+import { PolicyPlanningView } from "@/components/simulator/policy-planning-view";
 
 export const metadata = {
-  title: "Policy Reform Sandbox | National Land Governance Platform",
+  title: "Policy Planning | National Land Governance Platform",
   description:
-    "Interactive district-level regression model predicting land conflict risk. Explore how digitization, urbanization, and court efficiency affect disputes.",
+    "Define a proposed zone and assess its initial land impact. Interactive manual spatial planning for policymakers and researchers.",
 };
 
 export default function SimulatorPage() {
-  return <SandboxClient />;
+  return <PolicyPlanningView />;
 }
+
