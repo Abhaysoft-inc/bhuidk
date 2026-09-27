@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import dynamic from "next/dynamic";
 import {
   ProposedZoneData,
@@ -36,7 +36,16 @@ import {
   X,
   FileCheck,
   Search,
+  Loader2,
 } from "lucide-react";
+import {
+  INDIAN_STATES_CATALOG,
+  DistrictCatalogItem,
+  LiveDistrictBoundary,
+  getDistrictCatalogItem,
+  getStateCatalogItem,
+} from "./india-districts-catalog";
+import { useTerritory } from "@/context/territory-context";
 
 // Dynamic import for Leaflet map component (SSR disabled)
 const PolicyPlanningMap = dynamic(() => import("./policy-planning-map"), {
@@ -74,6 +83,16 @@ export function PolicyPlanningView() {
   const [selectedCandidateId, setSelectedCandidateId] = useState<string | null>(null);
   const [activeCriteria, setActiveCriteria] = useState<SitePlanningCriteria | null>(null);
   const [panelTab, setPanelTab] = useState<"zone" | "candidates">("zone");
+
+  // Territory Focus State from Global Header Context
+  const {
+    selectedStateId,
+    selectedDistrictId,
+    districtBoundary,
+    isLoadingBoundary,
+    selectedDistrictMetadata,
+    handleClearTerritory,
+  } = useTerritory();
 
   // Active Zone derived from collection
   const activeZone = useMemo(() => {
@@ -213,9 +232,14 @@ export function PolicyPlanningView() {
 
   // Manual Drawing Callback
   const handleZoneCreated = (newZone: ProposedZoneData) => {
-    setZones([newZone]);
-    setActiveZoneId(newZone.zone_id);
-    setSelectedZoneType(newZone.zone_type);
+    const finalZone: ProposedZoneData = {
+      ...newZone,
+      district: selectedDistrictMetadata ? selectedDistrictMetadata.name : newZone.district,
+      state: selectedDistrictMetadata ? selectedDistrictMetadata.state_name : newZone.state,
+    };
+    setZones([finalZone]);
+    setActiveZoneId(finalZone.zone_id);
+    setSelectedZoneType(finalZone.zone_type);
     setPanelTab("zone");
   };
 
@@ -319,7 +343,7 @@ export function PolicyPlanningView() {
           </p>
         </div>
 
-        {/* View Switcher & Actions: AI Find Location, Upload Proposal */}
+        {/* View Switcher & Actions: AI Find Location, Upload Proposal, Mode Tabs */}
         <div className="flex items-center gap-2.5 shrink-0 flex-wrap">
           {/* AI Find Location Button */}
           <button
@@ -395,8 +419,8 @@ export function PolicyPlanningView() {
       ) : (
         /* ─── 2. MAP-FIRST WORKSPACE & PROPOSED ZONE PANEL ─── */
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          {/* Left Column: Map-First Workspace (7 cols on lg, 8 cols on xl) */}
-          <div className="lg:col-span-7 xl:col-span-8 flex flex-col gap-3">
+          {/* Left Column: Map-First Workspace (7 cols on lg, 8 cols on xl) - Sticky on desktop */}
+          <div className="lg:col-span-7 xl:col-span-8 lg:sticky lg:top-[4.5rem] flex flex-col gap-3 self-start z-10 min-w-0">
             <PolicyPlanningMap
               activeZone={activeZone}
               allZones={zones}
@@ -413,6 +437,10 @@ export function PolicyPlanningView() {
               selectedZoneType={selectedZoneType}
               onOpenUpload={() => setUploadModalOpen(true)}
               onOpenAiSite={() => setAiModalOpen(true)}
+              selectedDistrictBoundary={districtBoundary}
+              selectedDistrictMetadata={selectedDistrictMetadata}
+              onClearDistrict={handleClearTerritory}
+              isLoadingDistrictBoundary={isLoadingBoundary}
             />
 
             {/* Quick Helper Ribbon under Map */}

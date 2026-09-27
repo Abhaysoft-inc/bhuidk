@@ -23,6 +23,8 @@ import {
   ExternalLink,
   HelpCircle,
 } from "lucide-react";
+import { TerritoryProvider } from "@/context/territory-context";
+import { TerritoryHeaderSelector } from "@/components/layout/territory-header-selector";
 
 const navItems = [
   { href: "/dashboard", label: "Overview", icon: LayoutDashboard },
@@ -51,6 +53,7 @@ export default function DashboardLayout({
 }) {
   const pathname = usePathname();
   const router = useRouter();
+  const isSimulator = pathname?.startsWith("/dashboard/simulator");
 
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -114,7 +117,8 @@ export default function DashboardLayout({
   const unreadCount = notifications.filter((n) => n.unread).length;
 
   return (
-    <div className="min-h-screen flex bg-slate-50 text-slate-900">
+    <TerritoryProvider>
+      <div className="min-h-screen flex bg-slate-50 text-slate-900">
       {/* ─── Sidebar (Desktop) ─── */}
       <aside
         className={`fixed inset-y-0 left-0 z-40 flex flex-col bg-[#0b2b50] text-white transition-all duration-200 ${collapsed ? "w-16" : "w-56"
@@ -319,10 +323,17 @@ export default function DashboardLayout({
                 </div>
               )}
             </div>
+
+            {/* Territory Focus Selector (In top header next to search tools as requested) */}
+            {isSimulator && (
+              <div className="hidden md:flex items-center ml-auto mr-3 shrink-0">
+                <TerritoryHeaderSelector />
+              </div>
+            )}
           </div>
 
           {/* Right Utilities */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 shrink-0">
             {/* Notifications Dropdown Container */}
             <div ref={notifRef} className="relative">
               <button
@@ -421,5 +432,6 @@ export default function DashboardLayout({
         <main className="flex-1 p-4 sm:p-6">{children}</main>
       </div>
     </div>
+  </TerritoryProvider>
   );
 }

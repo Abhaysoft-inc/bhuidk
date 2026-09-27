@@ -112,6 +112,29 @@ const SAMPLE_FILES: Record<string, { fileName: string; content: string }> = {
       },
     }),
   },
+  bullet_corridor: {
+    fileName: "High_Speed_Rail_Corridor.geojson",
+    content: JSON.stringify({
+      type: "Feature",
+      properties: {
+        name: "Mumbai-Ahmedabad Bullet Train Alignment",
+        zone_type: "Infrastructure Corridor",
+        buffer_m: 500,
+      },
+      geometry: {
+        type: "LineString",
+        coordinates: [
+          [72.8777, 19.0760],
+          [72.9500, 19.3000],
+          [72.9800, 19.8000],
+          [72.9000, 20.5000],
+          [72.8000, 21.2000],
+          [72.6000, 22.3000],
+          [72.5714, 23.0225],
+        ],
+      },
+    }),
+  },
 };
 
 export function UploadZoneModal({
@@ -331,14 +354,14 @@ export function UploadZoneModal({
                 <span className="text-[11px] font-bold text-slate-600 block mb-2">
                   Or load benchmark GIS proposal sample:
                 </span>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
                   <button
                     type="button"
                     onClick={() => handleLoadSample("pune_corridor")}
                     className="p-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-left transition-colors flex items-center justify-between cursor-pointer shadow-2xs"
                   >
                     <div>
-                      <div className="font-bold text-slate-800">Pune Logistics Corridor</div>
+                      <div className="font-bold text-slate-800">Pune Logistics</div>
                       <div className="text-[10px] text-slate-500">2 Zones (Chakan & Talegaon)</div>
                     </div>
                     <FileCode className="w-4 h-4 text-[#0b2b50]" />
@@ -350,8 +373,20 @@ export function UploadZoneModal({
                     className="p-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-left transition-colors flex items-center justify-between cursor-pointer shadow-2xs"
                   >
                     <div>
-                      <div className="font-bold text-slate-800">Greater Noida Ecotech</div>
+                      <div className="font-bold text-slate-800">Noida Ecotech</div>
                       <div className="text-[10px] text-slate-500">1 Zone (Ecotech SEZ)</div>
+                    </div>
+                    <FileCode className="w-4 h-4 text-[#0b2b50]" />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => handleLoadSample("bullet_corridor")}
+                    className="p-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-left transition-colors flex items-center justify-between cursor-pointer shadow-2xs"
+                  >
+                    <div>
+                      <div className="font-bold text-slate-800">Bullet Train</div>
+                      <div className="text-[10px] text-slate-500">LineString Corridor Buffer</div>
                     </div>
                     <FileCode className="w-4 h-4 text-[#0b2b50]" />
                   </button>
@@ -388,6 +423,13 @@ export function UploadZoneModal({
                   Change File
                 </button>
               </div>
+
+              {parseResult.normalizationNotice && (
+                <div className="bg-amber-50 border border-amber-200 text-amber-900 p-2.5 rounded-xl text-xs flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-amber-600 shrink-0" />
+                  <span>{parseResult.normalizationNotice}</span>
+                </div>
+              )}
 
               <div className="space-y-2 max-h-[260px] overflow-y-auto pr-1">
                 {parseResult.features.map((feat) => {

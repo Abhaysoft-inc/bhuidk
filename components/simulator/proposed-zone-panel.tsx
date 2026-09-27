@@ -136,12 +136,12 @@ export function ProposedZonePanel({
     <div className="ux4g-card ux4g-card-solid p-5 space-y-5">
       {/* ─── UNDERLINE TAB BAR (UX4G Standard) ─── */}
       <div className="ux4g-tab ux4g-tab-underline ux4g-tab-md">
-        <ul className="ux4g-tab-list">
+        <ul className="ux4g-tab-list flex items-center justify-between w-full">
           <li>
             <button
               type="button"
               onClick={() => setActiveTab("proposed_zone")}
-              className={`ux4g-tab-item ${activeTab === "proposed_zone" ? "is-active" : ""}`}
+              className={`ux4g-tab-item !text-xs sm:!text-[13px] ${activeTab === "proposed_zone" ? "is-active" : ""}`}
             >
               Proposed Zone
             </button>
@@ -150,7 +150,7 @@ export function ProposedZonePanel({
             <button
               type="button"
               onClick={() => setActiveTab("analysis")}
-              className={`ux4g-tab-item ${activeTab === "analysis" ? "is-active" : ""}`}
+              className={`ux4g-tab-item !text-xs sm:!text-[13px] ${activeTab === "analysis" ? "is-active" : ""}`}
             >
               Analysis
             </button>
@@ -159,7 +159,7 @@ export function ProposedZonePanel({
             <button
               type="button"
               onClick={() => setActiveTab("constraints")}
-              className={`ux4g-tab-item ${activeTab === "constraints" ? "is-active" : ""}`}
+              className={`ux4g-tab-item !text-xs sm:!text-[13px] ${activeTab === "constraints" ? "is-active" : ""}`}
             >
               Constraints
             </button>
@@ -168,7 +168,7 @@ export function ProposedZonePanel({
             <button
               type="button"
               onClick={() => setActiveTab("results")}
-              className={`ux4g-tab-item ${activeTab === "results" ? "is-active" : ""}`}
+              className={`ux4g-tab-item !text-xs sm:!text-[13px] ${activeTab === "results" ? "is-active" : ""}`}
             >
               Results
             </button>
@@ -327,72 +327,79 @@ export function ProposedZonePanel({
              ═════════════════════════════════════════════════════════ */}
           {activeTab === "proposed_zone" && (
             <div className="space-y-5">
-              {/* Header row: Zone ID, Tag, Quick Actions */}
-              <div className="flex items-center justify-between gap-2 border-b border-slate-100 pb-3">
-                <div className="space-y-0.5">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">
+              {/* ─── Header: Zone Identity, Source & Quick Actions ─── */}
+              <div className="border-b border-slate-200/80 pb-3 space-y-2.5">
+                {/* Row 1: Badges on Left, Action Buttons on Right */}
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-1.5 flex-wrap min-w-0">
+                    <span className="font-mono text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 border border-slate-200 shrink-0">
                       {activeZone.zone_id}
                     </span>
 
                     {isUploaded ? (
-                      <span className="ux4g-tag ux4g-tag-tonal-primary ux4g-tag-xs">
+                      <span className="ux4g-tag ux4g-tag-tonal-primary ux4g-tag-xs shrink-0">
                         <Upload className="w-3 h-3 text-[#0b2b50]" />
-                        <span>Source: Uploaded GIS</span>
+                        <span>GIS Upload</span>
                       </span>
                     ) : activeZone.source === "ai" ? (
-                      activeZone.isModified ? (
-                        <span className="ux4g-tag ux4g-tag-filled-brand ux4g-tag-xs">
-                          <Sparkles className="w-3 h-3 text-amber-300" />
-                          <span>AI Recommendation + Manual Edit</span>
-                        </span>
-                      ) : (
-                        <span className="ux4g-tag ux4g-tag-filled-brand ux4g-tag-xs">
-                          <Sparkles className="w-3 h-3 text-amber-300" />
-                          <span>AI Recommendation</span>
-                        </span>
-                      )
+                      <span className="ux4g-tag ux4g-tag-filled-brand ux4g-tag-xs shrink-0">
+                        <Sparkles className="w-3 h-3 text-amber-300" />
+                        <span>AI {activeZone.isModified ? "Modified" : "Recommended"}</span>
+                      </span>
                     ) : (
-                      <span className="ux4g-tag ux4g-tag-tonal-neutral ux4g-tag-xs">
+                      <span className="ux4g-tag ux4g-tag-tonal-neutral ux4g-tag-xs shrink-0">
                         <Pencil className="w-3 h-3 text-slate-500" />
-                        <span>Source: Manual Drawing</span>
+                        <span>Manual Drawing</span>
                       </span>
                     )}
                   </div>
 
-                  <h3 className="text-base font-black text-[#0b2b50] tracking-tight">
-                    Proposed Zone Configuration
-                  </h3>
-
-                  {activeZone.source_file && (
-                    <p className="text-[11px] text-slate-400 font-mono truncate max-w-xs">
-                      File: {activeZone.source_file}
-                    </p>
-                  )}
-                </div>
-
-                <div className="flex items-center gap-1.5 shrink-0">
-                  <button
-                    type="button"
-                    onClick={() => setShowJsonModal(true)}
-                    className="ux4g-btn ux4g-btn-outline-neutral ux4g-btn-sm cursor-pointer"
-                    title="Inspect structured BLIN GeoJSON object"
-                  >
-                    <Code2 className="w-3.5 h-3.5" />
-                    <span>GeoJSON</span>
-                  </button>
-
-                  {onClearProposal && (
+                  {/* Quick Action Buttons */}
+                  <div className="flex items-center gap-1.5 shrink-0">
                     <button
                       type="button"
-                      onClick={onClearProposal}
-                      className="ux4g-btn ux4g-btn-danger ux4g-btn-sm cursor-pointer !bg-rose-50 !text-rose-700 !border-rose-200 hover:!bg-rose-100"
-                      title="Clear Proposal from map"
+                      onClick={() => setShowJsonModal(true)}
+                      className="ux4g-btn ux4g-btn-outline-neutral !text-xs !py-1 !px-2.5 cursor-pointer flex items-center gap-1.5 shadow-2xs"
+                      title="Inspect structured BLIN GeoJSON object"
                     >
-                      <Trash2 className="w-3.5 h-3.5" />
-                      <span className="hidden sm:inline">Clear</span>
+                      <Code2 className="w-3.5 h-3.5 text-slate-600" />
+                      <span>GeoJSON</span>
                     </button>
-                  )}
+
+                    {onClearProposal && (
+                      <button
+                        type="button"
+                        onClick={onClearProposal}
+                        className="ux4g-btn ux4g-btn-danger !text-xs !py-1 !px-2.5 cursor-pointer !bg-rose-50 !text-rose-700 !border-rose-200 hover:!bg-rose-100 shadow-2xs flex items-center gap-1"
+                        title="Clear Proposal from map"
+                      >
+                        <Trash2 className="w-3.5 h-3.5 text-rose-600" />
+                        <span>Clear</span>
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {/* Row 2: Title and Subtitle / File Name (Full width, never cramped) */}
+                <div className="flex items-center justify-between gap-2">
+                  <div className="min-w-0">
+                    <h3 className="text-base font-black text-[#0b2b50] tracking-tight">
+                      Zone Configuration
+                    </h3>
+                    {activeZone.source_file && (
+                      <p className="text-[11px] text-slate-500 font-mono truncate max-w-xs mt-0.5 flex items-center gap-1">
+                        <FileText className="w-3 h-3 text-slate-400 shrink-0" />
+                        <span className="truncate">{activeZone.source_file}</span>
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="text-right shrink-0">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Total Area</span>
+                    <span className="font-mono text-xs font-black text-[#0b2b50]">
+                      {activeZone.area.toLocaleString()} Ha
+                    </span>
+                  </div>
                 </div>
               </div>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import {
   Sparkles,
   Sliders,
@@ -15,6 +15,7 @@ import {
   ShieldCheck,
   FileText,
 } from "lucide-react";
+import { useTerritory } from "@/context/territory-context";
 import {
   SitePlanningCriteria,
   PlanningPriorities,
@@ -24,6 +25,7 @@ import {
   CandidateLocation,
 } from "./ai-site-types";
 import { ZoneType } from "./policy-planning-types";
+import { INDIAN_STATES_CATALOG } from "./india-districts-catalog";
 
 interface AiSiteModalProps {
   isOpen: boolean;
@@ -45,11 +47,17 @@ const ZONE_OPTIONS: ZoneType[] = [
   "Custom",
 ];
 
-const STATE_OPTIONS = [
-  { state: "Maharashtra", districts: ["Pune", "Nagpur", "Thane", "Solapur"] },
-  { state: "Uttar Pradesh", districts: ["Gautam Buddha Nagar", "Lucknow", "Agra", "Varanasi"] },
-  { state: "Karnataka", districts: ["Bengaluru Rural", "Dharwad", "Mysuru"] },
-];
+export const STATE_OPTIONS: { state: string; districts: string[] }[] =
+  INDIAN_STATES_CATALOG && INDIAN_STATES_CATALOG.length > 0
+    ? INDIAN_STATES_CATALOG.map((s) => ({
+        state: s.name,
+        districts: s.districts.map((d) => d.name),
+      }))
+    : [
+        { state: "Maharashtra", districts: ["Pune", "Nagpur", "Thane", "Solapur"] },
+        { state: "Uttar Pradesh", districts: ["Gautam Buddha Nagar", "Lucknow", "Agra", "Varanasi"] },
+        { state: "Karnataka", districts: ["Bengaluru Rural", "Dharwad", "Mysuru"] },
+      ];
 
 const PRESET_PROMPTS = [
   "Find a suitable location in Maharashtra for a 500-acre logistics park, close to highways and railways, with low flood risk, minimal agricultural displacement and low land-dispute exposure.",
@@ -63,13 +71,50 @@ export function AiSiteModal({
   onCandidatesGenerated,
   initialCriteria,
 }: AiSiteModalProps) {
+  const {
+    selectedDistrictMetadata,
+    districtBoundary,
+    selectedStateId,
+    statesCatalog,
+  } = useTerritory();
+
+  const defaultPrompt = useMemo(() => {
+    if (selectedDistrictMetadata) {
+      return `Find a suitable location in ${selectedDistrictMetadata.name} (${selectedDistrictMetadata.state_name}) for a 500-acre logistics park, close to highways and railways, with low flood risk, minimal agricultural displacement and low land-dispute exposure.`;
+    }
+    return "Find a suitable location in Maharashtra for a 500-acre logistics park, close to highways and railways, with low flood risk, minimal agricultural displacement and low land-dispute exposure.";
+  }, [selectedDistrictMetadata]);
+
   const [promptText, setPromptText] = useState(
-    initialCriteria?.rawPrompt ||
-      "Find a suitable location in Maharashtra for a 500-acre logistics park, close to highways and railways, with low flood risk, minimal agricultural displacement and low land-dispute exposure."
+    initialCriteria?.rawPrompt || defaultPrompt
   );
-  const [criteria, setCriteria] = useState<SitePlanningCriteria>(
-    () => initialCriteria || parseNaturalLanguagePrompt(promptText)
-  );
+
+  const [criteria, setCriteria] = useState<SitePlanningCriteria>(() => {
+    if (initialCriteria) return initialCriteria;
+    const parsed = parseNaturalLanguagePrompt(promptText);
+    if (selectedDistrictMetadata) {
+      parsed.preferredState = selectedDistrictMetadata.state_name;
+      parsed.preferredDistrict = selectedDistrictMetadata.name;
+      parsed.centerCoordinates = districtBoundary?.center;
+    }
+    return parsed;
+  });
+
+  // When selected district changes, update criteria
+  useEffect(() => {
+    if (selectedDistrictMetadata && !initialCriteria) {
+      setCriteria((prev) => ({
+        ...prev,
+        preferredState: selectedDistrictMetadata.state_name,
+        preferredDistrict: selectedDistrictMetadata.name,
+        centerCoordinates: districtBoundary?.center,
+      }));
+      setPromptText(
+        `Find a suitable location in ${selectedDistrictMetadata.name} (${selectedDistrictMetadata.state_name}) for a 500-acre logistics park, close to highways and railways, with low flood risk, minimal agricultural displacement and low land-dispute exposure.`
+      );
+    }
+  }, [selectedDistrictMetadata, districtBoundary, initialCriteria]);
+
   const [hasGeneratedCriteria, setHasGeneratedCriteria] = useState(true);
   const [advancedExpanded, setAdvancedExpanded] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -79,6 +124,11 @@ export function AiSiteModal({
   // NLP Heuristic Extraction Trigger
   const handleGenerateCriteria = () => {
     const parsed = parseNaturalLanguagePrompt(promptText);
+    if (selectedDistrictMetadata) {
+      parsed.preferredState = selectedDistrictMetadata.state_name;
+      parsed.preferredDistrict = selectedDistrictMetadata.name;
+    }
+    parsed.centerCoordinates = districtBoundary?.center;
     setCriteria(parsed);
     setHasGeneratedCriteria(true);
   };
@@ -107,18 +157,32 @@ export function AiSiteModal({
   const handleFindLocations = () => {
     setIsProcessing(true);
 
+    const enrichedCriteria: SitePlanningCriteria = {
+      ...criteria,
+      centerCoordinates: criteria.centerCoordinates || districtBoundary?.center,
+    };
+
     setTimeout(() => {
-      const { candidates } = generateCandidateLocations(criteria);
+      const { candidates } = generateCandidateLocations(enrichedCriteria);
       setIsProcessing(false);
-      onCandidatesGenerated(candidates, criteria);
+      onCandidatesGenerated(candidates, enrichedCriteria);
       onClose();
-    }, 600);
+    }, 400);
   };
 
-  const selectedStateDistricts =
-    STATE_OPTIONS.find((s) => s.state === criteria.preferredState)?.districts || [
-      "Pune",
-    ];
+  const selectedStateDistricts = useMemo(() => {
+    const foundState = statesCatalog?.find(
+      (s) => s.name.toLowerCase() === (criteria.preferredState || "").toLowerCase()
+    );
+    if (foundState && foundState.districts.length > 0) {
+      return foundState.districts.map((d) => d.name);
+    }
+    return (
+      STATE_OPTIONS.find(
+        (s) => s.state.toLowerCase() === (criteria.preferredState || "").toLowerCase()
+      )?.districts || STATE_OPTIONS[0]?.districts || ["Pune"]
+    );
+  }, [criteria.preferredState, statesCatalog]);
 
   return (
     <div className="ux4g-modal-backdrop ux4g-modal-backdrop-50">
@@ -280,8 +344,11 @@ export function AiSiteModal({
                     value={criteria.preferredState}
                     onChange={(e) => {
                       const newState = e.target.value;
+                      const foundState = statesCatalog?.find((s) => s.name === newState);
                       const newDistricts =
-                        STATE_OPTIONS.find((s) => s.state === newState)?.districts || [];
+                        foundState && foundState.districts.length > 0
+                          ? foundState.districts.map((d) => d.name)
+                          : STATE_OPTIONS.find((s) => s.state === newState)?.districts || [];
                       setCriteria((prev) => ({
                         ...prev,
                         preferredState: newState,
@@ -290,11 +357,14 @@ export function AiSiteModal({
                     }}
                     className="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#0b2b50]/20 focus:border-[#0b2b50] cursor-pointer"
                   >
-                    {STATE_OPTIONS.map((s) => (
-                      <option key={s.state} value={s.state}>
-                        {s.state}
-                      </option>
-                    ))}
+                    {(statesCatalog && statesCatalog.length > 0 ? statesCatalog : STATE_OPTIONS).map((s) => {
+                      const stateName = "name" in s ? s.name : s.state;
+                      return (
+                        <option key={stateName} value={stateName}>
+                          {stateName}
+                        </option>
+                      );
+                    })}
                   </select>
                 </div>
               </div>
@@ -624,6 +694,35 @@ export function AiSiteModal({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 p-3 bg-slate-50 border border-slate-200 rounded-xl">
               <div>
                 <span className="text-[10px] font-bold text-slate-500 block mb-1">
+                  Target State:
+                </span>
+                <select
+                  value={criteria.preferredState}
+                  onChange={(e) => {
+                    const stName = e.target.value;
+                    const stObj = statesCatalog.find((s) => s.name === stName);
+                    const firstDist =
+                      stObj && stObj.districts.length > 0
+                        ? stObj.districts[0].name
+                        : "District";
+                    setCriteria((prev) => ({
+                      ...prev,
+                      preferredState: stName,
+                      preferredDistrict: firstDist,
+                    }));
+                  }}
+                  className="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-800 cursor-pointer"
+                >
+                  {statesCatalog.map((s) => (
+                    <option key={s.id} value={s.name}>
+                      {s.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <span className="text-[10px] font-bold text-slate-500 block mb-1">
                   Target District:
                 </span>
                 <select
@@ -636,26 +735,15 @@ export function AiSiteModal({
                   }
                   className="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-800 cursor-pointer"
                 >
-                  {selectedStateDistricts.map((d) => (
-                    <option key={d} value={d}>
-                      {d} District ({criteria.preferredState})
+                  {(
+                    statesCatalog.find((s) => s.name === criteria.preferredState)
+                      ?.districts || []
+                  ).map((d) => (
+                    <option key={d.id} value={d.name}>
+                      {d.name} {d.censusCode ? `(#${d.censusCode})` : ""}
                     </option>
                   ))}
                 </select>
-              </div>
-
-              <div>
-                <span className="text-[10px] font-bold text-slate-500 block mb-1">
-                  Search Scope:
-                </span>
-                <div className="flex items-center gap-1 text-xs">
-                  <span className="bg-white border border-slate-200 px-3 py-2 rounded-lg text-slate-700 font-semibold flex items-center gap-1.5 w-full">
-                    <MapPin className="w-3.5 h-3.5 text-[#0b2b50]" />
-                    <span>
-                      {criteria.preferredDistrict} ({criteria.preferredState})
-                    </span>
-                  </span>
-                </div>
               </div>
             </div>
           </div>

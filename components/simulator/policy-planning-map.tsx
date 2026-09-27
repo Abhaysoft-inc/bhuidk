@@ -28,12 +28,18 @@ import {
   Maximize2,
   Check,
   AlertTriangle,
-  Compass,
   MapPin,
   Eye,
   CheckCircle2,
   Upload,
+  Loader2,
+  X,
 } from "lucide-react";
+import {
+  LiveDistrictBoundary,
+  DistrictCatalogItem,
+  generateInvertedDistrictMask,
+} from "./india-districts-catalog";
 import {
   ProposedZoneData,
   DrawingTool,
@@ -48,7 +54,6 @@ import {
   detectDistrictAndState,
   computeZoneAnalysis,
   computeHaversineDistance,
-  SAMPLE_ZONES,
 } from "./policy-planning-types";
 import { CandidateLocation } from "./ai-site-types";
 
@@ -93,6 +98,10 @@ interface PolicyPlanningMapProps {
   selectedZoneType: ZoneType;
   onOpenUpload: () => void;
   onOpenAiSite: () => void;
+  selectedDistrictBoundary?: LiveDistrictBoundary | null;
+  selectedDistrictMetadata?: DistrictCatalogItem | null;
+  onClearDistrict?: () => void;
+  isLoadingDistrictBoundary?: boolean;
 }
 
 
@@ -197,37 +206,80 @@ function BoundsFitter({
   allZones,
   candidateZones,
   selectedCandidateId,
+  selectedDistrictBoundary,
 }: {
   activeZone: ProposedZoneData | null;
   allZones?: ProposedZoneData[];
   candidateZones?: CandidateLocation[];
   selectedCandidateId?: string;
+  selectedDistrictBoundary?: LiveDistrictBoundary | null;
 }) {
   const map = useMap();
+  const prevDistrictRef = useRef<string | null>(null);
+  const prevCandidateRef = useRef<string | null>(null);
+  const prevZoneRef = useRef<string | null>(null);
 
   useEffect(() => {
+    // 1. If AI candidates are loaded or user selects a candidate, fly directly to it:
     if (candidateZones && candidateZones.length > 0) {
       const activeCandidate =
         candidateZones.find((c) => c.candidate_id === selectedCandidateId) ||
         candidateZones[0];
+
       if (activeCandidate && activeCandidate.rawCoordinates.length >= 3) {
-        const bbox = computeBoundingBox(activeCandidate.rawCoordinates);
+        const candKey = `${activeCandidate.candidate_id}_${candidateZones.length}`;
+        if (candKey !== prevCandidateRef.current) {
+          prevCandidateRef.current = candKey;
+          const bbox = computeBoundingBox(activeCandidate.rawCoordinates);
+          map.fitBounds(bbox, {
+            padding: [70, 70],
+            maxZoom: 14,
+            animate: true,
+            duration: 1.0,
+          });
+        }
+        return;
+      }
+    } else {
+      prevCandidateRef.current = null;
+    }
+
+    // 2. If a proposed zone is active or adopted:
+    if (activeZone && activeZone.rawCoordinates.length >= 3) {
+      const zoneKey = `${activeZone.zone_id}_${activeZone.rawCoordinates.length}`;
+      if (zoneKey !== prevZoneRef.current) {
+        prevZoneRef.current = zoneKey;
+        const bbox = computeBoundingBox(activeZone.rawCoordinates);
         map.fitBounds(bbox, {
           padding: [60, 60],
-          maxZoom: 14,
+          maxZoom: 15,
           animate: true,
+          duration: 1.0,
         });
         return;
       }
     }
-    if (activeZone && activeZone.rawCoordinates.length >= 3) {
-      const bbox = computeBoundingBox(activeZone.rawCoordinates);
-      map.fitBounds(bbox, {
-        padding: [60, 60],
-        maxZoom: 15,
-        animate: true,
-      });
-    } else if (allZones && allZones.length > 0) {
+
+    // 3. If a district boundary is selected, fly to its bounds:
+    if (selectedDistrictBoundary) {
+      if (selectedDistrictBoundary.district !== prevDistrictRef.current) {
+        prevDistrictRef.current = selectedDistrictBoundary.district;
+        map.fitBounds(selectedDistrictBoundary.bounds, {
+          padding: [30, 30],
+          maxZoom: 13,
+          animate: true,
+          duration: 1.2,
+        });
+        return;
+      }
+    } else if (prevDistrictRef.current) {
+      prevDistrictRef.current = null;
+      map.setView([22.5, 78.9], 5, { animate: true });
+      return;
+    }
+
+    // 4. Default all zones fallback
+    if (allZones && allZones.length > 0) {
       const allCoords = allZones.flatMap((z) => z.rawCoordinates);
       if (allCoords.length >= 3) {
         const bbox = computeBoundingBox(allCoords);
@@ -238,7 +290,7 @@ function BoundsFitter({
         });
       }
     }
-  }, [activeZone, allZones, candidateZones, selectedCandidateId, map]);
+  }, [activeZone, allZones, candidateZones, selectedCandidateId, selectedDistrictBoundary, map]);
 
   return null;
 }
@@ -256,6 +308,10 @@ export default function PolicyPlanningMap({
   selectedZoneType,
   onOpenUpload,
   onOpenAiSite,
+  selectedDistrictBoundary,
+  selectedDistrictMetadata,
+  onClearDistrict,
+  isLoadingDistrictBoundary,
 }: PolicyPlanningMapProps) {
   // Drawing states
   const [drawingTool, setDrawingTool] = useState<DrawingTool>("none");
@@ -369,7 +425,9 @@ export default function PolicyPlanningMap({
       // Centroid
       const avgLat = coords.reduce((acc, c) => acc + c[0], 0) / coords.length;
       const avgLng = coords.reduce((acc, c) => acc + c[1], 0) / coords.length;
-      const { district, state } = detectDistrictAndState(avgLat, avgLng);
+      const detected = detectDistrictAndState(avgLat, avgLng);
+      const district = selectedDistrictMetadata ? selectedDistrictMetadata.name : detected.district;
+      const state = selectedDistrictMetadata ? selectedDistrictMetadata.state_name : detected.state;
 
       const analysis = computeZoneAnalysis(areaHa, selectedZoneType);
 
@@ -394,41 +452,8 @@ export default function PolicyPlanningMap({
       setCircleCenter(null);
       setDrawingTool("none");
     },
-    [selectedZoneType, onZoneCreated]
+    [selectedZoneType, onZoneCreated, selectedDistrictMetadata]
   );
-
-  // Quick Load Sample Zone
-  const handleLoadSampleZone = (sampleKey: string) => {
-    const sample = SAMPLE_ZONES[sampleKey] || SAMPLE_ZONES.greater_noida_420;
-    const coords = sample.coords;
-    const areaSqM = computePolygonAreaSqMeters(coords);
-    const areaHa = sqMetersToHectares(areaSqM);
-    const perimeterKm = Number(computePerimeterKm(coords).toFixed(2));
-    const geojsonGeom = coordsToGeoJSONPolygon(coords);
-    const avgLat = coords.reduce((acc, c) => acc + c[0], 0) / coords.length;
-    const avgLng = coords.reduce((acc, c) => acc + c[1], 0) / coords.length;
-    const { district, state } = detectDistrictAndState(avgLat, avgLng);
-    const analysis = computeZoneAnalysis(areaHa, sample.type);
-
-    const loadedZone: ProposedZoneData = {
-      zone_id: "ZONE-001",
-      source: "manual",
-      zone_type: sample.type,
-      name: sample.name,
-      geometry: geojsonGeom,
-      area: areaHa,
-      perimeter: perimeterKm,
-      state,
-      district,
-      analysis,
-      rawCoordinates: coords,
-      createdAt: new Date().toISOString(),
-    };
-
-    onZoneCreated(loadedZone);
-    setDrawingTool("none");
-    setDrawingPoints([]);
-  };
 
   // Dragging vertex handles in Edit Mode
   const handleVertexDrag = (index: number, e: L.LeafletEvent) => {
@@ -502,9 +527,9 @@ export default function PolicyPlanningMap({
   const defaultCenter: [number, number] = [28.32, 77.54];
 
   return (
-    <div className="relative w-full h-[620px] lg:h-[680px] rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 shadow-md">
+    <div className="relative w-full h-[580px] lg:h-[calc(100vh-10.5rem)] min-h-[500px] max-h-[680px] rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 shadow-md">
       {/* ─── Top Floating Drawing Toolbar ─── */}
-      <div className="absolute top-4 left-4 z-[1000] flex items-center gap-1 bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-xl p-1.5 shadow-lg max-w-[calc(100%-150px)]">
+      <div className="absolute top-4 left-4 z-[1000] flex items-center gap-1 bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-xl p-1.5 shadow-lg max-w-[calc(100%-32px)]">
         {/* Draw Polygon */}
         <button
           type="button"
@@ -514,11 +539,10 @@ export default function PolicyPlanningMap({
             setCircleCenter(null);
             setDrawingTool(drawingTool === "polygon" ? "none" : "polygon");
           }}
-          className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-            drawingTool === "polygon"
-              ? "bg-[#0b2b50] text-white shadow-xs"
-              : "text-slate-700 hover:bg-slate-100"
-          }`}
+          className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${drawingTool === "polygon"
+            ? "bg-[#0b2b50] text-white shadow-xs"
+            : "text-slate-700 hover:bg-slate-100"
+            }`}
           title="Draw Polygon: Click vertices, double-click to finish"
         >
           <Pentagon className="w-3.5 h-3.5" />
@@ -534,11 +558,10 @@ export default function PolicyPlanningMap({
             setCircleCenter(null);
             setDrawingTool(drawingTool === "rectangle" ? "none" : "rectangle");
           }}
-          className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-            drawingTool === "rectangle"
-              ? "bg-[#0b2b50] text-white shadow-xs"
-              : "text-slate-700 hover:bg-slate-100"
-          }`}
+          className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${drawingTool === "rectangle"
+            ? "bg-[#0b2b50] text-white shadow-xs"
+            : "text-slate-700 hover:bg-slate-100"
+            }`}
           title="Draw Rectangle: Click opposite corners"
         >
           <Square className="w-3.5 h-3.5" />
@@ -554,11 +577,10 @@ export default function PolicyPlanningMap({
             setCircleCenter(null);
             setDrawingTool(drawingTool === "circle" ? "none" : "circle");
           }}
-          className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-            drawingTool === "circle"
-              ? "bg-[#0b2b50] text-white shadow-xs"
-              : "text-slate-700 hover:bg-slate-100"
-          }`}
+          className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${drawingTool === "circle"
+            ? "bg-[#0b2b50] text-white shadow-xs"
+            : "text-slate-700 hover:bg-slate-100"
+            }`}
           title="Draw Circle: Click center then radius"
         >
           <Circle className="w-3.5 h-3.5" />
@@ -596,11 +618,10 @@ export default function PolicyPlanningMap({
           type="button"
           disabled={!activeZone}
           onClick={() => setDrawingTool(drawingTool === "edit" ? "none" : "edit")}
-          className={`flex items-center gap-1.5 px-2 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed ${
-            drawingTool === "edit"
-              ? "bg-amber-600 text-white shadow-xs"
-              : "text-slate-700 hover:bg-slate-100"
-          }`}
+          className={`flex items-center gap-1.5 px-2 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed ${drawingTool === "edit"
+            ? "bg-amber-600 text-white shadow-xs"
+            : "text-slate-700 hover:bg-slate-100"
+            }`}
           title={activeZone ? "Edit Shape: Drag vertex handles" : "No active shape to edit"}
         >
           <Pencil className="w-3.5 h-3.5" />
@@ -633,17 +654,16 @@ export default function PolicyPlanningMap({
         </button>
       </div>
 
-      {/* ─── Top-Right Layers Control ─── */}
-      <div className="absolute top-4 right-4 z-[1000]">
+      {/* ─── Map Layers Control (Right side, below draw toolbar) ─── */}
+      <div className="absolute top-[4.5rem] right-4 z-[1000]">
         <div className="relative">
           <button
             type="button"
             onClick={() => setLayersOpen(!layersOpen)}
-            className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold shadow-md transition-all cursor-pointer border ${
-              layersOpen
-                ? "bg-[#0b2b50] text-white border-[#0b2b50]"
-                : "bg-white/95 backdrop-blur-md text-slate-700 border-slate-200 hover:bg-white"
-            }`}
+            className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold shadow-md transition-all cursor-pointer border ${layersOpen
+              ? "bg-[#0b2b50] text-white border-[#0b2b50]"
+              : "bg-white/95 backdrop-blur-md text-slate-700 border-slate-200 hover:bg-white"
+              }`}
           >
             <Layers className="w-4 h-4 text-blue-600" />
             <span>Map Layers</span>
@@ -676,12 +696,11 @@ export default function PolicyPlanningMap({
                     <div
                       key={layer.id}
                       onClick={() => handleToggleLayer(layer.id, layer.connected)}
-                      className={`p-2.5 rounded-lg border transition-all ${
-                        layer.connected
-                          ? "cursor-pointer hover:bg-slate-50 " +
-                            (isChecked ? "border-blue-400 bg-blue-50/40" : "border-slate-200 bg-white")
-                          : "border-slate-100 bg-slate-50/70 opacity-60 cursor-not-allowed"
-                      }`}
+                      className={`p-2.5 rounded-lg border transition-all ${layer.connected
+                        ? "cursor-pointer hover:bg-slate-50 " +
+                        (isChecked ? "border-blue-400 bg-blue-50/40" : "border-slate-200 bg-white")
+                        : "border-slate-100 bg-slate-50/70 opacity-60 cursor-not-allowed"
+                        }`}
                     >
                       <div className="flex items-start justify-between gap-2">
                         <div className="flex items-start gap-2">
@@ -788,30 +807,57 @@ export default function PolicyPlanningMap({
         </div>
       )}
 
-      {/* ─── Empty State Subtle Floating Banner ─── */}
-      {!activeZone && drawingTool === "none" && (
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[1000] bg-white/95 backdrop-blur-md border border-slate-200 text-slate-700 px-5 py-3 rounded-2xl shadow-xl flex flex-col sm:flex-row items-center gap-3.5 text-xs max-w-lg text-center sm:text-left">
-          <div className="w-8 h-8 rounded-full bg-[#0b2b50]/10 text-[#0b2b50] flex items-center justify-center shrink-0">
-            <Compass className="w-4 h-4" />
+      {/* ─── Floating District Focus Pill ─── */}
+      {selectedDistrictBoundary && (
+        <div className="absolute top-[4.5rem] left-4 z-[999] flex items-center gap-2 bg-[#0b2b50]/95 backdrop-blur-md text-white px-3 py-1.5 rounded-xl shadow-lg border border-white/20 text-xs animate-in fade-in slide-in-from-left-2 flex-wrap">
+          <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+          <div className="flex items-center gap-1.5 font-bold">
+            <span>{selectedDistrictBoundary.district} District</span>
+            <span className="text-white/40">•</span>
+            <span className="text-amber-300 font-semibold">{selectedDistrictBoundary.state}</span>
           </div>
-          <div className="flex-1">
-            <div className="font-bold text-slate-900">
-              Draw a proposed zone on the map to begin analysis.
-            </div>
-            <div className="text-[11px] text-slate-500 mt-0.5">
-              Select Polygon or Rectangle from the top toolbar, or load a benchmark zone:
-            </div>
-          </div>
-          <div className="flex items-center gap-2 shrink-0">
+
+          {selectedDistrictBoundary.censusCode && selectedDistrictBoundary.censusCode > 0 && (
+            <span className="bg-amber-400/20 text-amber-300 border border-amber-400/30 px-1.5 py-0.5 rounded text-[10px] font-mono font-bold">
+              Census #{selectedDistrictBoundary.censusCode}
+            </span>
+          )}
+
+          <a
+            href="https://github.com/yashveeeeeeer/india-geodata/tree/main/data/administrative/districts/census-2011"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-blue-500/20 hover:bg-blue-500/30 text-blue-200 border border-blue-400/30 px-1.5 py-0.5 rounded text-[10px] font-mono transition-colors hidden md:inline-flex items-center gap-1"
+            title="Sourced from GitHub yashveeeeeeer/india-geodata Census 2011 Official Shapefile"
+          >
+            <span>GitHub Dataset</span>
+            <span className="text-[9px] text-blue-300">↗</span>
+          </a>
+
+          {selectedDistrictMetadata && (
+            <span className="bg-white/15 px-1.5 py-0.5 rounded text-[10px] text-slate-200 font-mono hidden lg:inline">
+              {selectedDistrictMetadata.record_type}
+            </span>
+          )}
+
+          {onClearDistrict && (
             <button
               type="button"
-              onClick={() => handleLoadSampleZone("greater_noida_420")}
-              className="bg-[#0b2b50] hover:bg-[#071e3d] text-white px-3 py-1.5 rounded-lg text-[11px] font-bold shadow-xs cursor-pointer flex items-center gap-1"
+              onClick={onClearDistrict}
+              className="ml-1 p-0.5 rounded hover:bg-white/20 text-slate-300 hover:text-white cursor-pointer transition-colors"
+              title="Show All India (Clear Filter)"
             >
-              <Sparkles className="w-3 h-3 text-amber-400" />
-              <span>Load 420 Ha Sample</span>
+              <X className="w-3.5 h-3.5" />
             </button>
-          </div>
+          )}
+        </div>
+      )}
+
+      {/* ─── Boundary Loading Indicator ─── */}
+      {isLoadingDistrictBoundary && (
+        <div className="absolute top-[4.5rem] left-4 z-[999] flex items-center gap-2 bg-slate-900/90 backdrop-blur-md text-white px-3 py-1.5 rounded-xl shadow-lg border border-slate-700 text-xs animate-in fade-in">
+          <Loader2 className="w-3.5 h-3.5 text-amber-400 animate-spin" />
+          <span>Fetching live boundary for {selectedDistrictMetadata?.name || "district"}...</span>
         </div>
       )}
 
@@ -838,6 +884,56 @@ export default function PolicyPlanningMap({
             subdomains="abcd"
             maxZoom={20}
           />
+        )}
+
+        {/* ─── DYNAMIC DISTRICT FOCUS LAYERS (Fetched Live via API) ─── */}
+        {selectedDistrictBoundary && (
+          <>
+            {/* 1. Inverted Mask: Dims everything outside the district (only when not inspecting AI candidates) */}
+            {(!candidateZones || candidateZones.length === 0) && (
+              <Polygon
+                positions={generateInvertedDistrictMask(selectedDistrictBoundary.boundary)}
+                pathOptions={{
+                  fillColor: "#020617",
+                  fillOpacity: 0.38,
+                  stroke: false,
+                  interactive: false,
+                }}
+              />
+            )}
+
+            {/* 2. Official Cadastral District Boundary Outline */}
+            <Polygon
+              positions={selectedDistrictBoundary.boundary}
+              pathOptions={{
+                color: "#0b2b50",
+                weight: 2.5,
+                dashArray: "6, 6",
+                fillColor: "#3b82f6",
+                fillOpacity: 0.04,
+                interactive: true,
+              }}
+            >
+              <Tooltip sticky direction="top" opacity={0.95}>
+                <div className="text-xs p-1 space-y-0.5">
+                  <div className="font-bold text-slate-900">
+                    {selectedDistrictBoundary.district} District
+                  </div>
+                  <div className="text-[11px] text-slate-600">
+                    State: {selectedDistrictBoundary.state}
+                  </div>
+                  {selectedDistrictBoundary.censusCode && selectedDistrictBoundary.censusCode > 0 && (
+                    <div className="text-[10px] font-mono text-amber-800 font-semibold">
+                      Census 2011 Code: #{selectedDistrictBoundary.censusCode} (State: {selectedDistrictBoundary.stateCensusCode}, Dist: {selectedDistrictBoundary.districtCensusCode})
+                    </div>
+                  )}
+                  <div className="text-[9px] text-blue-700 font-mono pt-0.5 border-t border-slate-200 mt-1">
+                    Source: yashveeeeeeer/india-geodata (GitHub)
+                  </div>
+                </div>
+              </Tooltip>
+            </Polygon>
+          </>
         )}
 
         {/* Existing Land-Use Context Layers (Demo Visual Context) */}
@@ -893,73 +989,73 @@ export default function PolicyPlanningMap({
         {/* ─── Render AI Candidate Locations (If in AI Selection Mode) ─── */}
         {candidateZones && candidateZones.length > 0
           ? candidateZones.map((cand) => {
-              const isSelected = cand.candidate_id === selectedCandidateId;
-              return (
-                <Polygon
-                  key={cand.candidate_id}
-                  positions={cand.rawCoordinates}
-                  eventHandlers={{
-                    click: () => {
-                      if (onSelectCandidate) onSelectCandidate(cand.candidate_id);
-                    },
-                  }}
-                  pathOptions={
-                    isSelected
-                      ? {
-                          color: "#0b2b50",
-                          fillColor: "#f59e0b",
-                          fillOpacity: 0.35,
-                          weight: 3.5,
-                          opacity: 1,
-                        }
-                      : {
-                          color: "#d97706",
-                          fillColor: "#fbbf24",
-                          fillOpacity: 0.18,
-                          weight: 2,
-                          dashArray: "5 5",
-                          opacity: 0.85,
-                        }
-                  }
-                >
-                  <Tooltip sticky>
-                    <div className="text-xs p-0.5">
-                      <div className="font-extrabold text-[#0b2b50]">
-                        {cand.label}: {cand.name.split(" - ")[1] || cand.name}
-                      </div>
-                      <div className="text-[10px] text-slate-600">
-                        Area: {cand.areaAcres} acres • Suitability: <strong>{cand.suitability_score}/100</strong>
-                      </div>
-                      <div className="text-[9px] text-amber-700 font-semibold pt-0.5">
-                        High relative suitability under current criteria
-                      </div>
-                    </div>
-                  </Tooltip>
-                </Polygon>
-              );
-            })
-          : allZones && allZones.length > 0 ? (
-          allZones.map((zone) => {
-            const isActive = activeZone?.zone_id === zone.zone_id;
+            const isSelected = cand.candidate_id === selectedCandidateId;
             return (
-              <React.Fragment key={zone.zone_id}>
-                <Polygon
-                  positions={zone.rawCoordinates}
-                  eventHandlers={{
-                    click: () => {
-                      if (onSelectZone) onSelectZone(zone.zone_id);
-                    },
-                  }}
-                  pathOptions={
-                    isActive
-                      ? {
+              <Polygon
+                key={cand.candidate_id}
+                positions={cand.rawCoordinates}
+                eventHandlers={{
+                  click: () => {
+                    if (onSelectCandidate) onSelectCandidate(cand.candidate_id);
+                  },
+                }}
+                pathOptions={
+                  isSelected
+                    ? {
+                      color: "#0b2b50",
+                      fillColor: "#f59e0b",
+                      fillOpacity: 0.35,
+                      weight: 3.5,
+                      opacity: 1,
+                    }
+                    : {
+                      color: "#d97706",
+                      fillColor: "#fbbf24",
+                      fillOpacity: 0.18,
+                      weight: 2,
+                      dashArray: "5 5",
+                      opacity: 0.85,
+                    }
+                }
+              >
+                <Tooltip sticky>
+                  <div className="text-xs p-0.5">
+                    <div className="font-extrabold text-[#0b2b50]">
+                      {cand.label}: {cand.name.split(" - ")[1] || cand.name}
+                    </div>
+                    <div className="text-[10px] text-slate-600">
+                      Area: {cand.areaAcres} acres • Suitability: <strong>{cand.suitability_score}/100</strong>
+                    </div>
+                    <div className="text-[9px] text-amber-700 font-semibold pt-0.5">
+                      High relative suitability under current criteria
+                    </div>
+                  </div>
+                </Tooltip>
+              </Polygon>
+            );
+          })
+          : allZones && allZones.length > 0 ? (
+            allZones.map((zone) => {
+              const isActive = activeZone?.zone_id === zone.zone_id;
+              return (
+                <React.Fragment key={zone.zone_id}>
+                  <Polygon
+                    positions={zone.rawCoordinates}
+                    eventHandlers={{
+                      click: () => {
+                        if (onSelectZone) onSelectZone(zone.zone_id);
+                      },
+                    }}
+                    pathOptions={
+                      isActive
+                        ? {
                           color: "#0b2b50",
                           fillColor: "#2563eb",
                           fillOpacity: 0.28,
                           weight: 3,
                           opacity: 1,
                         }
-                      : {
+                        : {
                           color: "#64748b",
                           fillColor: "#94a3b8",
                           fillOpacity: 0.18,
@@ -967,97 +1063,97 @@ export default function PolicyPlanningMap({
                           dashArray: "4 4",
                           opacity: 0.85,
                         }
-                  }
-                >
-                  <Popup>
-                    <div className="p-1 space-y-1 text-xs">
-                      <div className="font-extrabold text-[#0b2b50]">{zone.name}</div>
-                      <div className="text-[11px] text-slate-600">
-                        Type: <span className="font-bold">{zone.zone_type}</span>
-                      </div>
-                      <div className="text-[11px] text-slate-600">
-                        Area: <span className="font-bold">{zone.area} Hectares</span>
-                      </div>
-                      <div className="text-[11px] text-slate-600">
-                        Perimeter: <span className="font-bold">{zone.perimeter} km</span>
-                      </div>
-                      {!isActive && (
-                        <div className="text-[10px] text-[#0b2b50] font-bold pt-1">
-                          Click to select & inspect
+                    }
+                  >
+                    <Popup>
+                      <div className="p-1 space-y-1 text-xs">
+                        <div className="font-extrabold text-[#0b2b50]">{zone.name}</div>
+                        <div className="text-[11px] text-slate-600">
+                          Type: <span className="font-bold">{zone.zone_type}</span>
                         </div>
-                      )}
+                        <div className="text-[11px] text-slate-600">
+                          Area: <span className="font-bold">{zone.area} Hectares</span>
+                        </div>
+                        <div className="text-[11px] text-slate-600">
+                          Perimeter: <span className="font-bold">{zone.perimeter} km</span>
+                        </div>
+                        {!isActive && (
+                          <div className="text-[10px] text-[#0b2b50] font-bold pt-1">
+                            Click to select & inspect
+                          </div>
+                        )}
+                      </div>
+                    </Popup>
+                  </Polygon>
+
+                  {/* Edit Handles only for the active zone */}
+                  {isActive &&
+                    drawingTool === "edit" &&
+                    zone.rawCoordinates.map((pos, idx) => (
+                      <Marker
+                        key={`handle-${zone.zone_id}-${idx}`}
+                        position={pos}
+                        draggable={true}
+                        icon={createVertexHandleIcon(idx === 0)}
+                        eventHandlers={{
+                          drag: (e) => handleVertexDrag(idx, e),
+                        }}
+                      >
+                        <Tooltip permanent={false} direction="top" offset={[0, -10]}>
+                          <span className="text-[10px] font-bold">Vertex #{idx + 1} (Drag to edit)</span>
+                        </Tooltip>
+                      </Marker>
+                    ))}
+                </React.Fragment>
+              );
+            })
+          ) : activeZone && activeZone.rawCoordinates.length >= 3 ? (
+            <>
+              <Polygon
+                positions={activeZone.rawCoordinates}
+                pathOptions={{
+                  color: "#0b2b50",
+                  fillColor: "#2563eb",
+                  fillOpacity: 0.28,
+                  weight: 3,
+                  opacity: 1,
+                }}
+              >
+                <Popup>
+                  <div className="p-1 space-y-1 text-xs">
+                    <div className="font-extrabold text-[#0b2b50]">{activeZone.name}</div>
+                    <div className="text-[11px] text-slate-600">
+                      Type: <span className="font-bold">{activeZone.zone_type}</span>
                     </div>
-                  </Popup>
-                </Polygon>
+                    <div className="text-[11px] text-slate-600">
+                      Area: <span className="font-bold">{activeZone.area} Hectares</span>
+                    </div>
+                    <div className="text-[11px] text-slate-600">
+                      Perimeter: <span className="font-bold">{activeZone.perimeter} km</span>
+                    </div>
+                  </div>
+                </Popup>
+              </Polygon>
 
-                {/* Edit Handles only for the active zone */}
-                {isActive &&
-                  drawingTool === "edit" &&
-                  zone.rawCoordinates.map((pos, idx) => (
-                    <Marker
-                      key={`handle-${zone.zone_id}-${idx}`}
-                      position={pos}
-                      draggable={true}
-                      icon={createVertexHandleIcon(idx === 0)}
-                      eventHandlers={{
-                        drag: (e) => handleVertexDrag(idx, e),
-                      }}
-                    >
-                      <Tooltip permanent={false} direction="top" offset={[0, -10]}>
-                        <span className="text-[10px] font-bold">Vertex #{idx + 1} (Drag to edit)</span>
-                      </Tooltip>
-                    </Marker>
-                  ))}
-              </React.Fragment>
-            );
-          })
-        ) : activeZone && activeZone.rawCoordinates.length >= 3 ? (
-          <>
-            <Polygon
-              positions={activeZone.rawCoordinates}
-              pathOptions={{
-                color: "#0b2b50",
-                fillColor: "#2563eb",
-                fillOpacity: 0.28,
-                weight: 3,
-                opacity: 1,
-              }}
-            >
-              <Popup>
-                <div className="p-1 space-y-1 text-xs">
-                  <div className="font-extrabold text-[#0b2b50]">{activeZone.name}</div>
-                  <div className="text-[11px] text-slate-600">
-                    Type: <span className="font-bold">{activeZone.zone_type}</span>
-                  </div>
-                  <div className="text-[11px] text-slate-600">
-                    Area: <span className="font-bold">{activeZone.area} Hectares</span>
-                  </div>
-                  <div className="text-[11px] text-slate-600">
-                    Perimeter: <span className="font-bold">{activeZone.perimeter} km</span>
-                  </div>
-                </div>
-              </Popup>
-            </Polygon>
-
-            {/* Draggable Vertex Handles in Edit Mode */}
-            {drawingTool === "edit" &&
-              activeZone.rawCoordinates.map((pos, idx) => (
-                <Marker
-                  key={`handle-${idx}`}
-                  position={pos}
-                  draggable={true}
-                  icon={createVertexHandleIcon(idx === 0)}
-                  eventHandlers={{
-                    drag: (e) => handleVertexDrag(idx, e),
-                  }}
-                >
-                  <Tooltip permanent={false} direction="top" offset={[0, -10]}>
-                    <span className="text-[10px] font-bold">Vertex #{idx + 1} (Drag to edit)</span>
-                  </Tooltip>
-                </Marker>
-              ))}
-          </>
-        ) : null}
+              {/* Draggable Vertex Handles in Edit Mode */}
+              {drawingTool === "edit" &&
+                activeZone.rawCoordinates.map((pos, idx) => (
+                  <Marker
+                    key={`handle-${idx}`}
+                    position={pos}
+                    draggable={true}
+                    icon={createVertexHandleIcon(idx === 0)}
+                    eventHandlers={{
+                      drag: (e) => handleVertexDrag(idx, e),
+                    }}
+                  >
+                    <Tooltip permanent={false} direction="top" offset={[0, -10]}>
+                      <span className="text-[10px] font-bold">Vertex #{idx + 1} (Drag to edit)</span>
+                    </Tooltip>
+                  </Marker>
+                ))}
+            </>
+          ) : null}
 
         {/* ─── In-Progress Drawing Previews ─── */}
         {/* Polygon in-progress */}
@@ -1139,12 +1235,13 @@ export default function PolicyPlanningMap({
           activeZone={activeZone}
         />
 
-        {/* Zoom to fit bounds when a zone is loaded or drawn */}
+        {/* Zoom to fit bounds when a zone is loaded or drawn or district selected */}
         <BoundsFitter
           activeZone={activeZone}
           allZones={allZones}
           candidateZones={candidateZones}
           selectedCandidateId={selectedCandidateId}
+          selectedDistrictBoundary={selectedDistrictBoundary}
         />
       </MapContainer>
 

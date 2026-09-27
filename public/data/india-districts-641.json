@@ -1,0 +1,4699 @@
+[
+  {
+    "name": "Andaman & Nicobar Island",
+    "id": "andaman___nicobar_island",
+    "districts": [
+      {
+        "id": "nicobar",
+        "name": "Nicobar",
+        "censusCode": 638,
+        "stateCensusCode": 35,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "north___middle_andaman",
+        "name": "North & Middle Andaman",
+        "censusCode": 639,
+        "stateCensusCode": 35,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "south_andaman",
+        "name": "South Andaman",
+        "censusCode": 640,
+        "stateCensusCode": 35,
+        "districtCensusCode": 3
+      }
+    ]
+  },
+  {
+    "name": "Andhra Pradesh",
+    "id": "andhra_pradesh",
+    "districts": [
+      {
+        "id": "adilabad",
+        "name": "Adilabad",
+        "censusCode": 532,
+        "stateCensusCode": 28,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "anantapur",
+        "name": "Anantapur",
+        "censusCode": 553,
+        "stateCensusCode": 28,
+        "districtCensusCode": 22
+      },
+      {
+        "id": "chittoor",
+        "name": "Chittoor",
+        "censusCode": 554,
+        "stateCensusCode": 28,
+        "districtCensusCode": 23
+      },
+      {
+        "id": "east_godavari",
+        "name": "East Godavari",
+        "censusCode": 545,
+        "stateCensusCode": 28,
+        "districtCensusCode": 14
+      },
+      {
+        "id": "guntur",
+        "name": "Guntur",
+        "censusCode": 548,
+        "stateCensusCode": 28,
+        "districtCensusCode": 17
+      },
+      {
+        "id": "hyderabad",
+        "name": "Hyderabad",
+        "censusCode": 536,
+        "stateCensusCode": 28,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "karimnagar",
+        "name": "Karimnagar",
+        "censusCode": 534,
+        "stateCensusCode": 28,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "khammam",
+        "name": "Khammam",
+        "censusCode": 541,
+        "stateCensusCode": 28,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "krishna",
+        "name": "Krishna",
+        "censusCode": 547,
+        "stateCensusCode": 28,
+        "districtCensusCode": 16
+      },
+      {
+        "id": "kurnool",
+        "name": "Kurnool",
+        "censusCode": 552,
+        "stateCensusCode": 28,
+        "districtCensusCode": 21
+      },
+      {
+        "id": "mahbubnagar",
+        "name": "Mahbubnagar",
+        "censusCode": 538,
+        "stateCensusCode": 28,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "medak",
+        "name": "Medak",
+        "censusCode": 535,
+        "stateCensusCode": 28,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "nalgonda",
+        "name": "Nalgonda",
+        "censusCode": 539,
+        "stateCensusCode": 28,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "nizamabad",
+        "name": "Nizamabad",
+        "censusCode": 533,
+        "stateCensusCode": 28,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "prakasam",
+        "name": "Prakasam",
+        "censusCode": 549,
+        "stateCensusCode": 28,
+        "districtCensusCode": 18
+      },
+      {
+        "id": "rangareddy",
+        "name": "Rangareddy",
+        "censusCode": 537,
+        "stateCensusCode": 28,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "sri_potti_sriramulu_nellore",
+        "name": "Sri Potti Sriramulu Nellore",
+        "censusCode": 550,
+        "stateCensusCode": 28,
+        "districtCensusCode": 19
+      },
+      {
+        "id": "srikakulam",
+        "name": "Srikakulam",
+        "censusCode": 542,
+        "stateCensusCode": 28,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "visakhapatnam",
+        "name": "Visakhapatnam",
+        "censusCode": 544,
+        "stateCensusCode": 28,
+        "districtCensusCode": 13
+      },
+      {
+        "id": "vizianagaram",
+        "name": "Vizianagaram",
+        "censusCode": 543,
+        "stateCensusCode": 28,
+        "districtCensusCode": 12
+      },
+      {
+        "id": "warangal",
+        "name": "Warangal",
+        "censusCode": 540,
+        "stateCensusCode": 28,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "west_godavari",
+        "name": "West Godavari",
+        "censusCode": 546,
+        "stateCensusCode": 28,
+        "districtCensusCode": 15
+      },
+      {
+        "id": "y_s_r_",
+        "name": "Y.s.r.",
+        "censusCode": 551,
+        "stateCensusCode": 28,
+        "districtCensusCode": 20
+      }
+    ]
+  },
+  {
+    "name": "Arunanchal Pradesh",
+    "id": "arunanchal_pradesh",
+    "districts": [
+      {
+        "id": "anjaw",
+        "name": "Anjaw",
+        "censusCode": 260,
+        "stateCensusCode": 12,
+        "districtCensusCode": 16
+      },
+      {
+        "id": "changlang",
+        "name": "Changlang",
+        "censusCode": 253,
+        "stateCensusCode": 12,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "dibang_valley",
+        "name": "Dibang Valley",
+        "censusCode": 257,
+        "stateCensusCode": 12,
+        "districtCensusCode": 13
+      },
+      {
+        "id": "east_kameng",
+        "name": "East Kameng",
+        "censusCode": 247,
+        "stateCensusCode": 12,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "east_siang",
+        "name": "East Siang",
+        "censusCode": 251,
+        "stateCensusCode": 12,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "kurung_kumey",
+        "name": "Kurung Kumey",
+        "censusCode": 256,
+        "stateCensusCode": 12,
+        "districtCensusCode": 12
+      },
+      {
+        "id": "lohit",
+        "name": "Lohit",
+        "censusCode": 259,
+        "stateCensusCode": 12,
+        "districtCensusCode": 15
+      },
+      {
+        "id": "lower_dibang_valley",
+        "name": "Lower Dibang Valley",
+        "censusCode": 258,
+        "stateCensusCode": 12,
+        "districtCensusCode": 14
+      },
+      {
+        "id": "lower_subansiri",
+        "name": "Lower Subansiri",
+        "censusCode": 255,
+        "stateCensusCode": 12,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "papum_pare",
+        "name": "Papum Pare",
+        "censusCode": 248,
+        "stateCensusCode": 12,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "tawang",
+        "name": "Tawang",
+        "censusCode": 245,
+        "stateCensusCode": 12,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "tirap",
+        "name": "Tirap",
+        "censusCode": 254,
+        "stateCensusCode": 12,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "upper_siang",
+        "name": "Upper Siang",
+        "censusCode": 252,
+        "stateCensusCode": 12,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "upper_subansiri",
+        "name": "Upper Subansiri",
+        "censusCode": 249,
+        "stateCensusCode": 12,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "west_kameng",
+        "name": "West Kameng",
+        "censusCode": 246,
+        "stateCensusCode": 12,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "west_siang",
+        "name": "West Siang",
+        "censusCode": 250,
+        "stateCensusCode": 12,
+        "districtCensusCode": 6
+      }
+    ]
+  },
+  {
+    "name": "Assam",
+    "id": "assam",
+    "districts": [
+      {
+        "id": "baksa",
+        "name": "Baksa",
+        "censusCode": 324,
+        "stateCensusCode": 18,
+        "districtCensusCode": 25
+      },
+      {
+        "id": "barpeta",
+        "name": "Barpeta",
+        "censusCode": 303,
+        "stateCensusCode": 18,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "bongaigaon",
+        "name": "Bongaigaon",
+        "censusCode": 319,
+        "stateCensusCode": 18,
+        "districtCensusCode": 20
+      },
+      {
+        "id": "cachar",
+        "name": "Cachar",
+        "censusCode": 316,
+        "stateCensusCode": 18,
+        "districtCensusCode": 17
+      },
+      {
+        "id": "chirang",
+        "name": "Chirang",
+        "censusCode": 320,
+        "stateCensusCode": 18,
+        "districtCensusCode": 21
+      },
+      {
+        "id": "darrang",
+        "name": "Darrang",
+        "censusCode": 325,
+        "stateCensusCode": 18,
+        "districtCensusCode": 26
+      },
+      {
+        "id": "dhemaji",
+        "name": "Dhemaji",
+        "censusCode": 308,
+        "stateCensusCode": 18,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "dhubri",
+        "name": "Dhubri",
+        "censusCode": 301,
+        "stateCensusCode": 18,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "dibrugarh",
+        "name": "Dibrugarh",
+        "censusCode": 310,
+        "stateCensusCode": 18,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "dima_hasao",
+        "name": "Dima Hasao",
+        "censusCode": 315,
+        "stateCensusCode": 18,
+        "districtCensusCode": 16
+      },
+      {
+        "id": "goalpara",
+        "name": "Goalpara",
+        "censusCode": 302,
+        "stateCensusCode": 18,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "golaghat",
+        "name": "Golaghat",
+        "censusCode": 313,
+        "stateCensusCode": 18,
+        "districtCensusCode": 14
+      },
+      {
+        "id": "hailakandi",
+        "name": "Hailakandi",
+        "censusCode": 318,
+        "stateCensusCode": 18,
+        "districtCensusCode": 19
+      },
+      {
+        "id": "jorhat",
+        "name": "Jorhat",
+        "censusCode": 312,
+        "stateCensusCode": 18,
+        "districtCensusCode": 13
+      },
+      {
+        "id": "kamrup",
+        "name": "Kamrup",
+        "censusCode": 321,
+        "stateCensusCode": 18,
+        "districtCensusCode": 22
+      },
+      {
+        "id": "kamrup_metropolitan",
+        "name": "Kamrup Metropolitan",
+        "censusCode": 322,
+        "stateCensusCode": 18,
+        "districtCensusCode": 23
+      },
+      {
+        "id": "karbi_anglong",
+        "name": "Karbi Anglong",
+        "censusCode": 314,
+        "stateCensusCode": 18,
+        "districtCensusCode": 15
+      },
+      {
+        "id": "karimganj",
+        "name": "Karimganj",
+        "censusCode": 317,
+        "stateCensusCode": 18,
+        "districtCensusCode": 18
+      },
+      {
+        "id": "kokrajhar",
+        "name": "Kokrajhar",
+        "censusCode": 300,
+        "stateCensusCode": 18,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "lakhimpur",
+        "name": "Lakhimpur",
+        "censusCode": 307,
+        "stateCensusCode": 18,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "marigaon",
+        "name": "Marigaon",
+        "censusCode": 304,
+        "stateCensusCode": 18,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "nagaon",
+        "name": "Nagaon",
+        "censusCode": 305,
+        "stateCensusCode": 18,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "nalbari",
+        "name": "Nalbari",
+        "censusCode": 323,
+        "stateCensusCode": 18,
+        "districtCensusCode": 24
+      },
+      {
+        "id": "sivasagar",
+        "name": "Sivasagar",
+        "censusCode": 311,
+        "stateCensusCode": 18,
+        "districtCensusCode": 12
+      },
+      {
+        "id": "sonitpur",
+        "name": "Sonitpur",
+        "censusCode": 306,
+        "stateCensusCode": 18,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "tinsukia",
+        "name": "Tinsukia",
+        "censusCode": 309,
+        "stateCensusCode": 18,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "udalguri",
+        "name": "Udalguri",
+        "censusCode": 326,
+        "stateCensusCode": 18,
+        "districtCensusCode": 27
+      }
+    ]
+  },
+  {
+    "name": "Bihar",
+    "id": "bihar",
+    "districts": [
+      {
+        "id": "araria",
+        "name": "Araria",
+        "censusCode": 209,
+        "stateCensusCode": 10,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "arwal",
+        "name": "Arwal",
+        "censusCode": 240,
+        "stateCensusCode": 10,
+        "districtCensusCode": 38
+      },
+      {
+        "id": "aurangabad",
+        "name": "Aurangabad",
+        "censusCode": 235,
+        "stateCensusCode": 10,
+        "districtCensusCode": 33
+      },
+      {
+        "id": "banka",
+        "name": "Banka",
+        "censusCode": 225,
+        "stateCensusCode": 10,
+        "districtCensusCode": 23
+      },
+      {
+        "id": "begusarai",
+        "name": "Begusarai",
+        "censusCode": 222,
+        "stateCensusCode": 10,
+        "districtCensusCode": 20
+      },
+      {
+        "id": "bhagalpur",
+        "name": "Bhagalpur",
+        "censusCode": 224,
+        "stateCensusCode": 10,
+        "districtCensusCode": 22
+      },
+      {
+        "id": "bhojpur",
+        "name": "Bhojpur",
+        "censusCode": 231,
+        "stateCensusCode": 10,
+        "districtCensusCode": 29
+      },
+      {
+        "id": "buxar",
+        "name": "Buxar",
+        "censusCode": 232,
+        "stateCensusCode": 10,
+        "districtCensusCode": 30
+      },
+      {
+        "id": "darbhanga",
+        "name": "Darbhanga",
+        "censusCode": 215,
+        "stateCensusCode": 10,
+        "districtCensusCode": 13
+      },
+      {
+        "id": "gaya",
+        "name": "Gaya",
+        "censusCode": 236,
+        "stateCensusCode": 10,
+        "districtCensusCode": 34
+      },
+      {
+        "id": "gopalganj",
+        "name": "Gopalganj",
+        "censusCode": 217,
+        "stateCensusCode": 10,
+        "districtCensusCode": 15
+      },
+      {
+        "id": "jamui",
+        "name": "Jamui",
+        "censusCode": 238,
+        "stateCensusCode": 10,
+        "districtCensusCode": 36
+      },
+      {
+        "id": "jehanabad",
+        "name": "Jehanabad",
+        "censusCode": 239,
+        "stateCensusCode": 10,
+        "districtCensusCode": 37
+      },
+      {
+        "id": "kaimur__bhabua_",
+        "name": "Kaimur (bhabua)",
+        "censusCode": 233,
+        "stateCensusCode": 10,
+        "districtCensusCode": 31
+      },
+      {
+        "id": "katihar",
+        "name": "Katihar",
+        "censusCode": 212,
+        "stateCensusCode": 10,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "khagaria",
+        "name": "Khagaria",
+        "censusCode": 223,
+        "stateCensusCode": 10,
+        "districtCensusCode": 21
+      },
+      {
+        "id": "kishanganj",
+        "name": "Kishanganj",
+        "censusCode": 210,
+        "stateCensusCode": 10,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "lakhisarai",
+        "name": "Lakhisarai",
+        "censusCode": 227,
+        "stateCensusCode": 10,
+        "districtCensusCode": 25
+      },
+      {
+        "id": "madhepura",
+        "name": "Madhepura",
+        "censusCode": 213,
+        "stateCensusCode": 10,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "madhubani",
+        "name": "Madhubani",
+        "censusCode": 207,
+        "stateCensusCode": 10,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "munger",
+        "name": "Munger",
+        "censusCode": 226,
+        "stateCensusCode": 10,
+        "districtCensusCode": 24
+      },
+      {
+        "id": "muzaffarpur",
+        "name": "Muzaffarpur",
+        "censusCode": 216,
+        "stateCensusCode": 10,
+        "districtCensusCode": 14
+      },
+      {
+        "id": "nalanda",
+        "name": "Nalanda",
+        "censusCode": 229,
+        "stateCensusCode": 10,
+        "districtCensusCode": 27
+      },
+      {
+        "id": "nawada",
+        "name": "Nawada",
+        "censusCode": 237,
+        "stateCensusCode": 10,
+        "districtCensusCode": 35
+      },
+      {
+        "id": "pashchim_champaran",
+        "name": "Pashchim Champaran",
+        "censusCode": 203,
+        "stateCensusCode": 10,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "patna",
+        "name": "Patna",
+        "censusCode": 230,
+        "stateCensusCode": 10,
+        "districtCensusCode": 28
+      },
+      {
+        "id": "purba_champaran",
+        "name": "Purba Champaran",
+        "censusCode": 204,
+        "stateCensusCode": 10,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "purnia",
+        "name": "Purnia",
+        "censusCode": 211,
+        "stateCensusCode": 10,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "rohtas",
+        "name": "Rohtas",
+        "censusCode": 234,
+        "stateCensusCode": 10,
+        "districtCensusCode": 32
+      },
+      {
+        "id": "saharsa",
+        "name": "Saharsa",
+        "censusCode": 214,
+        "stateCensusCode": 10,
+        "districtCensusCode": 12
+      },
+      {
+        "id": "samastipur",
+        "name": "Samastipur",
+        "censusCode": 221,
+        "stateCensusCode": 10,
+        "districtCensusCode": 19
+      },
+      {
+        "id": "saran__chhapra_",
+        "name": "Saran (chhapra)",
+        "censusCode": 219,
+        "stateCensusCode": 10,
+        "districtCensusCode": 17
+      },
+      {
+        "id": "sheikhpura",
+        "name": "Sheikhpura",
+        "censusCode": 228,
+        "stateCensusCode": 10,
+        "districtCensusCode": 26
+      },
+      {
+        "id": "sheohar",
+        "name": "Sheohar",
+        "censusCode": 205,
+        "stateCensusCode": 10,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "sitamarhi",
+        "name": "Sitamarhi",
+        "censusCode": 206,
+        "stateCensusCode": 10,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "siwan",
+        "name": "Siwan",
+        "censusCode": 218,
+        "stateCensusCode": 10,
+        "districtCensusCode": 16
+      },
+      {
+        "id": "supaul",
+        "name": "Supaul",
+        "censusCode": 208,
+        "stateCensusCode": 10,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "vaishali",
+        "name": "Vaishali",
+        "censusCode": 220,
+        "stateCensusCode": 10,
+        "districtCensusCode": 18
+      }
+    ]
+  },
+  {
+    "name": "Chandigarh",
+    "id": "chandigarh",
+    "districts": [
+      {
+        "id": "chandigarh",
+        "name": "Chandigarh",
+        "censusCode": 55,
+        "stateCensusCode": 4,
+        "districtCensusCode": 1
+      }
+    ]
+  },
+  {
+    "name": "Chhattisgarh",
+    "id": "chhattisgarh",
+    "districts": [
+      {
+        "id": "bastar",
+        "name": "Bastar",
+        "censusCode": 414,
+        "stateCensusCode": 22,
+        "districtCensusCode": 15
+      },
+      {
+        "id": "bijapur",
+        "name": "Bijapur",
+        "censusCode": 417,
+        "stateCensusCode": 22,
+        "districtCensusCode": 18
+      },
+      {
+        "id": "bilaspur",
+        "name": "Bilaspur",
+        "censusCode": 406,
+        "stateCensusCode": 22,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "dakshin_bastar_dantewada",
+        "name": "Dakshin Bastar Dantewada",
+        "censusCode": 416,
+        "stateCensusCode": 22,
+        "districtCensusCode": 17
+      },
+      {
+        "id": "dhamtari",
+        "name": "Dhamtari",
+        "censusCode": 412,
+        "stateCensusCode": 22,
+        "districtCensusCode": 13
+      },
+      {
+        "id": "durg",
+        "name": "Durg",
+        "censusCode": 409,
+        "stateCensusCode": 22,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "janjgir_champa",
+        "name": "Janjgir-champa",
+        "censusCode": 405,
+        "stateCensusCode": 22,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "jashpur",
+        "name": "Jashpur",
+        "censusCode": 402,
+        "stateCensusCode": 22,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "kabeerdham",
+        "name": "Kabeerdham",
+        "censusCode": 407,
+        "stateCensusCode": 22,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "korba",
+        "name": "Korba",
+        "censusCode": 404,
+        "stateCensusCode": 22,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "koriya",
+        "name": "Koriya",
+        "censusCode": 400,
+        "stateCensusCode": 22,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "mahasamund",
+        "name": "Mahasamund",
+        "censusCode": 411,
+        "stateCensusCode": 22,
+        "districtCensusCode": 12
+      },
+      {
+        "id": "narayanpur",
+        "name": "Narayanpur",
+        "censusCode": 415,
+        "stateCensusCode": 22,
+        "districtCensusCode": 16
+      },
+      {
+        "id": "raigarh",
+        "name": "Raigarh",
+        "censusCode": 403,
+        "stateCensusCode": 22,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "raipur",
+        "name": "Raipur",
+        "censusCode": 410,
+        "stateCensusCode": 22,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "rajnandgaon",
+        "name": "Rajnandgaon",
+        "censusCode": 408,
+        "stateCensusCode": 22,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "surguja",
+        "name": "Surguja",
+        "censusCode": 401,
+        "stateCensusCode": 22,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "uttar_bastar_kanker",
+        "name": "Uttar Bastar Kanker",
+        "censusCode": 413,
+        "stateCensusCode": 22,
+        "districtCensusCode": 14
+      }
+    ]
+  },
+  {
+    "name": "Dadara & Nagar Havelli",
+    "id": "dadara___nagar_havelli",
+    "districts": [
+      {
+        "id": "dadra___nagar_haveli",
+        "name": "Dadra & Nagar Haveli",
+        "censusCode": 496,
+        "stateCensusCode": 26,
+        "districtCensusCode": 1
+      }
+    ]
+  },
+  {
+    "name": "Daman & Diu",
+    "id": "daman___diu",
+    "districts": [
+      {
+        "id": "daman",
+        "name": "Daman",
+        "censusCode": 495,
+        "stateCensusCode": 25,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "diu",
+        "name": "Diu",
+        "censusCode": 494,
+        "stateCensusCode": 25,
+        "districtCensusCode": 1
+      }
+    ]
+  },
+  {
+    "name": "Goa",
+    "id": "goa",
+    "districts": [
+      {
+        "id": "north_goa",
+        "name": "North Goa",
+        "censusCode": 585,
+        "stateCensusCode": 30,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "south_goa",
+        "name": "South Goa",
+        "censusCode": 586,
+        "stateCensusCode": 30,
+        "districtCensusCode": 2
+      }
+    ]
+  },
+  {
+    "name": "Gujarat",
+    "id": "gujarat",
+    "districts": [
+      {
+        "id": "ahmadabad",
+        "name": "Ahmadabad",
+        "censusCode": 474,
+        "stateCensusCode": 24,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "amreli",
+        "name": "Amreli",
+        "censusCode": 480,
+        "stateCensusCode": 24,
+        "districtCensusCode": 13
+      },
+      {
+        "id": "anand",
+        "name": "Anand",
+        "censusCode": 482,
+        "stateCensusCode": 24,
+        "districtCensusCode": 15
+      },
+      {
+        "id": "banas_kantha",
+        "name": "Banas Kantha",
+        "censusCode": 469,
+        "stateCensusCode": 24,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "bharuch",
+        "name": "Bharuch",
+        "censusCode": 488,
+        "stateCensusCode": 24,
+        "districtCensusCode": 21
+      },
+      {
+        "id": "bhavnagar",
+        "name": "Bhavnagar",
+        "censusCode": 481,
+        "stateCensusCode": 24,
+        "districtCensusCode": 14
+      },
+      {
+        "id": "dohad",
+        "name": "Dohad",
+        "censusCode": 485,
+        "stateCensusCode": 24,
+        "districtCensusCode": 18
+      },
+      {
+        "id": "gandhinagar",
+        "name": "Gandhinagar",
+        "censusCode": 473,
+        "stateCensusCode": 24,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "jamnagar",
+        "name": "Jamnagar",
+        "censusCode": 477,
+        "stateCensusCode": 24,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "junagadh",
+        "name": "Junagadh",
+        "censusCode": 479,
+        "stateCensusCode": 24,
+        "districtCensusCode": 12
+      },
+      {
+        "id": "kachchh",
+        "name": "Kachchh",
+        "censusCode": 468,
+        "stateCensusCode": 24,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "kheda",
+        "name": "Kheda",
+        "censusCode": 483,
+        "stateCensusCode": 24,
+        "districtCensusCode": 16
+      },
+      {
+        "id": "mahesana",
+        "name": "Mahesana",
+        "censusCode": 471,
+        "stateCensusCode": 24,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "narmada",
+        "name": "Narmada",
+        "censusCode": 487,
+        "stateCensusCode": 24,
+        "districtCensusCode": 20
+      },
+      {
+        "id": "navsari",
+        "name": "Navsari",
+        "censusCode": 490,
+        "stateCensusCode": 24,
+        "districtCensusCode": 23
+      },
+      {
+        "id": "panch_mahals",
+        "name": "Panch Mahals",
+        "censusCode": 484,
+        "stateCensusCode": 24,
+        "districtCensusCode": 17
+      },
+      {
+        "id": "patan",
+        "name": "Patan",
+        "censusCode": 470,
+        "stateCensusCode": 24,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "porbandar",
+        "name": "Porbandar",
+        "censusCode": 478,
+        "stateCensusCode": 24,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "rajkot",
+        "name": "Rajkot",
+        "censusCode": 476,
+        "stateCensusCode": 24,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "sabar_kantha",
+        "name": "Sabar Kantha",
+        "censusCode": 472,
+        "stateCensusCode": 24,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "surat",
+        "name": "Surat",
+        "censusCode": 492,
+        "stateCensusCode": 24,
+        "districtCensusCode": 25
+      },
+      {
+        "id": "surendranagar",
+        "name": "Surendranagar",
+        "censusCode": 475,
+        "stateCensusCode": 24,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "tapi",
+        "name": "Tapi",
+        "censusCode": 493,
+        "stateCensusCode": 24,
+        "districtCensusCode": 26
+      },
+      {
+        "id": "the_dangs",
+        "name": "The Dangs",
+        "censusCode": 489,
+        "stateCensusCode": 24,
+        "districtCensusCode": 22
+      },
+      {
+        "id": "vadodara",
+        "name": "Vadodara",
+        "censusCode": 486,
+        "stateCensusCode": 24,
+        "districtCensusCode": 19
+      },
+      {
+        "id": "valsad",
+        "name": "Valsad",
+        "censusCode": 491,
+        "stateCensusCode": 24,
+        "districtCensusCode": 24
+      }
+    ]
+  },
+  {
+    "name": "Haryana",
+    "id": "haryana",
+    "districts": [
+      {
+        "id": "ambala",
+        "name": "Ambala",
+        "censusCode": 70,
+        "stateCensusCode": 6,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "bhiwani",
+        "name": "Bhiwani",
+        "censusCode": 81,
+        "stateCensusCode": 6,
+        "districtCensusCode": 13
+      },
+      {
+        "id": "faridabad",
+        "name": "Faridabad",
+        "censusCode": 88,
+        "stateCensusCode": 6,
+        "districtCensusCode": 20
+      },
+      {
+        "id": "fatehabad",
+        "name": "Fatehabad",
+        "censusCode": 78,
+        "stateCensusCode": 6,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "gurgaon",
+        "name": "Gurgaon",
+        "censusCode": 86,
+        "stateCensusCode": 6,
+        "districtCensusCode": 18
+      },
+      {
+        "id": "hisar",
+        "name": "Hisar",
+        "censusCode": 80,
+        "stateCensusCode": 6,
+        "districtCensusCode": 12
+      },
+      {
+        "id": "jhajjar",
+        "name": "Jhajjar",
+        "censusCode": 83,
+        "stateCensusCode": 6,
+        "districtCensusCode": 15
+      },
+      {
+        "id": "jind",
+        "name": "Jind",
+        "censusCode": 77,
+        "stateCensusCode": 6,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "kaithal",
+        "name": "Kaithal",
+        "censusCode": 73,
+        "stateCensusCode": 6,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "karnal",
+        "name": "Karnal",
+        "censusCode": 74,
+        "stateCensusCode": 6,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "kurukshetra",
+        "name": "Kurukshetra",
+        "censusCode": 72,
+        "stateCensusCode": 6,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "mahendragarh",
+        "name": "Mahendragarh",
+        "censusCode": 84,
+        "stateCensusCode": 6,
+        "districtCensusCode": 16
+      },
+      {
+        "id": "mewat",
+        "name": "Mewat",
+        "censusCode": 87,
+        "stateCensusCode": 6,
+        "districtCensusCode": 19
+      },
+      {
+        "id": "palwal",
+        "name": "Palwal",
+        "censusCode": 89,
+        "stateCensusCode": 6,
+        "districtCensusCode": 21
+      },
+      {
+        "id": "panchkula",
+        "name": "Panchkula",
+        "censusCode": 69,
+        "stateCensusCode": 6,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "panipat",
+        "name": "Panipat",
+        "censusCode": 75,
+        "stateCensusCode": 6,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "rewari",
+        "name": "Rewari",
+        "censusCode": 85,
+        "stateCensusCode": 6,
+        "districtCensusCode": 17
+      },
+      {
+        "id": "rohtak",
+        "name": "Rohtak",
+        "censusCode": 82,
+        "stateCensusCode": 6,
+        "districtCensusCode": 14
+      },
+      {
+        "id": "sirsa",
+        "name": "Sirsa",
+        "censusCode": 79,
+        "stateCensusCode": 6,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "sonipat",
+        "name": "Sonipat",
+        "censusCode": 76,
+        "stateCensusCode": 6,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "yamunanagar",
+        "name": "Yamunanagar",
+        "censusCode": 71,
+        "stateCensusCode": 6,
+        "districtCensusCode": 3
+      }
+    ]
+  },
+  {
+    "name": "Himachal Pradesh",
+    "id": "himachal_pradesh",
+    "districts": [
+      {
+        "id": "bilaspur",
+        "name": "Bilaspur",
+        "censusCode": 30,
+        "stateCensusCode": 2,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "chamba",
+        "name": "Chamba",
+        "censusCode": 23,
+        "stateCensusCode": 2,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "hamirpur",
+        "name": "Hamirpur",
+        "censusCode": 28,
+        "stateCensusCode": 2,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "kangra",
+        "name": "Kangra",
+        "censusCode": 24,
+        "stateCensusCode": 2,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "kinnaur",
+        "name": "Kinnaur",
+        "censusCode": 34,
+        "stateCensusCode": 2,
+        "districtCensusCode": 12
+      },
+      {
+        "id": "kullu",
+        "name": "Kullu",
+        "censusCode": 26,
+        "stateCensusCode": 2,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "lahul___spiti",
+        "name": "Lahul & Spiti",
+        "censusCode": 25,
+        "stateCensusCode": 2,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "mandi",
+        "name": "Mandi",
+        "censusCode": 27,
+        "stateCensusCode": 2,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "shimla",
+        "name": "Shimla",
+        "censusCode": 33,
+        "stateCensusCode": 2,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "sirmaur",
+        "name": "Sirmaur",
+        "censusCode": 32,
+        "stateCensusCode": 2,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "solan",
+        "name": "Solan",
+        "censusCode": 31,
+        "stateCensusCode": 2,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "una",
+        "name": "Una",
+        "censusCode": 29,
+        "stateCensusCode": 2,
+        "districtCensusCode": 7
+      }
+    ]
+  },
+  {
+    "name": "Jammu & Kashmir",
+    "id": "jammu___kashmir",
+    "districts": [
+      {
+        "id": "anantnag",
+        "name": "Anantnag",
+        "censusCode": 14,
+        "stateCensusCode": 1,
+        "districtCensusCode": 14
+      },
+      {
+        "id": "badgam",
+        "name": "Badgam",
+        "censusCode": 2,
+        "stateCensusCode": 1,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "bandipore",
+        "name": "Bandipore",
+        "censusCode": 9,
+        "stateCensusCode": 1,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "baramula",
+        "name": "Baramula",
+        "censusCode": 8,
+        "stateCensusCode": 1,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "data_not_available",
+        "name": "Data Not Available",
+        "censusCode": 0,
+        "stateCensusCode": 99,
+        "districtCensusCode": 99
+      },
+      {
+        "id": "doda",
+        "name": "Doda",
+        "censusCode": 16,
+        "stateCensusCode": 1,
+        "districtCensusCode": 16
+      },
+      {
+        "id": "ganderbal",
+        "name": "Ganderbal",
+        "censusCode": 11,
+        "stateCensusCode": 1,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "jammu",
+        "name": "Jammu",
+        "censusCode": 21,
+        "stateCensusCode": 1,
+        "districtCensusCode": 21
+      },
+      {
+        "id": "kargil",
+        "name": "Kargil",
+        "censusCode": 4,
+        "stateCensusCode": 1,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "kathua",
+        "name": "Kathua",
+        "censusCode": 7,
+        "stateCensusCode": 1,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "kishtwar",
+        "name": "Kishtwar",
+        "censusCode": 18,
+        "stateCensusCode": 1,
+        "districtCensusCode": 18
+      },
+      {
+        "id": "kulgam",
+        "name": "Kulgam",
+        "censusCode": 15,
+        "stateCensusCode": 1,
+        "districtCensusCode": 15
+      },
+      {
+        "id": "kupwara",
+        "name": "Kupwara",
+        "censusCode": 1,
+        "stateCensusCode": 1,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "leh__ladakh_",
+        "name": "Leh (ladakh)",
+        "censusCode": 3,
+        "stateCensusCode": 1,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "pulwama",
+        "name": "Pulwama",
+        "censusCode": 12,
+        "stateCensusCode": 1,
+        "districtCensusCode": 12
+      },
+      {
+        "id": "punch",
+        "name": "Punch",
+        "censusCode": 5,
+        "stateCensusCode": 1,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "rajouri",
+        "name": "Rajouri",
+        "censusCode": 6,
+        "stateCensusCode": 1,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "ramban",
+        "name": "Ramban",
+        "censusCode": 17,
+        "stateCensusCode": 1,
+        "districtCensusCode": 17
+      },
+      {
+        "id": "reasi",
+        "name": "Reasi",
+        "censusCode": 20,
+        "stateCensusCode": 1,
+        "districtCensusCode": 20
+      },
+      {
+        "id": "samba",
+        "name": "Samba",
+        "censusCode": 22,
+        "stateCensusCode": 1,
+        "districtCensusCode": 22
+      },
+      {
+        "id": "shupiyan",
+        "name": "Shupiyan",
+        "censusCode": 13,
+        "stateCensusCode": 1,
+        "districtCensusCode": 13
+      },
+      {
+        "id": "srinagar",
+        "name": "Srinagar",
+        "censusCode": 10,
+        "stateCensusCode": 1,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "udhampur",
+        "name": "Udhampur",
+        "censusCode": 19,
+        "stateCensusCode": 1,
+        "districtCensusCode": 19
+      }
+    ]
+  },
+  {
+    "name": "Jharkhand",
+    "id": "jharkhand",
+    "districts": [
+      {
+        "id": "bokaro",
+        "name": "Bokaro",
+        "censusCode": 355,
+        "stateCensusCode": 20,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "chatra",
+        "name": "Chatra",
+        "censusCode": 347,
+        "stateCensusCode": 20,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "deoghar",
+        "name": "Deoghar",
+        "censusCode": 350,
+        "stateCensusCode": 20,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "dhanbad",
+        "name": "Dhanbad",
+        "censusCode": 354,
+        "stateCensusCode": 20,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "dumka",
+        "name": "Dumka",
+        "censusCode": 362,
+        "stateCensusCode": 20,
+        "districtCensusCode": 17
+      },
+      {
+        "id": "garhwa",
+        "name": "Garhwa",
+        "censusCode": 346,
+        "stateCensusCode": 20,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "giridih",
+        "name": "Giridih",
+        "censusCode": 349,
+        "stateCensusCode": 20,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "godda",
+        "name": "Godda",
+        "censusCode": 351,
+        "stateCensusCode": 20,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "gumla",
+        "name": "Gumla",
+        "censusCode": 366,
+        "stateCensusCode": 20,
+        "districtCensusCode": 21
+      },
+      {
+        "id": "hazaribagh",
+        "name": "Hazaribagh",
+        "censusCode": 360,
+        "stateCensusCode": 20,
+        "districtCensusCode": 15
+      },
+      {
+        "id": "jamtara",
+        "name": "Jamtara",
+        "censusCode": 363,
+        "stateCensusCode": 20,
+        "districtCensusCode": 18
+      },
+      {
+        "id": "khunti",
+        "name": "Khunti",
+        "censusCode": 365,
+        "stateCensusCode": 20,
+        "districtCensusCode": 20
+      },
+      {
+        "id": "kodarma",
+        "name": "Kodarma",
+        "censusCode": 348,
+        "stateCensusCode": 20,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "latehar",
+        "name": "Latehar",
+        "censusCode": 359,
+        "stateCensusCode": 20,
+        "districtCensusCode": 14
+      },
+      {
+        "id": "lohardaga",
+        "name": "Lohardaga",
+        "censusCode": 356,
+        "stateCensusCode": 20,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "pakur",
+        "name": "Pakur",
+        "censusCode": 353,
+        "stateCensusCode": 20,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "palamu",
+        "name": "Palamu",
+        "censusCode": 358,
+        "stateCensusCode": 20,
+        "districtCensusCode": 13
+      },
+      {
+        "id": "pashchimi_singhbhum",
+        "name": "Pashchimi Singhbhum",
+        "censusCode": 368,
+        "stateCensusCode": 20,
+        "districtCensusCode": 23
+      },
+      {
+        "id": "purbi_singhbhum",
+        "name": "Purbi Singhbhum",
+        "censusCode": 357,
+        "stateCensusCode": 20,
+        "districtCensusCode": 12
+      },
+      {
+        "id": "ramgarh",
+        "name": "Ramgarh",
+        "censusCode": 361,
+        "stateCensusCode": 20,
+        "districtCensusCode": 16
+      },
+      {
+        "id": "ranchi",
+        "name": "Ranchi",
+        "censusCode": 364,
+        "stateCensusCode": 20,
+        "districtCensusCode": 19
+      },
+      {
+        "id": "sahibganj",
+        "name": "Sahibganj",
+        "censusCode": 352,
+        "stateCensusCode": 20,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "saraikela_kharsawan",
+        "name": "Saraikela-kharsawan",
+        "censusCode": 369,
+        "stateCensusCode": 20,
+        "districtCensusCode": 24
+      },
+      {
+        "id": "simdega",
+        "name": "Simdega",
+        "censusCode": 367,
+        "stateCensusCode": 20,
+        "districtCensusCode": 22
+      }
+    ]
+  },
+  {
+    "name": "Karnataka",
+    "id": "karnataka",
+    "districts": [
+      {
+        "id": "bagalkot",
+        "name": "Bagalkot",
+        "censusCode": 556,
+        "stateCensusCode": 29,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "bangalore",
+        "name": "Bangalore",
+        "censusCode": 572,
+        "stateCensusCode": 29,
+        "districtCensusCode": 18
+      },
+      {
+        "id": "bangalore_rural",
+        "name": "Bangalore Rural",
+        "censusCode": 583,
+        "stateCensusCode": 29,
+        "districtCensusCode": 29
+      },
+      {
+        "id": "belgaum",
+        "name": "Belgaum",
+        "censusCode": 555,
+        "stateCensusCode": 29,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "bellary",
+        "name": "Bellary",
+        "censusCode": 565,
+        "stateCensusCode": 29,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "bidar",
+        "name": "Bidar",
+        "censusCode": 558,
+        "stateCensusCode": 29,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "bijapur",
+        "name": "Bijapur",
+        "censusCode": 557,
+        "stateCensusCode": 29,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "chamrajnagar",
+        "name": "Chamrajnagar",
+        "censusCode": 578,
+        "stateCensusCode": 29,
+        "districtCensusCode": 24
+      },
+      {
+        "id": "chikkaballapura",
+        "name": "Chikkaballapura",
+        "censusCode": 582,
+        "stateCensusCode": 29,
+        "districtCensusCode": 28
+      },
+      {
+        "id": "chikmagalur",
+        "name": "Chikmagalur",
+        "censusCode": 570,
+        "stateCensusCode": 29,
+        "districtCensusCode": 16
+      },
+      {
+        "id": "chitradurga",
+        "name": "Chitradurga",
+        "censusCode": 566,
+        "stateCensusCode": 29,
+        "districtCensusCode": 12
+      },
+      {
+        "id": "dakshina_kannada",
+        "name": "Dakshina Kannada",
+        "censusCode": 575,
+        "stateCensusCode": 29,
+        "districtCensusCode": 21
+      },
+      {
+        "id": "davanagere",
+        "name": "Davanagere",
+        "censusCode": 567,
+        "stateCensusCode": 29,
+        "districtCensusCode": 13
+      },
+      {
+        "id": "dharwad",
+        "name": "Dharwad",
+        "censusCode": 562,
+        "stateCensusCode": 29,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "gadag",
+        "name": "Gadag",
+        "censusCode": 561,
+        "stateCensusCode": 29,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "gulbarga",
+        "name": "Gulbarga",
+        "censusCode": 579,
+        "stateCensusCode": 29,
+        "districtCensusCode": 25
+      },
+      {
+        "id": "hassan",
+        "name": "Hassan",
+        "censusCode": 574,
+        "stateCensusCode": 29,
+        "districtCensusCode": 20
+      },
+      {
+        "id": "haveri",
+        "name": "Haveri",
+        "censusCode": 564,
+        "stateCensusCode": 29,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "kodagu",
+        "name": "Kodagu",
+        "censusCode": 576,
+        "stateCensusCode": 29,
+        "districtCensusCode": 22
+      },
+      {
+        "id": "kolar",
+        "name": "Kolar",
+        "censusCode": 581,
+        "stateCensusCode": 29,
+        "districtCensusCode": 27
+      },
+      {
+        "id": "koppal",
+        "name": "Koppal",
+        "censusCode": 560,
+        "stateCensusCode": 29,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "mandya",
+        "name": "Mandya",
+        "censusCode": 573,
+        "stateCensusCode": 29,
+        "districtCensusCode": 19
+      },
+      {
+        "id": "mysore",
+        "name": "Mysore",
+        "censusCode": 577,
+        "stateCensusCode": 29,
+        "districtCensusCode": 23
+      },
+      {
+        "id": "raichur",
+        "name": "Raichur",
+        "censusCode": 559,
+        "stateCensusCode": 29,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "ramanagara",
+        "name": "Ramanagara",
+        "censusCode": 584,
+        "stateCensusCode": 29,
+        "districtCensusCode": 30
+      },
+      {
+        "id": "shimoga",
+        "name": "Shimoga",
+        "censusCode": 568,
+        "stateCensusCode": 29,
+        "districtCensusCode": 14
+      },
+      {
+        "id": "tumkur",
+        "name": "Tumkur",
+        "censusCode": 571,
+        "stateCensusCode": 29,
+        "districtCensusCode": 17
+      },
+      {
+        "id": "udupi",
+        "name": "Udupi",
+        "censusCode": 569,
+        "stateCensusCode": 29,
+        "districtCensusCode": 15
+      },
+      {
+        "id": "uttara_kannada",
+        "name": "Uttara Kannada",
+        "censusCode": 563,
+        "stateCensusCode": 29,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "yadgir",
+        "name": "Yadgir",
+        "censusCode": 580,
+        "stateCensusCode": 29,
+        "districtCensusCode": 26
+      }
+    ]
+  },
+  {
+    "name": "Kerala",
+    "id": "kerala",
+    "districts": [
+      {
+        "id": "alappuzha",
+        "name": "Alappuzha",
+        "censusCode": 598,
+        "stateCensusCode": 32,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "ernakulam",
+        "name": "Ernakulam",
+        "censusCode": 595,
+        "stateCensusCode": 32,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "idukki",
+        "name": "Idukki",
+        "censusCode": 596,
+        "stateCensusCode": 32,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "kannur",
+        "name": "Kannur",
+        "censusCode": 589,
+        "stateCensusCode": 32,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "kasaragod",
+        "name": "Kasaragod",
+        "censusCode": 588,
+        "stateCensusCode": 32,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "kollam",
+        "name": "Kollam",
+        "censusCode": 600,
+        "stateCensusCode": 32,
+        "districtCensusCode": 13
+      },
+      {
+        "id": "kottayam",
+        "name": "Kottayam",
+        "censusCode": 597,
+        "stateCensusCode": 32,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "kozhikode",
+        "name": "Kozhikode",
+        "censusCode": 591,
+        "stateCensusCode": 32,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "malappuram",
+        "name": "Malappuram",
+        "censusCode": 592,
+        "stateCensusCode": 32,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "palakkad",
+        "name": "Palakkad",
+        "censusCode": 593,
+        "stateCensusCode": 32,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "pathanamthitta",
+        "name": "Pathanamthitta",
+        "censusCode": 599,
+        "stateCensusCode": 32,
+        "districtCensusCode": 12
+      },
+      {
+        "id": "thiruvananthapuram",
+        "name": "Thiruvananthapuram",
+        "censusCode": 601,
+        "stateCensusCode": 32,
+        "districtCensusCode": 14
+      },
+      {
+        "id": "thrissur",
+        "name": "Thrissur",
+        "censusCode": 594,
+        "stateCensusCode": 32,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "wayanad",
+        "name": "Wayanad",
+        "censusCode": 590,
+        "stateCensusCode": 32,
+        "districtCensusCode": 3
+      }
+    ]
+  },
+  {
+    "name": "Lakshadweep",
+    "id": "lakshadweep",
+    "districts": [
+      {
+        "id": "lakshadweep",
+        "name": "Lakshadweep",
+        "censusCode": 587,
+        "stateCensusCode": 31,
+        "districtCensusCode": 1
+      }
+    ]
+  },
+  {
+    "name": "Madhya Pradesh",
+    "id": "madhya_pradesh",
+    "districts": [
+      {
+        "id": "alirajpur",
+        "name": "Alirajpur",
+        "censusCode": 465,
+        "stateCensusCode": 23,
+        "districtCensusCode": 48
+      },
+      {
+        "id": "anuppur",
+        "name": "Anuppur",
+        "censusCode": 461,
+        "stateCensusCode": 23,
+        "districtCensusCode": 44
+      },
+      {
+        "id": "ashoknagar",
+        "name": "Ashoknagar",
+        "censusCode": 459,
+        "stateCensusCode": 23,
+        "districtCensusCode": 42
+      },
+      {
+        "id": "balaghat",
+        "name": "Balaghat",
+        "censusCode": 457,
+        "stateCensusCode": 23,
+        "districtCensusCode": 40
+      },
+      {
+        "id": "barwani",
+        "name": "Barwani",
+        "censusCode": 441,
+        "stateCensusCode": 23,
+        "districtCensusCode": 24
+      },
+      {
+        "id": "betul",
+        "name": "Betul",
+        "censusCode": 447,
+        "stateCensusCode": 23,
+        "districtCensusCode": 30
+      },
+      {
+        "id": "bhind",
+        "name": "Bhind",
+        "censusCode": 420,
+        "stateCensusCode": 23,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "bhopal",
+        "name": "Bhopal",
+        "censusCode": 444,
+        "stateCensusCode": 23,
+        "districtCensusCode": 27
+      },
+      {
+        "id": "burhanpur",
+        "name": "Burhanpur",
+        "censusCode": 467,
+        "stateCensusCode": 23,
+        "districtCensusCode": 50
+      },
+      {
+        "id": "chhatarpur",
+        "name": "Chhatarpur",
+        "censusCode": 425,
+        "stateCensusCode": 23,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "chhindwara",
+        "name": "Chhindwara",
+        "censusCode": 455,
+        "stateCensusCode": 23,
+        "districtCensusCode": 38
+      },
+      {
+        "id": "damoh",
+        "name": "Damoh",
+        "censusCode": 428,
+        "stateCensusCode": 23,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "datia",
+        "name": "Datia",
+        "censusCode": 422,
+        "stateCensusCode": 23,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "dewas",
+        "name": "Dewas",
+        "censusCode": 437,
+        "stateCensusCode": 23,
+        "districtCensusCode": 20
+      },
+      {
+        "id": "dhar",
+        "name": "Dhar",
+        "censusCode": 438,
+        "stateCensusCode": 23,
+        "districtCensusCode": 21
+      },
+      {
+        "id": "dindori",
+        "name": "Dindori",
+        "censusCode": 453,
+        "stateCensusCode": 23,
+        "districtCensusCode": 36
+      },
+      {
+        "id": "east_nimar",
+        "name": "East Nimar",
+        "censusCode": 466,
+        "stateCensusCode": 23,
+        "districtCensusCode": 49
+      },
+      {
+        "id": "guna",
+        "name": "Guna",
+        "censusCode": 458,
+        "stateCensusCode": 23,
+        "districtCensusCode": 41
+      },
+      {
+        "id": "gwalior",
+        "name": "Gwalior",
+        "censusCode": 421,
+        "stateCensusCode": 23,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "harda",
+        "name": "Harda",
+        "censusCode": 448,
+        "stateCensusCode": 23,
+        "districtCensusCode": 31
+      },
+      {
+        "id": "hoshangabad",
+        "name": "Hoshangabad",
+        "censusCode": 449,
+        "stateCensusCode": 23,
+        "districtCensusCode": 32
+      },
+      {
+        "id": "indore",
+        "name": "Indore",
+        "censusCode": 439,
+        "stateCensusCode": 23,
+        "districtCensusCode": 22
+      },
+      {
+        "id": "jabalpur",
+        "name": "Jabalpur",
+        "censusCode": 451,
+        "stateCensusCode": 23,
+        "districtCensusCode": 34
+      },
+      {
+        "id": "jhabua",
+        "name": "Jhabua",
+        "censusCode": 464,
+        "stateCensusCode": 23,
+        "districtCensusCode": 47
+      },
+      {
+        "id": "katni",
+        "name": "Katni",
+        "censusCode": 450,
+        "stateCensusCode": 23,
+        "districtCensusCode": 33
+      },
+      {
+        "id": "mandla",
+        "name": "Mandla",
+        "censusCode": 454,
+        "stateCensusCode": 23,
+        "districtCensusCode": 37
+      },
+      {
+        "id": "mandsaur",
+        "name": "Mandsaur",
+        "censusCode": 433,
+        "stateCensusCode": 23,
+        "districtCensusCode": 16
+      },
+      {
+        "id": "morena",
+        "name": "Morena",
+        "censusCode": 419,
+        "stateCensusCode": 23,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "narsimhapur",
+        "name": "Narsimhapur",
+        "censusCode": 452,
+        "stateCensusCode": 23,
+        "districtCensusCode": 35
+      },
+      {
+        "id": "neemuch",
+        "name": "Neemuch",
+        "censusCode": 432,
+        "stateCensusCode": 23,
+        "districtCensusCode": 15
+      },
+      {
+        "id": "panna",
+        "name": "Panna",
+        "censusCode": 426,
+        "stateCensusCode": 23,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "raisen",
+        "name": "Raisen",
+        "censusCode": 446,
+        "stateCensusCode": 23,
+        "districtCensusCode": 29
+      },
+      {
+        "id": "rajgarh",
+        "name": "Rajgarh",
+        "censusCode": 442,
+        "stateCensusCode": 23,
+        "districtCensusCode": 25
+      },
+      {
+        "id": "ratlam",
+        "name": "Ratlam",
+        "censusCode": 434,
+        "stateCensusCode": 23,
+        "districtCensusCode": 17
+      },
+      {
+        "id": "rewa",
+        "name": "Rewa",
+        "censusCode": 430,
+        "stateCensusCode": 23,
+        "districtCensusCode": 13
+      },
+      {
+        "id": "sagar",
+        "name": "Sagar",
+        "censusCode": 427,
+        "stateCensusCode": 23,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "satna",
+        "name": "Satna",
+        "censusCode": 429,
+        "stateCensusCode": 23,
+        "districtCensusCode": 12
+      },
+      {
+        "id": "sehore",
+        "name": "Sehore",
+        "censusCode": 445,
+        "stateCensusCode": 23,
+        "districtCensusCode": 28
+      },
+      {
+        "id": "seoni",
+        "name": "Seoni",
+        "censusCode": 456,
+        "stateCensusCode": 23,
+        "districtCensusCode": 39
+      },
+      {
+        "id": "shahdol",
+        "name": "Shahdol",
+        "censusCode": 460,
+        "stateCensusCode": 23,
+        "districtCensusCode": 43
+      },
+      {
+        "id": "shajapur",
+        "name": "Shajapur",
+        "censusCode": 436,
+        "stateCensusCode": 23,
+        "districtCensusCode": 19
+      },
+      {
+        "id": "sheopur",
+        "name": "Sheopur",
+        "censusCode": 418,
+        "stateCensusCode": 23,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "shivpuri",
+        "name": "Shivpuri",
+        "censusCode": 423,
+        "stateCensusCode": 23,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "sidhi",
+        "name": "Sidhi",
+        "censusCode": 462,
+        "stateCensusCode": 23,
+        "districtCensusCode": 45
+      },
+      {
+        "id": "singrauli",
+        "name": "Singrauli",
+        "censusCode": 463,
+        "stateCensusCode": 23,
+        "districtCensusCode": 46
+      },
+      {
+        "id": "tikamgarh",
+        "name": "Tikamgarh",
+        "censusCode": 424,
+        "stateCensusCode": 23,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "ujjain",
+        "name": "Ujjain",
+        "censusCode": 435,
+        "stateCensusCode": 23,
+        "districtCensusCode": 18
+      },
+      {
+        "id": "umaria",
+        "name": "Umaria",
+        "censusCode": 431,
+        "stateCensusCode": 23,
+        "districtCensusCode": 14
+      },
+      {
+        "id": "vidisha",
+        "name": "Vidisha",
+        "censusCode": 443,
+        "stateCensusCode": 23,
+        "districtCensusCode": 26
+      },
+      {
+        "id": "west_nimar",
+        "name": "West Nimar",
+        "censusCode": 440,
+        "stateCensusCode": 23,
+        "districtCensusCode": 23
+      }
+    ]
+  },
+  {
+    "name": "Maharashtra",
+    "id": "maharashtra",
+    "districts": [
+      {
+        "id": "ahmadnagar",
+        "name": "Ahmadnagar",
+        "censusCode": 522,
+        "stateCensusCode": 27,
+        "districtCensusCode": 26
+      },
+      {
+        "id": "akola",
+        "name": "Akola",
+        "censusCode": 501,
+        "stateCensusCode": 27,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "amravati",
+        "name": "Amravati",
+        "censusCode": 503,
+        "stateCensusCode": 27,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "aurangabad",
+        "name": "Aurangabad",
+        "censusCode": 515,
+        "stateCensusCode": 27,
+        "districtCensusCode": 19
+      },
+      {
+        "id": "bhandara",
+        "name": "Bhandara",
+        "censusCode": 506,
+        "stateCensusCode": 27,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "bid",
+        "name": "Bid",
+        "censusCode": 523,
+        "stateCensusCode": 27,
+        "districtCensusCode": 27
+      },
+      {
+        "id": "buldana",
+        "name": "Buldana",
+        "censusCode": 500,
+        "stateCensusCode": 27,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "chandrapur",
+        "name": "Chandrapur",
+        "censusCode": 509,
+        "stateCensusCode": 27,
+        "districtCensusCode": 13
+      },
+      {
+        "id": "dhule",
+        "name": "Dhule",
+        "censusCode": 498,
+        "stateCensusCode": 27,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "garhchiroli",
+        "name": "Garhchiroli",
+        "censusCode": 508,
+        "stateCensusCode": 27,
+        "districtCensusCode": 12
+      },
+      {
+        "id": "gondiya",
+        "name": "Gondiya",
+        "censusCode": 507,
+        "stateCensusCode": 27,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "hingoli",
+        "name": "Hingoli",
+        "censusCode": 512,
+        "stateCensusCode": 27,
+        "districtCensusCode": 16
+      },
+      {
+        "id": "jalgaon",
+        "name": "Jalgaon",
+        "censusCode": 499,
+        "stateCensusCode": 27,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "jalna",
+        "name": "Jalna",
+        "censusCode": 514,
+        "stateCensusCode": 27,
+        "districtCensusCode": 18
+      },
+      {
+        "id": "kolhapur",
+        "name": "Kolhapur",
+        "censusCode": 530,
+        "stateCensusCode": 27,
+        "districtCensusCode": 34
+      },
+      {
+        "id": "latur",
+        "name": "Latur",
+        "censusCode": 524,
+        "stateCensusCode": 27,
+        "districtCensusCode": 28
+      },
+      {
+        "id": "mumbai",
+        "name": "Mumbai",
+        "censusCode": 519,
+        "stateCensusCode": 27,
+        "districtCensusCode": 23
+      },
+      {
+        "id": "mumbai_suburban",
+        "name": "Mumbai Suburban",
+        "censusCode": 518,
+        "stateCensusCode": 27,
+        "districtCensusCode": 22
+      },
+      {
+        "id": "nagpur",
+        "name": "Nagpur",
+        "censusCode": 505,
+        "stateCensusCode": 27,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "nanded",
+        "name": "Nanded",
+        "censusCode": 511,
+        "stateCensusCode": 27,
+        "districtCensusCode": 15
+      },
+      {
+        "id": "nandurbar",
+        "name": "Nandurbar",
+        "censusCode": 497,
+        "stateCensusCode": 27,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "nashik",
+        "name": "Nashik",
+        "censusCode": 516,
+        "stateCensusCode": 27,
+        "districtCensusCode": 20
+      },
+      {
+        "id": "osmanabad",
+        "name": "Osmanabad",
+        "censusCode": 525,
+        "stateCensusCode": 27,
+        "districtCensusCode": 29
+      },
+      {
+        "id": "parbhani",
+        "name": "Parbhani",
+        "censusCode": 513,
+        "stateCensusCode": 27,
+        "districtCensusCode": 17
+      },
+      {
+        "id": "pune",
+        "name": "Pune",
+        "censusCode": 521,
+        "stateCensusCode": 27,
+        "districtCensusCode": 25
+      },
+      {
+        "id": "raigarh",
+        "name": "Raigarh",
+        "censusCode": 520,
+        "stateCensusCode": 27,
+        "districtCensusCode": 24
+      },
+      {
+        "id": "ratnagiri",
+        "name": "Ratnagiri",
+        "censusCode": 528,
+        "stateCensusCode": 27,
+        "districtCensusCode": 32
+      },
+      {
+        "id": "sangli",
+        "name": "Sangli",
+        "censusCode": 531,
+        "stateCensusCode": 27,
+        "districtCensusCode": 35
+      },
+      {
+        "id": "satara",
+        "name": "Satara",
+        "censusCode": 527,
+        "stateCensusCode": 27,
+        "districtCensusCode": 31
+      },
+      {
+        "id": "sindhudurg",
+        "name": "Sindhudurg",
+        "censusCode": 529,
+        "stateCensusCode": 27,
+        "districtCensusCode": 33
+      },
+      {
+        "id": "solapur",
+        "name": "Solapur",
+        "censusCode": 526,
+        "stateCensusCode": 27,
+        "districtCensusCode": 30
+      },
+      {
+        "id": "thane",
+        "name": "Thane",
+        "censusCode": 517,
+        "stateCensusCode": 27,
+        "districtCensusCode": 21
+      },
+      {
+        "id": "wardha",
+        "name": "Wardha",
+        "censusCode": 504,
+        "stateCensusCode": 27,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "washim",
+        "name": "Washim",
+        "censusCode": 502,
+        "stateCensusCode": 27,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "yavatmal",
+        "name": "Yavatmal",
+        "censusCode": 510,
+        "stateCensusCode": 27,
+        "districtCensusCode": 14
+      }
+    ]
+  },
+  {
+    "name": "Manipur",
+    "id": "manipur",
+    "districts": [
+      {
+        "id": "bishnupur",
+        "name": "Bishnupur",
+        "censusCode": 275,
+        "stateCensusCode": 14,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "chandel",
+        "name": "Chandel",
+        "censusCode": 280,
+        "stateCensusCode": 14,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "churachandpur",
+        "name": "Churachandpur",
+        "censusCode": 274,
+        "stateCensusCode": 14,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "imphal_east",
+        "name": "Imphal East",
+        "censusCode": 278,
+        "stateCensusCode": 14,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "imphal_west",
+        "name": "Imphal West",
+        "censusCode": 277,
+        "stateCensusCode": 14,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "senapati",
+        "name": "Senapati",
+        "censusCode": 272,
+        "stateCensusCode": 14,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "tamenglong",
+        "name": "Tamenglong",
+        "censusCode": 273,
+        "stateCensusCode": 14,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "thoubal",
+        "name": "Thoubal",
+        "censusCode": 276,
+        "stateCensusCode": 14,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "ukhrul",
+        "name": "Ukhrul",
+        "censusCode": 279,
+        "stateCensusCode": 14,
+        "districtCensusCode": 8
+      }
+    ]
+  },
+  {
+    "name": "Meghalaya",
+    "id": "meghalaya",
+    "districts": [
+      {
+        "id": "east_garo_hills",
+        "name": "East Garo Hills",
+        "censusCode": 294,
+        "stateCensusCode": 17,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "east_khasi_hills",
+        "name": "East Khasi Hills",
+        "censusCode": 298,
+        "stateCensusCode": 17,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "jaintia_hills",
+        "name": "Jaintia Hills",
+        "censusCode": 299,
+        "stateCensusCode": 17,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "ri_bhoi",
+        "name": "Ri Bhoi",
+        "censusCode": 297,
+        "stateCensusCode": 17,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "south_garo_hills",
+        "name": "South Garo Hills",
+        "censusCode": 295,
+        "stateCensusCode": 17,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "west_garo_hills",
+        "name": "West Garo Hills",
+        "censusCode": 293,
+        "stateCensusCode": 17,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "west_khasi_hills",
+        "name": "West Khasi Hills",
+        "censusCode": 296,
+        "stateCensusCode": 17,
+        "districtCensusCode": 4
+      }
+    ]
+  },
+  {
+    "name": "Mizoram",
+    "id": "mizoram",
+    "districts": [
+      {
+        "id": "aizawl",
+        "name": "Aizawl",
+        "censusCode": 283,
+        "stateCensusCode": 15,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "champhai",
+        "name": "Champhai",
+        "censusCode": 284,
+        "stateCensusCode": 15,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "kolasib",
+        "name": "Kolasib",
+        "censusCode": 282,
+        "stateCensusCode": 15,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "lawangtlai",
+        "name": "Lawangtlai",
+        "censusCode": 287,
+        "stateCensusCode": 15,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "lunglei",
+        "name": "Lunglei",
+        "censusCode": 286,
+        "stateCensusCode": 15,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "mamit",
+        "name": "Mamit",
+        "censusCode": 281,
+        "stateCensusCode": 15,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "saiha",
+        "name": "Saiha",
+        "censusCode": 288,
+        "stateCensusCode": 15,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "serchhip",
+        "name": "Serchhip",
+        "censusCode": 285,
+        "stateCensusCode": 15,
+        "districtCensusCode": 5
+      }
+    ]
+  },
+  {
+    "name": "NCT of Delhi",
+    "id": "nct_of_delhi",
+    "districts": [
+      {
+        "id": "central",
+        "name": "Central",
+        "censusCode": 95,
+        "stateCensusCode": 7,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "east",
+        "name": "East",
+        "censusCode": 93,
+        "stateCensusCode": 7,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "new_delhi",
+        "name": "New Delhi",
+        "censusCode": 94,
+        "stateCensusCode": 7,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "north",
+        "name": "North",
+        "censusCode": 91,
+        "stateCensusCode": 7,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "north_east",
+        "name": "North East",
+        "censusCode": 92,
+        "stateCensusCode": 7,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "north_west",
+        "name": "North West",
+        "censusCode": 90,
+        "stateCensusCode": 7,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "south",
+        "name": "South",
+        "censusCode": 98,
+        "stateCensusCode": 7,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "south_west",
+        "name": "South West",
+        "censusCode": 97,
+        "stateCensusCode": 7,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "west",
+        "name": "West",
+        "censusCode": 96,
+        "stateCensusCode": 7,
+        "districtCensusCode": 7
+      }
+    ]
+  },
+  {
+    "name": "Nagaland",
+    "id": "nagaland",
+    "districts": [
+      {
+        "id": "dimapur",
+        "name": "Dimapur",
+        "censusCode": 265,
+        "stateCensusCode": 13,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "kiphire",
+        "name": "Kiphire",
+        "censusCode": 269,
+        "stateCensusCode": 13,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "kohima",
+        "name": "Kohima",
+        "censusCode": 270,
+        "stateCensusCode": 13,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "longleng",
+        "name": "Longleng",
+        "censusCode": 268,
+        "stateCensusCode": 13,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "mokokchung",
+        "name": "Mokokchung",
+        "censusCode": 262,
+        "stateCensusCode": 13,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "mon",
+        "name": "Mon",
+        "censusCode": 261,
+        "stateCensusCode": 13,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "peren",
+        "name": "Peren",
+        "censusCode": 271,
+        "stateCensusCode": 13,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "phek",
+        "name": "Phek",
+        "censusCode": 266,
+        "stateCensusCode": 13,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "tuensang",
+        "name": "Tuensang",
+        "censusCode": 267,
+        "stateCensusCode": 13,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "wokha",
+        "name": "Wokha",
+        "censusCode": 264,
+        "stateCensusCode": 13,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "zunheboto",
+        "name": "Zunheboto",
+        "censusCode": 263,
+        "stateCensusCode": 13,
+        "districtCensusCode": 3
+      }
+    ]
+  },
+  {
+    "name": "Odisha",
+    "id": "odisha",
+    "districts": [
+      {
+        "id": "anugul",
+        "name": "Anugul",
+        "censusCode": 384,
+        "stateCensusCode": 21,
+        "districtCensusCode": 15
+      },
+      {
+        "id": "balangir",
+        "name": "Balangir",
+        "censusCode": 393,
+        "stateCensusCode": 21,
+        "districtCensusCode": 24
+      },
+      {
+        "id": "baleshwar",
+        "name": "Baleshwar",
+        "censusCode": 377,
+        "stateCensusCode": 21,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "bargarh",
+        "name": "Bargarh",
+        "censusCode": 370,
+        "stateCensusCode": 21,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "bauda",
+        "name": "Bauda",
+        "censusCode": 391,
+        "stateCensusCode": 21,
+        "districtCensusCode": 22
+      },
+      {
+        "id": "bhadrak",
+        "name": "Bhadrak",
+        "censusCode": 378,
+        "stateCensusCode": 21,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "cuttack",
+        "name": "Cuttack",
+        "censusCode": 381,
+        "stateCensusCode": 21,
+        "districtCensusCode": 12
+      },
+      {
+        "id": "debagarh",
+        "name": "Debagarh",
+        "censusCode": 373,
+        "stateCensusCode": 21,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "dhenkanal",
+        "name": "Dhenkanal",
+        "censusCode": 383,
+        "stateCensusCode": 21,
+        "districtCensusCode": 14
+      },
+      {
+        "id": "gajapati",
+        "name": "Gajapati",
+        "censusCode": 389,
+        "stateCensusCode": 21,
+        "districtCensusCode": 20
+      },
+      {
+        "id": "ganjam",
+        "name": "Ganjam",
+        "censusCode": 388,
+        "stateCensusCode": 21,
+        "districtCensusCode": 19
+      },
+      {
+        "id": "jagatsinghapur",
+        "name": "Jagatsinghapur",
+        "censusCode": 380,
+        "stateCensusCode": 21,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "jajapur",
+        "name": "Jajapur",
+        "censusCode": 382,
+        "stateCensusCode": 21,
+        "districtCensusCode": 13
+      },
+      {
+        "id": "jharsuguda",
+        "name": "Jharsuguda",
+        "censusCode": 371,
+        "stateCensusCode": 21,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "kalahandi",
+        "name": "Kalahandi",
+        "censusCode": 395,
+        "stateCensusCode": 21,
+        "districtCensusCode": 26
+      },
+      {
+        "id": "kandhamal",
+        "name": "Kandhamal",
+        "censusCode": 390,
+        "stateCensusCode": 21,
+        "districtCensusCode": 21
+      },
+      {
+        "id": "kendrapara",
+        "name": "Kendrapara",
+        "censusCode": 379,
+        "stateCensusCode": 21,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "kendujhar",
+        "name": "Kendujhar",
+        "censusCode": 375,
+        "stateCensusCode": 21,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "khordha",
+        "name": "Khordha",
+        "censusCode": 386,
+        "stateCensusCode": 21,
+        "districtCensusCode": 17
+      },
+      {
+        "id": "koraput",
+        "name": "Koraput",
+        "censusCode": 398,
+        "stateCensusCode": 21,
+        "districtCensusCode": 29
+      },
+      {
+        "id": "malkangiri",
+        "name": "Malkangiri",
+        "censusCode": 399,
+        "stateCensusCode": 21,
+        "districtCensusCode": 30
+      },
+      {
+        "id": "mayurbhanj",
+        "name": "Mayurbhanj",
+        "censusCode": 376,
+        "stateCensusCode": 21,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "nabarangapur",
+        "name": "Nabarangapur",
+        "censusCode": 397,
+        "stateCensusCode": 21,
+        "districtCensusCode": 28
+      },
+      {
+        "id": "nayagarh",
+        "name": "Nayagarh",
+        "censusCode": 385,
+        "stateCensusCode": 21,
+        "districtCensusCode": 16
+      },
+      {
+        "id": "nuapada",
+        "name": "Nuapada",
+        "censusCode": 394,
+        "stateCensusCode": 21,
+        "districtCensusCode": 25
+      },
+      {
+        "id": "puri",
+        "name": "Puri",
+        "censusCode": 387,
+        "stateCensusCode": 21,
+        "districtCensusCode": 18
+      },
+      {
+        "id": "rayagada",
+        "name": "Rayagada",
+        "censusCode": 396,
+        "stateCensusCode": 21,
+        "districtCensusCode": 27
+      },
+      {
+        "id": "sambalpur",
+        "name": "Sambalpur",
+        "censusCode": 372,
+        "stateCensusCode": 21,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "subarnapur",
+        "name": "Subarnapur",
+        "censusCode": 392,
+        "stateCensusCode": 21,
+        "districtCensusCode": 23
+      },
+      {
+        "id": "sundargarh",
+        "name": "Sundargarh",
+        "censusCode": 374,
+        "stateCensusCode": 21,
+        "districtCensusCode": 5
+      }
+    ]
+  },
+  {
+    "name": "Puducherry",
+    "id": "puducherry",
+    "districts": [
+      {
+        "id": "karaikal",
+        "name": "Karaikal",
+        "censusCode": 637,
+        "stateCensusCode": 34,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "mahe",
+        "name": "Mahe",
+        "censusCode": 636,
+        "stateCensusCode": 34,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "puducherry",
+        "name": "Puducherry",
+        "censusCode": 635,
+        "stateCensusCode": 34,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "yanam",
+        "name": "Yanam",
+        "censusCode": 634,
+        "stateCensusCode": 34,
+        "districtCensusCode": 1
+      }
+    ]
+  },
+  {
+    "name": "Punjab",
+    "id": "punjab",
+    "districts": [
+      {
+        "id": "amritsar",
+        "name": "Amritsar",
+        "censusCode": 49,
+        "stateCensusCode": 3,
+        "districtCensusCode": 15
+      },
+      {
+        "id": "barnala",
+        "name": "Barnala",
+        "censusCode": 54,
+        "stateCensusCode": 3,
+        "districtCensusCode": 20
+      },
+      {
+        "id": "bathinda",
+        "name": "Bathinda",
+        "censusCode": 46,
+        "stateCensusCode": 3,
+        "districtCensusCode": 12
+      },
+      {
+        "id": "faridkot",
+        "name": "Faridkot",
+        "censusCode": 45,
+        "stateCensusCode": 3,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "fatehgarh_sahib",
+        "name": "Fatehgarh Sahib",
+        "censusCode": 40,
+        "stateCensusCode": 3,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "firozpur",
+        "name": "Firozpur",
+        "censusCode": 43,
+        "stateCensusCode": 3,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "gurdaspur",
+        "name": "Gurdaspur",
+        "censusCode": 35,
+        "stateCensusCode": 3,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "hoshiarpur",
+        "name": "Hoshiarpur",
+        "censusCode": 38,
+        "stateCensusCode": 3,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "jalandhar",
+        "name": "Jalandhar",
+        "censusCode": 37,
+        "stateCensusCode": 3,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "kapurthala",
+        "name": "Kapurthala",
+        "censusCode": 36,
+        "stateCensusCode": 3,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "ludhiana",
+        "name": "Ludhiana",
+        "censusCode": 41,
+        "stateCensusCode": 3,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "mansa",
+        "name": "Mansa",
+        "censusCode": 47,
+        "stateCensusCode": 3,
+        "districtCensusCode": 13
+      },
+      {
+        "id": "moga",
+        "name": "Moga",
+        "censusCode": 42,
+        "stateCensusCode": 3,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "muktsar",
+        "name": "Muktsar",
+        "censusCode": 44,
+        "stateCensusCode": 3,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "patiala",
+        "name": "Patiala",
+        "censusCode": 48,
+        "stateCensusCode": 3,
+        "districtCensusCode": 14
+      },
+      {
+        "id": "rupnagar",
+        "name": "Rupnagar",
+        "censusCode": 51,
+        "stateCensusCode": 3,
+        "districtCensusCode": 17
+      },
+      {
+        "id": "sahibzada_ajit_singh_nagar",
+        "name": "Sahibzada Ajit Singh Nagar",
+        "censusCode": 52,
+        "stateCensusCode": 3,
+        "districtCensusCode": 18
+      },
+      {
+        "id": "sangrur",
+        "name": "Sangrur",
+        "censusCode": 53,
+        "stateCensusCode": 3,
+        "districtCensusCode": 19
+      },
+      {
+        "id": "shahid_bhagat_singh_nagar",
+        "name": "Shahid Bhagat Singh Nagar",
+        "censusCode": 39,
+        "stateCensusCode": 3,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "tarn_taran",
+        "name": "Tarn Taran",
+        "censusCode": 50,
+        "stateCensusCode": 3,
+        "districtCensusCode": 16
+      }
+    ]
+  },
+  {
+    "name": "Rajasthan",
+    "id": "rajasthan",
+    "districts": [
+      {
+        "id": "ajmer",
+        "name": "Ajmer",
+        "censusCode": 119,
+        "stateCensusCode": 8,
+        "districtCensusCode": 21
+      },
+      {
+        "id": "alwar",
+        "name": "Alwar",
+        "censusCode": 104,
+        "stateCensusCode": 8,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "banswara",
+        "name": "Banswara",
+        "censusCode": 125,
+        "stateCensusCode": 8,
+        "districtCensusCode": 27
+      },
+      {
+        "id": "baran",
+        "name": "Baran",
+        "censusCode": 128,
+        "stateCensusCode": 8,
+        "districtCensusCode": 30
+      },
+      {
+        "id": "barmer",
+        "name": "Barmer",
+        "censusCode": 115,
+        "stateCensusCode": 8,
+        "districtCensusCode": 17
+      },
+      {
+        "id": "bharatpur",
+        "name": "Bharatpur",
+        "censusCode": 105,
+        "stateCensusCode": 8,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "bhilwara",
+        "name": "Bhilwara",
+        "censusCode": 122,
+        "stateCensusCode": 8,
+        "districtCensusCode": 24
+      },
+      {
+        "id": "bikaner",
+        "name": "Bikaner",
+        "censusCode": 101,
+        "stateCensusCode": 8,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "bundi",
+        "name": "Bundi",
+        "censusCode": 121,
+        "stateCensusCode": 8,
+        "districtCensusCode": 23
+      },
+      {
+        "id": "chittaurgarh",
+        "name": "Chittaurgarh",
+        "censusCode": 126,
+        "stateCensusCode": 8,
+        "districtCensusCode": 28
+      },
+      {
+        "id": "churu",
+        "name": "Churu",
+        "censusCode": 102,
+        "stateCensusCode": 8,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "dausa",
+        "name": "Dausa",
+        "censusCode": 109,
+        "stateCensusCode": 8,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "dhaulpur",
+        "name": "Dhaulpur",
+        "censusCode": 106,
+        "stateCensusCode": 8,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "dungarpur",
+        "name": "Dungarpur",
+        "censusCode": 124,
+        "stateCensusCode": 8,
+        "districtCensusCode": 26
+      },
+      {
+        "id": "ganganagar",
+        "name": "Ganganagar",
+        "censusCode": 99,
+        "stateCensusCode": 8,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "hanumangarh",
+        "name": "Hanumangarh",
+        "censusCode": 100,
+        "stateCensusCode": 8,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "jaipur",
+        "name": "Jaipur",
+        "censusCode": 110,
+        "stateCensusCode": 8,
+        "districtCensusCode": 12
+      },
+      {
+        "id": "jaisalmer",
+        "name": "Jaisalmer",
+        "censusCode": 114,
+        "stateCensusCode": 8,
+        "districtCensusCode": 16
+      },
+      {
+        "id": "jalor",
+        "name": "Jalor",
+        "censusCode": 116,
+        "stateCensusCode": 8,
+        "districtCensusCode": 18
+      },
+      {
+        "id": "jhalawar",
+        "name": "Jhalawar",
+        "censusCode": 129,
+        "stateCensusCode": 8,
+        "districtCensusCode": 31
+      },
+      {
+        "id": "jhunjhunun",
+        "name": "Jhunjhunun",
+        "censusCode": 103,
+        "stateCensusCode": 8,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "jodhpur",
+        "name": "Jodhpur",
+        "censusCode": 113,
+        "stateCensusCode": 8,
+        "districtCensusCode": 15
+      },
+      {
+        "id": "karauli",
+        "name": "Karauli",
+        "censusCode": 107,
+        "stateCensusCode": 8,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "kota",
+        "name": "Kota",
+        "censusCode": 127,
+        "stateCensusCode": 8,
+        "districtCensusCode": 29
+      },
+      {
+        "id": "nagaur",
+        "name": "Nagaur",
+        "censusCode": 112,
+        "stateCensusCode": 8,
+        "districtCensusCode": 14
+      },
+      {
+        "id": "pali",
+        "name": "Pali",
+        "censusCode": 118,
+        "stateCensusCode": 8,
+        "districtCensusCode": 20
+      },
+      {
+        "id": "pratapgarh",
+        "name": "Pratapgarh",
+        "censusCode": 131,
+        "stateCensusCode": 8,
+        "districtCensusCode": 33
+      },
+      {
+        "id": "rajsamand",
+        "name": "Rajsamand",
+        "censusCode": 123,
+        "stateCensusCode": 8,
+        "districtCensusCode": 25
+      },
+      {
+        "id": "sawai_madhopur",
+        "name": "Sawai Madhopur",
+        "censusCode": 108,
+        "stateCensusCode": 8,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "sikar",
+        "name": "Sikar",
+        "censusCode": 111,
+        "stateCensusCode": 8,
+        "districtCensusCode": 13
+      },
+      {
+        "id": "sirohi",
+        "name": "Sirohi",
+        "censusCode": 117,
+        "stateCensusCode": 8,
+        "districtCensusCode": 19
+      },
+      {
+        "id": "tonk",
+        "name": "Tonk",
+        "censusCode": 120,
+        "stateCensusCode": 8,
+        "districtCensusCode": 22
+      },
+      {
+        "id": "udaipur",
+        "name": "Udaipur",
+        "censusCode": 130,
+        "stateCensusCode": 8,
+        "districtCensusCode": 32
+      }
+    ]
+  },
+  {
+    "name": "Sikkim",
+    "id": "sikkim",
+    "districts": [
+      {
+        "id": "east",
+        "name": "East",
+        "censusCode": 244,
+        "stateCensusCode": 11,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "north",
+        "name": "North",
+        "censusCode": 241,
+        "stateCensusCode": 11,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "south",
+        "name": "South",
+        "censusCode": 243,
+        "stateCensusCode": 11,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "west",
+        "name": "West",
+        "censusCode": 242,
+        "stateCensusCode": 11,
+        "districtCensusCode": 2
+      }
+    ]
+  },
+  {
+    "name": "Tamil Nadu",
+    "id": "tamil_nadu",
+    "districts": [
+      {
+        "id": "ariyalur",
+        "name": "Ariyalur",
+        "censusCode": 616,
+        "stateCensusCode": 33,
+        "districtCensusCode": 15
+      },
+      {
+        "id": "chennai",
+        "name": "Chennai",
+        "censusCode": 603,
+        "stateCensusCode": 33,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "coimbatore",
+        "name": "Coimbatore",
+        "censusCode": 632,
+        "stateCensusCode": 33,
+        "districtCensusCode": 31
+      },
+      {
+        "id": "cuddalore",
+        "name": "Cuddalore",
+        "censusCode": 617,
+        "stateCensusCode": 33,
+        "districtCensusCode": 16
+      },
+      {
+        "id": "dharmapuri",
+        "name": "Dharmapuri",
+        "censusCode": 630,
+        "stateCensusCode": 33,
+        "districtCensusCode": 29
+      },
+      {
+        "id": "dindigul",
+        "name": "Dindigul",
+        "censusCode": 612,
+        "stateCensusCode": 33,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "erode",
+        "name": "Erode",
+        "censusCode": 610,
+        "stateCensusCode": 33,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "kancheepuram",
+        "name": "Kancheepuram",
+        "censusCode": 604,
+        "stateCensusCode": 33,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "kanniyakumari",
+        "name": "Kanniyakumari",
+        "censusCode": 629,
+        "stateCensusCode": 33,
+        "districtCensusCode": 28
+      },
+      {
+        "id": "karur",
+        "name": "Karur",
+        "censusCode": 613,
+        "stateCensusCode": 33,
+        "districtCensusCode": 12
+      },
+      {
+        "id": "krishnagiri",
+        "name": "Krishnagiri",
+        "censusCode": 631,
+        "stateCensusCode": 33,
+        "districtCensusCode": 30
+      },
+      {
+        "id": "madurai",
+        "name": "Madurai",
+        "censusCode": 623,
+        "stateCensusCode": 33,
+        "districtCensusCode": 22
+      },
+      {
+        "id": "nagappattinam",
+        "name": "Nagappattinam",
+        "censusCode": 618,
+        "stateCensusCode": 33,
+        "districtCensusCode": 17
+      },
+      {
+        "id": "namakkal",
+        "name": "Namakkal",
+        "censusCode": 609,
+        "stateCensusCode": 33,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "perambalur",
+        "name": "Perambalur",
+        "censusCode": 615,
+        "stateCensusCode": 33,
+        "districtCensusCode": 14
+      },
+      {
+        "id": "pudukkottai",
+        "name": "Pudukkottai",
+        "censusCode": 621,
+        "stateCensusCode": 33,
+        "districtCensusCode": 20
+      },
+      {
+        "id": "ramanathapuram",
+        "name": "Ramanathapuram",
+        "censusCode": 626,
+        "stateCensusCode": 33,
+        "districtCensusCode": 25
+      },
+      {
+        "id": "salem",
+        "name": "Salem",
+        "censusCode": 608,
+        "stateCensusCode": 33,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "sivaganga",
+        "name": "Sivaganga",
+        "censusCode": 622,
+        "stateCensusCode": 33,
+        "districtCensusCode": 21
+      },
+      {
+        "id": "thanjavur",
+        "name": "Thanjavur",
+        "censusCode": 620,
+        "stateCensusCode": 33,
+        "districtCensusCode": 19
+      },
+      {
+        "id": "the_nilgiris",
+        "name": "The Nilgiris",
+        "censusCode": 611,
+        "stateCensusCode": 33,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "theni",
+        "name": "Theni",
+        "censusCode": 624,
+        "stateCensusCode": 33,
+        "districtCensusCode": 23
+      },
+      {
+        "id": "thiruvallur",
+        "name": "Thiruvallur",
+        "censusCode": 602,
+        "stateCensusCode": 33,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "thiruvarur",
+        "name": "Thiruvarur",
+        "censusCode": 619,
+        "stateCensusCode": 33,
+        "districtCensusCode": 18
+      },
+      {
+        "id": "thoothukkudi",
+        "name": "Thoothukkudi",
+        "censusCode": 627,
+        "stateCensusCode": 33,
+        "districtCensusCode": 26
+      },
+      {
+        "id": "tiruchirappalli",
+        "name": "Tiruchirappalli",
+        "censusCode": 614,
+        "stateCensusCode": 33,
+        "districtCensusCode": 13
+      },
+      {
+        "id": "tirunelveli",
+        "name": "Tirunelveli",
+        "censusCode": 628,
+        "stateCensusCode": 33,
+        "districtCensusCode": 27
+      },
+      {
+        "id": "tiruppur",
+        "name": "Tiruppur",
+        "censusCode": 633,
+        "stateCensusCode": 33,
+        "districtCensusCode": 32
+      },
+      {
+        "id": "tiruvannamalai",
+        "name": "Tiruvannamalai",
+        "censusCode": 606,
+        "stateCensusCode": 33,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "vellore",
+        "name": "Vellore",
+        "censusCode": 605,
+        "stateCensusCode": 33,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "viluppuram",
+        "name": "Viluppuram",
+        "censusCode": 607,
+        "stateCensusCode": 33,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "virudunagar",
+        "name": "Virudunagar",
+        "censusCode": 625,
+        "stateCensusCode": 33,
+        "districtCensusCode": 24
+      }
+    ]
+  },
+  {
+    "name": "Tripura",
+    "id": "tripura",
+    "districts": [
+      {
+        "id": "dhalai",
+        "name": "Dhalai",
+        "censusCode": 291,
+        "stateCensusCode": 16,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "north_tripura",
+        "name": "North Tripura",
+        "censusCode": 292,
+        "stateCensusCode": 16,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "south_tripura",
+        "name": "South Tripura",
+        "censusCode": 290,
+        "stateCensusCode": 16,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "west_tripura",
+        "name": "West Tripura",
+        "censusCode": 289,
+        "stateCensusCode": 16,
+        "districtCensusCode": 1
+      }
+    ]
+  },
+  {
+    "name": "Uttar Pradesh",
+    "id": "uttar_pradesh",
+    "districts": [
+      {
+        "id": "agra",
+        "name": "Agra",
+        "censusCode": 146,
+        "stateCensusCode": 9,
+        "districtCensusCode": 15
+      },
+      {
+        "id": "aligarh",
+        "name": "Aligarh",
+        "censusCode": 143,
+        "stateCensusCode": 9,
+        "districtCensusCode": 12
+      },
+      {
+        "id": "allahabad",
+        "name": "Allahabad",
+        "censusCode": 175,
+        "stateCensusCode": 9,
+        "districtCensusCode": 44
+      },
+      {
+        "id": "ambedkar_nagar",
+        "name": "Ambedkar Nagar",
+        "censusCode": 178,
+        "stateCensusCode": 9,
+        "districtCensusCode": 47
+      },
+      {
+        "id": "auraiya",
+        "name": "Auraiya",
+        "censusCode": 162,
+        "stateCensusCode": 9,
+        "districtCensusCode": 31
+      },
+      {
+        "id": "azamgarh",
+        "name": "Azamgarh",
+        "censusCode": 191,
+        "stateCensusCode": 9,
+        "districtCensusCode": 60
+      },
+      {
+        "id": "baghpat",
+        "name": "Baghpat",
+        "censusCode": 139,
+        "stateCensusCode": 9,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "bahraich",
+        "name": "Bahraich",
+        "censusCode": 180,
+        "stateCensusCode": 9,
+        "districtCensusCode": 49
+      },
+      {
+        "id": "ballia",
+        "name": "Ballia",
+        "censusCode": 193,
+        "stateCensusCode": 9,
+        "districtCensusCode": 62
+      },
+      {
+        "id": "balrampur",
+        "name": "Balrampur",
+        "censusCode": 182,
+        "stateCensusCode": 9,
+        "districtCensusCode": 51
+      },
+      {
+        "id": "banda",
+        "name": "Banda",
+        "censusCode": 170,
+        "stateCensusCode": 9,
+        "districtCensusCode": 39
+      },
+      {
+        "id": "bara_banki",
+        "name": "Bara Banki",
+        "censusCode": 176,
+        "stateCensusCode": 9,
+        "districtCensusCode": 45
+      },
+      {
+        "id": "bareilly",
+        "name": "Bareilly",
+        "censusCode": 150,
+        "stateCensusCode": 9,
+        "districtCensusCode": 19
+      },
+      {
+        "id": "basti",
+        "name": "Basti",
+        "censusCode": 185,
+        "stateCensusCode": 9,
+        "districtCensusCode": 54
+      },
+      {
+        "id": "bijnor",
+        "name": "Bijnor",
+        "censusCode": 134,
+        "stateCensusCode": 9,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "budaun",
+        "name": "Budaun",
+        "censusCode": 149,
+        "stateCensusCode": 9,
+        "districtCensusCode": 18
+      },
+      {
+        "id": "bulandshahr",
+        "name": "Bulandshahr",
+        "censusCode": 142,
+        "stateCensusCode": 9,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "chandauli",
+        "name": "Chandauli",
+        "censusCode": 196,
+        "stateCensusCode": 9,
+        "districtCensusCode": 65
+      },
+      {
+        "id": "chitrakoot",
+        "name": "Chitrakoot",
+        "censusCode": 171,
+        "stateCensusCode": 9,
+        "districtCensusCode": 40
+      },
+      {
+        "id": "deoria",
+        "name": "Deoria",
+        "censusCode": 190,
+        "stateCensusCode": 9,
+        "districtCensusCode": 59
+      },
+      {
+        "id": "etah",
+        "name": "Etah",
+        "censusCode": 201,
+        "stateCensusCode": 9,
+        "districtCensusCode": 70
+      },
+      {
+        "id": "etawah",
+        "name": "Etawah",
+        "censusCode": 161,
+        "stateCensusCode": 9,
+        "districtCensusCode": 30
+      },
+      {
+        "id": "faizabad",
+        "name": "Faizabad",
+        "censusCode": 177,
+        "stateCensusCode": 9,
+        "districtCensusCode": 46
+      },
+      {
+        "id": "farrukhabad",
+        "name": "Farrukhabad",
+        "censusCode": 159,
+        "stateCensusCode": 9,
+        "districtCensusCode": 28
+      },
+      {
+        "id": "fatehpur",
+        "name": "Fatehpur",
+        "censusCode": 172,
+        "stateCensusCode": 9,
+        "districtCensusCode": 41
+      },
+      {
+        "id": "firozabad",
+        "name": "Firozabad",
+        "censusCode": 147,
+        "stateCensusCode": 9,
+        "districtCensusCode": 16
+      },
+      {
+        "id": "gautam_buddha_nagar",
+        "name": "Gautam Buddha Nagar",
+        "censusCode": 141,
+        "stateCensusCode": 9,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "ghaziabad",
+        "name": "Ghaziabad",
+        "censusCode": 140,
+        "stateCensusCode": 9,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "ghazipur",
+        "name": "Ghazipur",
+        "censusCode": 195,
+        "stateCensusCode": 9,
+        "districtCensusCode": 64
+      },
+      {
+        "id": "gonda",
+        "name": "Gonda",
+        "censusCode": 183,
+        "stateCensusCode": 9,
+        "districtCensusCode": 52
+      },
+      {
+        "id": "gorakhpur",
+        "name": "Gorakhpur",
+        "censusCode": 188,
+        "stateCensusCode": 9,
+        "districtCensusCode": 57
+      },
+      {
+        "id": "hamirpur",
+        "name": "Hamirpur",
+        "censusCode": 168,
+        "stateCensusCode": 9,
+        "districtCensusCode": 37
+      },
+      {
+        "id": "hardoi",
+        "name": "Hardoi",
+        "censusCode": 155,
+        "stateCensusCode": 9,
+        "districtCensusCode": 24
+      },
+      {
+        "id": "jalaun",
+        "name": "Jalaun",
+        "censusCode": 165,
+        "stateCensusCode": 9,
+        "districtCensusCode": 34
+      },
+      {
+        "id": "jaunpur",
+        "name": "Jaunpur",
+        "censusCode": 194,
+        "stateCensusCode": 9,
+        "districtCensusCode": 63
+      },
+      {
+        "id": "jhansi",
+        "name": "Jhansi",
+        "censusCode": 166,
+        "stateCensusCode": 9,
+        "districtCensusCode": 35
+      },
+      {
+        "id": "jyotiba_phule_nagar",
+        "name": "Jyotiba Phule Nagar",
+        "censusCode": 137,
+        "stateCensusCode": 9,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "kannauj",
+        "name": "Kannauj",
+        "censusCode": 160,
+        "stateCensusCode": 9,
+        "districtCensusCode": 29
+      },
+      {
+        "id": "kanpur_dehat",
+        "name": "Kanpur Dehat",
+        "censusCode": 163,
+        "stateCensusCode": 9,
+        "districtCensusCode": 32
+      },
+      {
+        "id": "kanpur_nagar",
+        "name": "Kanpur Nagar",
+        "censusCode": 164,
+        "stateCensusCode": 9,
+        "districtCensusCode": 33
+      },
+      {
+        "id": "kansiram_nagar",
+        "name": "Kansiram Nagar",
+        "censusCode": 202,
+        "stateCensusCode": 9,
+        "districtCensusCode": 71
+      },
+      {
+        "id": "kaushambi",
+        "name": "Kaushambi",
+        "censusCode": 174,
+        "stateCensusCode": 9,
+        "districtCensusCode": 43
+      },
+      {
+        "id": "kheri",
+        "name": "Kheri",
+        "censusCode": 153,
+        "stateCensusCode": 9,
+        "districtCensusCode": 22
+      },
+      {
+        "id": "kushinagar",
+        "name": "Kushinagar",
+        "censusCode": 189,
+        "stateCensusCode": 9,
+        "districtCensusCode": 58
+      },
+      {
+        "id": "lalitpur",
+        "name": "Lalitpur",
+        "censusCode": 167,
+        "stateCensusCode": 9,
+        "districtCensusCode": 36
+      },
+      {
+        "id": "lucknow",
+        "name": "Lucknow",
+        "censusCode": 157,
+        "stateCensusCode": 9,
+        "districtCensusCode": 26
+      },
+      {
+        "id": "mahamaya_nagar",
+        "name": "Mahamaya Nagar",
+        "censusCode": 144,
+        "stateCensusCode": 9,
+        "districtCensusCode": 13
+      },
+      {
+        "id": "maharajganj",
+        "name": "Maharajganj",
+        "censusCode": 187,
+        "stateCensusCode": 9,
+        "districtCensusCode": 56
+      },
+      {
+        "id": "mahoba",
+        "name": "Mahoba",
+        "censusCode": 169,
+        "stateCensusCode": 9,
+        "districtCensusCode": 38
+      },
+      {
+        "id": "mainpuri",
+        "name": "Mainpuri",
+        "censusCode": 148,
+        "stateCensusCode": 9,
+        "districtCensusCode": 17
+      },
+      {
+        "id": "mathura",
+        "name": "Mathura",
+        "censusCode": 145,
+        "stateCensusCode": 9,
+        "districtCensusCode": 14
+      },
+      {
+        "id": "mau",
+        "name": "Mau",
+        "censusCode": 192,
+        "stateCensusCode": 9,
+        "districtCensusCode": 61
+      },
+      {
+        "id": "meerut",
+        "name": "Meerut",
+        "censusCode": 138,
+        "stateCensusCode": 9,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "mirzapur",
+        "name": "Mirzapur",
+        "censusCode": 199,
+        "stateCensusCode": 9,
+        "districtCensusCode": 68
+      },
+      {
+        "id": "moradabad",
+        "name": "Moradabad",
+        "censusCode": 135,
+        "stateCensusCode": 9,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "muzaffarnagar",
+        "name": "Muzaffarnagar",
+        "censusCode": 133,
+        "stateCensusCode": 9,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "pilibhit",
+        "name": "Pilibhit",
+        "censusCode": 151,
+        "stateCensusCode": 9,
+        "districtCensusCode": 20
+      },
+      {
+        "id": "pratapgarh",
+        "name": "Pratapgarh",
+        "censusCode": 173,
+        "stateCensusCode": 9,
+        "districtCensusCode": 42
+      },
+      {
+        "id": "rae_bareli",
+        "name": "Rae Bareli",
+        "censusCode": 158,
+        "stateCensusCode": 9,
+        "districtCensusCode": 27
+      },
+      {
+        "id": "rampur",
+        "name": "Rampur",
+        "censusCode": 136,
+        "stateCensusCode": 9,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "saharanpur",
+        "name": "Saharanpur",
+        "censusCode": 132,
+        "stateCensusCode": 9,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "sant_kabir_nagar",
+        "name": "Sant Kabir Nagar",
+        "censusCode": 186,
+        "stateCensusCode": 9,
+        "districtCensusCode": 55
+      },
+      {
+        "id": "sant_ravi_das_nagar_bhadohi_",
+        "name": "Sant Ravi Das Nagar(bhadohi)",
+        "censusCode": 198,
+        "stateCensusCode": 9,
+        "districtCensusCode": 67
+      },
+      {
+        "id": "shahjahanpur",
+        "name": "Shahjahanpur",
+        "censusCode": 152,
+        "stateCensusCode": 9,
+        "districtCensusCode": 21
+      },
+      {
+        "id": "shrawasti",
+        "name": "Shrawasti",
+        "censusCode": 181,
+        "stateCensusCode": 9,
+        "districtCensusCode": 50
+      },
+      {
+        "id": "siddharth_nagar",
+        "name": "Siddharth Nagar",
+        "censusCode": 184,
+        "stateCensusCode": 9,
+        "districtCensusCode": 53
+      },
+      {
+        "id": "sitapur",
+        "name": "Sitapur",
+        "censusCode": 154,
+        "stateCensusCode": 9,
+        "districtCensusCode": 23
+      },
+      {
+        "id": "sonbhadra",
+        "name": "Sonbhadra",
+        "censusCode": 200,
+        "stateCensusCode": 9,
+        "districtCensusCode": 69
+      },
+      {
+        "id": "sultanpur",
+        "name": "Sultanpur",
+        "censusCode": 179,
+        "stateCensusCode": 9,
+        "districtCensusCode": 48
+      },
+      {
+        "id": "unnao",
+        "name": "Unnao",
+        "censusCode": 156,
+        "stateCensusCode": 9,
+        "districtCensusCode": 25
+      },
+      {
+        "id": "varanasi",
+        "name": "Varanasi",
+        "censusCode": 197,
+        "stateCensusCode": 9,
+        "districtCensusCode": 66
+      }
+    ]
+  },
+  {
+    "name": "Uttarakhand",
+    "id": "uttarakhand",
+    "districts": [
+      {
+        "id": "almora",
+        "name": "Almora",
+        "censusCode": 64,
+        "stateCensusCode": 5,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "bageshwar",
+        "name": "Bageshwar",
+        "censusCode": 63,
+        "stateCensusCode": 5,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "chamoli",
+        "name": "Chamoli",
+        "censusCode": 57,
+        "stateCensusCode": 5,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "champawat",
+        "name": "Champawat",
+        "censusCode": 65,
+        "stateCensusCode": 5,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "dehradun",
+        "name": "Dehradun",
+        "censusCode": 60,
+        "stateCensusCode": 5,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "garhwal",
+        "name": "Garhwal",
+        "censusCode": 61,
+        "stateCensusCode": 5,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "hardwar",
+        "name": "Hardwar",
+        "censusCode": 68,
+        "stateCensusCode": 5,
+        "districtCensusCode": 13
+      },
+      {
+        "id": "nainital",
+        "name": "Nainital",
+        "censusCode": 66,
+        "stateCensusCode": 5,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "pithoragarh",
+        "name": "Pithoragarh",
+        "censusCode": 62,
+        "stateCensusCode": 5,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "rudraprayag",
+        "name": "Rudraprayag",
+        "censusCode": 58,
+        "stateCensusCode": 5,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "tehri_garhwal",
+        "name": "Tehri Garhwal",
+        "censusCode": 59,
+        "stateCensusCode": 5,
+        "districtCensusCode": 4
+      },
+      {
+        "id": "udham_singh_nagar",
+        "name": "Udham Singh Nagar",
+        "censusCode": 67,
+        "stateCensusCode": 5,
+        "districtCensusCode": 12
+      },
+      {
+        "id": "uttarkashi",
+        "name": "Uttarkashi",
+        "censusCode": 56,
+        "stateCensusCode": 5,
+        "districtCensusCode": 1
+      }
+    ]
+  },
+  {
+    "name": "West Bengal",
+    "id": "west_bengal",
+    "districts": [
+      {
+        "id": "bankura",
+        "name": "Bankura",
+        "censusCode": 339,
+        "stateCensusCode": 19,
+        "districtCensusCode": 13
+      },
+      {
+        "id": "barddhaman",
+        "name": "Barddhaman",
+        "censusCode": 335,
+        "stateCensusCode": 19,
+        "districtCensusCode": 9
+      },
+      {
+        "id": "birbhum",
+        "name": "Birbhum",
+        "censusCode": 334,
+        "stateCensusCode": 19,
+        "districtCensusCode": 8
+      },
+      {
+        "id": "dakshin_dinajpur",
+        "name": "Dakshin Dinajpur",
+        "censusCode": 331,
+        "stateCensusCode": 19,
+        "districtCensusCode": 5
+      },
+      {
+        "id": "darjiling",
+        "name": "Darjiling",
+        "censusCode": 327,
+        "stateCensusCode": 19,
+        "districtCensusCode": 1
+      },
+      {
+        "id": "haora",
+        "name": "Haora",
+        "censusCode": 341,
+        "stateCensusCode": 19,
+        "districtCensusCode": 15
+      },
+      {
+        "id": "hugli",
+        "name": "Hugli",
+        "censusCode": 338,
+        "stateCensusCode": 19,
+        "districtCensusCode": 12
+      },
+      {
+        "id": "jalpaiguri",
+        "name": "Jalpaiguri",
+        "censusCode": 328,
+        "stateCensusCode": 19,
+        "districtCensusCode": 2
+      },
+      {
+        "id": "koch_bihar",
+        "name": "Koch Bihar",
+        "censusCode": 329,
+        "stateCensusCode": 19,
+        "districtCensusCode": 3
+      },
+      {
+        "id": "kolkata",
+        "name": "Kolkata",
+        "censusCode": 342,
+        "stateCensusCode": 19,
+        "districtCensusCode": 16
+      },
+      {
+        "id": "maldah",
+        "name": "Maldah",
+        "censusCode": 332,
+        "stateCensusCode": 19,
+        "districtCensusCode": 6
+      },
+      {
+        "id": "murshidabad",
+        "name": "Murshidabad",
+        "censusCode": 333,
+        "stateCensusCode": 19,
+        "districtCensusCode": 7
+      },
+      {
+        "id": "nadia",
+        "name": "Nadia",
+        "censusCode": 336,
+        "stateCensusCode": 19,
+        "districtCensusCode": 10
+      },
+      {
+        "id": "north_24_parganas",
+        "name": "North 24 Parganas",
+        "censusCode": 337,
+        "stateCensusCode": 19,
+        "districtCensusCode": 11
+      },
+      {
+        "id": "pashchim_medinipur",
+        "name": "Pashchim Medinipur",
+        "censusCode": 344,
+        "stateCensusCode": 19,
+        "districtCensusCode": 18
+      },
+      {
+        "id": "purba_medinipur",
+        "name": "Purba Medinipur",
+        "censusCode": 345,
+        "stateCensusCode": 19,
+        "districtCensusCode": 19
+      },
+      {
+        "id": "puruliya",
+        "name": "Puruliya",
+        "censusCode": 340,
+        "stateCensusCode": 19,
+        "districtCensusCode": 14
+      },
+      {
+        "id": "south_24_parganas",
+        "name": "South 24 Parganas",
+        "censusCode": 343,
+        "stateCensusCode": 19,
+        "districtCensusCode": 17
+      },
+      {
+        "id": "uttar_dinajpur",
+        "name": "Uttar Dinajpur",
+        "censusCode": 330,
+        "stateCensusCode": 19,
+        "districtCensusCode": 4
+      }
+    ]
+  }
+]
