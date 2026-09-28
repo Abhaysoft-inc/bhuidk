@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Map, { NavigationControl, Source, Layer, FillLayer, LineLayer } from 'react-map-gl/maplibre';
 import type { MapLayerMouseEvent } from 'react-map-gl/maplibre';
 import mapboxgl from 'mapbox-gl';
@@ -173,6 +173,23 @@ export default function MapShell() {
     }
   }, []);
 
+  const mapStyle = useMemo(() => ({
+    version: 8,
+    sources: {
+      osm: {
+        type: 'raster',
+        tiles: ['https://a.tile.openstreetmap.org/{z}/{x}/{y}.png'],
+        tileSize: 256,
+        attribution: '&copy; OpenStreetMap Contributors'
+      }
+    },
+    layers: [{ id: 'osm', type: 'raster', source: 'osm' }]
+  }), []);
+
+  const interactiveLayers = useMemo(() => {
+    return activeToggles.has('parcels') ? ['parcels-fill'] : [];
+  }, [activeToggles]);
+
   return (
     <div className="relative w-full h-[700px] bg-slate-100 rounded-xl overflow-hidden shadow-sm border border-slate-200">
 
@@ -215,19 +232,8 @@ export default function MapShell() {
         {...viewState}
         onMove={evt => setViewState(evt.viewState)}
         mapLib={mapLib as any}
-        mapStyle={{
-          version: 8,
-          sources: {
-            osm: {
-              type: 'raster',
-              tiles: ['https://a.tile.openstreetmap.org/{z}/{x}/{y}.png'],
-              tileSize: 256,
-              attribution: '&copy; OpenStreetMap Contributors'
-            }
-          },
-          layers: [{ id: 'osm', type: 'raster', source: 'osm' }]
-        }}
-        interactiveLayerIds={activeToggles.has('parcels') ? ['parcels-fill'] : []}
+        mapStyle={mapStyle as any}
+        interactiveLayerIds={interactiveLayers}
         onClick={onMapClick}
         onMouseMove={onMapHover}
         onMouseLeave={() => setHoverInfo(null)}
