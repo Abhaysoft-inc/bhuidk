@@ -86,6 +86,29 @@ const borderConflictsStyle: LineLayer = {
   filter: ['>=', ['get', 'litigation_risk_score'], 80]
 };
 
+const MAP_STYLES: Record<string, { label: string; icon: string; tiles: string[] }> = {
+  street: {
+    label: 'Street',
+    icon: '🗺️',
+    tiles: ['https://a.tile.openstreetmap.org/{z}/{x}/{y}.png']
+  },
+  satellite: {
+    label: 'Satellite',
+    icon: '🛰️',
+    tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}']
+  },
+  terrain: {
+    label: 'Terrain',
+    icon: '🏔️',
+    tiles: ['https://tile.opentopomap.org/{z}/{x}/{y}.png']
+  },
+  dark: {
+    label: 'Dark',
+    icon: '🌑',
+    tiles: ['https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png']
+  }
+};
+
 export default function MapShell() {
   const [viewState, setViewState] = useState({
     longitude: 73.8567, // Pune default
@@ -108,6 +131,9 @@ export default function MapShell() {
 
   // Time Machine State
   const [timeMachineParcel, setTimeMachineParcel] = useState<any>(null);
+
+  // Map style
+  const [mapStyleKey, setMapStyleKey] = useState<string>('street');
 
   useEffect(() => {
     fetchLayerData('parcels').then(data => {
@@ -176,19 +202,32 @@ export default function MapShell() {
   const mapStyle = useMemo(() => ({
     version: 8,
     sources: {
-      osm: {
+      basemap: {
         type: 'raster',
-        tiles: ['https://a.tile.openstreetmap.org/{z}/{x}/{y}.png'],
+        tiles: MAP_STYLES[mapStyleKey].tiles,
         tileSize: 256,
         attribution: '&copy; OpenStreetMap Contributors'
       }
     },
-    layers: [{ id: 'osm', type: 'raster', source: 'osm' }]
-  }), []);
+    layers: [{ id: 'basemap', type: 'raster', source: 'basemap' }]
+  }), [mapStyleKey]);
 
   const interactiveLayers = useMemo(() => {
     return activeToggles.has('parcels') ? ['parcels-fill'] : [];
   }, [activeToggles]);
+
+  // Filter parcels by timePeriod — parcels have a `year_registered` field or we simulate via index
+  const filteredLayersData = useMemo(() => {
+    if (!layersData) return null;
+    return {
+      ...layersData,
+      features: layersData.features.filter((_: any, i: number) => {
+        // Simulate: parcels registered in years from 2015 to 2026 based on index
+        const registeredYear = 2015 + (i % 12);
+        return registeredYear <= timePeriod;
+      })
+    };
+  }, [layersData, timePeriod]);
 
   return (
     <div className="relative w-full h-[700px] bg-slate-100 rounded-xl overflow-hidden shadow-sm border border-slate-200">
@@ -238,21 +277,21 @@ export default function MapShell() {
         onMouseMove={onMapHover}
         onMouseLeave={() => setHoverInfo(null)}
       >
-        {activeToggles.has('parcels') && layersData && (
-          <Source id="parcels" type="geojson" data={layersData}>
+        {activeToggles.has('parcels') && filteredLayersData && (
+          <Source id="parcels" type="geojson" data={filteredLayersData}>
             <Layer {...parcelsFillStyle} />
             <Layer {...parcelsLineStyle} />
           </Source>
         )}
 
-        {activeToggles.has('heatmap') && layersData && (
-          <Source id="heatmap-data" type="geojson" data={layersData}>
+        {activeToggles.has('heatmap') && filteredLayersData && (
+          <Source id="heatmap-data" type="geojson" data={filteredLayersData}>
             <Layer {...heatmapStyle} />
           </Source>
         )}
 
-        {activeToggles.has('border') && layersData && (
-          <Source id="border-data" type="geojson" data={layersData}>
+        {activeToggles.has('border') && filteredLayersData && (
+          <Source id="border-data" type="geojson" data={filteredLayersData}>
             <Layer {...borderConflictsStyle} />
           </Source>
         )}
@@ -392,11 +431,34 @@ export default function MapShell() {
         </div>
       </div>
 
+      {/* Map Style Switcher (Bottom Left) */}
+      <div className="absolute bottom-8 left-4 bg-white/95 backdrop-blur-md border border-slate-200 rounded-xl shadow-lg p-2 z-10 flex flex-col gap-1">
+        <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-2 pb-1">Map Style</div>
+        {Object.entries(MAP_STYLES).map(([key, style]) => (
+          <button
+            key={key}
+            onClick={() => setMapStyleKey(key)}
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+              mapStyleKey === key
+                ? 'bg-[#0b2b50] text-white shadow-sm'
+                : 'text-slate-600 hover:bg-slate-100'
+            }`}
+          >
+            <span>{style.icon}</span> {style.label}
+          </button>
+        ))}
+      </div>
+
       {/* Time Slider (Bottom Center) */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-md border border-slate-200 rounded-xl shadow-lg px-6 py-4 w-[500px] z-10">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-md border border-slate-200 rounded-xl shadow-lg px-6 py-4 w-[460px] z-10">
         <div className="flex items-center justify-between mb-2">
           <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Temporal Analysis</span>
-          <span className="text-sm font-black text-[#c2410c]">{timePeriod}</span>
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] text-slate-400">
+              {filteredLayersData?.features.length ?? 0} parcels visible
+            </span>
+            <span className="text-sm font-black text-[#c2410c]">{timePeriod}</span>
+          </div>
         </div>
         <input
           type="range"
@@ -408,6 +470,7 @@ export default function MapShell() {
         />
         <div className="flex justify-between mt-1 text-[10px] font-bold text-slate-400">
           <span>2015</span>
+          {[2017, 2019, 2021, 2023].map(y => <span key={y}>{y}</span>)}
           <span>2026</span>
         </div>
       </div>
