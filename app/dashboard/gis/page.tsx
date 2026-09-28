@@ -29,16 +29,13 @@ export default function GisPage() {
 
   return (
     <div className="flex flex-col w-full" style={{ height: 'calc(100vh - 72px)' }}>
-      {/* Header */}
-      <div className="border-b border-slate-200 px-6 py-3 shrink-0">
-        <div className="flex items-center gap-2 text-emerald-700 font-bold text-xs uppercase tracking-wider mb-1">
-          <Globe2 className="w-3.5 h-3.5" />
-          <span>National Spatial Data Infrastructure</span>
+      {/* Header — compact single row */}
+      <div className="border-b border-slate-200 px-4 py-2 shrink-0 flex items-center gap-3">
+        <Globe2 className="w-4 h-4 text-emerald-600 shrink-0" />
+        <div className="flex items-baseline gap-2 min-w-0">
+          <h1 className="text-base font-black text-slate-900 tracking-tight whitespace-nowrap">Geospatial Intelligence Map</h1>
+          <span className="text-xs text-slate-400 hidden sm:block truncate">National Spatial Data Infrastructure · Vector rendering · ST_Intersects querying</span>
         </div>
-        <h1 className="text-2xl font-black text-slate-900 tracking-tight">Geospatial Intelligence Map</h1>
-        <p className="text-xs text-slate-500 mt-0.5">
-          Vector rendering · ST_Intersects querying · Predictive dispute density mapping
-        </p>
       </div>
 
       {/* Main Layout */}
