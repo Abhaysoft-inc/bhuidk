@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from 'react';
-import Map, { NavigationControl, Source, Layer, FillLayer, LineLayer } from 'react-map-gl/maplibre';
+import Map, { NavigationControl, Source, Layer } from 'react-map-gl/maplibre';
 import type { MapLayerMouseEvent } from 'react-map-gl/maplibre';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -26,7 +26,7 @@ async function fetchLayerData(type: string) {
   return res.json();
 }
 
-const parcelsFillStyle: FillLayer = {
+const parcelsFillStyle: any = {
   id: 'parcels-fill',
   type: 'fill',
   paint: {
@@ -40,7 +40,7 @@ const parcelsFillStyle: FillLayer = {
   }
 };
 
-const parcelsLineStyle: LineLayer = {
+const parcelsLineStyle: any = {
   id: 'parcels-line',
   type: 'line',
   paint: {

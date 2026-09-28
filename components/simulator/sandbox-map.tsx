@@ -6,8 +6,6 @@ import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, GeoJSON, useMap } from "react-leaflet";
 import { getRiskColor } from "@/lib/sandbox-model";
 
-export const CARTO_API_KEY = "cb1_3mee_1_f30f15bf5fbf414a09921b6c";
-
 // Fix Leaflet default icon issue in bundlers
 delete (L.Icon.Default.prototype as unknown as Record<string, unknown>)._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -116,10 +114,9 @@ export default function SandboxMap({
       zoomControl={false}
     >
       <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
-        url={`https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png?key=${CARTO_API_KEY}`}
-        subdomains="abcd"
-        maxZoom={20}
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        maxZoom={19}
       />
       {geoJsonData && (
         <GeoJSON

@@ -332,8 +332,8 @@ export function PolicyPlanningView() {
                     ? "AI Zone + Manual Edit"
                     : "AI Zone Active"
                   : activeZone.source === "upload"
-                  ? "GIS Upload Active"
-                  : "Manual Canvas Active"}
+                    ? "GIS Upload Active"
+                    : "Manual Canvas Active"}
               </span>
             )}
           </div>
@@ -370,11 +370,10 @@ export function PolicyPlanningView() {
             <button
               type="button"
               onClick={() => setActiveTab("planning")}
-              className={`ux4g-btn ux4g-btn-sm transition-all cursor-pointer ${
-                activeTab === "planning"
+              className={`ux4g-btn ux4g-btn-sm transition-all cursor-pointer ${activeTab === "planning"
                   ? "ux4g-btn-primary"
                   : "ux4g-btn-text-primary !text-slate-600 hover:!text-slate-900"
-              }`}
+                }`}
             >
               <LandPlot className="w-3.5 h-3.5" />
               <span>Zone Planning</span>
@@ -383,11 +382,10 @@ export function PolicyPlanningView() {
             <button
               type="button"
               onClick={() => setActiveTab("sandbox")}
-              className={`ux4g-btn ux4g-btn-sm transition-all cursor-pointer ${
-                activeTab === "sandbox"
+              className={`ux4g-btn ux4g-btn-sm transition-all cursor-pointer ${activeTab === "sandbox"
                   ? "ux4g-btn-primary"
                   : "ux4g-btn-text-primary !text-slate-600 hover:!text-slate-900"
-              }`}
+                }`}
             >
               <Sliders className="w-3.5 h-3.5" />
               <span>Regression Model</span>
@@ -443,49 +441,7 @@ export function PolicyPlanningView() {
               isLoadingDistrictBoundary={isLoadingBoundary}
             />
 
-            {/* Quick Helper Ribbon under Map */}
-            <div className="bg-white border border-slate-200 rounded-xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-600 shadow-xs">
-              <div className="flex items-center gap-2 flex-wrap">
-                <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                <span>
-                  <strong>Interactive Vector Canvas:</strong> Supports manual drawing tools,
-                  GeoJSON file uploads, and AI candidate boundary overlays.
-                </span>
-                {candidates.length > 0 && (
-                  <span className="bg-amber-50 text-amber-900 border border-amber-300 text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md flex items-center gap-1">
-                    <Sparkles className="w-3 h-3 text-amber-600" />
-                    <span>{candidates.length} AI Candidates Active</span>
-                  </span>
-                )}
-              </div>
 
-              <div className="flex items-center gap-2 text-[11px] font-semibold text-slate-500">
-                <button
-                  type="button"
-                  onClick={() => setAiModalOpen(true)}
-                  className="text-[#0b2b50] hover:underline cursor-pointer flex items-center gap-1"
-                >
-                  <Sparkles className="w-3 h-3 text-amber-600" />
-                  <span>AI Site Search</span>
-                </button>
-                <span>•</span>
-                <button
-                  type="button"
-                  onClick={() => setUploadModalOpen(true)}
-                  className="text-[#0b2b50] hover:underline cursor-pointer"
-                >
-                  Upload GeoJSON
-                </button>
-                <span>•</span>
-                <button
-                  type="button"
-                  onClick={handleLoadSample}
-                  className="text-[#0b2b50] hover:underline cursor-pointer"
-                >
-                  Load Benchmark
-                </button>
-              </div>
-            </div>
           </div>
 
           {/* Right Column: AI Candidates or Proposed Zone Analysis Panel (5 cols on lg, 4 cols on xl) */}
@@ -496,11 +452,10 @@ export function PolicyPlanningView() {
                 <button
                   type="button"
                   onClick={() => setPanelTab("candidates")}
-                  className={`flex-1 py-1.5 px-2 rounded-lg transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
-                    panelTab === "candidates"
+                  className={`flex-1 py-1.5 px-2 rounded-lg transition-all flex items-center justify-center gap-1.5 cursor-pointer ${panelTab === "candidates"
                       ? "bg-[#0b2b50] text-white shadow-xs"
                       : "text-slate-600 hover:text-slate-900"
-                  }`}
+                    }`}
                 >
                   <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                   <span>Candidates ({candidates.length})</span>
@@ -508,11 +463,10 @@ export function PolicyPlanningView() {
                 <button
                   type="button"
                   onClick={() => setPanelTab("zone")}
-                  className={`flex-1 py-1.5 px-2 rounded-lg transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
-                    panelTab === "zone"
+                  className={`flex-1 py-1.5 px-2 rounded-lg transition-all flex items-center justify-center gap-1.5 cursor-pointer ${panelTab === "zone"
                       ? "bg-[#0b2b50] text-white shadow-xs"
                       : "text-slate-600 hover:text-slate-900"
-                  }`}
+                    }`}
                 >
                   <LandPlot className="w-3.5 h-3.5" />
                   <span>Active Proposed Zone</span>

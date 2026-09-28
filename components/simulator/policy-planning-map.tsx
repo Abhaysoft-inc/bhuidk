@@ -34,6 +34,7 @@ import {
   Upload,
   Loader2,
   X,
+  Globe,
 } from "lucide-react";
 import {
   LiveDistrictBoundary,
@@ -64,8 +65,6 @@ L.Icon.Default.mergeOptions({
   iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
   shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
 });
-
-const CARTO_API_KEY = "cb1_3mee_1_f30f15bf5fbf414a09921b6c";
 
 // Custom vertex handle icon for edit mode
 const createVertexHandleIcon = (isFirst = false) =>
@@ -323,6 +322,7 @@ export default function PolicyPlanningMap({
 
   // Layers control state
   const [layersOpen, setLayersOpen] = useState(false);
+  const layersRef = useRef<HTMLDivElement>(null);
   const [activeLayers, setActiveLayers] = useState<Record<string, boolean>>({
     satellite: false,
     adminBoundaries: true,
@@ -332,6 +332,21 @@ export default function PolicyPlanningMap({
     waterBodies: false,
     disputes: false,
   });
+
+  // Close layers popover when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (layersRef.current && !layersRef.current.contains(event.target as Node)) {
+        setLayersOpen(false);
+      }
+    }
+    if (layersOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [layersOpen]);
 
   // Base map layers definition
   const layersList: MapLayerItem[] = [
@@ -528,72 +543,78 @@ export default function PolicyPlanningMap({
 
   return (
     <div className="relative w-full h-[580px] lg:h-[calc(100vh-10.5rem)] min-h-[500px] max-h-[680px] rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 shadow-md">
-      {/* ─── Top Floating Drawing Toolbar ─── */}
-      <div className="absolute top-4 left-4 z-[1000] flex items-center gap-1 bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-xl p-1.5 shadow-lg max-w-[calc(100%-32px)]">
-        {/* Draw Polygon */}
-        <button
-          type="button"
-          onClick={() => {
-            setDrawingPoints([]);
-            setRectStart(null);
-            setCircleCenter(null);
-            setDrawingTool(drawingTool === "polygon" ? "none" : "polygon");
-          }}
-          className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${drawingTool === "polygon"
-            ? "bg-[#0b2b50] text-white shadow-xs"
-            : "text-slate-700 hover:bg-slate-100"
+      {/* ─── Top Floating Drawing Toolbar (Top Left) ─── */}
+      <div className="absolute top-4 left-4 z-[1000] flex items-center gap-1.5 bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-2xl p-1.5 shadow-[0_8px_24px_-4px_rgba(11,43,80,0.12),0_2px_6px_-1px_rgba(11,43,80,0.06)] max-w-[calc(100%-32px)] transition-all">
+        {/* Drawing Tools Segmented Group */}
+        <div className="bg-slate-100/90 p-0.5 rounded-xl flex items-center gap-0.5">
+          {/* Draw Polygon */}
+          <button
+            type="button"
+            onClick={() => {
+              setDrawingPoints([]);
+              setRectStart(null);
+              setCircleCenter(null);
+              setDrawingTool(drawingTool === "polygon" ? "none" : "polygon");
+            }}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+              drawingTool === "polygon"
+                ? "bg-[#0b2b50] text-white shadow-xs"
+                : "text-slate-600 hover:text-slate-900 hover:bg-white/80"
             }`}
-          title="Draw Polygon: Click vertices, double-click to finish"
-        >
-          <Pentagon className="w-3.5 h-3.5" />
-          <span className="hidden sm:inline">Polygon</span>
-        </button>
+            title="Draw Polygon: Click vertices, double-click to finish"
+          >
+            <Pentagon className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">Polygon</span>
+          </button>
 
-        {/* Draw Rectangle */}
-        <button
-          type="button"
-          onClick={() => {
-            setDrawingPoints([]);
-            setRectStart(null);
-            setCircleCenter(null);
-            setDrawingTool(drawingTool === "rectangle" ? "none" : "rectangle");
-          }}
-          className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${drawingTool === "rectangle"
-            ? "bg-[#0b2b50] text-white shadow-xs"
-            : "text-slate-700 hover:bg-slate-100"
+          {/* Draw Rectangle */}
+          <button
+            type="button"
+            onClick={() => {
+              setDrawingPoints([]);
+              setRectStart(null);
+              setCircleCenter(null);
+              setDrawingTool(drawingTool === "rectangle" ? "none" : "rectangle");
+            }}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+              drawingTool === "rectangle"
+                ? "bg-[#0b2b50] text-white shadow-xs"
+                : "text-slate-600 hover:text-slate-900 hover:bg-white/80"
             }`}
-          title="Draw Rectangle: Click opposite corners"
-        >
-          <Square className="w-3.5 h-3.5" />
-          <span className="hidden sm:inline">Rectangle</span>
-        </button>
+            title="Draw Rectangle: Click opposite corners"
+          >
+            <Square className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">Rectangle</span>
+          </button>
 
-        {/* Draw Circle */}
-        <button
-          type="button"
-          onClick={() => {
-            setDrawingPoints([]);
-            setRectStart(null);
-            setCircleCenter(null);
-            setDrawingTool(drawingTool === "circle" ? "none" : "circle");
-          }}
-          className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${drawingTool === "circle"
-            ? "bg-[#0b2b50] text-white shadow-xs"
-            : "text-slate-700 hover:bg-slate-100"
+          {/* Draw Circle */}
+          <button
+            type="button"
+            onClick={() => {
+              setDrawingPoints([]);
+              setRectStart(null);
+              setCircleCenter(null);
+              setDrawingTool(drawingTool === "circle" ? "none" : "circle");
+            }}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+              drawingTool === "circle"
+                ? "bg-[#0b2b50] text-white shadow-xs"
+                : "text-slate-600 hover:text-slate-900 hover:bg-white/80"
             }`}
-          title="Draw Circle: Click center then radius"
-        >
-          <Circle className="w-3.5 h-3.5" />
-          <span className="hidden sm:inline">Circle</span>
-        </button>
+            title="Draw Circle: Click center then radius"
+          >
+            <Circle className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">Circle</span>
+          </button>
+        </div>
 
-        <div className="h-4 w-px bg-slate-200 mx-0.5" />
+        <div className="h-5 w-px bg-slate-200/90 mx-0.5" />
 
         {/* Upload Proposal */}
         <button
           type="button"
           onClick={onOpenUpload}
-          className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-slate-100 hover:text-[#0b2b50] transition-all cursor-pointer"
+          className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold text-slate-700 hover:bg-slate-100 hover:text-[#0b2b50] transition-all cursor-pointer"
           title="Upload Proposal: Import GeoJSON file"
         >
           <Upload className="w-3.5 h-3.5 text-[#0b2b50]" />
@@ -604,24 +625,25 @@ export default function PolicyPlanningMap({
         <button
           type="button"
           onClick={onOpenAiSite}
-          className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold text-[#0b2b50] bg-amber-50 hover:bg-amber-100 transition-all cursor-pointer border border-amber-300 shadow-2xs"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold text-amber-900 bg-gradient-to-r from-amber-50 to-amber-100/90 hover:from-amber-100 hover:to-amber-200/90 border border-amber-300/80 shadow-2xs hover:shadow-xs transition-all cursor-pointer"
           title="AI Site Selection: Search candidate areas"
         >
           <Sparkles className="w-3.5 h-3.5 text-amber-600" />
           <span className="hidden md:inline">AI Find</span>
         </button>
 
-        <div className="h-4 w-px bg-slate-200 mx-0.5" />
+        <div className="h-5 w-px bg-slate-200/90 mx-0.5" />
 
         {/* Edit Shape */}
         <button
           type="button"
           disabled={!activeZone}
           onClick={() => setDrawingTool(drawingTool === "edit" ? "none" : "edit")}
-          className={`flex items-center gap-1.5 px-2 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed ${drawingTool === "edit"
-            ? "bg-amber-600 text-white shadow-xs"
-            : "text-slate-700 hover:bg-slate-100"
-            }`}
+          className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed ${
+            drawingTool === "edit"
+              ? "bg-amber-600 text-white shadow-xs"
+              : "text-slate-700 hover:bg-slate-100"
+          }`}
           title={activeZone ? "Edit Shape: Drag vertex handles" : "No active shape to edit"}
         >
           <Pencil className="w-3.5 h-3.5" />
@@ -636,7 +658,7 @@ export default function PolicyPlanningMap({
             onZoneDeleted();
             setDrawingTool("none");
           }}
-          className="flex items-center gap-1.5 px-2 py-1.5 rounded-lg text-xs font-semibold text-rose-600 hover:bg-rose-50 transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
+          className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold text-rose-600 hover:bg-rose-50 transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
           title="Delete active shape"
         >
           <Trash2 className="w-3.5 h-3.5" />
@@ -647,107 +669,232 @@ export default function PolicyPlanningMap({
         <button
           type="button"
           onClick={handleClearAll}
-          className="flex items-center gap-1 px-2 py-1.5 rounded-lg text-xs font-semibold text-slate-500 hover:bg-slate-100 transition-all cursor-pointer"
+          className="p-1.5 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-all cursor-pointer"
           title="Clear all drawings"
         >
-          <RotateCcw className="w-3 h-3" />
+          <RotateCcw className="w-3.5 h-3.5" />
         </button>
       </div>
 
-      {/* ─── Map Layers Control (Right side, below draw toolbar) ─── */}
-      <div className="absolute top-[4.5rem] right-4 z-[1000]">
-        <div className="relative">
+      {/* ─── Sub-Toolbar Row: Map Layers & District Focus Pill (Under Toolbar, Below Polygon) ─── */}
+      <div className="absolute top-[4.25rem] left-4 z-[1000] flex items-center gap-2 flex-wrap">
+        {/* Map Layers Control Button & Popover */}
+        <div ref={layersRef} className="relative">
           <button
             type="button"
             onClick={() => setLayersOpen(!layersOpen)}
-            className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold shadow-md transition-all cursor-pointer border ${layersOpen
-              ? "bg-[#0b2b50] text-white border-[#0b2b50]"
-              : "bg-white/95 backdrop-blur-md text-slate-700 border-slate-200 hover:bg-white"
-              }`}
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold shadow-md transition-all cursor-pointer border ${
+              layersOpen
+                ? "bg-[#0b2b50] text-white border-[#0b2b50]"
+                : "bg-white/95 backdrop-blur-xl text-slate-800 border-slate-200 hover:bg-white hover:border-slate-300"
+            }`}
           >
-            <Layers className="w-4 h-4 text-blue-600" />
+            <Layers className={`w-3.5 h-3.5 ${layersOpen ? "text-amber-400" : "text-[#0b2b50]"}`} />
             <span>Map Layers</span>
-            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200">
-              {Object.values(activeLayers).filter(Boolean).length}/7
+            <span
+              className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full flex items-center gap-1 ${
+                layersOpen
+                  ? "bg-white/20 text-white"
+                  : "bg-blue-50 text-blue-800 border border-blue-200/80"
+              }`}
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              {Object.values(activeLayers).filter(Boolean).length} Active
             </span>
           </button>
 
-          {/* Layers Popover Menu */}
+          {/* Layers Popover Menu (Aligned Left below the button) */}
           {layersOpen && (
-            <div className="absolute right-0 top-full mt-2 w-80 bg-white border border-slate-200 rounded-xl shadow-2xl p-3 space-y-2.5 text-xs z-[1050]">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-                <div className="font-bold text-slate-900 flex items-center gap-1.5">
-                  <Layers className="w-4 h-4 text-[#0b2b50]" />
-                  <span>Cadastral & Thematic Layers</span>
+            <div className="absolute left-0 top-full mt-2 w-84 bg-white/98 backdrop-blur-2xl border border-slate-200/90 rounded-2xl shadow-2xl overflow-hidden text-xs z-[1050] animate-in fade-in zoom-in-95 duration-150">
+              {/* Header */}
+              <div className="bg-gradient-to-r from-[#0b2b50] to-[#153a69] text-white p-3.5 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center">
+                    <Layers className="w-4 h-4 text-amber-300" />
+                  </div>
+                  <div>
+                    <div className="font-bold text-xs tracking-wide">Spatial Intelligence Layers</div>
+                    <div className="text-[10px] text-blue-200/80">BLIN National SDI Platform</div>
+                  </div>
                 </div>
                 <button
                   type="button"
                   onClick={() => setLayersOpen(false)}
-                  className="text-slate-400 hover:text-slate-700 text-xs px-1 cursor-pointer"
+                  className="text-white/70 hover:text-white hover:bg-white/10 p-1.5 rounded-lg transition-colors cursor-pointer"
+                  title="Close layers panel"
                 >
-                  ✕
+                  <X className="w-3.5 h-3.5" />
                 </button>
               </div>
 
-              <div className="space-y-1.5 max-h-[360px] overflow-y-auto pr-1">
-                {layersList.map((layer) => {
-                  const isChecked = activeLayers[layer.id];
-                  return (
-                    <div
-                      key={layer.id}
-                      onClick={() => handleToggleLayer(layer.id, layer.connected)}
-                      className={`p-2.5 rounded-lg border transition-all ${layer.connected
-                        ? "cursor-pointer hover:bg-slate-50 " +
-                        (isChecked ? "border-blue-400 bg-blue-50/40" : "border-slate-200 bg-white")
-                        : "border-slate-100 bg-slate-50/70 opacity-60 cursor-not-allowed"
+              {/* Basemap Switcher Segment */}
+              <div className="p-3 border-b border-slate-100 bg-slate-50/70">
+                <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">
+                  Base Canvas Layer
+                </div>
+                <div className="grid grid-cols-2 gap-1.5 p-1 bg-slate-200/60 rounded-xl">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (activeLayers.satellite) {
+                        handleToggleLayer("satellite", true);
+                      }
+                    }}
+                    className={`flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                      !activeLayers.satellite
+                        ? "bg-white text-[#0b2b50] shadow-xs"
+                        : "text-slate-600 hover:text-slate-900"
+                    }`}
+                  >
+                    <Globe className="w-3.5 h-3.5 text-blue-600" />
+                    <span>OpenStreetMap</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (!activeLayers.satellite) {
+                        handleToggleLayer("satellite", true);
+                      }
+                    }}
+                    className={`flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                      activeLayers.satellite
+                        ? "bg-white text-[#0b2b50] shadow-xs"
+                        : "text-slate-600 hover:text-slate-900"
+                    }`}
+                  >
+                    <Eye className="w-3.5 h-3.5 text-amber-600" />
+                    <span>Satellite (ESRI)</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Thematic Layers List */}
+              <div className="p-3 space-y-2 max-h-[340px] overflow-y-auto">
+                <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                  Thematic Overlays
+                </div>
+                {layersList
+                  .filter((l) => l.id !== "satellite")
+                  .map((layer) => {
+                    const isChecked = activeLayers[layer.id];
+                    return (
+                      <div
+                        key={layer.id}
+                        onClick={() => handleToggleLayer(layer.id, layer.connected)}
+                        className={`p-2.5 rounded-xl border transition-all flex items-center justify-between gap-3 ${
+                          layer.connected
+                            ? "cursor-pointer hover:bg-slate-50/80 " +
+                              (isChecked
+                                ? "border-blue-300 bg-blue-50/30"
+                                : "border-slate-200/90 bg-white")
+                            : "border-slate-100 bg-slate-50/50 opacity-55 cursor-not-allowed"
                         }`}
-                    >
-                      <div className="flex items-start justify-between gap-2">
-                        <div className="flex items-start gap-2">
-                          <input
-                            type="checkbox"
-                            readOnly
-                            checked={layer.connected ? isChecked : false}
-                            disabled={!layer.connected}
-                            className="mt-0.5 rounded text-[#0b2b50] focus:ring-0 cursor-pointer disabled:cursor-not-allowed"
+                      >
+                        <div className="flex items-start gap-2.5 min-w-0">
+                          <span
+                            className={`w-2.5 h-2.5 rounded-full mt-1 shrink-0 ${layer.color} ring-2 ring-white shadow-xs`}
                           />
-                          <div>
-                            <div className="font-bold text-slate-800 text-xs flex items-center gap-1.5">
-                              <span className={`w-2 h-2 rounded-full ${layer.color}`} />
+                          <div className="min-w-0">
+                            <div className="font-bold text-slate-800 text-xs truncate">
                               {layer.label}
                             </div>
-                            <div className="text-[11px] text-slate-500 mt-0.5">{layer.desc}</div>
+                            <div className="text-[11px] text-slate-500 leading-snug">
+                              {layer.desc}
+                            </div>
                           </div>
                         </div>
 
-                        {/* Status Badge */}
-                        <div className="shrink-0 text-right">
+                        {/* Toggle switch or Status */}
+                        <div className="shrink-0 flex items-center gap-1.5">
                           {layer.connected ? (
-                            <span className="inline-block text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
-                              Active
-                            </span>
-                          ) : (
-                            <span
-                              className="inline-block text-[9px] font-semibold px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200"
-                              title="Government data source is not yet integrated in Phase 1"
+                            <div
+                              className={`w-8 h-4.5 rounded-full p-0.5 transition-colors flex items-center ${
+                                isChecked ? "bg-[#0b2b50]" : "bg-slate-300"
+                              }`}
                             >
-                              Data source not connected
+                              <div
+                                className={`w-3.5 h-3.5 rounded-full bg-white shadow-xs transition-transform ${
+                                  isChecked ? "translate-x-3.5" : "translate-x-0"
+                                }`}
+                              />
+                            </div>
+                          ) : (
+                            <span className="text-[9px] font-semibold px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200">
+                              Phase 2
                             </span>
                           )}
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
               </div>
 
-              <div className="text-[10px] text-slate-400 border-t border-slate-100 pt-2 flex items-center gap-1">
-                <Info className="w-3 h-3 text-slate-400 shrink-0" />
-                <span>BLIN Phase 1 spatial environment • Real API layers flagged</span>
+              {/* Footer */}
+              <div className="px-3.5 py-2.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500">
+                <div className="flex items-center gap-1.5">
+                  <Info className="w-3 h-3 text-blue-600 shrink-0" />
+                  <span>EPSG:4326 (WGS84) Cadastral Grid</span>
+                </div>
+                <span className="font-semibold text-slate-600">OpenStreetMap &copy;</span>
               </div>
             </div>
           )}
         </div>
+
+        {/* Floating District Focus Pill (Next to Map Layers in same row) */}
+        {selectedDistrictBoundary && (
+          <div className="flex items-center gap-2 bg-[#0b2b50]/95 backdrop-blur-md text-white px-3 py-1.5 rounded-xl shadow-md border border-white/20 text-xs animate-in fade-in slide-in-from-left-2">
+            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+            <div className="flex items-center gap-1.5 font-bold">
+              <span>{selectedDistrictBoundary.district} District</span>
+              <span className="text-white/40">•</span>
+              <span className="text-amber-300 font-semibold">{selectedDistrictBoundary.state}</span>
+            </div>
+
+            {selectedDistrictBoundary.censusCode && selectedDistrictBoundary.censusCode > 0 && (
+              <span className="bg-amber-400/20 text-amber-300 border border-amber-400/30 px-1.5 py-0.5 rounded text-[10px] font-mono font-bold">
+                Census #{selectedDistrictBoundary.censusCode}
+              </span>
+            )}
+
+            <a
+              href="https://github.com/yashveeeeeeer/india-geodata/tree/main/data/administrative/districts/census-2011"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-blue-500/20 hover:bg-blue-500/30 text-blue-200 border border-blue-400/30 px-1.5 py-0.5 rounded text-[10px] font-mono transition-colors hidden md:inline-flex items-center gap-1"
+              title="Sourced from GitHub yashveeeeeeer/india-geodata Census 2011 Official Shapefile"
+            >
+              <span>GitHub Dataset</span>
+              <span className="text-[9px] text-blue-300">↗</span>
+            </a>
+
+            {selectedDistrictMetadata && (
+              <span className="bg-white/15 px-1.5 py-0.5 rounded text-[10px] text-slate-200 font-mono hidden lg:inline">
+                {selectedDistrictMetadata.record_type}
+              </span>
+            )}
+
+            {onClearDistrict && (
+              <button
+                type="button"
+                onClick={onClearDistrict}
+                className="ml-1 p-0.5 rounded hover:bg-white/20 text-slate-300 hover:text-white cursor-pointer transition-colors"
+                title="Show All India (Clear Filter)"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
+        )}
+
+        {/* Boundary Loading Indicator */}
+        {isLoadingDistrictBoundary && (
+          <div className="flex items-center gap-2 bg-slate-900/90 backdrop-blur-md text-white px-3 py-1.5 rounded-xl shadow-md border border-slate-700 text-xs animate-in fade-in">
+            <Loader2 className="w-3.5 h-3.5 text-amber-400 animate-spin" />
+            <span>Fetching live boundary for {selectedDistrictMetadata?.name || "district"}...</span>
+          </div>
+        )}
       </div>
 
       {/* ─── Active Drawing Status & Finish Helper Pill ─── */}
@@ -807,60 +954,6 @@ export default function PolicyPlanningMap({
         </div>
       )}
 
-      {/* ─── Floating District Focus Pill ─── */}
-      {selectedDistrictBoundary && (
-        <div className="absolute top-[4.5rem] left-4 z-[999] flex items-center gap-2 bg-[#0b2b50]/95 backdrop-blur-md text-white px-3 py-1.5 rounded-xl shadow-lg border border-white/20 text-xs animate-in fade-in slide-in-from-left-2 flex-wrap">
-          <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-          <div className="flex items-center gap-1.5 font-bold">
-            <span>{selectedDistrictBoundary.district} District</span>
-            <span className="text-white/40">•</span>
-            <span className="text-amber-300 font-semibold">{selectedDistrictBoundary.state}</span>
-          </div>
-
-          {selectedDistrictBoundary.censusCode && selectedDistrictBoundary.censusCode > 0 && (
-            <span className="bg-amber-400/20 text-amber-300 border border-amber-400/30 px-1.5 py-0.5 rounded text-[10px] font-mono font-bold">
-              Census #{selectedDistrictBoundary.censusCode}
-            </span>
-          )}
-
-          <a
-            href="https://github.com/yashveeeeeeer/india-geodata/tree/main/data/administrative/districts/census-2011"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-blue-500/20 hover:bg-blue-500/30 text-blue-200 border border-blue-400/30 px-1.5 py-0.5 rounded text-[10px] font-mono transition-colors hidden md:inline-flex items-center gap-1"
-            title="Sourced from GitHub yashveeeeeeer/india-geodata Census 2011 Official Shapefile"
-          >
-            <span>GitHub Dataset</span>
-            <span className="text-[9px] text-blue-300">↗</span>
-          </a>
-
-          {selectedDistrictMetadata && (
-            <span className="bg-white/15 px-1.5 py-0.5 rounded text-[10px] text-slate-200 font-mono hidden lg:inline">
-              {selectedDistrictMetadata.record_type}
-            </span>
-          )}
-
-          {onClearDistrict && (
-            <button
-              type="button"
-              onClick={onClearDistrict}
-              className="ml-1 p-0.5 rounded hover:bg-white/20 text-slate-300 hover:text-white cursor-pointer transition-colors"
-              title="Show All India (Clear Filter)"
-            >
-              <X className="w-3.5 h-3.5" />
-            </button>
-          )}
-        </div>
-      )}
-
-      {/* ─── Boundary Loading Indicator ─── */}
-      {isLoadingDistrictBoundary && (
-        <div className="absolute top-[4.5rem] left-4 z-[999] flex items-center gap-2 bg-slate-900/90 backdrop-blur-md text-white px-3 py-1.5 rounded-xl shadow-lg border border-slate-700 text-xs animate-in fade-in">
-          <Loader2 className="w-3.5 h-3.5 text-amber-400 animate-spin" />
-          <span>Fetching live boundary for {selectedDistrictMetadata?.name || "district"}...</span>
-        </div>
-      )}
-
       {/* ─── Leaflet Map Container ─── */}
       <MapContainer
         center={defaultCenter}
@@ -879,10 +972,9 @@ export default function PolicyPlanningMap({
           />
         ) : (
           <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
-            url={`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key=${CARTO_API_KEY}`}
-            subdomains="abcd"
-            maxZoom={20}
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            maxZoom={19}
           />
         )}
 
