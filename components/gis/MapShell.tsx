@@ -109,7 +109,21 @@ const MAP_STYLES: Record<string, { label: string; icon: string; tiles: string[] 
   }
 };
 
-export default function MapShell() {
+interface MapShellProps {
+  onAnalytics?: (data: {
+    visibleParcels: number;
+    highRiskPct: number;
+    selectionStats: any;
+    isSelecting: boolean;
+    selectedParcel: any;
+    filteredCount: number;
+    timePeriod: number;
+    setTimePeriod: (v: number) => void;
+    filteredLayersData: any;
+  }) => void;
+}
+
+export default function MapShell({ onAnalytics }: MapShellProps) {
   const [viewState, setViewState] = useState({
     longitude: 73.8567, // Pune default
     latitude: 18.5204,
@@ -134,6 +148,8 @@ export default function MapShell() {
 
   // Map style
   const [mapStyleKey, setMapStyleKey] = useState<string>('street');
+
+  // (analytics effect moved below, after filteredLayersData is defined)
 
   useEffect(() => {
     fetchLayerData('parcels').then(data => {
@@ -229,8 +245,25 @@ export default function MapShell() {
     };
   }, [layersData, timePeriod]);
 
+  // Expose analytics upward — must be after filteredLayersData is defined
+  useEffect(() => {
+    if (!onAnalytics) return;
+    onAnalytics({
+      visibleParcels: layersData ? Math.floor(layersData.features.length * Math.min(1, Math.pow(viewState.zoom / 15, 2))) : 0,
+      highRiskPct: Math.floor(12 + Math.abs(Math.sin(viewState.longitude)) * 15),
+      selectionStats,
+      isSelecting,
+      selectedParcel,
+      filteredCount: filteredLayersData?.features.length ?? 0,
+      timePeriod,
+      setTimePeriod,
+      filteredLayersData,
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [layersData, viewState, selectionStats, isSelecting, selectedParcel, filteredLayersData, timePeriod]);
+
   return (
-    <div className="relative w-full h-[700px] bg-slate-100 rounded-xl overflow-hidden shadow-sm border border-slate-200">
+    <div className="relative w-full h-full bg-slate-100 rounded-xl overflow-hidden shadow-sm border border-slate-200">
 
       {isLoading && (
         <div className="absolute inset-0 z-50 bg-slate-900/10 backdrop-blur-sm flex items-center justify-center">
@@ -304,6 +337,108 @@ export default function MapShell() {
             line_string: true,
             trash: true
           }}
+          styles={[
+            // Active line (being drawn)
+            {
+              id: 'gl-draw-line-active',
+              type: 'line',
+              filter: ['all', ['==', '$type', 'LineString'], ['==', 'active', 'true']],
+              paint: {
+                'line-color': '#f59e0b',
+                'line-width': 5,
+                'line-dasharray': [0.5, 1.5]
+              }
+            },
+            // Inactive line (completed)
+            {
+              id: 'gl-draw-line-inactive',
+              type: 'line',
+              filter: ['all', ['==', '$type', 'LineString'], ['==', 'active', 'false']],
+              paint: {
+                'line-color': '#f59e0b',
+                'line-width': 4
+              }
+            },
+            // Active polygon outline
+            {
+              id: 'gl-draw-polygon-stroke-active',
+              type: 'line',
+              filter: ['all', ['==', '$type', 'Polygon'], ['==', 'active', 'true']],
+              layout: { 'line-cap': 'round', 'line-join': 'round' },
+              paint: {
+                'line-color': '#f59e0b',
+                'line-width': 5,
+                'line-dasharray': [0.5, 1.5]
+              }
+            },
+            // Inactive polygon outline
+            {
+              id: 'gl-draw-polygon-stroke-inactive',
+              type: 'line',
+              filter: ['all', ['==', '$type', 'Polygon'], ['==', 'active', 'false']],
+              layout: { 'line-cap': 'round', 'line-join': 'round' },
+              paint: {
+                'line-color': '#f59e0b',
+                'line-width': 4
+              }
+            },
+            // Active polygon fill
+            {
+              id: 'gl-draw-polygon-fill-active',
+              type: 'fill',
+              filter: ['all', ['==', '$type', 'Polygon'], ['==', 'active', 'true']],
+              paint: {
+                'fill-color': '#f59e0b',
+                'fill-opacity': 0.15
+              }
+            },
+            // Inactive polygon fill
+            {
+              id: 'gl-draw-polygon-fill-inactive',
+              type: 'fill',
+              filter: ['all', ['==', '$type', 'Polygon'], ['==', 'active', 'false']],
+              paint: {
+                'fill-color': '#f59e0b',
+                'fill-opacity': 0.1
+              }
+            },
+            // Vertex points (active)
+            {
+              id: 'gl-draw-point-active',
+              type: 'circle',
+              filter: ['all', ['==', '$type', 'Point'], ['==', 'active', 'true'], ['!=', 'meta', 'midpoint']],
+              paint: {
+                'circle-radius': 7,
+                'circle-color': '#f59e0b',
+                'circle-stroke-width': 3,
+                'circle-stroke-color': '#ffffff'
+              }
+            },
+            // Midpoints
+            {
+              id: 'gl-draw-point-midpoint',
+              type: 'circle',
+              filter: ['all', ['==', '$type', 'Point'], ['==', 'meta', 'midpoint']],
+              paint: {
+                'circle-radius': 4,
+                'circle-color': '#ffffff',
+                'circle-stroke-width': 2,
+                'circle-stroke-color': '#f59e0b'
+              }
+            },
+            // Inactive vertex
+            {
+              id: 'gl-draw-point-inactive',
+              type: 'circle',
+              filter: ['all', ['==', '$type', 'Point'], ['==', 'active', 'false'], ['!=', 'meta', 'midpoint']],
+              paint: {
+                'circle-radius': 6,
+                'circle-color': '#f59e0b',
+                'circle-stroke-width': 2,
+                'circle-stroke-color': '#ffffff'
+              }
+            }
+          ]}
           onCreate={handleDrawUpdate}
           onUpdate={handleDrawUpdate}
           onDelete={handleDrawDelete}
@@ -352,85 +487,6 @@ export default function MapShell() {
         </div>
       </div>
 
-      {/* Right Sidebar Stats & Selection */}
-      <div className="absolute top-4 right-14 bg-white/95 backdrop-blur-md border border-slate-200 rounded-xl shadow-lg w-80 flex flex-col max-h-[90vh] z-10 overflow-hidden">
-        <div className="p-5 flex flex-col gap-4 overflow-y-auto">
-          <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest border-b border-slate-100 pb-2">Viewport Analytics</h3>
-
-          <div className="grid grid-cols-2 gap-3">
-            <div className="bg-slate-50 border border-slate-100 p-3 rounded-lg">
-              <div className="text-[10px] font-bold text-slate-500 uppercase">Visible Parcels</div>
-              <div className="text-2xl font-black text-[#0b2b50]">
-                {layersData ? Math.floor(layersData.features.length * Math.min(1, Math.pow(viewState.zoom / 15, 2))) : '--'}
-              </div>
-            </div>
-            <div className="bg-rose-50 border border-rose-100 p-3 rounded-lg">
-              <div className="text-[10px] font-bold text-rose-500 uppercase">High Risk</div>
-              <div className="text-2xl font-black text-rose-700">
-                {Math.floor(12 + Math.abs(Math.sin(viewState.longitude)) * 15)}%
-              </div>
-            </div>
-          </div>
-
-          {/* Selection Stats Panel */}
-          <AnimatePresence>
-            {(selectionStats || isSelecting) && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="mt-2 border-t border-slate-100 pt-4"
-              >
-                <div className="flex items-center gap-2 mb-3">
-                  <Crosshair className="w-4 h-4 text-[#c2410c]" />
-                  <h4 className="text-sm font-bold text-slate-800">Custom Region Analysis</h4>
-                </div>
-
-                {isSelecting ? (
-                  <div className="flex items-center justify-center p-6 text-slate-400">
-                    <RefreshCw className="w-6 h-6 animate-spin" />
-                  </div>
-                ) : (
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center text-sm">
-                      <span className="text-slate-500 font-semibold">Parcels Affected:</span>
-                      <span className="font-black text-[#0b2b50]">{selectionStats.totalParcels}</span>
-                    </div>
-                    <div className="flex justify-between items-center text-sm">
-                      <span className="text-slate-500 font-semibold">Est. Value:</span>
-                      <span className="font-black text-emerald-600">₹{(selectionStats.estimatedValue / 10000000).toFixed(2)} Cr</span>
-                    </div>
-                    <div className="flex justify-between items-center text-sm">
-                      <span className="text-slate-500 font-semibold">Disputes Detected:</span>
-                      <span className="font-black text-rose-600">{selectionStats.disputedParcels}</span>
-                    </div>
-
-                    <div className="pt-3 border-t border-slate-100">
-                      <div className="text-xs font-bold text-slate-500 mb-2">Land Use Breakdown</div>
-                      {Object.entries(selectionStats.landUseBreakdown || {}).map(([key, val]: any) => (
-                        <div key={key} className="flex justify-between items-center text-xs mb-1">
-                          <span className="text-slate-600">{key}</span>
-                          <span className="font-bold text-slate-800">{val}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-        <div className="p-5 pt-0 bg-white/95">
-          <button
-            onClick={() => alert('Exporting Viewport Report (PDF)...')}
-            className="w-full bg-[#0b2b50] hover:bg-[#153a69] text-white text-xs font-bold py-2.5 rounded-lg flex items-center justify-center gap-2 transition-colors"
-          >
-            <FileText className="w-3.5 h-3.5" /> Export Viewport Report
-          </button>
-        </div>
-      </div>
-
       {/* Map Style Switcher (Bottom Left) */}
       <div className="absolute bottom-8 left-4 bg-white/95 backdrop-blur-md border border-slate-200 rounded-xl shadow-lg p-2 z-10 flex flex-col gap-1">
         <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-2 pb-1">Map Style</div>
@@ -449,31 +505,6 @@ export default function MapShell() {
         ))}
       </div>
 
-      {/* Time Slider (Bottom Center) */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-md border border-slate-200 rounded-xl shadow-lg px-6 py-4 w-[460px] z-10">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Temporal Analysis</span>
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] text-slate-400">
-              {filteredLayersData?.features.length ?? 0} parcels visible
-            </span>
-            <span className="text-sm font-black text-[#c2410c]">{timePeriod}</span>
-          </div>
-        </div>
-        <input
-          type="range"
-          min="2015"
-          max="2026"
-          value={timePeriod}
-          onChange={(e) => setTimePeriod(parseInt(e.target.value))}
-          className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#c2410c]"
-        />
-        <div className="flex justify-between mt-1 text-[10px] font-bold text-slate-400">
-          <span>2015</span>
-          {[2017, 2019, 2021, 2023].map(y => <span key={y}>{y}</span>)}
-          <span>2026</span>
-        </div>
-      </div>
 
       {/* Parcel Inspector Popup */}
       <AnimatePresence>
