@@ -120,6 +120,7 @@ interface MapShellProps {
     timePeriod: number;
     setTimePeriod: (v: number) => void;
     filteredLayersData: any;
+    clearSelection: () => void;
   }) => void;
 }
 
@@ -258,6 +259,7 @@ export default function MapShell({ onAnalytics }: MapShellProps) {
       timePeriod,
       setTimePeriod,
       filteredLayersData,
+      clearSelection: () => setSelectionStats(null),
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [layersData, viewState, selectionStats, isSelecting, selectedParcel, filteredLayersData, timePeriod]);
