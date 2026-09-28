@@ -1,13 +1,22 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import Map, { NavigationControl, Popup } from 'react-map-gl/maplibre';
-import * as maplibregl from 'maplibre-gl';
-import 'maplibre-gl/dist/maplibre-gl.css';
-import { DeckGL } from '@deck.gl/react';
-import { GeoJsonLayer } from '@deck.gl/layers';
-import { HeatmapLayer } from '@deck.gl/aggregation-layers';
-import { Layers, Activity, FileText, AlertTriangle, Crosshair, Map as MapIcon, X, Maximize2, RefreshCw } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import Map, { NavigationControl, Source, Layer, FillLayer, LineLayer } from 'react-map-gl/maplibre';
+import type { MapLayerMouseEvent } from 'react-map-gl/maplibre';
+import mapboxgl from 'mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
+
+// We bypass worker issues by using mapbox-gl which often handles it better in Next.js
+const mapLib = mapboxgl;
+if (typeof window !== 'undefined') {
+  (mapboxgl as any).accessToken = 'dummy';
+  // Polyfill getSky to prevent react-map-gl/maplibre from crashing when using mapboxgl
+  if (!(mapboxgl.Map.prototype as any).getSky) {
+    (mapboxgl.Map.prototype as any).getSky = function() { return null; };
+  }
+}
+
+import { Layers, FileText, Crosshair, Map as MapIcon, X, RefreshCw } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import DrawControl from './DrawControl';
 
@@ -16,6 +25,55 @@ async function fetchLayerData(type: string) {
   const res = await fetch(`/api/gis/layers?type=${type}`);
   return res.json();
 }
+
+const parcelsFillStyle: FillLayer = {
+  id: 'parcels-fill',
+  type: 'fill',
+  paint: {
+    'fill-color': [
+      'match',
+      ['get', 'ownership_status'],
+      'disputed', 'rgba(194, 65, 12, 0.7)',
+      'unclear', 'rgba(245, 158, 11, 0.7)',
+      'rgba(16, 185, 129, 0.4)'
+    ]
+  }
+};
+
+const parcelsLineStyle: LineLayer = {
+  id: 'parcels-line',
+  type: 'line',
+  paint: {
+    'line-color': 'rgba(11, 43, 80, 0.8)',
+    'line-width': 1
+  }
+};
+
+const heatmapStyle: any = {
+  id: 'dispute-heatmap',
+  type: 'heatmap',
+  paint: {
+    'heatmap-weight': [
+      'interpolate',
+      ['linear'],
+      ['get', 'litigation_risk_score'],
+      0, 0,
+      100, 1
+    ],
+    'heatmap-color': [
+      'interpolate',
+      ['linear'],
+      ['heatmap-density'],
+      0, 'rgba(20, 83, 45, 0)',
+      0.2, 'rgb(161, 161, 170)',
+      0.4, 'rgb(217, 119, 6)',
+      0.8, 'rgb(194, 65, 12)',
+      1, 'rgb(153, 27, 27)'
+    ],
+    'heatmap-radius': 30,
+    'heatmap-opacity': 0.8
+  }
+};
 
 export default function MapShell() {
   const [viewState, setViewState] = useState({
@@ -60,7 +118,6 @@ export default function MapShell() {
     if (e.features && e.features.length > 0) {
       setIsSelecting(true);
       const geometry = e.features[0].geometry;
-      // If it's a LineString, assume Route Impact (buffer by 0.5km)
       const bufferDistance = geometry.type === 'LineString' ? 0.5 : undefined;
       
       try {
@@ -83,51 +140,27 @@ export default function MapShell() {
     setSelectionStats(null);
   }, []);
 
-  const layers = [
-    // Cadastral Parcels Layer
-    activeToggles.has('parcels') && new GeoJsonLayer({
-      id: 'parcels-layer',
-      data: layersData,
-      pickable: true,
-      stroked: true,
-      filled: true,
-      extruded: false,
-      lineWidthScale: 1,
-      lineWidthMinPixels: 1,
-      getFillColor: (d: any) => {
-        if (d.properties.ownership_status === 'disputed') return [194, 65, 12, 180]; // Terracotta
-        if (d.properties.ownership_status === 'unclear') return [245, 158, 11, 180]; // Amber
-        return [16, 185, 129, 100]; // Green/Clear
-      },
-      getLineColor: [11, 43, 80, 200], // Institutional Navy
-      onHover: (info) => setHoverInfo(info),
-      onClick: (info) => {
-        if (info.object) setSelectedParcel(info.object);
-      },
-      updateTriggers: {
-        getFillColor: [timePeriod] // re-evaluate if time changes (mocking time change)
-      }
-    }),
-    
-    // Dispute Hotspot Predictor Heatmap
-    activeToggles.has('heatmap') && new HeatmapLayer({
-      id: 'dispute-heatmap',
-      data: layersData?.features,
-      getPosition: (d: any) => d.geometry.coordinates[0][0], // use first vertex for simplicity in demo
-      getWeight: (d: any) => d.properties.litigation_risk_score,
-      radiusPixels: 50,
-      intensity: 1,
-      threshold: 0.1,
-      // Deep forest green -> Muted Ochre -> Deep Rust/Red
-      colorRange: [
-        [20, 83, 45],   // Forest Green
-        [161, 161, 170], // Neutral transition
-        [217, 119, 6],   // Ochre
-        [194, 65, 12],   // Rust
-        [153, 27, 27]    // Deep Red
-      ]
-    })
-  ].filter(Boolean);
+  const onMapClick = useCallback((event: MapLayerMouseEvent) => {
+    const feature = event.features && event.features[0];
+    if (feature && feature.layer.id === 'parcels-fill') {
+      setSelectedParcel(feature);
+    } else {
+      setSelectedParcel(null);
+    }
+  }, []);
+
+  const onMapHover = useCallback((event: MapLayerMouseEvent) => {
+    const feature = event.features && event.features[0];
+    if (feature && feature.layer.id === 'parcels-fill') {
+      setHoverInfo({
+        x: event.point.x,
+        y: event.point.y,
+        feature
+      });
+    } else {
+      setHoverInfo(null);
+    }
+  }, []);
 
   return (
     <div className="relative w-full h-[700px] bg-slate-100 rounded-xl overflow-hidden shadow-sm border border-slate-200">
@@ -148,7 +181,7 @@ export default function MapShell() {
       <Map
         {...viewState}
         onMove={evt => setViewState(evt.viewState)}
-        mapLib={maplibregl as any}
+        mapLib={mapLib as any}
         mapStyle={{
           version: 8,
           sources: {
@@ -161,14 +194,24 @@ export default function MapShell() {
           },
           layers: [{ id: 'osm', type: 'raster', source: 'osm' }]
         }}
-        interactiveLayerIds={['parcels-layer']}
+        interactiveLayerIds={activeToggles.has('parcels') ? ['parcels-fill'] : []}
+        onClick={onMapClick}
+        onMouseMove={onMapHover}
+        onMouseLeave={() => setHoverInfo(null)}
       >
-        <DeckGL
-          viewState={viewState}
-          layers={layers}
-          getTooltip={({object}) => object && `ULPIN: ${object.properties.ulpin_id}\nUse: ${object.properties.land_use_type}`}
-        />
+        {activeToggles.has('parcels') && layersData && (
+          <Source id="parcels" type="geojson" data={layersData}>
+            <Layer {...parcelsFillStyle} />
+            <Layer {...parcelsLineStyle} />
+          </Source>
+        )}
         
+        {activeToggles.has('heatmap') && layersData && (
+          <Source id="heatmap-data" type="geojson" data={layersData}>
+            <Layer {...heatmapStyle} />
+          </Source>
+        )}
+
         <DrawControl
           position="top-right"
           displayControlsDefault={false}
@@ -184,6 +227,17 @@ export default function MapShell() {
 
         <NavigationControl position="bottom-right" />
       </Map>
+
+      {/* Tooltip */}
+      {hoverInfo && hoverInfo.feature && (
+        <div 
+          className="absolute z-50 pointer-events-none bg-slate-900 text-white text-xs px-2 py-1.5 rounded shadow-lg border border-slate-700"
+          style={{ left: hoverInfo.x + 10, top: hoverInfo.y + 10 }}
+        >
+          <div className="font-bold border-b border-slate-700 pb-1 mb-1">{hoverInfo.feature.properties.ulpin_id}</div>
+          <div className="text-slate-300">Use: <span className="text-white">{hoverInfo.feature.properties.land_use_type}</span></div>
+        </div>
+      )}
 
       {/* Floating Controls (Top Left) */}
       <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md border border-slate-200 rounded-xl shadow-lg w-72 overflow-hidden flex flex-col z-10">
@@ -282,7 +336,10 @@ export default function MapShell() {
         </div>
 
         <div className="p-5 pt-0 bg-white/95">
-          <button className="w-full bg-[#0b2b50] hover:bg-[#153a69] text-white text-xs font-bold py-2.5 rounded-lg flex items-center justify-center gap-2 transition-colors">
+          <button 
+            onClick={() => alert('Exporting Viewport Report (PDF)...')}
+            className="w-full bg-[#0b2b50] hover:bg-[#153a69] text-white text-xs font-bold py-2.5 rounded-lg flex items-center justify-center gap-2 transition-colors"
+          >
             <FileText className="w-3.5 h-3.5" /> Export Viewport Report
           </button>
         </div>
@@ -360,7 +417,10 @@ export default function MapShell() {
                 >
                   Open Encroachment Time Machine
                 </button>
-                <button className="w-full border border-[#0b2b50] text-[#0b2b50] hover:bg-[#0b2b50] hover:text-white font-bold text-xs py-2 rounded transition-colors">
+                <button 
+                  onClick={() => alert(`Opening full title report for ${selectedParcel.properties.ulpin_id}`)}
+                  className="w-full border border-[#0b2b50] text-[#0b2b50] hover:bg-[#0b2b50] hover:text-white font-bold text-xs py-2 rounded transition-colors"
+                >
                   View Full Title Report
                 </button>
               </div>
@@ -433,11 +493,11 @@ export default function MapShell() {
 
 function ToggleItem({ id, label, active, onToggle }: { id: string, label: string, active: boolean, onToggle: (id: string) => void }) {
   return (
-    <label className="flex items-center gap-3 p-2 hover:bg-slate-50 rounded-lg cursor-pointer transition-colors">
+    <div onClick={() => onToggle(id)} className="flex items-center gap-3 p-2 hover:bg-slate-50 rounded-lg cursor-pointer transition-colors">
       <div className={`w-10 h-5 rounded-full p-0.5 transition-colors ${active ? 'bg-[#c2410c]' : 'bg-slate-300'}`}>
         <div className={`w-4 h-4 bg-white rounded-full shadow-sm transition-transform ${active ? 'translate-x-5' : 'translate-x-0'}`} />
       </div>
       <span className="text-sm font-semibold text-slate-700">{label}</span>
-    </label>
+    </div>
   );
 }
