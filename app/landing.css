@@ -153,8 +153,8 @@
 }
 
 /* High-tech Cadastral Overlay Mode Filters */
-.cadastral-filter-svamitva {
-  filter: contrast(1.15) brightness(0.95) saturate(1.1);
+.cadastral-filter-statutory {
+  filter: contrast(1.1) brightness(0.98) saturate(1.05);
 }
 
 .cadastral-filter-disputes {

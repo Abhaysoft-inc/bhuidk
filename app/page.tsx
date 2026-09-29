@@ -47,11 +47,10 @@ import "./landing.css";
 export default function Home() {
   const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeLayer, setActiveLayer] = useState<"cadastral" | "svamitva" | "disputes">("cadastral");
+  const [activeSampleQuery, setActiveSampleQuery] = useState<"khasra_142_2" | "khasra_142_1" | "sec_85">("khasra_142_2");
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [roleDropdownOpen, setRoleDropdownOpen] = useState(false);
   const [heroSearchQuery, setHeroSearchQuery] = useState("");
-  const [selectedParcel, setSelectedParcel] = useState<"142_2" | "142_1" | "143">("142_2");
 
   // Authentication & Session Simulation via localStorage
   useEffect(() => {
@@ -100,26 +99,26 @@ export default function Home() {
         newRole === "admin"
           ? "Rajesh Kumar, IAS"
           : newRole === "officer"
-          ? "Suresh Patil (ADM Revenue)"
-          : "Dr. Ashok Sharma",
+            ? "Suresh Patil (ADM Revenue)"
+            : "Dr. Ashok Sharma",
       email:
         newRole === "admin"
           ? "admin@veda.gov.in"
           : newRole === "officer"
-          ? "officer.pune@veda.gov.in"
-          : "ashok.sharma@niti.gov.in",
+            ? "officer.pune@veda.gov.in"
+            : "ashok.sharma@niti.gov.in",
       department:
         newRole === "admin"
           ? "Dept. of Land Resources (DoLR), MoRD"
           : newRole === "officer"
-          ? "District Revenue Collectorate, Pune"
-          : "Centre for Land Governance Research",
+            ? "District Revenue Collectorate, Pune"
+            : "Centre for Land Governance Research",
       designation:
         newRole === "admin"
           ? "Central Platform Administrator"
           : newRole === "officer"
-          ? "Additional District Magistrate"
-          : "Senior Policy Fellow",
+            ? "Additional District Magistrate"
+            : "Senior Policy Fellow",
       avatarInitials: newRole === "admin" ? "RK" : newRole === "officer" ? "SP" : "AS",
     };
     if (typeof window !== "undefined") {
@@ -156,22 +155,9 @@ export default function Home() {
                 <span className="font-extrabold text-base tracking-tight text-slate-900 group-hover:text-[#4A2BC2] transition-colors">
                   VEDA
                 </span>
-                {currentUser && (
-                  <span
-                    className={`text-[10px] font-bold px-2 py-0.5 rounded-full border uppercase tracking-wider ${
-                      currentUser.role === "admin"
-                        ? "bg-[#f4f0ff] text-[#4A2BC2] border-[#eae4ff]"
-                        : currentUser.role === "officer"
-                        ? "bg-emerald-50 text-emerald-700 border-emerald-200"
-                        : "bg-blue-50 text-blue-700 border-blue-200"
-                    }`}
-                  >
-                    {currentUser.role}
-                  </span>
-                )}
               </div>
               <span className="text-[11px] text-slate-500 font-medium hidden sm:inline">
-                Dept. of Land Resources • Ministry of Rural Development, Govt. of India
+                Ministry of Rural Development, Govt. of India
               </span>
             </div>
           </Link>
@@ -222,11 +208,10 @@ export default function Home() {
                     </span>
                     <span className="max-w-[120px] truncate">{currentUser.name?.split(" ")[0]}</span>
                     <span
-                      className={`text-[9px] px-1.5 py-0.2 rounded font-bold uppercase ${
-                        currentUser.role === "admin"
-                          ? "bg-[#4A2BC2] text-white"
-                          : "bg-emerald-600 text-white"
-                      }`}
+                      className={`text-[9px] px-1.5 py-0.2 rounded font-bold uppercase ${currentUser.role === "admin"
+                        ? "bg-[#4A2BC2] text-white"
+                        : "bg-emerald-600 text-white"
+                        }`}
                     >
                       {currentUser.role}
                     </span>
@@ -240,11 +225,10 @@ export default function Home() {
                       <button
                         type="button"
                         onClick={() => handleSwitchRole("admin")}
-                        className={`w-full px-3 py-2 text-left flex items-center justify-between hover:bg-[#f4f0ff] transition-colors ${
-                          currentUser.role === "admin"
-                            ? "font-bold text-[#4A2BC2] bg-[#f4f0ff]/50"
-                            : "text-slate-700"
-                        }`}
+                        className={`w-full px-3 py-2 text-left flex items-center justify-between hover:bg-[#f4f0ff] transition-colors ${currentUser.role === "admin"
+                          ? "font-bold text-[#4A2BC2] bg-[#f4f0ff]/50"
+                          : "text-slate-700"
+                          }`}
                       >
                         <span className="flex items-center gap-2">
                           <KeyRound className="w-3.5 h-3.5 text-[#4A2BC2]" />
@@ -255,11 +239,10 @@ export default function Home() {
                       <button
                         type="button"
                         onClick={() => handleSwitchRole("officer")}
-                        className={`w-full px-3 py-2 text-left flex items-center justify-between hover:bg-[#f4f0ff] transition-colors ${
-                          currentUser.role === "officer"
-                            ? "font-bold text-[#4A2BC2] bg-[#f4f0ff]/50"
-                            : "text-slate-700"
-                        }`}
+                        className={`w-full px-3 py-2 text-left flex items-center justify-between hover:bg-[#f4f0ff] transition-colors ${currentUser.role === "officer"
+                          ? "font-bold text-[#4A2BC2] bg-[#f4f0ff]/50"
+                          : "text-slate-700"
+                          }`}
                       >
                         <span className="flex items-center gap-2">
                           <Building2 className="w-3.5 h-3.5 text-emerald-600" />
@@ -270,11 +253,10 @@ export default function Home() {
                       <button
                         type="button"
                         onClick={() => handleSwitchRole("researcher")}
-                        className={`w-full px-3 py-2 text-left flex items-center justify-between hover:bg-[#f4f0ff] transition-colors ${
-                          currentUser.role === "researcher"
-                            ? "font-bold text-[#4A2BC2] bg-[#f4f0ff]/50"
-                            : "text-slate-700"
-                        }`}
+                        className={`w-full px-3 py-2 text-left flex items-center justify-between hover:bg-[#f4f0ff] transition-colors ${currentUser.role === "researcher"
+                          ? "font-bold text-[#4A2BC2] bg-[#f4f0ff]/50"
+                          : "text-slate-700"
+                          }`}
                       >
                         <span className="flex items-center gap-2">
                           <GraduationCap className="w-3.5 h-3.5 text-blue-600" />
@@ -420,541 +402,91 @@ export default function Home() {
 
       <main className="flex-1">
         {/* ====================================================================
-            HERO SECTION: CLEAN, AIRY, STATE-OF-THE-ART UX4G GOVTECH
+            HERO SECTION: SIMPLE, AI-POWERED, CLEAR & INTUITIVE
         ==================================================================== */}
-        <section className="hero-gradient-bg pt-10 sm:pt-14 pb-20 border-b border-slate-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto space-y-5">
-              {/* Refined Pill Badge in UX4G Primary Colors */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f4f0ff] border border-[#eae4ff] text-xs font-semibold text-[#4A2BC2] shadow-2xs">
-                <span className="w-2 h-2 rounded-full bg-[#4A2BC2] animate-pulse" />
-                <span>National Land Governance &amp; Geospatial Intelligence</span>
-                <span className="text-[#b9a4ff]">•</span>
-                <span className="text-[#006D75] font-semibold">DoLR, MoRD</span>
+        <section className="hero-gradient-bg pt-12 sm:pt-16 pb-20 border-b border-slate-100">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            {/* Top Center: Badge, Headline & 1-liner subhead */}
+            <div className="text-center max-w-2xl mx-auto space-y-4">
+              {/* Subtle AI Badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f4f0ff] border border-[#d6cbff] text-xs font-semibold text-[#4A2BC2] shadow-2xs">
+                <Sparkles className="w-3.5 h-3.5 text-[#783eed] animate-pulse" />
+                <span>VEDA AI • National Land Governance Engine</span>
               </div>
 
-              {/* Punchy Modern Headline */}
+              {/* Bold, Simple Headline */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-950 tracking-tight leading-[1.12]">
-                Land governance grounded in{" "}
+                Instant land clarity.{" "}
                 <span className="text-[#4A2BC2] underline decoration-[#006D75] decoration-4 underline-offset-8">
-                  verified evidence
+                  Zero ambiguity.
                 </span>
-                , not ambiguity.
               </h1>
 
-              {/* Subheadline */}
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
-                Turning fragmented land records, satellite cadastral mapping, and multi-statute policies
-                into instant, citation-grounded clarity for district administrators and policy researchers.
+              {/* Short 1-line subtext */}
+              <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl mx-auto">
+                Search 32,000+ land laws, inspect Bhu-Aadhaar parcels, and detect dispute risks with AI-grounded citations.
               </p>
+            </div>
 
-              {/* Interactive Universal Statutory & Land Search Bar */}
-              <div className="max-w-2xl mx-auto pt-2">
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    if (heroSearchQuery.trim()) {
-                      router.push(getDestination(`/dashboard/repository?query=${encodeURIComponent(heroSearchQuery.trim())}`));
-                    }
-                  }}
-                  className="relative flex items-center bg-white rounded-2xl border-2 border-slate-200 hover:border-[#b9a4ff] focus-within:border-[#4A2BC2] shadow-lg shadow-indigo-900/5 transition-all p-1.5"
+            {/* Smart "Lil AI-ish" Search Console */}
+            <div className="max-w-2xl mx-auto mt-7">
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  if (heroSearchQuery.trim()) {
+                    router.push(getDestination(`/dashboard/repository?query=${encodeURIComponent(heroSearchQuery.trim())}`));
+                  }
+                }}
+                className="relative flex items-center bg-white rounded-2xl border-2 border-slate-200 hover:border-[#b9a4ff] focus-within:border-[#4A2BC2] shadow-xl shadow-indigo-900/5 transition-all p-1.5 ring-4 ring-[#4A2BC2]/5"
+              >
+                <div className="pl-3.5 text-[#4A2BC2]">
+                  <Sparkles className="w-5 h-5 text-[#4A2BC2] animate-pulse" />
+                </div>
+                <input
+                  type="text"
+                  value={heroSearchQuery}
+                  onChange={(e) => setHeroSearchQuery(e.target.value)}
+                  placeholder="Ask VEDA AI e.g. 'Is Khasra 142/2 disputed in Pune?' or 'Sec 85 partition rules'..."
+                  className="w-full px-3 py-2 text-sm text-slate-800 placeholder-slate-400 bg-transparent focus:outline-none"
+                />
+                <button
+                  type="submit"
+                  className="inline-flex items-center gap-1.5 bg-[#4A2BC2] hover:bg-[#3C1FA4] text-white px-5 py-2.5 rounded-xl text-xs font-bold transition-all shadow-sm shrink-0 cursor-pointer"
                 >
-                  <div className="pl-3 text-slate-400">
-                    <Search className="w-5 h-5 text-[#4A2BC2]" />
-                  </div>
-                  <input
-                    type="text"
-                    value={heroSearchQuery}
-                    onChange={(e) => setHeroSearchQuery(e.target.value)}
-                    placeholder="Search 32,000+ Land Laws, ULPIN Survey Numbers (e.g. MH28-0914), or Tenancy SOPs..."
-                    className="w-full px-3 py-2 text-sm text-slate-800 placeholder-slate-400 bg-transparent focus:outline-none"
-                  />
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Ask AI</span>
+                </button>
+              </form>
+
+              {/* Prompt Suggestion Chips */}
+              <div className="flex flex-wrap items-center justify-center gap-1.5 pt-3 text-xs">
+                <span className="text-slate-400 text-[11px] font-medium mr-1">Sample Queries:</span>
+                {[
+                  { id: "khasra_142_2" as const, label: "Khasra 142/2 Title Check", query: "Khasra 142/2 Haveli Pune title certainty and dispute check" },
+                  { id: "khasra_142_1" as const, label: "Khasra 142/1 Mutation Status", query: "Khasra 142/1 mutation and co-sharer status in Haveli Pune" },
+                  { id: "sec_85" as const, label: "Sec 85 Partition Scheme", query: "Section 85 Maharashtra Land Revenue Code partition scheme" },
+                ].map((item) => (
                   <button
-                    type="submit"
-                    className="inline-flex items-center gap-1.5 bg-[#4A2BC2] hover:bg-[#3C1FA4] text-white px-5 py-2.5 rounded-xl text-xs font-bold transition-all shadow-sm shrink-0 cursor-pointer"
+                    key={item.id}
+                    type="button"
+                    onClick={() => {
+                      setActiveSampleQuery(item.id);
+                      setHeroSearchQuery(item.query);
+                    }}
+                    className={`px-3 py-1 rounded-full text-[11px] font-semibold transition-all shadow-2xs cursor-pointer flex items-center gap-1 ${activeSampleQuery === item.id
+                        ? "bg-[#4A2BC2] text-white shadow-xs"
+                        : "bg-white hover:bg-[#f4f0ff] border border-slate-200 hover:border-[#b9a4ff] text-slate-600 hover:text-[#4A2BC2]"
+                      }`}
                   >
-                    <span>Search</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <span>✨</span>
+                    <span>{item.label}</span>
                   </button>
-                </form>
-
-                {/* Popular Query Chips */}
-                <div className="flex flex-wrap items-center justify-center gap-1.5 pt-3 text-xs">
-                  <span className="text-slate-400 text-[11px] font-medium mr-1">Suggested Searches:</span>
-                  {[
-                    "Maharashtra Model Tenancy Act",
-                    "Section 85 Partition Scheme",
-                    "SVAMITVA Drone SOP",
-                    "ULPIN 14-Digit Standard",
-                  ].map((chip) => (
-                    <button
-                      key={chip}
-                      type="button"
-                      onClick={() => {
-                        setHeroSearchQuery(chip);
-                        router.push(getDestination(`/dashboard/repository?query=${encodeURIComponent(chip)}`));
-                      }}
-                      className="px-2.5 py-1 rounded-full bg-white hover:bg-[#f4f0ff] border border-slate-200 hover:border-[#b9a4ff] text-[11px] font-semibold text-slate-600 hover:text-[#4A2BC2] transition-colors shadow-2xs cursor-pointer"
-                    >
-                      {chip}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Primary Direct CTAs */}
-              <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-                <Link
-                  href={getDestination("/dashboard/gis")}
-                  className="inline-flex items-center gap-2 bg-[#4A2BC2] hover:bg-[#3C1FA4] text-white px-6 py-2.5 rounded-full text-xs font-bold tracking-wide transition-all shadow-md shadow-[#4A2BC2]/25 hover:shadow-lg"
-                >
-                  <MapPin className="w-4 h-4 text-[#b9a4ff]" />
-                  <span>Open Geospatial GIS</span>
-                  <ArrowRight className="w-4 h-4 text-[#b9a4ff]" />
-                </Link>
-
-                <Link
-                  href={getDestination("/dashboard/repository")}
-                  className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 hover:border-[#b9a4ff] px-6 py-2.5 rounded-full text-xs font-bold tracking-wide transition-all shadow-2xs"
-                >
-                  <Database className="w-4 h-4 text-[#4A2BC2]" />
-                  <span>Search Land Repository</span>
-                </Link>
-
-                <Link
-                  href={getDestination("/dashboard/simulator")}
-                  className="inline-flex items-center gap-2 bg-[#f4f0ff] hover:bg-[#eae4ff] text-[#4A2BC2] px-5 py-2.5 rounded-full text-xs font-bold tracking-wide transition-all border border-[#eae4ff]"
-                >
-                  <Sparkles className="w-4 h-4 text-[#783eed]" />
-                  <span>Policy Simulator</span>
-                </Link>
-              </div>
-
-              {/* Trust Subtext */}
-              <p className="text-[11px] text-slate-400">
-                Zero AI hallucinations • 100% statutory citations • 14-Digit Bhu-Aadhaar (ULPIN) verified
-                {!currentUser && " • Sign in required for full workspace access"}
-              </p>
-            </div>
-
-            {/* ====================================================================
-                WORLD-CLASS GOVTECH INTELLIGENCE CONSOLE SHOWCASE (LIGHT & CRISP)
-            ==================================================================== */}
-            <div className="mt-12 max-w-5xl mx-auto">
-              <div className="preview-screen bg-white border border-slate-200/90 rounded-2xl shadow-2xl shadow-indigo-950/10 overflow-hidden">
-                {/* Console Top Window Header */}
-                <div className="px-5 py-3.5 border-b border-slate-200/90 bg-slate-50/90 flex flex-wrap items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="flex gap-1.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-rose-400" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
-                    </div>
-                    <div className="h-4 w-px bg-slate-200" />
-                    <div className="flex items-center gap-2 text-xs font-semibold text-slate-800">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                      <span>VEDA Geospatial Digital Twin • Pune District (Haveli Tehsil)</span>
-                    </div>
-                  </div>
-
-                  {/* Layer Pills in UX4G Theme */}
-                  <div className="flex items-center gap-1.5">
-                    <button
-                      type="button"
-                      onClick={() => setActiveLayer("cadastral")}
-                      className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                        activeLayer === "cadastral"
-                          ? "bg-[#4A2BC2] text-white shadow-xs"
-                          : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
-                      }`}
-                    >
-                      <Layers className="w-3.5 h-3.5" />
-                      <span>Bhu-Naksha Cadastre</span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setActiveLayer("svamitva")}
-                      className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                        activeLayer === "svamitva"
-                          ? "bg-[#006D75] text-white shadow-xs"
-                          : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
-                      }`}
-                    >
-                      <Radio className="w-3.5 h-3.5" />
-                      <span>SVAMITVA Drone Ortho</span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setActiveLayer("disputes")}
-                      className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                        activeLayer === "disputes"
-                          ? "bg-rose-600 text-white shadow-xs"
-                          : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
-                      }`}
-                    >
-                      <AlertTriangle className="w-3.5 h-3.5" />
-                      <span>Encroachment Audit</span>
-                    </button>
-                  </div>
-                </div>
-
-                {/* Console Two-Column Interactive Workspace */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[460px]">
-                  {/* Left 7 Columns: Photorealistic Drone Cadastral Orthomosaic Canvas */}
-                  <div className="lg:col-span-7 relative h-[420px] sm:h-[480px] lg:h-auto overflow-hidden flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-200/90 select-none">
-                    {/* Background Drone Satellite Orthomosaic Imagery */}
-                    <img
-                      src="/cadastral-map.jpg"
-                      alt="Cadastral Drone Satellite Orthomosaic"
-                      className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ${
-                        activeLayer === "svamitva"
-                          ? "cadastral-filter-svamitva scale-[1.03]"
-                          : activeLayer === "disputes"
-                          ? "cadastral-filter-disputes"
-                          : "cadastral-filter-normal"
-                      }`}
-                    />
-
-                    {/* Gradient atmospheric vignettes for text legibility */}
-                    <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-slate-950/80 via-slate-950/30 to-transparent pointer-events-none z-10" />
-                    <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-slate-950/85 via-slate-950/40 to-transparent pointer-events-none z-10" />
-
-                    {/* Active Radar Sweep Line */}
-                    <div className="radar-scan-line" />
-
-                    {/* Cartographic Coordinate Grid & Cadastral Vector SVG Overlay */}
-                    <svg
-                      className="absolute inset-0 w-full h-full pointer-events-none z-10"
-                      viewBox="0 0 1000 650"
-                      preserveAspectRatio="none"
-                    >
-                      <defs>
-                        <filter id="glow-indigo" x="-20%" y="-20%" width="140%" height="140%">
-                          <feGaussianBlur stdDeviation="3.5" result="blur" />
-                          <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                        </filter>
-                        <filter id="glow-emerald" x="-20%" y="-20%" width="140%" height="140%">
-                          <feGaussianBlur stdDeviation="3.5" result="blur" />
-                          <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                        </filter>
-                        <filter id="glow-amber" x="-20%" y="-20%" width="140%" height="140%">
-                          <feGaussianBlur stdDeviation="3.5" result="blur" />
-                          <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                        </filter>
-                        <pattern id="carto-grid" width="60" height="60" patternUnits="userSpaceOnUse">
-                          <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255, 255, 255, 0.12)" strokeWidth="0.8" />
-                          <circle cx="0" cy="0" r="1.5" fill="rgba(255, 255, 255, 0.3)" />
-                        </pattern>
-                      </defs>
-
-                      {/* Coordinate Grid Pattern */}
-                      <rect width="100%" height="100%" fill="url(#carto-grid)" />
-
-                      {/* Boundary Polygon: Khasra 142/2 */}
-                      <polygon
-                        points="160,130 470,110 520,400 190,430"
-                        fill={selectedParcel === "142_2" ? "rgba(99, 102, 241, 0.32)" : "rgba(74, 43, 194, 0.12)"}
-                        stroke={selectedParcel === "142_2" ? "#a5b4fc" : "rgba(255, 255, 255, 0.75)"}
-                        strokeWidth={selectedParcel === "142_2" ? "3.5" : "1.8"}
-                        strokeDasharray={selectedParcel === "142_2" ? "none" : "6 4"}
-                        filter={selectedParcel === "142_2" ? "url(#glow-indigo)" : undefined}
-                      />
-
-                      {/* Boundary Polygon: Khasra 142/1 */}
-                      <polygon
-                        points="470,110 880,95 830,380 520,400"
-                        fill={selectedParcel === "142_1" ? "rgba(16, 185, 129, 0.32)" : "rgba(16, 185, 129, 0.12)"}
-                        stroke={selectedParcel === "142_1" ? "#6ee7b7" : "rgba(255, 255, 255, 0.75)"}
-                        strokeWidth={selectedParcel === "142_1" ? "3.5" : "1.8"}
-                        strokeDasharray={selectedParcel === "142_1" ? "none" : "6 4"}
-                        filter={selectedParcel === "142_1" ? "url(#glow-emerald)" : undefined}
-                      />
-
-                      {/* Boundary Polygon: Khasra 143 (Canal Buffer) */}
-                      <polygon
-                        points="190,430 520,400 830,380 870,570 150,600"
-                        fill={selectedParcel === "143" ? "rgba(249, 115, 22, 0.32)" : "rgba(249, 115, 22, 0.12)"}
-                        stroke={selectedParcel === "143" ? "#fdba74" : "rgba(255, 255, 255, 0.6)"}
-                        strokeWidth={selectedParcel === "143" ? "3.5" : "1.8"}
-                        strokeDasharray={selectedParcel === "143" ? "none" : "8 5"}
-                        filter={selectedParcel === "143" ? "url(#glow-amber)" : undefined}
-                      />
-
-                      {/* Active Vertex Anchors for Selected Parcel */}
-                      {selectedParcel === "142_2" && (
-                        <>
-                          <circle cx="160" cy="130" r="5" fill="#ffffff" stroke="#4A2BC2" strokeWidth="2.5" />
-                          <circle cx="470" cy="110" r="5" fill="#ffffff" stroke="#4A2BC2" strokeWidth="2.5" />
-                          <circle cx="520" cy="400" r="5" fill="#ffffff" stroke="#4A2BC2" strokeWidth="2.5" />
-                          <circle cx="190" cy="430" r="5" fill="#ffffff" stroke="#4A2BC2" strokeWidth="2.5" />
-                          <text x="170" y="125" fill="#ffffff" fontSize="12" fontWeight="bold" fontFamily="monospace">A1</text>
-                          <text x="480" y="105" fill="#ffffff" fontSize="12" fontWeight="bold" fontFamily="monospace">A2</text>
-                          <text x="530" y="415" fill="#ffffff" fontSize="12" fontWeight="bold" fontFamily="monospace">A3</text>
-                          <text x="170" y="445" fill="#ffffff" fontSize="12" fontWeight="bold" fontFamily="monospace">A4</text>
-                          <text x="300" y="115" fill="#e0e7ff" fontSize="11" fontWeight="bold" fontFamily="monospace">118.4m</text>
-                          <text x="505" y="260" fill="#e0e7ff" fontSize="11" fontWeight="bold" fontFamily="monospace">92.6m</text>
-                        </>
-                      )}
-
-                      {selectedParcel === "142_1" && (
-                        <>
-                          <circle cx="470" cy="110" r="5" fill="#ffffff" stroke="#006D75" strokeWidth="2.5" />
-                          <circle cx="880" cy="95" r="5" fill="#ffffff" stroke="#006D75" strokeWidth="2.5" />
-                          <circle cx="830" cy="380" r="5" fill="#ffffff" stroke="#006D75" strokeWidth="2.5" />
-                          <circle cx="520" cy="400" r="5" fill="#ffffff" stroke="#006D75" strokeWidth="2.5" />
-                          <text x="480" y="105" fill="#ffffff" fontSize="12" fontWeight="bold" fontFamily="monospace">B1</text>
-                          <text x="890" y="90" fill="#ffffff" fontSize="12" fontWeight="bold" fontFamily="monospace">B2</text>
-                          <text x="840" y="395" fill="#ffffff" fontSize="12" fontWeight="bold" fontFamily="monospace">B3</text>
-                          <text x="505" y="415" fill="#ffffff" fontSize="12" fontWeight="bold" fontFamily="monospace">B4</text>
-                        </>
-                      )}
-
-                      {/* Dispute mode indicator */}
-                      {activeLayer === "disputes" && (
-                        <rect x="0" y="0" width="1000" height="650" fill="rgba(244, 63, 94, 0.08)" />
-                      )}
-                    </svg>
-
-                    {/* Top HUD Telemetry Bar */}
-                    <div className="relative z-20 p-3 sm:p-4 flex flex-wrap items-center justify-between gap-2 text-white">
-                      <div className="inline-flex items-center gap-2 bg-slate-900/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20 text-[11px] font-mono shadow-lg">
-                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                        <span className="font-bold text-[#b9a4ff]">DRONE TRINETRA-04:</span>
-                        <span className="text-slate-200">GSD 3.2cm • ALT 120m</span>
-                      </div>
-
-                      <div className="inline-flex items-center gap-2 bg-slate-900/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20 text-[11px] font-mono shadow-lg">
-                        <span className="text-emerald-400 font-bold">RTK FIXED</span>
-                        <span className="text-slate-400">|</span>
-                        <span className="text-slate-200">±0.03m (24 Sats)</span>
-                      </div>
-                    </div>
-
-                    {/* Interactive Parcel Pin Overlay 1: Khasra 142/2 */}
-                    <div
-                      style={{ top: "28%", left: "26%" }}
-                      className="absolute z-20 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
-                      onClick={() => setSelectedParcel("142_2")}
-                    >
-                      <div
-                        className={`group flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold transition-all shadow-xl backdrop-blur-md border ${
-                          selectedParcel === "142_2"
-                            ? "bg-[#4A2BC2] text-white border-white ring-4 ring-[#4A2BC2]/40 scale-105"
-                            : "bg-slate-900/85 hover:bg-slate-900 text-white border-white/30"
-                        }`}
-                      >
-                        <span className="w-2 h-2 rounded-full bg-indigo-300 animate-ping" />
-                        <span>Khasra 142/2</span>
-                        <span className="text-[10px] opacity-80">(0.88 Ha)</span>
-                      </div>
-                    </div>
-
-                    {/* Interactive Parcel Pin Overlay 2: Khasra 142/1 */}
-                    <div
-                      style={{ top: "25%", left: "68%" }}
-                      className="absolute z-20 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
-                      onClick={() => setSelectedParcel("142_1")}
-                    >
-                      <div
-                        className={`group flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold transition-all shadow-xl backdrop-blur-md border ${
-                          selectedParcel === "142_1"
-                            ? "bg-[#006D75] text-white border-white ring-4 ring-[#006D75]/40 scale-105"
-                            : "bg-slate-900/85 hover:bg-slate-900 text-white border-white/30"
-                        }`}
-                      >
-                        <span className="w-2 h-2 rounded-full bg-emerald-300" />
-                        <span>Khasra 142/1</span>
-                        <span className="text-[10px] opacity-80">(1.42 Ha)</span>
-                      </div>
-                    </div>
-
-                    {/* Interactive Parcel Pin Overlay 3: Khasra 143 */}
-                    <div
-                      style={{ top: "72%", left: "48%" }}
-                      className="absolute z-20 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
-                      onClick={() => setSelectedParcel("143")}
-                    >
-                      <div
-                        className={`group flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold transition-all shadow-xl backdrop-blur-md border ${
-                          selectedParcel === "143"
-                            ? "bg-amber-600 text-white border-white ring-4 ring-amber-600/40 scale-105"
-                            : "bg-slate-900/85 hover:bg-slate-900 text-white border-white/30"
-                        }`}
-                      >
-                        <span className="w-2 h-2 rounded-full bg-amber-300" />
-                        <span>Khasra 143</span>
-                        <span className="text-[10px] opacity-80">Canal Buffer</span>
-                      </div>
-                    </div>
-
-                    {/* Target Crosshair Centered on Selected Parcel */}
-                    <div
-                      className="absolute z-15 pointer-events-none transition-all duration-500"
-                      style={{
-                        top: selectedParcel === "142_2" ? "38%" : selectedParcel === "142_1" ? "34%" : "74%",
-                        left: selectedParcel === "142_2" ? "33%" : selectedParcel === "142_1" ? "68%" : "50%",
-                        transform: "translate(-50%, -50%)",
-                      }}
-                    >
-                      <div className="relative flex items-center justify-center">
-                        <div className="crosshair-pulse-ring" />
-                        <Crosshair className="w-9 h-9 text-indigo-300 drop-shadow-md" />
-                        <div className="absolute top-11 whitespace-nowrap bg-slate-950/85 backdrop-blur-md border border-indigo-400/40 px-2 py-0.5 rounded text-[10px] font-mono text-indigo-200 shadow-md">
-                          {selectedParcel === "142_2"
-                            ? "18.5204° N, 73.8567° E • 558.4m ASL"
-                            : selectedParcel === "142_1"
-                            ? "18.5218° N, 73.8592° E • 559.1m ASL"
-                            : "18.5192° N, 73.8575° E • 554.8m ASL"}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Bottom Floating Glassmorphism Inspector Card */}
-                    <div className="relative z-20 p-3 sm:p-4 flex flex-col sm:flex-row items-end sm:items-center justify-between gap-3">
-                      <div className="map-glass-card rounded-xl p-3 max-w-sm w-full space-y-1.5 shadow-2xl">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-1.5">
-                            <MapPin className="w-3.5 h-3.5 text-[#4A2BC2]" />
-                            <span className="font-extrabold text-xs text-slate-950">
-                              {selectedParcel === "142_2"
-                                ? "Khasra 142/2"
-                                : selectedParcel === "142_1"
-                                ? "Khasra 142/1"
-                                : "Khasra 143 (Canal)"}
-                            </span>
-                          </div>
-                          <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-[#f4f0ff] text-[#4A2BC2] border border-[#eae4ff]">
-                            {selectedParcel === "142_2"
-                              ? "MH28-0914-8831-02"
-                              : selectedParcel === "142_1"
-                              ? "MH28-0914-8831-01"
-                              : "MH28-0914-8831-00"}
-                          </span>
-                        </div>
-
-                        <div className="text-[11px] text-slate-600 flex items-center justify-between">
-                          <span>
-                            {selectedParcel === "142_2"
-                              ? "Area: 0.88 Ha (8,800 m²)"
-                              : selectedParcel === "142_1"
-                              ? "Area: 1.42 Ha (14,200 m²)"
-                              : "Public Irrigation Corridor (30m)"}
-                          </span>
-                          <span className="font-semibold text-emerald-700 flex items-center gap-1">
-                            <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                            {selectedParcel === "143" ? "Buffer Clear" : "0.00m Overlap"}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Map Tool Controls (Compass, Scale, Zoom) */}
-                      <div className="flex items-center gap-2 bg-slate-900/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20 text-white text-[11px] shadow-lg">
-                        <div className="flex items-center gap-1 font-mono text-slate-300">
-                          <Navigation className="w-3 h-3 text-indigo-400 rotate-45" />
-                          <span>N</span>
-                        </div>
-                        <span className="text-slate-600">|</span>
-                        <span className="font-mono text-[10px] text-slate-300">50m ─── 100m</span>
-                        <span className="text-slate-600">|</span>
-                        <Link
-                          href={getDestination("/dashboard/gis")}
-                          className="text-[#b9a4ff] hover:text-white font-bold flex items-center gap-1"
-                        >
-                          <Maximize2 className="w-3 h-3" />
-                          <span>Full GIS</span>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Right 5 Columns: Statutory Evidence & Collectorate Brief Panel */}
-                  <div className="lg:col-span-5 bg-white p-6 flex flex-col justify-between space-y-4">
-                    <div className="space-y-3.5">
-                      <div className="flex items-center justify-between pb-2 border-b border-slate-100">
-                        <div className="text-xs font-bold text-slate-900 flex items-center gap-2">
-                          <ShieldCheck className="w-4 h-4 text-[#4A2BC2]" />
-                          <span>Collectorate Statutory Brief</span>
-                        </div>
-                        <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
-                          100% CITED
-                        </span>
-                      </div>
-
-                      {/* Title Certainty KPI Bar */}
-                      <div className="p-3 rounded-xl bg-emerald-50/70 border border-emerald-200 flex items-center justify-between">
-                        <div>
-                          <div className="text-xs font-bold text-emerald-900">Title Certainty Index</div>
-                          <div className="text-[10px] text-emerald-700">
-                            {selectedParcel === "142_2"
-                              ? "Pre-dispute clearance verified"
-                              : selectedParcel === "142_1"
-                              ? "Full Khatedar mutation cleared"
-                              : "Public buffer standard compliant"}
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-lg font-black text-emerald-700">
-                            {selectedParcel === "142_2" ? "99.4%" : selectedParcel === "142_1" ? "98.7%" : "95.0%"}
-                          </div>
-                          <div className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">
-                            Clean Title
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Evidence Card 1 */}
-                      <div className="p-3.5 rounded-xl bg-[#f4f0ff]/60 border border-[#eae4ff] space-y-1.5">
-                        <div className="text-[11px] font-bold text-[#4A2BC2] flex items-center gap-1.5">
-                          <Scale className="w-3.5 h-3.5" />
-                          <span>
-                            {selectedParcel === "142_2"
-                              ? "Maharashtra Land Revenue Code, Sec 85"
-                              : selectedParcel === "142_1"
-                              ? "Bombay Prevention of Fragmentation Act, Sec 7"
-                              : "Maharashtra Irrigation Act 1976, Sec 11"}
-                          </span>
-                        </div>
-                        <p className="text-xs text-slate-700 leading-relaxed">
-                          {selectedParcel === "142_2"
-                            ? "Partition deed registered under Doc No. 1984/PNE-412 matches satellite cadastral boundaries within 0.04m tolerance. 0 boundary collisions detected against Khasra 142/1."
-                            : selectedParcel === "142_1"
-                            ? "Parcel size of 1.42 Ha satisfies minimum agricultural plot standards. Mutated to 2 joint owners under Mutation Entry No. 6712 with verified RoR."
-                            : "Public canal buffer zone of 15.0m verified clear. Zero unauthorized agricultural or structural encroachment along the primary embankment."}
-                        </p>
-                      </div>
-
-                      {/* Evidence Card 2 */}
-                      <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
-                        <div className="text-[11px] font-bold text-slate-800 flex items-center gap-1.5">
-                          <Compass className="w-3.5 h-3.5 text-[#006D75]" />
-                          <span>SVAMITVA High-Res Drone Orthomosaic</span>
-                        </div>
-                        <p className="text-xs text-slate-600 leading-relaxed">
-                          3.2cm GSD drone survey flight ID MH-PUN-088 verified against Survey of India CORS ground control stations. Abadi property card authenticated.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="pt-2 space-y-2">
-                      <Link
-                        href={getDestination("/dashboard/repository")}
-                        className="w-full flex items-center justify-center gap-2 bg-[#4A2BC2] hover:bg-[#3C1FA4] text-white py-2.5 rounded-xl text-xs font-bold tracking-wide transition-all shadow-sm cursor-pointer"
-                      >
-                        <FileCheck className="w-4 h-4 text-[#b9a4ff]" />
-                        <span>Inspect Full Statutory Evidence</span>
-                      </Link>
-                      <Link
-                        href={getDestination("/dashboard/gis")}
-                        className="w-full flex items-center justify-center gap-2 bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 py-2 rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer"
-                      >
-                        <MapPin className="w-3.5 h-3.5 text-[#4A2BC2]" />
-                        <span>Open 3D Geospatial Viewer</span>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
+
+
           </div>
         </section>
 
@@ -978,7 +510,7 @@ export default function Home() {
                   3.15+ Lakh
                 </div>
                 <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                  Villages Drone-Mapped (SVAMITVA)
+                  Villages Cadastrally Digitized (DILRMP)
                 </div>
               </div>
 
