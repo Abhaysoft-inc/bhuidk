@@ -44,6 +44,19 @@ export default function Home() {
   const [activeScheme, setActiveScheme] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const lang = e.target.value;
+    const select = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+    if (select) {
+      select.value = lang;
+      select.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
+    } else {
+      // Fallback: reload with Google Translate cookie
+      document.cookie = `googtrans=/en/${lang}; path=/`;
+      window.location.reload();
+    }
+  };
+
   const heroSlides = [
     {
       img: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80",
@@ -212,7 +225,7 @@ export default function Home() {
                 <button key={a} className="w-5 h-5 bg-white hover:bg-slate-50 border border-slate-300 rounded text-[9px] text-slate-700 transition-colors">{a}</button>
               ))}
             </div>
-            <select className="bg-transparent text-slate-600 text-[10px] border-none outline-none cursor-pointer hover:text-slate-900 transition-colors">
+            <select onChange={handleLanguageChange} className="bg-transparent text-slate-600 text-[10px] border-none outline-none cursor-pointer hover:text-slate-900 transition-colors">
               <option value="en">English</option>
               <option value="hi">हिन्दी</option>
             </select>
