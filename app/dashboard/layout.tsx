@@ -110,7 +110,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </div>
 
         {/* Soft Modern Nav Bar */}
-        <div className="bg-white sticky top-0 z-40 border-b border-slate-200 shadow-sm">
+        <div className="bg-gradient-to-r from-orange-50/80 via-white to-emerald-50/80 backdrop-blur-md sticky top-0 z-40 border-b border-slate-200 shadow-sm">
           <div className="w-full px-4 sm:px-6 lg:px-8 flex">
             {baseNavItems.map((item) => {
               const isActive = pathname === item.href || (item.href !== "/dashboard" && pathname.startsWith(item.href));
@@ -121,8 +121,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                   href={item.href}
                   className={`flex items-center gap-2 px-4 py-3.5 text-xs font-bold transition-all border-b-2 ${
                     isActive 
-                      ? 'border-indigo-600 text-indigo-600 bg-indigo-50/50' 
-                      : 'border-transparent text-slate-600 hover:text-indigo-600 hover:bg-slate-50'
+                      ? 'border-emerald-500 text-emerald-700 bg-emerald-50/50' 
+                      : 'border-transparent text-slate-600 hover:text-emerald-600 hover:bg-white/60'
                   }`}
                 >
                   <Icon className="w-4 h-4" />

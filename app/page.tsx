@@ -198,31 +198,33 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════
           GOI TOP ACCESSIBILITY STRIP
       ══════════════════════════════════════════════════════ */}
-      <div className="bg-slate-100 text-slate-700 text-[10.5px] py-1.5 px-6 flex justify-between items-center border-b border-slate-200">
-        <div className="flex items-center gap-5 text-slate-600 font-medium">
-          <span>भारत सरकार / Government of India</span>
-          <span className="hidden sm:inline">ग्रामीण विकास मंत्रालय / Ministry of Rural Development</span>
-        </div>
-        <div className="flex items-center gap-4 text-slate-500 font-medium">
-          <a href="#main" className="hover:text-slate-900 transition-colors hidden md:inline">Skip to Main Content</a>
-          <a href="#" className="hover:text-slate-900 transition-colors hidden md:inline">Screen Reader</a>
-          <div className="flex gap-1">
-            {["A-", "A", "A+"].map(a => (
-              <button key={a} className="w-5 h-5 bg-white hover:bg-slate-50 border border-slate-300 rounded text-[9px] text-slate-700 transition-colors">{a}</button>
-            ))}
+      <div className="bg-slate-100 border-b border-slate-200">
+        <div className="max-w-screen-2xl mx-auto flex justify-between items-center px-6 py-1.5 text-slate-700 text-[10.5px]">
+          <div className="flex items-center gap-5 text-slate-600 font-medium">
+            <span>भारत सरकार / Government of India</span>
+            <span className="hidden sm:inline">ग्रामीण विकास मंत्रालय / Ministry of Rural Development</span>
           </div>
-          <select className="bg-transparent text-slate-600 text-[10px] border-none outline-none cursor-pointer hover:text-slate-900 transition-colors">
-            <option value="en">English</option>
-            <option value="hi">हिन्दी</option>
-          </select>
+          <div className="flex items-center gap-4 text-slate-500 font-medium">
+            <a href="#main" className="hover:text-slate-900 transition-colors hidden md:inline">Skip to Main Content</a>
+            <a href="#" className="hover:text-slate-900 transition-colors hidden md:inline">Screen Reader</a>
+            <div className="flex gap-1">
+              {["A-", "A", "A+"].map(a => (
+                <button key={a} className="w-5 h-5 bg-white hover:bg-slate-50 border border-slate-300 rounded text-[9px] text-slate-700 transition-colors">{a}</button>
+              ))}
+            </div>
+            <select className="bg-transparent text-slate-600 text-[10px] border-none outline-none cursor-pointer hover:text-slate-900 transition-colors">
+              <option value="en">English</option>
+              <option value="hi">हिन्दी</option>
+            </select>
+          </div>
         </div>
       </div>
 
       {/* ═══════════════════════════════════════════════════════
           MAIN PORTAL HEADER
       ══════════════════════════════════════════════════════ */}
-      <div className="bg-white border-b border-slate-100 shadow-sm py-3 px-6">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className="bg-white border-b border-slate-100 shadow-sm py-3">
+        <div className="max-w-screen-2xl mx-auto flex items-center justify-between px-6">
           <div className="flex items-center gap-5">
             <div className="w-12 h-16 bg-contain bg-no-repeat bg-center opacity-90" style={{backgroundImage: 'url("https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg")'}}></div>
             <div>
@@ -263,8 +265,8 @@ export default function Home() {
           HORIZONTAL NAV BAR (GOI style)
       ══════════════════════════════════════════════════════ */}
       <nav className="bg-gradient-to-r from-orange-50/80 via-white to-emerald-50/80 backdrop-blur-md text-slate-800 sticky top-0 z-50 border-b border-slate-200 shadow-sm">
-        <div className="max-w-7xl mx-auto flex items-center overflow-x-auto scrollbar-none">
-          <Link href="/" className="flex items-center gap-1.5 px-5 py-3 text-xs font-bold bg-amber-500 text-white whitespace-nowrap shrink-0 border-r border-amber-400/40">
+        <div className="max-w-screen-2xl mx-auto flex items-center overflow-x-auto scrollbar-none">
+          <Link href="/" className="flex items-center gap-1.5 px-5 py-3 text-xs font-bold bg-emerald-50 text-emerald-700 whitespace-nowrap shrink-0 border-r border-emerald-100/50">
             <HomeIcon className="w-3.5 h-3.5" /> Home
           </Link>
           {[
@@ -275,7 +277,7 @@ export default function Home() {
             { label: "Innovation", href: getDestination("/dashboard/grants") },
             { label: "Analytics", href: getDestination("/dashboard/analytics") },
           ].map((item) => (
-            <Link key={item.href} href={item.href} className="px-4 py-3 text-xs font-semibold text-slate-600 hover:bg-slate-50 hover:text-amber-600 transition-colors whitespace-nowrap border-r border-slate-100 shrink-0">
+            <Link key={item.href} href={item.href} className="px-4 py-3 text-xs font-semibold text-slate-600 hover:bg-white/60 hover:text-emerald-700 transition-colors whitespace-nowrap border-r border-slate-100/50 shrink-0">
               {item.label}
             </Link>
           ))}
@@ -314,7 +316,7 @@ export default function Home() {
             HERO SECTION — Bright, Official, GoI Style
         ══════════════════════════════════════════════════════ */}
         <section className="bg-gradient-to-b from-[#f8faff] via-white to-white pt-16 pb-24 overflow-hidden border-b border-slate-100">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
+          <div className="max-w-screen-2xl mx-auto px-6 lg:px-8 relative">
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               
@@ -446,7 +448,7 @@ export default function Home() {
             OUR 4 CORE SERVICES
         ══════════════════════════════════════════════════════ */}
         <section className="py-16 bg-[#f8fafc]" id="services">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-screen-2xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-12">
               <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-blue-700 bg-blue-50 border border-blue-100 px-3 py-1 rounded-full mb-3">Our Services / हमारी सेवाएं</span>
               <h2 className="text-3xl font-black text-slate-900 tracking-tight">Key Platform Services</h2>
@@ -584,7 +586,7 @@ export default function Home() {
         ══════════════════════════════════════════════════════ */}
         <section className="bg-slate-50 py-16 border-t border-slate-200 relative overflow-hidden">
           <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px]"></div>
-          <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+          <div className="max-w-screen-2xl mx-auto px-6 text-center relative z-10">
             <div className="inline-flex items-center gap-2 bg-amber-100 border border-amber-200 text-amber-700 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-5">
               <Lock className="w-3 h-3" /> Secure Officer Access
             </div>
@@ -613,7 +615,7 @@ export default function Home() {
           NIC FOOTER
       ══════════════════════════════════════════════════════ */}
       <footer className="bg-white border-t border-slate-200 pt-8">
-        <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="max-w-screen-2xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center gap-3 mb-4">
               <div className="w-8 h-10 bg-contain bg-no-repeat bg-center opacity-80" style={{backgroundImage: 'url("https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg")'}}></div>
