@@ -67,14 +67,14 @@ export function FastTrackSection({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-amber-200/60">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1 bg-amber-500 text-slate-950 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+            <span className="inline-flex items-center gap-1 bg-amber-500 text-slate-950 text-[10px] font-semibold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
               <Zap className="w-3 h-3 fill-slate-950" /> Micro-Grant Fast Track
             </span>
             <span className="text-[11px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full border border-emerald-200">
               ⚡ Decision within 2 Weeks
             </span>
           </div>
-          <h2 className="text-lg font-black text-[#0b2b50] tracking-tight">
+          <h2 className="text-lg font-bold text-[#0b2b50] tracking-tight">
             Rapid Action Funding for Urgent Land Governance Gaps
           </h2>
           <p className="text-xs text-slate-600 max-w-2xl leading-relaxed">
@@ -89,11 +89,11 @@ export function FastTrackSection({
             <span className="text-slate-500 font-medium">Standard Grants:</span>
             <span className="font-bold text-slate-700">60-90 days review</span>
           </div>
-          <div className="flex items-center justify-between gap-4 font-extrabold text-[#0b2b50]">
+          <div className="flex items-center justify-between gap-4 font-semibold text-[#0b2b50]">
             <span className="flex items-center gap-1 text-amber-600">
               <Zap className="w-3 h-3 fill-amber-600" /> Fast-Track:
             </span>
-            <span className="text-emerald-700 font-black">14-day guaranteed review</span>
+            <span className="text-emerald-700 font-bold">14-day guaranteed review</span>
           </div>
         </div>
       </div>
@@ -104,7 +104,7 @@ export function FastTrackSection({
           <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
             <CheckCircle2 className="w-6 h-6" />
           </div>
-          <h3 className="text-base font-extrabold text-slate-900">
+          <h3 className="text-base font-semibold text-slate-900">
             Fast-Track Application Logged: {submittedApp.id}
           </h3>
           <p className="text-xs text-slate-600 max-w-lg mx-auto">
@@ -218,7 +218,7 @@ export function FastTrackSection({
             {canApply ? (
               <button
                 type="submit"
-                className="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold px-5 py-2.5 rounded-lg text-xs flex items-center justify-center gap-1.5 shadow-sm cursor-pointer transition-colors shrink-0"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-5 py-2.5 rounded-lg text-xs flex items-center justify-center gap-1.5 shadow-sm cursor-pointer transition-colors shrink-0"
               >
                 <Zap className="w-3.5 h-3.5 fill-white" />
                 <span>Submit 14-Day Fast-Track Pitch</span>

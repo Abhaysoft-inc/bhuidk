@@ -37,7 +37,7 @@ export function GovHeader({ language }: GovHeaderProps) {
             </div>
 
             {/* Main Platform Title */}
-            <h1 className="text-base sm:text-lg md:text-xl lg:text-2xl font-extrabold text-[#0b2b50] tracking-tight leading-tight mt-0.5">
+            <h1 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-[#0b2b50] tracking-tight leading-tight mt-0.5">
               {language === "hi" ? (
                 <>राष्ट्रीय भूमि शासन अनुसंधान एवं नीति नवाचार मंच</>
               ) : (

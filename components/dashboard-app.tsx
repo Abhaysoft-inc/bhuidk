@@ -56,7 +56,7 @@ export function DashboardApp({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-extrabold text-slate-100">{user.name}</span>
+                <span className="font-semibold text-slate-100">{user.name}</span>
                 <span className="text-[10px] px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 flex items-center gap-1">
                   <ShieldCheck className="w-3 h-3" />
                   Verified via Jan Parichay
@@ -137,7 +137,7 @@ export function DashboardApp({
                 <span className="text-[11px] font-bold text-amber-800 uppercase tracking-widest block">
                   Collaborative Research Network
                 </span>
-                <h3 className="text-2xl font-black text-[#0b2b50] tracking-tight">
+                <h3 className="text-2xl font-bold text-[#0b2b50] tracking-tight">
                   Active Multi-Stakeholder Research Workspaces
                 </h3>
                 <p className="text-xs text-slate-600 mt-1">
@@ -166,7 +166,7 @@ export function DashboardApp({
                     <Clock className="w-3 h-3" /> Updated 2h ago
                   </span>
                 </div>
-                <h4 className="font-extrabold text-slate-900 text-sm">
+                <h4 className="font-semibold text-slate-900 text-sm">
                   Peri-Urban Cadastral Resurvey in Pune Corridor
                 </h4>
                 <p className="text-xs text-slate-600 leading-relaxed">
@@ -194,7 +194,7 @@ export function DashboardApp({
                     <Clock className="w-3 h-3" /> Updated yesterday
                   </span>
                 </div>
-                <h4 className="font-extrabold text-slate-900 text-sm">
+                <h4 className="font-semibold text-slate-900 text-sm">
                   Model Tenancy Framework & Crop Loan Eligibility
                 </h4>
                 <p className="text-xs text-slate-600 leading-relaxed">
@@ -222,7 +222,7 @@ export function DashboardApp({
                     <Clock className="w-3 h-3" /> Updated 4d ago
                   </span>
                 </div>
-                <h4 className="font-extrabold text-slate-900 text-sm">
+                <h4 className="font-semibold text-slate-900 text-sm">
                   Desertification Vulnerability Atlas for WDC-PMKSY 2.0
                 </h4>
                 <p className="text-xs text-slate-600 leading-relaxed">
@@ -250,7 +250,7 @@ export function DashboardApp({
               <span className="text-[11px] font-bold text-amber-800 uppercase tracking-widest block">
                 Bhoomi Innovation Portal
               </span>
-              <h3 className="text-2xl font-black text-[#0b2b50] tracking-tight">
+              <h3 className="text-2xl font-bold text-[#0b2b50] tracking-tight">
                 National Land Governance Hackathon & Innovation Challenges 2026
               </h3>
               <p className="text-xs text-slate-600 mt-1">
@@ -295,7 +295,7 @@ export function DashboardApp({
                       <span className="text-emerald-700 font-bold text-xs">{chal.reward}</span>
                       <span className="text-slate-400 text-xs">• Deadline: {chal.deadline}</span>
                     </div>
-                    <h4 className="font-extrabold text-[#0b2b50] text-sm">{chal.title}</h4>
+                    <h4 className="font-semibold text-[#0b2b50] text-sm">{chal.title}</h4>
                     <p className="text-xs text-slate-600">{chal.desc}</p>
                   </div>
 
@@ -304,7 +304,7 @@ export function DashboardApp({
                     onClick={() =>
                       alert(`Applying for Challenge ${chal.id}. Proposal submission template opened for ${user.name}.`)
                     }
-                    className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold px-4 py-2 rounded text-xs shadow-xs transition-colors shrink-0 cursor-pointer"
+                    className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-semibold px-4 py-2 rounded text-xs shadow-xs transition-colors shrink-0 cursor-pointer"
                   >
                     Submit Solution Pitch
                   </button>

@@ -101,7 +101,7 @@ export function CoFundersModal({
                           {funder.name}
                         </h4>
                       </div>
-                      <span className="text-xs font-black text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 shrink-0">
+                      <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 shrink-0">
                         ₹{funder.committedPoolLakhs}L Pool
                       </span>
                     </div>

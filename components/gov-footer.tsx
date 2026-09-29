@@ -22,7 +22,7 @@ export function GovFooter({ language }: GovFooterProps) {
             <div className="flex items-center gap-3">
               <AshokaEmblem className="h-12 w-auto text-white" />
               <div>
-                <div className="font-extrabold text-white text-sm leading-tight">
+                <div className="font-semibold text-white text-sm leading-tight">
                   {language === "hi" ? "भूमि संसाधन विभाग" : "Department of Land Resources"}
                 </div>
                 <div className="text-[11px] text-slate-400">

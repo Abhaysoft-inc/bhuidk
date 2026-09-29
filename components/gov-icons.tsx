@@ -49,11 +49,11 @@ export function DigitalIndiaLogo({ className = "h-10 w-auto" }: { className?: st
   return (
     <div className={`flex items-center gap-1.5 font-bold tracking-tight select-none ${className}`}>
       <div className="relative flex flex-col items-center justify-center w-8 h-8 rounded-full border border-orange-500 bg-orange-50/50 p-1">
-        <span className="text-[10px] text-orange-600 font-extrabold leading-none">DI</span>
+        <span className="text-[10px] text-orange-600 font-semibold leading-none">DI</span>
         <div className="w-5 h-0.5 bg-green-600 mt-0.5 rounded-full" />
       </div>
       <div className="flex flex-col leading-tight">
-        <span className="text-[13px] font-black text-slate-800 tracking-wider">Digital India</span>
+        <span className="text-[13px] font-bold text-slate-800 tracking-wider">Digital India</span>
         <span className="text-[9px] font-medium text-slate-500">Power To Empower</span>
       </div>
     </div>
@@ -78,8 +78,8 @@ export function NICBadge({ className = "h-8 w-auto" }: { className?: string }) {
   return (
     <div className={`flex items-center gap-1.5 border border-slate-300 bg-white px-2 py-1 rounded text-slate-800 ${className}`}>
       <div className="flex flex-col text-center">
-        <span className="text-[11px] font-black text-blue-900 tracking-wider">एन आई सी</span>
-        <span className="text-[8px] font-extrabold text-blue-700 tracking-tight">NIC</span>
+        <span className="text-[11px] font-bold text-blue-900 tracking-wider">एन आई सी</span>
+        <span className="text-[8px] font-semibold text-blue-700 tracking-tight">NIC</span>
       </div>
       <div className="h-6 w-[1px] bg-slate-200" />
       <div className="text-[8px] text-slate-600 leading-tight">
@@ -93,7 +93,7 @@ export function NICBadge({ className = "h-8 w-auto" }: { className?: string }) {
 export function ViksitBharatBadge({ className = "h-9 w-auto" }: { className?: string }) {
   return (
     <div className={`hidden lg:flex items-center gap-1.5 border border-amber-300 bg-amber-50/60 px-2.5 py-1 rounded text-amber-950 ${className}`}>
-      <div className="w-5 h-5 rounded-full bg-gradient-to-tr from-amber-500 to-orange-400 text-white flex items-center justify-center text-[10px] font-black shadow-xs">
+      <div className="w-5 h-5 rounded-full bg-gradient-to-tr from-amber-500 to-orange-400 text-white flex items-center justify-center text-[10px] font-bold shadow-xs">
         VB
       </div>
       <div className="text-[9px] leading-tight">

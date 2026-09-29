@@ -265,10 +265,10 @@ Model: ${MODEL_CONFIG.modelName} (${MODEL_CONFIG.modelVersion}, R²=${MODEL_CONF
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-4">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-black text-slate-900 tracking-tight">
+            <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
               Policy Reform Sandbox
             </h1>
-            <span className="text-[10px] font-bold bg-[#0b2b50] text-white px-2 py-0.5 rounded-full uppercase tracking-wider">
+            <span className="text-[10px] font-medium bg-[#0b2b50] text-white px-2 py-0.5 rounded-full uppercase tracking-wider">
               {MODEL_CONFIG.modelVersion}
             </span>
           </div>
@@ -376,10 +376,10 @@ Model: ${MODEL_CONFIG.modelName} (${MODEL_CONFIG.modelVersion}, R²=${MODEL_CONF
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-base font-extrabold text-slate-900">
+                  <span className="text-base font-semibold text-slate-900">
                     {selectedDistrict.name}, {selectedDistrict.state}
                   </span>
-                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 border border-slate-200">
+                  <span className="text-[11px] font-medium px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 border border-slate-200">
                     District Baseline
                   </span>
                 </div>
@@ -426,10 +426,10 @@ Model: ${MODEL_CONFIG.modelName} (${MODEL_CONFIG.modelVersion}, R²=${MODEL_CONF
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-center">
               {/* Actual Baseline */}
               <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-center">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+                <span className="text-[10px] font-medium text-slate-400 uppercase tracking-wider block mb-1">
                   1. Recorded Baseline
                 </span>
-                <span className={`inline-block px-3 py-1 rounded-lg text-sm font-black border ${baselineColors.bg} ${baselineColors.text} ${baselineColors.border}`}>
+                <span className={`inline-block px-3 py-1 rounded-lg text-sm font-bold border ${baselineColors.bg} ${baselineColors.text} ${baselineColors.border}`}>
                   {baselineLevel} Risk
                 </span>
                 <span className="text-[11px] text-slate-500 block mt-1.5">
@@ -439,7 +439,7 @@ Model: ${MODEL_CONFIG.modelName} (${MODEL_CONFIG.modelVersion}, R²=${MODEL_CONF
 
               {/* Direction Indicator (Step 5) */}
               <div className="p-3.5 rounded-xl border flex flex-col items-center justify-center text-center gap-1 bg-white border-slate-200">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                <span className="text-[10px] font-medium text-slate-400 uppercase tracking-wider">
                   2. Directional Shift
                 </span>
                 <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold border ${directionInfo.badgeClass}`}>
@@ -453,10 +453,10 @@ Model: ${MODEL_CONFIG.modelName} (${MODEL_CONFIG.modelVersion}, R²=${MODEL_CONF
 
               {/* Simulated Output (Step 4) */}
               <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-center">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+                <span className="text-[10px] font-medium text-slate-400 uppercase tracking-wider block mb-1">
                   3. Simulated Estimate
                 </span>
-                <span className={`inline-block px-3 py-1 rounded-lg text-sm font-black border ${simulatedColors.bg} ${simulatedColors.text} ${simulatedColors.border}`}>
+                <span className={`inline-block px-3 py-1 rounded-lg text-sm font-bold border ${simulatedColors.bg} ${simulatedColors.text} ${simulatedColors.border}`}>
                   {simulatedLevel} Risk
                 </span>
                 <span className="text-[11px] text-slate-500 block mt-1.5">
@@ -471,7 +471,7 @@ Model: ${MODEL_CONFIG.modelName} (${MODEL_CONFIG.modelVersion}, R²=${MODEL_CONF
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Sliders className="w-4 h-4 text-[#0b2b50]" />
-                <h3 className="text-sm font-extrabold text-slate-900">
+                <h3 className="text-sm font-semibold text-slate-900">
                   Adjust Policy Levers
                 </h3>
               </div>
@@ -506,12 +506,12 @@ Model: ${MODEL_CONFIG.modelName} (${MODEL_CONFIG.modelVersion}, R²=${MODEL_CONF
                         </span>
                       </div>
                       <div className="text-right shrink-0">
-                        <span className="text-xs font-black text-[#0b2b50]">
+                        <span className="text-xs font-bold text-[#0b2b50]">
                           {currentVal}{v.unit === "%" ? "%" : ""}
                         </span>
                         {isModified && (
                           <span
-                            className={`block text-[10px] font-bold ${
+                            className={`block text-[10px] font-medium ${
                               diff > 0 ? "text-sky-700" : "text-amber-700"
                             }`}
                           >
@@ -567,7 +567,7 @@ Model: ${MODEL_CONFIG.modelName} (${MODEL_CONFIG.modelVersion}, R²=${MODEL_CONF
               <div className="p-5 border-t border-slate-100 bg-slate-50/70 space-y-4 text-xs">
                 {/* Mathematical Equation */}
                 <div>
-                  <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wider block mb-1.5">
+                  <span className="text-[11px] font-medium text-slate-700 uppercase tracking-wider block mb-1.5">
                     Pre-Fitted Linear Regression Equation
                   </span>
                   <div className="bg-white rounded-xl border border-slate-200 p-3 font-mono text-xs text-slate-800 overflow-x-auto shadow-xs">
@@ -592,7 +592,7 @@ Model: ${MODEL_CONFIG.modelName} (${MODEL_CONFIG.modelVersion}, R²=${MODEL_CONF
                     <span className="text-[10px] text-slate-400 uppercase font-bold block">
                       Goodness of Fit (R²)
                     </span>
-                    <span className="text-base font-black text-slate-900 mt-0.5 block">
+                    <span className="text-base font-bold text-slate-900 mt-0.5 block">
                       {MODEL_CONFIG.rSquared}
                     </span>
                     <span className="text-[10px] text-slate-500">
@@ -604,7 +604,7 @@ Model: ${MODEL_CONFIG.modelName} (${MODEL_CONFIG.modelVersion}, R²=${MODEL_CONF
                     <span className="text-[10px] text-slate-400 uppercase font-bold block">
                       Calibration Sample Size
                     </span>
-                    <span className="text-base font-black text-slate-900 mt-0.5 block">
+                    <span className="text-base font-bold text-slate-900 mt-0.5 block">
                       n = {MODEL_CONFIG.sampleSize} districts
                     </span>
                     <span className="text-[10px] text-slate-500">
@@ -689,7 +689,7 @@ Model: ${MODEL_CONFIG.modelName} (${MODEL_CONFIG.modelVersion}, R²=${MODEL_CONF
           <div className="bg-white rounded-2xl border border-slate-200 shadow-2xl max-w-xl w-full p-6 space-y-4">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div>
-                <h3 className="text-base font-extrabold text-slate-900">
+                <h3 className="text-base font-semibold text-slate-900">
                   Scenario Brief for Policy Report
                 </h3>
                 <p className="text-xs text-slate-500">

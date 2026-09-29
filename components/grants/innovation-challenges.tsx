@@ -61,7 +61,7 @@ export function InnovationChallenges({
             <span className="text-[10px] font-bold bg-[#0b2b50] text-white px-2 py-0.5 rounded">
               OPEN ROADMAP
             </span>
-            <h2 className="text-base font-extrabold text-[#0b2b50] tracking-tight">
+            <h2 className="text-base font-semibold text-[#0b2b50] tracking-tight">
               Platform Innovation Challenges: Help Us Improve What We&apos;ve Built
             </h2>
           </div>
@@ -72,7 +72,7 @@ export function InnovationChallenges({
         </div>
 
         <div className="text-xs font-bold text-slate-500 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200 self-start sm:self-auto shrink-0">
-          Total Challenge Pool: <span className="text-emerald-700 font-extrabold">₹1.25 Cr</span>
+          Total Challenge Pool: <span className="text-emerald-700 font-semibold">₹1.25 Cr</span>
         </div>
       </div>
 
@@ -95,7 +95,7 @@ export function InnovationChallenges({
               </div>
 
               {/* Title */}
-              <h3 className="text-sm font-extrabold text-slate-900 leading-snug">
+              <h3 className="text-sm font-semibold text-slate-900 leading-snug">
                 {ch.title}
               </h3>
 
@@ -156,7 +156,7 @@ export function InnovationChallenges({
             <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
               <div>
                 <span className="text-[10px] text-slate-400 block font-medium">Grant Pool</span>
-                <span className="text-xs font-black text-emerald-700">{ch.grantPool}</span>
+                <span className="text-xs font-bold text-emerald-700">{ch.grantPool}</span>
               </div>
 
               {canSubmit ? (
@@ -213,7 +213,7 @@ export function InnovationChallenges({
                 <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-6 h-6" />
                 </div>
-                <h4 className="text-lg font-black text-slate-900">Solution Pitch Received</h4>
+                <h4 className="text-lg font-bold text-slate-900">Solution Pitch Received</h4>
                 <p className="text-xs text-slate-600 max-w-md mx-auto leading-relaxed">
                   Your architecture proposal for <strong>{submittedId}</strong> has been logged with the Technical Steering Working Group (WG-04). Shortlisted teams are notified within 21 days for sandboxed prototyping.
                 </p>

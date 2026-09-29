@@ -132,7 +132,7 @@ function LoginForm() {
           <div className="text-[10px] font-bold text-[#4A2BC2] uppercase tracking-widest bg-[#f4f0ff] inline-block px-2.5 py-0.5 rounded-full border border-[#eae4ff]">
             GOVERNMENT OF INDIA • VEDA PORTAL
           </div>
-          <h1 className="text-2xl font-extrabold text-slate-950 tracking-tight mt-2">
+          <h1 className="text-2xl font-semibold text-slate-950 tracking-tight mt-2">
             Sign in to your account
           </h1>
           <p className="text-xs text-slate-500 mt-1">

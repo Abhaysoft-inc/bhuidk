@@ -183,10 +183,10 @@ export function ProposedZonePanel({
             <div>
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+                  <span className="text-[10px] font-medium uppercase tracking-wider text-slate-400 block">
                     BLIN Cadastral Inspector
                   </span>
-                  <h3 className="text-base font-black text-[#0b2b50] tracking-tight">Proposed Zone</h3>
+                  <h3 className="text-base font-bold text-[#0b2b50] tracking-tight">Proposed Zone</h3>
                 </div>
                 <span className="ux4g-tag ux4g-tag-tonal-neutral ux4g-tag-xs">
                   Awaiting Input
@@ -332,7 +332,7 @@ export function ProposedZonePanel({
                 {/* Row 1: Badges on Left, Action Buttons on Right */}
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-1.5 flex-wrap min-w-0">
-                    <span className="font-mono text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 border border-slate-200 shrink-0">
+                    <span className="font-mono text-[11px] font-medium uppercase tracking-wider px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 border border-slate-200 shrink-0">
                       {activeZone.zone_id}
                     </span>
 
@@ -383,7 +383,7 @@ export function ProposedZonePanel({
                 {/* Row 2: Title and Subtitle / File Name (Full width, never cramped) */}
                 <div className="flex items-center justify-between gap-2">
                   <div className="min-w-0">
-                    <h3 className="text-base font-black text-[#0b2b50] tracking-tight">
+                    <h3 className="text-base font-bold text-[#0b2b50] tracking-tight">
                       Zone Configuration
                     </h3>
                     {activeZone.source_file && (
@@ -395,8 +395,8 @@ export function ProposedZonePanel({
                   </div>
 
                   <div className="text-right shrink-0">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Total Area</span>
-                    <span className="font-mono text-xs font-black text-[#0b2b50]">
+                    <span className="text-[10px] font-medium uppercase tracking-wider text-slate-400 block">Total Area</span>
+                    <span className="font-mono text-xs font-bold text-[#0b2b50]">
                       {activeZone.area.toLocaleString()} Ha
                     </span>
                   </div>
@@ -508,10 +508,10 @@ export function ProposedZonePanel({
               {/* Core Geometry Metrics Strip (4-card grid) */}
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <div className="ux4g-card ux4g-card-solid p-2.5">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                  <span className="text-[10px] font-medium text-slate-400 uppercase tracking-wider block">
                     Estimated Area
                   </span>
-                  <div className="text-base font-black text-[#0b2b50] mt-0.5">
+                  <div className="text-base font-bold text-[#0b2b50] mt-0.5">
                     {activeZone.area.toLocaleString()} Ha
                   </div>
                   <div className="text-[10px] text-slate-500 font-medium">
@@ -520,10 +520,10 @@ export function ProposedZonePanel({
                 </div>
 
                 <div className="ux4g-card ux4g-card-solid p-2.5">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                  <span className="text-[10px] font-medium text-slate-400 uppercase tracking-wider block">
                     Perimeter
                   </span>
-                  <div className="text-base font-black text-slate-800 mt-0.5">
+                  <div className="text-base font-bold text-slate-800 mt-0.5">
                     {activeZone.perimeter} km
                   </div>
                   <div className="text-[10px] text-slate-500 font-medium">
@@ -532,7 +532,7 @@ export function ProposedZonePanel({
                 </div>
 
                 <div className="ux4g-card ux4g-card-solid p-2.5">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                  <span className="text-[10px] font-medium text-slate-400 uppercase tracking-wider block">
                     Administrative Unit
                   </span>
                   <div className="text-xs font-bold text-slate-800 truncate mt-0.5">
@@ -544,10 +544,10 @@ export function ProposedZonePanel({
                 </div>
 
                 <div className="ux4g-card ux4g-card-solid p-2.5">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                  <span className="text-[10px] font-medium text-slate-400 uppercase tracking-wider block">
                     Affected Parcels
                   </span>
-                  <div className="text-base font-black text-amber-700 mt-0.5">
+                  <div className="text-base font-bold text-amber-700 mt-0.5">
                     {isUploaded && !showSimulatedAnalysis ? "—" : analysis?.affected_parcels}
                   </div>
                   <div className="text-[9px] text-amber-800 font-medium">
@@ -620,7 +620,7 @@ export function ProposedZonePanel({
                 <div className="flex items-center gap-1.5">
                   <Layers className="w-4 h-4 text-[#0b2b50]" />
                   <div>
-                    <h3 className="text-sm font-black text-slate-900 uppercase tracking-wide">
+                    <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wide">
                       Land Impact & LULC Analysis
                     </h3>
                     <p className="text-[11px] text-slate-400">Preliminary cadastral intersection</p>
@@ -655,7 +655,7 @@ export function ProposedZonePanel({
                     <button
                       type="button"
                       onClick={() => setShowSimulatedAnalysis(true)}
-                      className="text-[11px] font-bold text-[#0b2b50] hover:underline cursor-pointer"
+                      className="text-[11px] font-medium text-[#0b2b50] hover:underline cursor-pointer"
                     >
                       Preview Prototype Estimate →
                     </button>
@@ -678,7 +678,7 @@ export function ProposedZonePanel({
 
                   {/* Horizontal Composition Progress Bar */}
                   <div className="space-y-2 p-3.5 rounded-xl border border-slate-200 bg-slate-50">
-                    <div className="text-[11px] font-bold text-slate-700 flex justify-between items-center">
+                    <div className="text-[11px] font-medium text-slate-700 flex justify-between items-center">
                       <span>Land Use Classification (NRSC Standard)</span>
                       <span className="text-slate-400 font-normal">Preliminary intersection</span>
                     </div>
@@ -739,8 +739,8 @@ export function ProposedZonePanel({
                   {/* 6 Land Impact Breakdown Metric Cards */}
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                     <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
-                      <span className="text-[10px] font-bold text-slate-500 block">Total Area</span>
-                      <div className="text-sm font-black text-slate-900 mt-0.5">
+                      <span className="text-[10px] font-medium text-slate-500 block">Total Area</span>
+                      <div className="text-sm font-bold text-slate-900 mt-0.5">
                         {activeZone.area} Ha
                       </div>
                       <span className="text-[10px] text-slate-400 font-mono">100% of zone</span>
@@ -748,10 +748,10 @@ export function ProposedZonePanel({
 
                     <div className="bg-emerald-50/70 p-2.5 rounded-xl border border-emerald-200/80">
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-bold text-emerald-900">Agricultural</span>
+                        <span className="text-[10px] font-medium text-emerald-900">Agricultural</span>
                         <Wheat className="w-3 h-3 text-emerald-700" />
                       </div>
-                      <div className="text-sm font-black text-emerald-900 mt-0.5">
+                      <div className="text-sm font-bold text-emerald-900 mt-0.5">
                         {analysis.agricultural_area} Ha
                       </div>
                       <span className="text-[10px] text-emerald-700 font-semibold">
@@ -761,10 +761,10 @@ export function ProposedZonePanel({
 
                     <div className="bg-slate-100/80 p-2.5 rounded-xl border border-slate-200">
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-bold text-slate-700">Built-up Land</span>
+                        <span className="text-[10px] font-medium text-slate-700">Built-up Land</span>
                         <Building2 className="w-3 h-3 text-slate-600" />
                       </div>
-                      <div className="text-sm font-black text-slate-800 mt-0.5">
+                      <div className="text-sm font-bold text-slate-800 mt-0.5">
                         {analysis.built_up_area} Ha
                       </div>
                       <span className="text-[10px] text-slate-600 font-semibold">
@@ -774,10 +774,10 @@ export function ProposedZonePanel({
 
                     <div className="bg-green-50/70 p-2.5 rounded-xl border border-green-200/80">
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-bold text-green-900">Forest / Protected</span>
+                        <span className="text-[10px] font-medium text-green-900">Forest / Protected</span>
                         <TreePine className="w-3 h-3 text-green-700" />
                       </div>
-                      <div className="text-sm font-black text-green-900 mt-0.5">
+                      <div className="text-sm font-bold text-green-900 mt-0.5">
                         {analysis.forest_area} Ha
                       </div>
                       <span className="text-[10px] text-green-700 font-semibold">
@@ -787,10 +787,10 @@ export function ProposedZonePanel({
 
                     <div className="bg-cyan-50/70 p-2.5 rounded-xl border border-cyan-200/80">
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-bold text-cyan-900">Water Bodies</span>
+                        <span className="text-[10px] font-medium text-cyan-900">Water Bodies</span>
                         <Waves className="w-3 h-3 text-cyan-700" />
                       </div>
-                      <div className="text-sm font-black text-cyan-900 mt-0.5">
+                      <div className="text-sm font-bold text-cyan-900 mt-0.5">
                         {analysis.water_area} Ha
                       </div>
                       <span className="text-[10px] text-cyan-700 font-semibold">
@@ -799,8 +799,8 @@ export function ProposedZonePanel({
                     </div>
 
                     <div className="bg-amber-50/70 p-2.5 rounded-xl border border-amber-200/80">
-                      <span className="text-[10px] font-bold text-amber-900 block">Other Land</span>
-                      <div className="text-sm font-black text-amber-900 mt-0.5">
+                      <span className="text-[10px] font-medium text-amber-900 block">Other Land</span>
+                      <div className="text-sm font-bold text-amber-900 mt-0.5">
                         {analysis.other_area} Ha
                       </div>
                       <span className="text-[10px] text-amber-700 font-semibold">
@@ -843,7 +843,7 @@ export function ProposedZonePanel({
                 <div className="flex items-center gap-1.5">
                   <AlertTriangle className="w-4 h-4 text-amber-600" />
                   <div>
-                    <h3 className="text-sm font-black text-slate-900 uppercase tracking-wide">
+                    <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wide">
                       Risk & Regulatory Constraints
                     </h3>
                     <p className="text-[11px] text-slate-400">Cadastral, social & environmental screening</p>
@@ -857,24 +857,24 @@ export function ProposedZonePanel({
               {/* 6 Impact & Risk Cards Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
                 <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
-                  <span className="text-[10px] font-bold text-slate-500 block">Parcels Affected</span>
-                  <div className="text-base font-black text-slate-900 mt-0.5">
+                  <span className="text-[10px] font-medium text-slate-500 block">Parcels Affected</span>
+                  <div className="text-base font-bold text-slate-900 mt-0.5">
                     {isUploaded && !showSimulatedAnalysis ? "—" : analysis.affected_parcels}
                   </div>
                   <div className="text-[9px] text-slate-400 font-medium">Cadastral boundaries</div>
                 </div>
 
                 <div className="p-2.5 rounded-xl bg-rose-50/70 border border-rose-200/80">
-                  <span className="text-[10px] font-bold text-rose-900 block">Disputed Parcels</span>
-                  <div className="text-base font-black text-rose-800 mt-0.5">
+                  <span className="text-[10px] font-medium text-rose-900 block">Disputed Parcels</span>
+                  <div className="text-base font-bold text-rose-800 mt-0.5">
                     {isUploaded && !showSimulatedAnalysis ? "—" : `~${analysis.disputed_parcels}`}
                   </div>
                   <div className="text-[9px] text-rose-700 font-medium">Revenue court disputes</div>
                 </div>
 
                 <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
-                  <span className="text-[10px] font-bold text-slate-500 block">Population Affected</span>
-                  <div className="text-base font-black text-slate-900 mt-0.5">
+                  <span className="text-[10px] font-medium text-slate-500 block">Population Affected</span>
+                  <div className="text-base font-bold text-slate-900 mt-0.5">
                     {isUploaded && !showSimulatedAnalysis
                       ? "—"
                       : `~${analysis.population_affected.toLocaleString()}`}
@@ -883,10 +883,10 @@ export function ProposedZonePanel({
                 </div>
 
                 <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
-                  <span className="text-[10px] font-bold text-slate-500 block">Acquisition Complexity</span>
+                  <span className="text-[10px] font-medium text-slate-500 block">Acquisition Complexity</span>
                   <div className="mt-1 flex items-center justify-between">
                     <span
-                      className={`text-[11px] font-extrabold px-2 py-0.5 rounded ${
+                      className={`text-[11px] font-semibold px-2 py-0.5 rounded ${
                         analysis.acquisition_complexity === "High"
                           ? "bg-rose-100 text-rose-800 border border-rose-200"
                           : analysis.acquisition_complexity === "Medium"
@@ -901,10 +901,10 @@ export function ProposedZonePanel({
                 </div>
 
                 <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
-                  <span className="text-[10px] font-bold text-slate-500 block">Environmental Sens.</span>
+                  <span className="text-[10px] font-medium text-slate-500 block">Environmental Sens.</span>
                   <div className="mt-1 flex items-center justify-between">
                     <span
-                      className={`text-[11px] font-extrabold px-2 py-0.5 rounded ${
+                      className={`text-[11px] font-semibold px-2 py-0.5 rounded ${
                         analysis.environmental_sensitivity === "High"
                           ? "bg-rose-100 text-rose-800 border border-rose-200"
                           : analysis.environmental_sensitivity === "Medium"
@@ -919,10 +919,10 @@ export function ProposedZonePanel({
                 </div>
 
                 <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
-                  <span className="text-[10px] font-bold text-slate-500 block">Flood Exposure</span>
+                  <span className="text-[10px] font-medium text-slate-500 block">Flood Exposure</span>
                   <div className="mt-1 flex items-center justify-between">
                     <span
-                      className={`text-[11px] font-extrabold px-2 py-0.5 rounded ${
+                      className={`text-[11px] font-semibold px-2 py-0.5 rounded ${
                         analysis.flood_exposure === "High"
                           ? "bg-rose-100 text-rose-800 border border-rose-200"
                           : analysis.flood_exposure === "Medium"
@@ -988,7 +988,7 @@ export function ProposedZonePanel({
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                   <div>
-                    <h3 className="text-sm font-black text-slate-900 uppercase tracking-wide">
+                    <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wide">
                       Feasibility Results & Summary
                     </h3>
                     <p className="text-[11px] text-slate-400">Executive decision support evaluation</p>
@@ -1020,7 +1020,7 @@ export function ProposedZonePanel({
                 <div className="flex items-center justify-between text-xs">
                   <span className="font-bold text-slate-700">Preliminary Feasibility Rating:</span>
                   <span
-                    className={`font-black px-2.5 py-0.5 rounded text-xs ${
+                    className={`font-bold px-2.5 py-0.5 rounded text-xs ${
                       analysis.acquisition_complexity === "Low" && analysis.flood_exposure === "Low"
                         ? "bg-emerald-100 text-emerald-800 border border-emerald-300"
                         : analysis.acquisition_complexity === "High" || analysis.environmental_sensitivity === "High"

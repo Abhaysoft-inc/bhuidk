@@ -31,7 +31,7 @@ export function AiCandidateCompareModal({
     {
       label: "Relative Suitability Score",
       render: (c: CandidateLocation) => (
-        <span className="bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-black px-2 py-0.5 rounded">
+        <span className="bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold px-2 py-0.5 rounded">
           {c.suitability_score}/100
         </span>
       ),
@@ -134,7 +134,7 @@ export function AiCandidateCompareModal({
                 Multi-Location Evaluation
               </span>
             </div>
-            <h3 className="text-xl font-black text-[#0b2b50] tracking-tight mt-1">
+            <h3 className="text-xl font-bold text-[#0b2b50] tracking-tight mt-1">
               Compare Candidate Locations
             </h3>
           </div>
@@ -162,7 +162,7 @@ export function AiCandidateCompareModal({
                       <span className="ux4g-tag ux4g-tag-tonal-neutral ux4g-tag-xs">
                         {cand.label}
                       </span>
-                      <div className="text-xs font-black truncate text-slate-900 mt-1">
+                      <div className="text-xs font-bold truncate text-slate-900 mt-1">
                         {cand.name.split(" - ")[1] || cand.name}
                       </div>
                       <div className="text-[10px] font-normal text-slate-500">

@@ -155,11 +155,11 @@ export default function RepositoryPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
-            className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-1"
+            className="text-[11px] font-medium text-slate-400 uppercase tracking-widest mb-1"
           >
             Dashboard › Repository
           </motion.p>
-          <h1 className="text-3xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+          <h1 className="text-3xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
             Digital Repository
             <motion.span
               animate={{ rotate: [0, 15, -10, 15, 0] }}
@@ -241,14 +241,14 @@ export default function RepositoryPage() {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               onClick={() => setActiveTab(tab)}
-              className={`relative flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
+              className={`relative flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium whitespace-nowrap transition-all cursor-pointer ${
                 isActive
                   ? "bg-[#0b2b50] text-white shadow-md shadow-[#0b2b50]/20"
                   : "bg-white border border-slate-200 text-slate-500 hover:text-slate-700 hover:border-slate-300"
               }`}
             >
               {tab}
-              <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-black ${isActive ? "bg-white/20 text-white" : "bg-slate-100 text-slate-500"}`}>
+              <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-bold ${isActive ? "bg-white/20 text-white" : "bg-slate-100 text-slate-500"}`}>
                 {count}
               </span>
             </motion.button>
@@ -261,7 +261,7 @@ export default function RepositoryPage() {
         key={filteredDocs.length}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="text-[11px] font-bold text-slate-400 uppercase tracking-widest"
+        className="text-[11px] font-medium text-slate-400 uppercase tracking-widest"
       >
         {filteredDocs.length} result{filteredDocs.length !== 1 ? "s" : ""} found
       </motion.p>
@@ -272,7 +272,7 @@ export default function RepositoryPage() {
         variants={containerVariants}
         initial="hidden"
         animate="show"
-        className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
       >
         <AnimatePresence mode="popLayout">
           {filteredDocs.map((doc) => {
@@ -286,110 +286,106 @@ export default function RepositoryPage() {
                 variants={cardVariants}
                 layout
                 exit="exit"
-                whileHover={{ y: -4, boxShadow: "0 20px 40px -8px rgba(0,0,0,0.10)" }}
+                whileHover={{ y: -3, boxShadow: "0 12px 24px -6px rgba(0,0,0,0.08)" }}
                 transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                className="group relative bg-white rounded-2xl border border-slate-200/80 overflow-hidden flex flex-col"
+                className="group relative bg-white rounded-xl border border-slate-200/90 hover:border-slate-300 overflow-hidden flex flex-col justify-between transition-all"
               >
                 {/* Accent top bar */}
-                <div className={`h-1 w-full ${cfg.accentBar} opacity-80`} />
+                <div className={`h-1 w-full ${cfg.accentBar}`} />
 
-                <div className="p-5 flex flex-col gap-4 flex-1">
-                  {/* Top row: badge + star + menu */}
-                  <div className="flex items-start justify-between">
-                    <span className={`inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-lg ${cfg.badgeBg} ${cfg.badgeText}`}>
-                      <Icon className="w-3 h-3" />
-                      {doc.type}
-                    </span>
-                    <div className="flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-all duration-200">
-                      <motion.button
-                        whileHover={{ scale: 1.2 }}
-                        whileTap={{ scale: 0.85 }}
+                <div className="p-4 flex flex-col flex-1 justify-between">
+                  <div>
+                    {/* Top row: badge + star */}
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <span className={`inline-flex items-center gap-1.5 text-[11px] font-medium px-2 py-0.5 rounded-md ${cfg.badgeBg} ${cfg.badgeText}`}>
+                        <Icon className="w-3 h-3" />
+                        {doc.type}
+                      </span>
+                      <button
                         onClick={() => setStarred(prev => ({ ...prev, [doc.id]: !prev[doc.id] }))}
-                        className="p-1"
+                        className="p-1 text-slate-300 hover:text-amber-400 transition-colors cursor-pointer"
+                        title="Bookmark"
                       >
-                        <Star className={`w-3.5 h-3.5 transition-colors ${isStarred ? "fill-amber-400 text-amber-400" : "text-slate-300 hover:text-amber-400"}`} />
-                      </motion.button>
-                      <button className="text-slate-300 hover:text-slate-600 transition-colors p-1">
-                        <MoreHorizontal className="w-3.5 h-3.5" />
+                        <Star className={`w-3.5 h-3.5 ${isStarred ? "fill-amber-400 text-amber-400" : ""}`} />
                       </button>
                     </div>
-                  </div>
 
-                  {/* Title + Abstract */}
-                  <div className="flex-1 space-y-2">
-                    <Link href={`/dashboard/repository/${doc.id}`}>
-                      <h3 className="text-sm font-extrabold text-slate-800 line-clamp-2 leading-snug hover:text-[#0b2b50] transition-colors">
+                    {/* Title */}
+                    <Link href={`/dashboard/repository/${doc.id}`} className="block group/link">
+                      <h3 className="text-[13.5px] font-semibold text-slate-800 group-hover/link:text-indigo-600 line-clamp-2 leading-[1.35] tracking-tight transition-colors">
                         {doc.title}
                       </h3>
                     </Link>
-                    <p className="text-[11px] text-slate-500 line-clamp-2 leading-relaxed font-medium">
+
+                    {/* Abstract */}
+                    <p className="text-[11.5px] text-slate-500 line-clamp-2 leading-[1.45] font-normal mt-1.5">
                       {doc.abstract}
                     </p>
-                  </div>
 
-                  {/* Publisher */}
-                  <div className="flex items-center gap-2.5 py-3 border-y border-slate-100">
-                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${cfg.iconBg}`}>
-                      <Icon className={`w-3.5 h-3.5 ${cfg.iconColor}`} />
+                    {/* Publisher */}
+                    <div className="flex items-center gap-2 text-[11px] text-slate-600 mt-2.5 pt-2 border-t border-slate-100">
+                      <div className={`w-4 h-4 rounded flex items-center justify-center shrink-0 ${cfg.iconBg}`}>
+                        <Icon className={`w-2.5 h-2.5 ${cfg.iconColor}`} />
+                      </div>
+                      <span className="truncate font-medium text-slate-700">{doc.publisher}</span>
                     </div>
-                    <span className="text-[11px] font-semibold text-slate-600 truncate leading-tight">{doc.publisher}</span>
-                  </div>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5">
-                    {doc.tags.map((tag) => (
-                      <motion.span
-                        key={tag}
-                        whileHover={{ scale: 1.05 }}
-                        className="text-[10px] font-bold text-slate-500 bg-slate-100 hover:bg-slate-200 px-2 py-0.5 rounded-md transition-colors cursor-default"
-                      >
-                        #{tag}
-                      </motion.span>
-                    ))}
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-1 mt-2">
+                      {doc.tags.slice(0, 3).map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[10px] font-normal text-slate-500 bg-slate-100/90 px-1.5 py-0.5 rounded"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Footer: avatars + meta + actions */}
-                  <div className="flex items-center justify-between pt-1">
-                    <div className="flex items-center -space-x-1.5">
-                      {doc.avatars.slice(0, 3).map((av, idx) => (
-                        <div
-                          key={av + idx}
-                          title={av}
-                          className={`w-6 h-6 rounded-full border-2 border-white text-white text-[9px] font-bold flex items-center justify-center ${avatarColors[idx % avatarColors.length]}`}
-                        >
-                          {av}
-                        </div>
-                      ))}
-                      {doc.avatars.length > 3 && (
-                        <div className="w-6 h-6 rounded-full border-2 border-white bg-slate-200 text-slate-500 text-[9px] font-bold flex items-center justify-center">
-                          +{doc.avatars.length - 3}
-                        </div>
-                      )}
+                  <div className="mt-3.5 pt-2.5 border-t border-slate-100">
+                    <div className="flex items-center justify-between text-[11px] text-slate-400 mb-2.5">
+                      <div className="flex items-center -space-x-1">
+                        {doc.avatars.slice(0, 2).map((av, idx) => (
+                          <div
+                            key={av + idx}
+                            title={av}
+                            className={`w-5 h-5 rounded-full border border-white text-white text-[8px] font-medium flex items-center justify-center ${avatarColors[idx % avatarColors.length]}`}
+                          >
+                            {av}
+                          </div>
+                        ))}
+                        {doc.avatars.length > 2 && (
+                          <div className="w-5 h-5 rounded-full border border-white bg-slate-200 text-slate-600 text-[8px] font-medium flex items-center justify-center">
+                            +{doc.avatars.length - 2}
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="flex items-center gap-1.5 text-[10.5px] text-slate-400 font-normal">
+                        <span className="flex items-center gap-0.5"><Eye className="w-3 h-3" />{doc.views}</span>
+                        <span>â€¢</span>
+                        <span>{doc.year}</span>
+                        <span>â€¢</span>
+                        <span className="truncate max-w-[65px]">{doc.state}</span>
+                      </div>
                     </div>
 
-                    <div className="flex items-center gap-3 text-[10px] font-semibold text-slate-400">
-                      <span className="flex items-center gap-1"><Eye className="w-3 h-3" />{doc.views}</span>
-                      <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />{doc.year}</span>
-                      <span className="flex items-center gap-1"><MapPin className="w-3 h-3" />{doc.state}</span>
+                    <div className="flex gap-1.5">
+                      <Link
+                        href={`/dashboard/repository/${doc.id}`}
+                        className="flex-1 flex items-center justify-center gap-1.5 py-1.5 bg-[#0b2b50] hover:bg-[#164275] text-white text-[11.5px] font-medium rounded-lg transition-colors shadow-xs"
+                      >
+                        View <ArrowUpRight className="w-3 h-3" />
+                      </Link>
+                      <button
+                        className="p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg transition-colors cursor-pointer"
+                        title="Download PDF"
+                      >
+                        <Download className="w-3.5 h-3.5" />
+                      </button>
                     </div>
-                  </div>
-
-                  {/* Action row */}
-                  <div className="flex gap-2 pt-1">
-                    <Link
-                      href={`/dashboard/repository/${doc.id}`}
-                      className="flex-1 flex items-center justify-center gap-1.5 py-2.5 bg-[#0b2b50] text-white text-[11px] font-bold rounded-xl hover:bg-[#154278] active:scale-95 transition-all shadow-sm shadow-[#0b2b50]/20"
-                    >
-                      View <ArrowUpRight className="w-3 h-3" />
-                    </Link>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.93 }}
-                      className="px-3 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-500 rounded-xl transition-colors"
-                      title="Download PDF"
-                    >
-                      <Download className="w-3.5 h-3.5" />
-                    </motion.button>
                   </div>
                 </div>
               </motion.div>
@@ -411,7 +407,7 @@ export default function RepositoryPage() {
             <div className="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center mb-4">
               <Search className="w-7 h-7 text-slate-400" />
             </div>
-            <h3 className="text-base font-extrabold text-slate-700">No documents found</h3>
+            <h3 className="text-base font-semibold text-slate-700">No documents found</h3>
             <p className="text-sm text-slate-400 mt-1 font-medium">Try adjusting your search or filters</p>
           </motion.div>
         )}

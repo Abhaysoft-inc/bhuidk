@@ -38,11 +38,11 @@ export function QuickGrantsTab() {
           
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-4">
-              <span className="bg-amber-100 text-amber-800 text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded">Fast-Track</span>
+              <span className="bg-amber-100 text-amber-800 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">Fast-Track</span>
               <span className="flex items-center gap-1 text-[10px] font-bold text-slate-500"><Clock className="w-3 h-3" /> {grant.time}</span>
             </div>
             
-            <h3 className="text-lg font-black text-slate-900 mb-2">{grant.title}</h3>
+            <h3 className="text-lg font-bold text-slate-900 mb-2">{grant.title}</h3>
             <div className="flex items-center gap-1.5 text-emerald-600 font-bold mb-4">
               <Banknote className="w-4 h-4" /> {grant.amount}
             </div>

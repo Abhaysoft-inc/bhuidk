@@ -40,7 +40,7 @@ export function ClaimsTracker({ claims, userRole, onAdvanceStatus }: ClaimsTrack
     <div className="space-y-4">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div>
-          <h2 className="text-base font-extrabold text-[#0b2b50] tracking-tight flex items-center gap-2">
+          <h2 className="text-base font-semibold text-[#0b2b50] tracking-tight flex items-center gap-2">
             <span>Adopt-a-Gap Progress & Repository Pipeline</span>
             <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full">
               {claims.length} Active Studies
@@ -141,7 +141,7 @@ export function ClaimsTracker({ claims, userRole, onAdvanceStatus }: ClaimsTrack
                       {activeClaim.fundingTier}
                     </span>
                   </div>
-                  <h3 className="text-base font-extrabold text-slate-900 leading-snug">
+                  <h3 className="text-base font-semibold text-slate-900 leading-snug">
                     {activeClaim.gapTitle}
                   </h3>
                   <div className="text-xs text-slate-500 flex flex-wrap items-center gap-2 pt-0.5">
@@ -245,7 +245,7 @@ export function ClaimsTracker({ claims, userRole, onAdvanceStatus }: ClaimsTrack
                     <span className="text-[10px] text-slate-400 uppercase font-bold block">
                       Approved Funding
                     </span>
-                    <span className="font-extrabold text-emerald-700 mt-0.5 block">
+                    <span className="font-semibold text-emerald-700 mt-0.5 block">
                       {activeClaim.amountRequested}
                     </span>
                   </div>

@@ -299,7 +299,7 @@ export function PolicyPlanningView() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 pb-5">
         <div>
           <div className="flex items-center gap-2.5 flex-wrap">
-            <h1 className="text-2xl font-black text-[#0b2b50] tracking-tight">
+            <h1 className="text-2xl font-bold text-[#0b2b50] tracking-tight">
               Policy Planning
             </h1>
 

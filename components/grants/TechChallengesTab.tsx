@@ -50,15 +50,15 @@ export function TechChallengesTab() {
         <div className="relative z-10 p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="text-white">
             <div className="flex items-center gap-2 mb-2">
-              <span className="bg-amber-500 text-amber-950 text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-widest">Live Hackathon</span>
+              <span className="bg-amber-500 text-amber-950 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-widest">Live Hackathon</span>
               <span className="flex items-center gap-1 text-xs text-blue-200 font-semibold"><Flame className="w-3.5 h-3.5 text-rose-400" /> High Priority</span>
             </div>
-            <h2 className="text-2xl font-black mb-2 leading-tight">National Land Governance Innovation Challenge</h2>
+            <h2 className="text-2xl font-bold mb-2 leading-tight">National Land Governance Innovation Challenge</h2>
             <p className="text-blue-100 text-sm max-w-xl">Build open-source AI tools to solve India's toughest land administration bottlenecks. Open to students, startups, and researchers.</p>
           </div>
           <div className="shrink-0 flex flex-col items-center bg-white/10 backdrop-blur border border-white/20 p-4 rounded-xl">
             <div className="text-xs text-blue-200 font-bold uppercase tracking-wider mb-1">Total Grant Pool</div>
-            <div className="text-3xl font-black text-white">₹5.00 Cr</div>
+            <div className="text-3xl font-bold text-white">₹5.00 Cr</div>
           </div>
         </div>
       </div>

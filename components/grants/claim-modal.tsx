@@ -105,7 +105,7 @@ export function ClaimModal({ gap, isOpen, onClose, onClaimSubmitted, userRole }:
             <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
               <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h4 className="text-xl font-black text-slate-900">Research Gap Claimed Successfully!</h4>
+            <h4 className="text-xl font-bold text-slate-900">Research Gap Claimed Successfully!</h4>
             <p className="text-xs text-slate-600 max-w-md mx-auto leading-relaxed">
               Your research proposal has been linked to <strong>{gap.code}</strong>. The project is now tracked in the platform&apos;s Adopt-a-Gap pipeline and provisioned for auto-ingestion into the Central Repository.
             </p>

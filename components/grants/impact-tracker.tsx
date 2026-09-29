@@ -61,7 +61,7 @@ export function ImpactTracker({ records, stats }: ImpactTrackerProps) {
         ].map((s) => (
           <div key={s.label} className="bg-white rounded-xl border border-slate-200 p-4">
             <span className="text-[10px] text-slate-400 font-medium block">{s.label}</span>
-            <div className="text-lg font-extrabold text-slate-900 mt-0.5">{s.value}</div>
+            <div className="text-lg font-semibold text-slate-900 mt-0.5">{s.value}</div>
             <span className="text-[10px] text-slate-400">{s.sub}</span>
           </div>
         ))}

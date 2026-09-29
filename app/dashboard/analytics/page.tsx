@@ -117,7 +117,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
             <span className="w-2 h-2 rounded-full inline-block" style={{ background: p.color }}></span>
             {p.name}
           </span>
-          <span className="font-black text-slate-900">{p.value}</span>
+          <span className="font-bold text-slate-900">{p.value}</span>
         </div>
       ))}
     </div>
@@ -139,7 +139,7 @@ export default function AnalyticsDashboard() {
       {/* ── Page Header ── */}
       <div className="flex items-end justify-between">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight">National Analytics</h1>
+          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">National Analytics</h1>
           <p className="text-sm text-slate-400 mt-0.5 font-medium">Land governance performance overview</p>
         </div>
         <div className="flex gap-2">
@@ -181,7 +181,7 @@ export default function AnalyticsDashboard() {
                   {k.pct}
                 </span>
               </div>
-              <div className="text-2xl font-black text-slate-900 tracking-tight">{k.value}</div>
+              <div className="text-2xl font-bold text-slate-900 tracking-tight">{k.value}</div>
               <div className="text-xs text-slate-400 font-semibold mt-1">{k.label}</div>
             </motion.div>
           );
@@ -200,7 +200,7 @@ export default function AnalyticsDashboard() {
         >
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h2 className="text-base font-black text-slate-800">Research Activity Analytics</h2>
+              <h2 className="text-base font-bold text-slate-800">Research Activity Analytics</h2>
               <p className="text-xs text-slate-400 font-medium mt-0.5">Submissions vs Publications — Jan to Jul 2026</p>
             </div>
             <div className="flex items-center gap-4">
@@ -252,7 +252,7 @@ export default function AnalyticsDashboard() {
         >
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h2 className="text-base font-black text-slate-800">Source Breakdown</h2>
+              <h2 className="text-base font-bold text-slate-800">Source Breakdown</h2>
               <p className="text-xs text-slate-400 font-medium mt-0.5">By org type</p>
             </div>
             <button className="text-slate-400 hover:text-slate-700 transition-colors">
@@ -270,7 +270,7 @@ export default function AnalyticsDashboard() {
                 </Pie>
               </PieChart>
               <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                <span className="text-2xl font-black text-slate-900">₹452</span>
+                <span className="text-2xl font-bold text-slate-900">₹452</span>
                 <span className="text-[10px] text-slate-400 font-bold mt-0.5">Avg Grant</span>
               </div>
             </div>
@@ -282,7 +282,7 @@ export default function AnalyticsDashboard() {
                     <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: d.color }}></span>
                     <span className="text-xs font-semibold text-slate-600">{d.name}</span>
                   </div>
-                  <span className="text-xs font-black text-slate-800">{d.value}%</span>
+                  <span className="text-xs font-bold text-slate-800">{d.value}%</span>
                 </div>
               ))}
             </div>
@@ -298,7 +298,7 @@ export default function AnalyticsDashboard() {
         className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden"
       >
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
-          <h2 className="text-base font-black text-slate-800">Recent Activity Log</h2>
+          <h2 className="text-base font-bold text-slate-800">Recent Activity Log</h2>
           <button className="text-xs font-bold text-[#0b2b50] hover:underline cursor-pointer">View All</button>
         </div>
 
@@ -307,7 +307,7 @@ export default function AnalyticsDashboard() {
             <thead>
               <tr className="border-b border-slate-100 bg-slate-50/60">
                 {["ID", "Date", "Organization", "Location", "Grant Amount", "Status", "Action"].map((h) => (
-                  <th key={h} className="text-left px-6 py-3 text-[10px] font-extrabold uppercase tracking-widest text-slate-400">
+                  <th key={h} className="text-left px-6 py-3 text-[10px] font-semibold uppercase tracking-widest text-slate-400">
                     <span className="flex items-center gap-1">
                       {h}
                       {["ID", "Grant Amount", "Status"].includes(h) && <ArrowUpDown className="w-3 h-3" />}
@@ -323,7 +323,7 @@ export default function AnalyticsDashboard() {
                   <td className="px-6 py-3.5 text-slate-500 text-xs font-medium">{row.date}</td>
                   <td className="px-6 py-3.5 font-semibold text-slate-800 text-xs">{row.name}</td>
                   <td className="px-6 py-3.5 text-slate-500 text-xs font-medium">{row.location}</td>
-                  <td className="px-6 py-3.5 font-black text-slate-900 text-xs">{row.amount}</td>
+                  <td className="px-6 py-3.5 font-bold text-slate-900 text-xs">{row.amount}</td>
                   <td className="px-6 py-3.5">
                     <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold ${statusStyle[row.status]}`}>
                       <span className={`w-1.5 h-1.5 rounded-full ${statusDot[row.status]}`}></span>

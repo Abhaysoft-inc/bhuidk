@@ -58,9 +58,9 @@ export function JanParichayModal({
           <div className="flex items-center gap-3">
             <AshokaEmblem className="h-9 w-auto text-amber-300" />
             <div>
-              <div className="text-sm font-extrabold flex items-center gap-2">
+              <div className="text-sm font-semibold flex items-center gap-2">
                 <span>जन परिचय / MeriPehchan</span>
-                <span className="text-[10px] bg-amber-500 text-slate-950 px-1.5 py-0.2 rounded font-black">
+                <span className="text-[10px] bg-amber-500 text-slate-950 px-1.5 py-0.2 rounded font-bold">
                   National SSO
                 </span>
               </div>
@@ -134,7 +134,7 @@ export function JanParichayModal({
                   >
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-extrabold text-slate-900">{prof.name}</span>
+                        <span className="font-semibold text-slate-900">{prof.name}</span>
                         <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-white text-slate-700 border border-slate-300">
                           {prof.badge}
                         </span>

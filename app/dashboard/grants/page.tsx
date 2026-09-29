@@ -64,7 +64,7 @@ export default function GrantsPage() {
       <div className="bg-white border-b border-slate-200 px-6 py-5">
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 max-w-7xl mx-auto">
           <div>
-            <h1 className="text-2xl font-black text-slate-900 tracking-tight">Grants & Innovation</h1>
+            <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Grants & Innovation</h1>
             <p className="text-sm text-slate-500 mt-1">Fund research on data gaps detected by the platform's dispute and contradiction engines</p>
           </div>
           <div className="flex items-center gap-2 text-sm shrink-0">
@@ -156,7 +156,7 @@ export default function GrantsPage() {
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-lg font-black text-slate-900 mb-2 leading-snug">{gap.title}</h3>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2 leading-snug">{gap.title}</h3>
                   <p className="text-sm text-slate-600 mb-4 leading-relaxed">{gap.desc}</p>
                   
                   {/* Source */}
@@ -180,7 +180,7 @@ export default function GrantsPage() {
                   <div className="flex items-center justify-between pt-4 border-t border-slate-100">
                     <div className="flex items-center gap-3">
                       <span className="text-xs font-semibold text-slate-500">{gap.type}</span>
-                      <span className="text-sm font-black text-emerald-600">{gap.amount}</span>
+                      <span className="text-sm font-bold text-emerald-600">{gap.amount}</span>
                     </div>
                     <button 
                       onClick={() => setSelectedGap(gap)}

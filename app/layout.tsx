@@ -3,9 +3,9 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
-  weight: ['400', '500', '600', '700', '800'],
   subsets: ["latin"],
   variable: "--font-jakarta",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="light" className={`${jakarta.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-[family-name:var(--font-jakarta)]">{children}</body>
+    <html lang="en" data-theme="light" className={`${jakarta.variable} ${jakarta.className} h-full antialiased`}>
+      <body className="min-h-full flex flex-col font-normal text-slate-800 bg-[#f8fafc]">{children}</body>
     </html>
   );
 }

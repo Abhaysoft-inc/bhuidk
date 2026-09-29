@@ -36,7 +36,7 @@ export function ClaimGapModal({ isOpen, onClose, gap }: { isOpen: boolean; onClo
           <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-slate-50 shrink-0">
             <div>
               <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Claim Research Gap</div>
-              <h2 className="text-lg font-black text-slate-900 leading-tight">{gap?.id}</h2>
+              <h2 className="text-lg font-bold text-slate-900 leading-tight">{gap?.id}</h2>
             </div>
             <button onClick={onClose} className="p-2 text-slate-400 hover:text-slate-700 hover:bg-slate-200 rounded-full transition-colors">
               <X className="w-5 h-5" />
@@ -122,7 +122,7 @@ export function ClaimGapModal({ isOpen, onClose, gap }: { isOpen: boolean; onClo
                   <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mb-4">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h3 className="text-xl font-black text-slate-900 mb-2">Proposal Submitted!</h3>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Proposal Submitted!</h3>
                   <p className="text-sm text-slate-500 max-w-md">Your application <span className="font-bold text-slate-800">APP-902-X</span> has been routed to the DoLR Research Committee. You can track its status in your dashboard.</p>
                 </motion.div>
               )}

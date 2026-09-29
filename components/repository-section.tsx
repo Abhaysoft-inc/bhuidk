@@ -225,7 +225,7 @@ export function RepositorySection({
               <Database className="w-4 h-4 text-amber-700" />
               <span>{language === "hi" ? "केंद्रीकृत ज्ञान भंडार" : "Centralized Knowledge Ecosystem"}</span>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-black text-[#0b2b50] tracking-tight mt-1">
+            <h3 className="text-2xl sm:text-3xl font-bold text-[#0b2b50] tracking-tight mt-1">
               {language === "hi" ? "राष्ट्रीय भूमि शासन डिजिटल रिपोजिटरी" : "National Land Governance Digital Repository"}
             </h3>
             <p className="text-sm text-slate-600 mt-1 max-w-3xl">
@@ -471,7 +471,7 @@ export function RepositorySection({
 
             {/* Modal Body */}
             <div className="p-6 space-y-4 text-xs text-slate-700">
-              <h3 className="text-base font-extrabold text-[#0b2b50] leading-snug">
+              <h3 className="text-base font-semibold text-[#0b2b50] leading-snug">
                 {language === "hi" ? activeItemModal.titleHi : activeItemModal.titleEn}
               </h3>
 

@@ -117,7 +117,7 @@ export function GisExplorer({ language }: GisExplorerProps) {
               <Globe2 className="w-4 h-4 text-emerald-700" />
               <span>{language === "hi" ? "भू-स्थानिक एकीकरण एवं भुवन मंच" : "Geospatial Integration & Bhuvan Platform"}</span>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-black text-[#0b2b50] tracking-tight mt-1">
+            <h3 className="text-2xl sm:text-3xl font-bold text-[#0b2b50] tracking-tight mt-1">
               {language === "hi"
                 ? "राष्ट्रीय भू-स्थानिक एवं उपग्रह विश्लेषण सुइट"
                 : "National Geospatial & Remote Sensing Intelligence Suite"}

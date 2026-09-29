@@ -33,7 +33,7 @@ export default function GisPage() {
       <div className="border-b border-slate-200 px-4 py-2 shrink-0 flex items-center gap-3">
         <Globe2 className="w-4 h-4 text-emerald-600 shrink-0" />
         <div className="flex items-baseline gap-2 min-w-0">
-          <h1 className="text-base font-black text-slate-900 tracking-tight whitespace-nowrap">Geospatial Intelligence Map</h1>
+          <h1 className="text-base font-bold text-slate-900 tracking-tight whitespace-nowrap">Geospatial Intelligence Map</h1>
           <span className="text-xs text-slate-400 hidden sm:block truncate">National Spatial Data Infrastructure · Vector rendering · ST_Intersects querying</span>
         </div>
       </div>
@@ -55,27 +55,27 @@ export default function GisPage() {
           <div className="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
             <div className="bg-[#0b2b50] text-white px-4 py-2.5 flex items-center gap-2">
               <Activity className="w-3.5 h-3.5" />
-              <span className="font-black text-xs tracking-wide uppercase">Viewport Analytics</span>
+              <span className="font-bold text-xs tracking-wide uppercase">Viewport Analytics</span>
             </div>
             <div className="p-3 grid grid-cols-2 gap-2">
               <div className="bg-slate-50 border border-slate-100 p-2.5 rounded-lg">
-                <div className="text-[9px] font-bold text-slate-400 uppercase">Visible Parcels</div>
-                <div className="text-xl font-black text-[#0b2b50]">{stats.visibleParcels ?? '--'}</div>
+                <div className="text-[9px] font-medium text-slate-400 uppercase">Visible Parcels</div>
+                <div className="text-xl font-bold text-[#0b2b50]">{stats.visibleParcels ?? '--'}</div>
                 <div className="text-[9px] text-slate-400">in viewport</div>
               </div>
               <div className="bg-rose-50 border border-rose-100 p-2.5 rounded-lg">
-                <div className="text-[9px] font-bold text-rose-500 uppercase">High Risk</div>
-                <div className="text-xl font-black text-rose-700">{stats.highRiskPct ?? '--'}%</div>
+                <div className="text-[9px] font-medium text-rose-500 uppercase">High Risk</div>
+                <div className="text-xl font-bold text-rose-700">{stats.highRiskPct ?? '--'}%</div>
                 <div className="text-[9px] text-rose-400">litigation risk</div>
               </div>
               <div className="bg-amber-50 border border-amber-100 p-2.5 rounded-lg">
-                <div className="text-[9px] font-bold text-amber-600 uppercase">Filtered</div>
-                <div className="text-xl font-black text-amber-700">{stats.filteredCount ?? '--'}</div>
+                <div className="text-[9px] font-medium text-amber-600 uppercase">Filtered</div>
+                <div className="text-xl font-bold text-amber-700">{stats.filteredCount ?? '--'}</div>
                 <div className="text-[9px] text-amber-500">by year</div>
               </div>
               <div className="bg-emerald-50 border border-emerald-100 p-2.5 rounded-lg">
-                <div className="text-[9px] font-bold text-emerald-600 uppercase">Active Year</div>
-                <div className="text-xl font-black text-emerald-700">{stats.timePeriod ?? '--'}</div>
+                <div className="text-[9px] font-medium text-emerald-600 uppercase">Active Year</div>
+                <div className="text-xl font-bold text-emerald-700">{stats.timePeriod ?? '--'}</div>
                 <div className="text-[9px] text-emerald-500">temporal view</div>
               </div>
             </div>
@@ -85,12 +85,12 @@ export default function GisPage() {
           <div className="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
             <div className="bg-[#0b2b50] text-white px-4 py-2.5 flex items-center gap-2">
               <TrendingUp className="w-3.5 h-3.5" />
-              <span className="font-black text-xs tracking-wide uppercase">Temporal Analysis</span>
+              <span className="font-bold text-xs tracking-wide uppercase">Temporal Analysis</span>
             </div>
             <div className="p-3">
               <div className="flex justify-between items-center mb-2">
-                <span className="text-xs font-bold text-slate-500">2015 → {stats.timePeriod ?? 2026}</span>
-                <span className="text-xs font-black text-[#c2410c] bg-rose-50 px-2 py-0.5 rounded-full border border-rose-100">
+                <span className="text-xs font-medium text-slate-500">2015 → {stats.timePeriod ?? 2026}</span>
+                <span className="text-xs font-semibold text-[#c2410c] bg-rose-50 px-2 py-0.5 rounded-full border border-rose-100">
                   {stats.filteredCount ?? 0} parcels
                 </span>
               </div>
@@ -137,10 +137,10 @@ export default function GisPage() {
               >
                 <div className="bg-[#0b2b50] text-white px-4 py-2.5 flex items-center gap-2">
                   <AlertTriangle className="w-3.5 h-3.5 text-amber-300" />
-                  <span className="font-black text-xs uppercase tracking-wide">Parcel Inspector</span>
+                  <span className="font-bold text-xs uppercase tracking-wide">Parcel Inspector</span>
                 </div>
                 <div className="p-3 space-y-2">
-                  <div className="text-base font-black text-[#0b2b50]">{stats.selectedParcel.properties.ulpin_id}</div>
+                  <div className="text-base font-bold text-[#0b2b50]">{stats.selectedParcel.properties.ulpin_id}</div>
                   <div className="flex justify-between items-center py-1 border-b border-slate-50">
                     <span className="text-xs text-slate-500 font-semibold">Ownership</span>
                     <span className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase ${
@@ -155,7 +155,7 @@ export default function GisPage() {
                   <div className="pt-1">
                     <div className="flex justify-between text-xs mb-1">
                       <span className="font-bold text-slate-500">Litigation Risk</span>
-                      <span className="font-black text-[#c2410c]">{stats.selectedParcel.properties.litigation_risk_score}/100</span>
+                      <span className="font-bold text-[#c2410c]">{stats.selectedParcel.properties.litigation_risk_score}/100</span>
                     </div>
                     <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
                       <div className="h-full bg-[#c2410c] rounded-full transition-all"
@@ -164,7 +164,7 @@ export default function GisPage() {
                   </div>
                   <button
                     onClick={() => alert(`Full title report: ${stats.selectedParcel.properties.ulpin_id}`)}
-                    className="w-full mt-1 border border-[#0b2b50] text-[#0b2b50] hover:bg-[#0b2b50] hover:text-white font-bold text-xs py-1.5 rounded-lg transition-colors"
+                    className="w-full mt-1 border border-[#0b2b50] text-[#0b2b50] hover:bg-[#0b2b50] hover:text-white font-medium text-xs py-1.5 rounded-lg transition-colors"
                   >
                     View Full Title Report
                   </button>
@@ -189,7 +189,7 @@ export default function GisPage() {
           {/* Export */}
           <button
             onClick={() => alert('Exporting Viewport Report (PDF)...')}
-            className="w-full bg-[#0b2b50] hover:bg-[#153a69] text-white text-xs font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 transition-colors shadow-sm"
+            className="w-full bg-[#0b2b50] hover:bg-[#153a69] text-white text-xs font-medium py-2.5 rounded-xl flex items-center justify-center gap-2 transition-colors shadow-sm"
           >
             <FileText className="w-3.5 h-3.5" /> Export Viewport Report
           </button>
@@ -209,7 +209,7 @@ export default function GisPage() {
                 {/* Header */}
                 <div className="bg-[#c2410c] text-white px-4 py-2.5 flex items-center gap-2">
                   <Crosshair className="w-4 h-4" />
-                  <span className="font-black text-sm flex-1">Region Analysis</span>
+                  <span className="font-bold text-sm flex-1">Region Analysis</span>
                   <button
                     onClick={() => stats.clearSelection?.()}
                     className="hover:bg-white/20 p-1 rounded-full transition-colors"
@@ -234,12 +234,12 @@ export default function GisPage() {
                       ].map(({ label, value, color }) => (
                         <div key={label} className="flex justify-between items-center py-1.5 border-b border-slate-50 last:border-0">
                           <span className="text-xs text-slate-500 font-semibold">{label}</span>
-                          <span className={`text-sm font-black ${color}`}>{value}</span>
+                          <span className={`text-sm font-bold ${color}`}>{value}</span>
                         </div>
                       ))}
                       {Object.keys(stats.selectionStats.landUseBreakdown || {}).length > 0 && (
                         <div className="pt-2 border-t border-slate-100">
-                          <div className="text-[9px] font-black text-slate-400 uppercase mb-1.5">Land Use Breakdown</div>
+                          <div className="text-[9px] font-medium text-slate-400 uppercase mb-1.5">Land Use Breakdown</div>
                           {Object.entries(stats.selectionStats.landUseBreakdown || {}).map(([key, val]: any) => (
                             <div key={key} className="flex justify-between text-xs py-0.5">
                               <span className="text-slate-500">{key}</span>

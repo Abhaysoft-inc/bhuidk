@@ -114,7 +114,7 @@ export function AiCandidatePanel({
                 {candidates.length} candidate areas
               </span>
             </div>
-            <h2 className="text-lg font-black text-[#0b2b50] tracking-tight mt-1">
+            <h2 className="text-lg font-bold text-[#0b2b50] tracking-tight mt-1">
               Candidate Locations
             </h2>
           </div>
@@ -143,7 +143,7 @@ export function AiCandidatePanel({
 
         {/* ─── 2. Candidate Cards Strip (Top ranking list) ─── */}
         <div className="space-y-1.5">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+          <span className="text-[10px] font-medium uppercase tracking-wider text-slate-400 block">
             Ranked by criteria suitability:
           </span>
 
@@ -162,7 +162,7 @@ export function AiCandidatePanel({
                 >
                   <div className="flex items-center gap-2 truncate">
                     <span
-                      className={`text-[10px] font-black px-1.5 py-0.5 rounded ${
+                      className={`text-[10px] font-medium px-1.5 py-0.5 rounded ${
                         isSelected
                           ? "bg-amber-400 text-slate-950"
                           : "bg-slate-200 text-slate-800"
@@ -175,7 +175,7 @@ export function AiCandidatePanel({
 
                   <div className="flex items-center gap-2 shrink-0">
                     <span
-                      className={`text-[11px] font-bold px-2 py-0.5 rounded ${
+                      className={`text-[11px] font-medium px-2 py-0.5 rounded ${
                         isSelected
                           ? "bg-white/20 text-white"
                           : "bg-emerald-50 text-emerald-800 border border-emerald-200"
@@ -194,7 +194,7 @@ export function AiCandidatePanel({
         <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
           <div className="flex items-start justify-between gap-2">
             <div>
-              <span className="bg-amber-50 text-amber-900 border border-amber-300 text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded">
+              <span className="bg-amber-50 text-amber-900 border border-amber-300 text-[10px] font-semibold uppercase px-1.5 py-0.5 rounded">
                 {selectedCandidate.label}
               </span>
               <h3 className="text-sm font-bold text-slate-900 leading-tight mt-1">
@@ -206,11 +206,11 @@ export function AiCandidatePanel({
             </div>
 
             <div className="text-right shrink-0">
-              <div className="text-2xl font-black text-emerald-600">
+              <div className="text-2xl font-bold text-emerald-600">
                 {selectedCandidate.suitability_score}
                 <span className="text-xs text-slate-400 font-normal">/100</span>
               </div>
-              <div className="text-[9px] font-bold uppercase tracking-wider text-emerald-700">
+              <div className="text-[9px] font-medium uppercase tracking-wider text-emerald-700">
                 Relative Suitability
               </div>
             </div>
@@ -349,7 +349,7 @@ export function AiCandidatePanel({
             <span className="font-bold text-slate-800 text-[11px]">
               Confidence & Data Quality
             </span>
-            <span className="bg-blue-50 text-blue-800 border border-blue-200 text-[10px] font-bold px-1.5 py-0.5 rounded">
+            <span className="bg-blue-50 text-blue-800 border border-blue-200 text-[10px] font-medium px-1.5 py-0.5 rounded">
               {selectedCandidate.confidence} Confidence
             </span>
           </div>

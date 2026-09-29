@@ -95,16 +95,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             {/* Softened National Emblem Substitute */}
             <div className="w-10 h-14 bg-contain bg-no-repeat bg-center opacity-80" style={{backgroundImage: 'url("https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg")'}}></div>
             <div>
-              <h1 className="text-xl font-extrabold text-indigo-950 tracking-tight leading-tight">Digital Land Records Modernization</h1>
-              <h2 className="text-sm font-semibold text-slate-600 mt-0.5">Department of Land Resources (DoLR)</h2>
+              <h1 className="text-xl font-bold text-indigo-950 tracking-tight leading-tight">Digital Land Records Modernization</h1>
+              <h2 className="text-sm font-medium text-slate-500 mt-0.5">Department of Land Resources (DoLR)</h2>
             </div>
           </div>
           <div className="flex space-x-6 items-center">
              <div className="w-20 h-10 bg-contain bg-no-repeat bg-center opacity-80" style={{backgroundImage: 'url("https://upload.wikimedia.org/wikipedia/commons/f/fc/Digital_India_logo.svg")'}}></div>
              <div className="text-right border-l border-slate-200 pl-6">
-                <div className="text-xs font-bold text-slate-800">Welcome, {currentUser.name}</div>
-                <div className="text-[10px] text-slate-500 font-medium mt-0.5">{currentUser.designation}</div>
-                <button onClick={handleSignOut} className="text-[10px] text-indigo-600 hover:text-indigo-800 font-bold mt-1.5 transition-colors uppercase tracking-wider">Logout</button>
+                <div className="text-xs font-semibold text-slate-800">Welcome, {currentUser.name}</div>
+                <div className="text-[10px] text-slate-500 font-normal mt-0.5">{currentUser.designation}</div>
+                <button onClick={handleSignOut} className="text-[10px] text-indigo-600 hover:text-indigo-800 font-semibold mt-1.5 transition-colors uppercase tracking-wider">Logout</button>
              </div>
           </div>
         </div>
@@ -119,10 +119,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <Link 
                   key={item.href} 
                   href={item.href}
-                  className={`flex items-center gap-2 px-4 py-3.5 text-xs font-bold transition-all border-b-2 ${
+                  className={`flex items-center gap-2 px-4 py-3.5 text-xs transition-all border-b-2 ${
                     isActive 
-                      ? 'border-emerald-500 text-emerald-700 bg-emerald-50/50' 
-                      : 'border-transparent text-slate-600 hover:text-emerald-600 hover:bg-white/60'
+                      ? 'border-emerald-500 text-emerald-700 bg-emerald-50/50 font-semibold' 
+                      : 'border-transparent text-slate-600 hover:text-emerald-600 hover:bg-white/60 font-medium'
                   }`}
                 >
                   <Icon className="w-4 h-4" />

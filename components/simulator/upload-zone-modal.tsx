@@ -279,7 +279,7 @@ export function UploadZoneModal({
                 Max 20 MB
               </span>
             </div>
-            <h3 className="text-xl font-black text-[#0b2b50] tracking-tight mt-1">
+            <h3 className="text-xl font-bold text-[#0b2b50] tracking-tight mt-1">
               Upload Proposed Zone
             </h3>
             <p className="text-xs text-slate-500 mt-0.5">
@@ -325,7 +325,7 @@ export function UploadZoneModal({
                 </div>
 
                 <div className="space-y-1">
-                  <p className="text-sm font-black text-slate-800">
+                  <p className="text-sm font-bold text-slate-800">
                     Drop GeoJSON file here
                   </p>
                   <p className="text-xs text-slate-500">
@@ -351,7 +351,7 @@ export function UploadZoneModal({
 
               {/* Sample GIS Proposals for 1-click test */}
               <div className="pt-2 border-t border-slate-100">
-                <span className="text-[11px] font-bold text-slate-600 block mb-2">
+                <span className="text-[11px] font-medium text-slate-600 block mb-2">
                   Or load benchmark GIS proposal sample:
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
@@ -418,7 +418,7 @@ export function UploadZoneModal({
                 <button
                   type="button"
                   onClick={() => setParseResult(null)}
-                  className="text-[11px] font-bold text-emerald-800 underline hover:text-emerald-950 cursor-pointer"
+                  className="text-[11px] font-medium text-emerald-800 underline hover:text-emerald-950 cursor-pointer"
                 >
                   Change File
                 </button>
@@ -474,7 +474,7 @@ export function UploadZoneModal({
                         </div>
                       </div>
 
-                      <span className="bg-blue-50 text-blue-800 border border-blue-200 text-[10px] font-bold px-2 py-0.5 rounded-md shrink-0">
+                      <span className="bg-blue-50 text-blue-800 border border-blue-200 text-[10px] font-medium px-2 py-0.5 rounded-md shrink-0">
                         {feat.suggestedZoneType}
                       </span>
                     </div>

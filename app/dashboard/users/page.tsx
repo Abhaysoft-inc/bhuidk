@@ -306,7 +306,7 @@ export default function UserManagementPage() {
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-800 border border-amber-200 text-xs font-bold uppercase tracking-wider">
             RBAC Access Restriction • Admin Only
           </div>
-          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-2xl font-semibold text-slate-900 tracking-tight">
             Administrative Privilege Required
           </h1>
           <p className="text-sm text-slate-600 max-w-lg mx-auto leading-relaxed">
@@ -372,7 +372,7 @@ export default function UserManagementPage() {
             <div className="w-8 h-8 rounded-lg bg-[#f4f0ff] text-[#4A2BC2] flex items-center justify-center">
               <ShieldCheck className="w-5 h-5" />
             </div>
-            <h1 className="text-xl font-extrabold text-slate-900 tracking-tight">
+            <h1 className="text-xl font-semibold text-slate-900 tracking-tight">
               User &amp; Access Governance
             </h1>
             <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#f4f0ff] text-[#4A2BC2] border border-[#eae4ff]">
@@ -404,7 +404,7 @@ export default function UserManagementPage() {
             <span className="text-xs font-semibold uppercase tracking-wider">Total Active Users</span>
             <Users className="w-4 h-4 text-emerald-600" />
           </div>
-          <div className="text-2xl font-extrabold text-slate-900 mt-1">{activeCount}</div>
+          <div className="text-2xl font-semibold text-slate-900 mt-1">{activeCount}</div>
           <div className="text-[11px] text-emerald-600 font-semibold mt-0.5">● Real-time authenticated</div>
         </div>
 
@@ -413,7 +413,7 @@ export default function UserManagementPage() {
             <span className="text-xs font-semibold uppercase tracking-wider">Platform Admins</span>
             <KeyRound className="w-4 h-4 text-[#4A2BC2]" />
           </div>
-          <div className="text-2xl font-extrabold text-[#4A2BC2] mt-1">{adminCount}</div>
+          <div className="text-2xl font-semibold text-[#4A2BC2] mt-1">{adminCount}</div>
           <div className="text-[11px] text-slate-400 mt-0.5">Central DoLR / NIC</div>
         </div>
 
@@ -422,7 +422,7 @@ export default function UserManagementPage() {
             <span className="text-xs font-semibold uppercase tracking-wider">Pending Approvals</span>
             <Clock className="w-4 h-4 text-amber-500" />
           </div>
-          <div className="text-2xl font-extrabold text-amber-600 mt-1">{pendingCount}</div>
+          <div className="text-2xl font-semibold text-amber-600 mt-1">{pendingCount}</div>
           <div className="text-[11px] text-amber-700 font-semibold mt-0.5">Awaiting verification</div>
         </div>
 
@@ -431,7 +431,7 @@ export default function UserManagementPage() {
             <span className="text-xs font-semibold uppercase tracking-wider">Security Protocol</span>
             <ShieldCheck className="w-4 h-4 text-blue-600" />
           </div>
-          <div className="text-sm font-extrabold text-slate-900 mt-2">STQC / GIGW 3.0</div>
+          <div className="text-sm font-semibold text-slate-900 mt-2">STQC / GIGW 3.0</div>
           <div className="text-[11px] text-slate-400 mt-0.5">Audit logging enabled</div>
         </div>
       </div>
@@ -623,7 +623,7 @@ export default function UserManagementPage() {
                 <div className="w-7 h-7 rounded-lg bg-[#f4f0ff] text-[#4A2BC2] flex items-center justify-center">
                   <UserPlus className="w-4 h-4" />
                 </div>
-                <h3 className="font-extrabold text-slate-900 text-base">
+                <h3 className="font-semibold text-slate-900 text-base">
                   Invite New Government Officer
                 </h3>
               </div>

@@ -692,7 +692,7 @@ export default function PolicyPlanningMap({
             <Layers className={`w-3.5 h-3.5 ${layersOpen ? "text-amber-400" : "text-[#0b2b50]"}`} />
             <span>Map Layers</span>
             <span
-              className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full flex items-center gap-1 ${
+              className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full flex items-center gap-1 ${
                 layersOpen
                   ? "bg-white/20 text-white"
                   : "bg-blue-50 text-blue-800 border border-blue-200/80"
@@ -729,7 +729,7 @@ export default function PolicyPlanningMap({
 
               {/* Basemap Switcher Segment */}
               <div className="p-3 border-b border-slate-100 bg-slate-50/70">
-                <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">
+                <div className="text-[10px] font-medium text-slate-500 uppercase tracking-wider mb-1.5">
                   Base Canvas Layer
                 </div>
                 <div className="grid grid-cols-2 gap-1.5 p-1 bg-slate-200/60 rounded-xl">
@@ -771,7 +771,7 @@ export default function PolicyPlanningMap({
 
               {/* Thematic Layers List */}
               <div className="p-3 space-y-2 max-h-[340px] overflow-y-auto">
-                <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                <div className="text-[10px] font-medium text-slate-500 uppercase tracking-wider">
                   Thematic Overlays
                 </div>
                 {layersList
@@ -947,7 +947,7 @@ export default function PolicyPlanningMap({
           <button
             type="button"
             onClick={() => setDrawingTool("none")}
-            className="ml-2 bg-amber-600 hover:bg-amber-500 text-white px-2.5 py-0.5 rounded-full text-[11px] font-bold cursor-pointer"
+            className="ml-2 bg-amber-600 hover:bg-amber-500 text-white px-2.5 py-0.5 rounded-full text-[11px] font-medium cursor-pointer"
           >
             Done Editing
           </button>
@@ -1112,7 +1112,7 @@ export default function PolicyPlanningMap({
               >
                 <Tooltip sticky>
                   <div className="text-xs p-0.5">
-                    <div className="font-extrabold text-[#0b2b50]">
+                    <div className="font-semibold text-[#0b2b50]">
                       {cand.label}: {cand.name.split(" - ")[1] || cand.name}
                     </div>
                     <div className="text-[10px] text-slate-600">
@@ -1159,7 +1159,7 @@ export default function PolicyPlanningMap({
                   >
                     <Popup>
                       <div className="p-1 space-y-1 text-xs">
-                        <div className="font-extrabold text-[#0b2b50]">{zone.name}</div>
+                        <div className="font-semibold text-[#0b2b50]">{zone.name}</div>
                         <div className="text-[11px] text-slate-600">
                           Type: <span className="font-bold">{zone.zone_type}</span>
                         </div>
@@ -1192,7 +1192,7 @@ export default function PolicyPlanningMap({
                         }}
                       >
                         <Tooltip permanent={false} direction="top" offset={[0, -10]}>
-                          <span className="text-[10px] font-bold">Vertex #{idx + 1} (Drag to edit)</span>
+                          <span className="text-[10px] font-medium">Vertex #{idx + 1} (Drag to edit)</span>
                         </Tooltip>
                       </Marker>
                     ))}
@@ -1213,7 +1213,7 @@ export default function PolicyPlanningMap({
               >
                 <Popup>
                   <div className="p-1 space-y-1 text-xs">
-                    <div className="font-extrabold text-[#0b2b50]">{activeZone.name}</div>
+                    <div className="font-semibold text-[#0b2b50]">{activeZone.name}</div>
                     <div className="text-[11px] text-slate-600">
                       Type: <span className="font-bold">{activeZone.zone_type}</span>
                     </div>
@@ -1240,7 +1240,7 @@ export default function PolicyPlanningMap({
                     }}
                   >
                     <Tooltip permanent={false} direction="top" offset={[0, -10]}>
-                      <span className="text-[10px] font-bold">Vertex #{idx + 1} (Drag to edit)</span>
+                      <span className="text-[10px] font-medium">Vertex #{idx + 1} (Drag to edit)</span>
                     </Tooltip>
                   </Marker>
                 ))}

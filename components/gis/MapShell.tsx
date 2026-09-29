@@ -280,7 +280,7 @@ export default function MapShell({ onAnalytics }: MapShellProps) {
               <div className="absolute inset-0 border-4 border-[#c2410c] border-t-transparent rounded-full animate-spin"></div>
               <MapIcon className="w-5 h-5 text-[#0b2b50]" />
             </div>
-            <div className="text-sm font-black text-[#0b2b50] tracking-wider uppercase">Loading Spatial Engine</div>
+            <div className="text-sm font-bold text-[#0b2b50] tracking-wider uppercase">Loading Spatial Engine</div>
           </div>
         </div>
       )}
@@ -498,7 +498,7 @@ export default function MapShell({ onAnalytics }: MapShellProps) {
 
       {/* Map Style Switcher (Bottom Left) */}
       <div className="absolute bottom-8 left-4 bg-white/95 backdrop-blur-md border border-slate-200 rounded-xl shadow-lg p-2 z-10 flex flex-col gap-1">
-        <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-2 pb-1">Map Style</div>
+        <div className="text-[10px] font-medium text-slate-400 uppercase tracking-widest px-2 pb-1">Map Style</div>
         {Object.entries(MAP_STYLES).map(([key, style]) => (
           <button
             key={key}
@@ -527,7 +527,7 @@ export default function MapShell({ onAnalytics }: MapShellProps) {
             <div className="bg-[#0b2b50] text-white px-4 py-3 flex items-start justify-between">
               <div>
                 <div className="text-[10px] font-bold text-blue-200 uppercase tracking-widest mb-0.5">Parcel Inspector</div>
-                <div className="font-black font-serif text-lg">{selectedParcel.properties.ulpin_id}</div>
+                <div className="font-bold font-serif text-lg">{selectedParcel.properties.ulpin_id}</div>
               </div>
               <button onClick={() => setSelectedParcel(null)} className="text-blue-200 hover:text-white transition-colors">
                 <X className="w-4 h-4" />
@@ -536,7 +536,7 @@ export default function MapShell({ onAnalytics }: MapShellProps) {
 
             <div className="p-4 space-y-4">
               <div className="flex justify-between items-center">
-                <span className="text-xs font-bold text-slate-500">Ownership Status</span>
+                <span className="text-xs font-medium text-slate-500">Ownership Status</span>
                 <span className={`text-xs font-bold px-2 py-0.5 rounded uppercase tracking-wider ${selectedParcel.properties.ownership_status === 'clear' ? 'bg-emerald-100 text-emerald-700' :
                     selectedParcel.properties.ownership_status === 'disputed' ? 'bg-rose-100 text-rose-700' : 'bg-amber-100 text-amber-700'
                   }`}>
@@ -545,14 +545,14 @@ export default function MapShell({ onAnalytics }: MapShellProps) {
               </div>
 
               <div className="flex justify-between items-center border-t border-slate-100 pt-3">
-                <span className="text-xs font-bold text-slate-500">Land Use</span>
+                <span className="text-xs font-medium text-slate-500">Land Use</span>
                 <span className="text-sm font-semibold text-slate-800">{selectedParcel.properties.land_use_type}</span>
               </div>
 
               <div className="border-t border-slate-100 pt-3">
                 <div className="flex justify-between items-center mb-1">
-                  <span className="text-xs font-bold text-slate-500">Litigation Risk Score</span>
-                  <span className="text-sm font-black text-[#c2410c]">{selectedParcel.properties.litigation_risk_score}/100</span>
+                  <span className="text-xs font-medium text-slate-500">Litigation Risk Score</span>
+                  <span className="text-sm font-semibold text-[#c2410c]">{selectedParcel.properties.litigation_risk_score}/100</span>
                 </div>
                 <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
                   <div className="h-full bg-[#c2410c]" style={{ width: `${selectedParcel.properties.litigation_risk_score}%` }}></div>
@@ -562,13 +562,13 @@ export default function MapShell({ onAnalytics }: MapShellProps) {
               <div className="pt-2 flex flex-col gap-2">
                 <button
                   onClick={() => setTimeMachineParcel(selectedParcel)}
-                  className="w-full bg-[#c2410c] hover:bg-[#9a3412] text-white font-bold text-xs py-2 rounded transition-colors shadow-sm"
+                  className="w-full bg-[#c2410c] hover:bg-[#9a3412] text-white font-medium text-xs py-2 rounded transition-colors shadow-sm"
                 >
                   Open Encroachment Time Machine
                 </button>
                 <button
                   onClick={() => alert(`Opening full title report for ${selectedParcel.properties.ulpin_id}`)}
-                  className="w-full border border-[#0b2b50] text-[#0b2b50] hover:bg-[#0b2b50] hover:text-white font-bold text-xs py-2 rounded transition-colors"
+                  className="w-full border border-[#0b2b50] text-[#0b2b50] hover:bg-[#0b2b50] hover:text-white font-medium text-xs py-2 rounded transition-colors"
                 >
                   View Full Title Report
                 </button>
@@ -590,7 +590,7 @@ export default function MapShell({ onAnalytics }: MapShellProps) {
             >
               <div className="bg-[#0b2b50] px-6 py-4 flex items-center justify-between text-white">
                 <div>
-                  <h2 className="font-black text-xl">Encroachment Time Machine</h2>
+                  <h2 className="font-bold text-xl">Encroachment Time Machine</h2>
                   <p className="text-blue-200 text-xs">Historical Satellite/Mask Analysis for ULPIN: {timeMachineParcel.properties.ulpin_id}</p>
                 </div>
                 <button onClick={() => setTimeMachineParcel(null)} className="hover:bg-white/10 p-2 rounded-full transition-colors">
@@ -609,8 +609,8 @@ export default function MapShell({ onAnalytics }: MapShellProps) {
                   </div>
 
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-lg border border-slate-200 shadow-sm">
-                    <div className="text-[10px] font-bold text-slate-500 uppercase">Detected Change</div>
-                    <div className="text-lg font-black text-rose-600">
+                    <div className="text-[10px] font-medium text-slate-500 uppercase">Detected Change</div>
+                    <div className="text-lg font-semibold text-rose-600">
                       {Math.floor((timePeriod - 2015) / 11 * 42)}% Structural Expansion
                     </div>
                   </div>

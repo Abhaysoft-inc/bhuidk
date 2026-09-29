@@ -143,7 +143,7 @@ export function PolicySimulator({ language }: PolicySimulatorProps) {
               <Sparkles className="w-4 h-4 text-amber-600" />
               <span>{language === "hi" ? "एआई नीति निर्णय समर्थन उपकरण" : "AI Policy Decision-Support Tool"}</span>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-black text-[#0b2b50] tracking-tight mt-1">
+            <h3 className="text-2xl sm:text-3xl font-bold text-[#0b2b50] tracking-tight mt-1">
               {language === "hi"
                 ? "राष्ट्रीय भूमि नीति अनुकरण एवं परिणाम सैंडबॉक्स"
                 : "National Land Policy Simulation & Outcome Sandbox"}
@@ -168,7 +168,7 @@ export function PolicySimulator({ language }: PolicySimulatorProps) {
           {/* Left Column: Parameter Controls (5 cols) */}
           <div className="lg:col-span-5 bg-slate-50 p-5 rounded-lg border border-slate-200 shadow-2xs space-y-5">
             <div>
-              <label className="text-xs font-extrabold text-slate-800 uppercase tracking-wide flex items-center gap-1.5 mb-2">
+              <label className="text-xs font-semibold text-slate-800 uppercase tracking-wide flex items-center gap-1.5 mb-2">
                 <FileCheck className="w-4 h-4 text-[#0b2b50]" />
                 <span>{language === "hi" ? "1. नीतिगत हस्तक्षेप चुनें:" : "1. Select Policy Intervention:"}</span>
               </label>
@@ -199,7 +199,7 @@ export function PolicySimulator({ language }: PolicySimulatorProps) {
             <div>
               <div className="flex items-center justify-between text-xs font-bold text-slate-800 mb-1">
                 <span>{language === "hi" ? "2. कार्यान्वयन कवरेज (जनपद / भूखंड):" : "2. Implementation Scale / Coverage:"}</span>
-                <span className="text-[#0b2b50] font-black bg-white px-2 py-0.5 rounded border border-slate-200">
+                <span className="text-[#0b2b50] font-bold bg-white px-2 py-0.5 rounded border border-slate-200">
                   {coveragePct}%
                 </span>
               </div>
@@ -291,10 +291,10 @@ export function PolicySimulator({ language }: PolicySimulatorProps) {
           <div className="lg:col-span-7 flex flex-col justify-between space-y-4">
             {/* Scenario Header Card */}
             <div className="bg-white p-4 rounded-lg border-2 border-slate-200 shadow-2xs">
-              <span className="text-[10px] font-extrabold text-amber-800 uppercase tracking-widest block">
+              <span className="text-[10px] font-semibold text-amber-800 uppercase tracking-widest block">
                 Active Scenario Evaluation
               </span>
-              <h4 className="text-base sm:text-lg font-black text-[#0b2b50] mt-0.5">
+              <h4 className="text-base sm:text-lg font-bold text-[#0b2b50] mt-0.5">
                 {language === "hi" ? currentScenario.nameHi : currentScenario.nameEn}
               </h4>
               <p className="text-xs text-slate-600 mt-1 leading-relaxed">
@@ -310,7 +310,7 @@ export function PolicySimulator({ language }: PolicySimulatorProps) {
                   <span className="text-[11px] font-bold text-emerald-900">Dispute Rate Impact</span>
                   <TrendingDown className="w-4 h-4 text-emerald-700" />
                 </div>
-                <div className="text-2xl sm:text-3xl font-black text-emerald-800 mt-1">
+                <div className="text-2xl sm:text-3xl font-bold text-emerald-800 mt-1">
                   -{simulationResults.disputeReduction}%
                 </div>
                 <div className="text-[10px] text-emerald-700 font-medium mt-0.5">
@@ -324,7 +324,7 @@ export function PolicySimulator({ language }: PolicySimulatorProps) {
                   <span className="text-[11px] font-bold text-blue-900">Mutation Latency</span>
                   <Clock className="w-4 h-4 text-blue-700" />
                 </div>
-                <div className="text-2xl sm:text-3xl font-black text-blue-800 mt-1">
+                <div className="text-2xl sm:text-3xl font-bold text-blue-800 mt-1">
                   {simulationResults.turnaroundDays} Days
                 </div>
                 <div className="text-[10px] text-blue-700 font-medium mt-0.5">
@@ -338,7 +338,7 @@ export function PolicySimulator({ language }: PolicySimulatorProps) {
                   <span className="text-[11px] font-bold text-amber-900">Stamp Duty Realization</span>
                   <TrendingUp className="w-4 h-4 text-amber-700" />
                 </div>
-                <div className="text-2xl sm:text-3xl font-black text-amber-800 mt-1">
+                <div className="text-2xl sm:text-3xl font-bold text-amber-800 mt-1">
                   +{simulationResults.revenueGrowthPct}%
                 </div>
                 <div className="text-[10px] text-amber-700 font-medium mt-0.5">
@@ -352,7 +352,7 @@ export function PolicySimulator({ language }: PolicySimulatorProps) {
                   <span className="text-[11px] font-bold text-indigo-900">Citizen Economic Benefit</span>
                   <IndianRupee className="w-4 h-4 text-indigo-700" />
                 </div>
-                <div className="text-2xl sm:text-3xl font-black text-indigo-800 mt-1">
+                <div className="text-2xl sm:text-3xl font-bold text-indigo-800 mt-1">
                   ₹{simulationResults.projectedSavings.toLocaleString()} Cr
                 </div>
                 <div className="text-[10px] text-indigo-700 font-medium mt-0.5">

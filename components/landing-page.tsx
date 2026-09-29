@@ -191,7 +191,7 @@ export function LandingPage({
             </div>
 
             {/* Platform Title */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-tight">
               {language === "hi" ? (
                 <>
                   अनुसंधान, नीति नवाचार एवं साक्ष्य-आधारित भूमि शासन हेतु{" "}
@@ -221,7 +221,7 @@ export function LandingPage({
               <button
                 type="button"
                 onClick={onOpenLogin}
-                className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-extrabold px-5 py-3 rounded text-sm shadow-md transition-all cursor-pointer border border-amber-300"
+                className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-semibold px-5 py-3 rounded text-sm shadow-md transition-all cursor-pointer border border-amber-300"
               >
                 <Lock className="w-4 h-4 text-slate-950" />
                 <span>
@@ -282,7 +282,7 @@ export function LandingPage({
               <span className="text-[11px] font-bold text-amber-800 uppercase tracking-widest block">
                 {language === "hi" ? "पृष्ठभूमि एवं रणनीतिक आवश्यकता" : "Background & Strategic Context"}
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b2b50] tracking-tight leading-tight">
+              <h2 className="text-2xl sm:text-3xl font-semibold text-[#0b2b50] tracking-tight leading-tight">
                 {language === "hi"
                   ? "कार्यान्वयन-उन्मुख प्रशासन से साक्ष्य-आधारित नीति नवाचार की ओर"
                   : "Transitioning from Implementation-Centric to Evidence-Based Land Governance"}
@@ -362,7 +362,7 @@ export function LandingPage({
             <span className="text-[11px] font-bold text-amber-800 uppercase tracking-widest block">
               {language === "hi" ? "मंच के छह प्रमुख स्तंभ" : "Six Core Platform Pillars"}
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b2b50] tracking-tight mt-1">
+            <h2 className="text-2xl sm:text-3xl font-semibold text-[#0b2b50] tracking-tight mt-1">
               {language === "hi"
                 ? "भूमि शासन के अनुसंधान एवं नवाचार का संपूर्ण तंत्र"
                 : "Integrated Architecture for Evidence-Based Land Governance"}
@@ -435,7 +435,7 @@ export function LandingPage({
                   PME Innovation Fund
                 </span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
+              <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight">
                 National Land Governance Research & Innovation Challenge
               </h3>
               <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
@@ -452,7 +452,7 @@ export function LandingPage({
               <button
                 type="button"
                 onClick={onOpenLogin}
-                className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold px-5 py-2.5 rounded text-xs shadow-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-semibold px-5 py-2.5 rounded text-xs shadow-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
               >
                 <Award className="w-4 h-4 text-slate-950" />
                 <span>Submit Research Proposal</span>
@@ -469,7 +469,7 @@ export function LandingPage({
             <span className="text-[11px] font-bold text-amber-800 uppercase tracking-widest block">
               {language === "hi" ? "तकनीकी घटक एवं वास्तुकला" : "Technical Stack & Architecture Blueprint"}
             </span>
-            <h2 className="text-xl sm:text-2xl font-extrabold text-[#0b2b50] tracking-tight mt-1">
+            <h2 className="text-xl sm:text-2xl font-semibold text-[#0b2b50] tracking-tight mt-1">
               Enterprise Government Stack as per Ministry Guidelines
             </h2>
             <p className="text-xs text-slate-600 mt-1">
@@ -548,7 +548,7 @@ export function LandingPage({
             <span className="text-[11px] font-bold text-amber-800 uppercase tracking-widest block">
               {language === "hi" ? "हितधारक एवं संस्थागत नेटवर्क" : "Stakeholder Ecosystem & Partner Network"}
             </span>
-            <h2 className="text-xl sm:text-2xl font-extrabold text-[#0b2b50] tracking-tight mt-1">
+            <h2 className="text-xl sm:text-2xl font-semibold text-[#0b2b50] tracking-tight mt-1">
               Multi-Institutional Governance & Research Network
             </h2>
           </div>
@@ -562,7 +562,7 @@ export function LandingPage({
                 <div className="text-[9px] font-bold text-amber-800 uppercase tracking-wider">
                   {stk.type}
                 </div>
-                <div className="text-xs font-extrabold text-slate-900 mt-1 leading-tight">
+                <div className="text-xs font-semibold text-slate-900 mt-1 leading-tight">
                   {stk.name}
                 </div>
                 <div className="text-[10px] text-slate-500 mt-0.5">{stk.sub}</div>
@@ -575,7 +575,7 @@ export function LandingPage({
       {/* Final Public Call to Action */}
       <section className="w-full py-12 bg-[#071e3d] text-white">
         <div className="max-w-4xl mx-auto px-4 text-center space-y-4">
-          <h2 className="text-2xl sm:text-3xl font-black tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
             Empowering Evidence-Based Land Governance for India @2047
           </h2>
           <p className="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
@@ -587,7 +587,7 @@ export function LandingPage({
             <button
               type="button"
               onClick={onOpenLogin}
-              className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold px-6 py-3 rounded text-xs shadow-md flex items-center gap-2 cursor-pointer"
+              className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-semibold px-6 py-3 rounded text-xs shadow-md flex items-center gap-2 cursor-pointer"
             >
               <Lock className="w-4 h-4 text-slate-950" />
               <span>Login with Jan Parichay (National SSO)</span>

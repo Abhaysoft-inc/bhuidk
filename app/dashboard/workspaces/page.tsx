@@ -23,12 +23,12 @@ export default function WorkspacesPage() {
     <div className="space-y-8 w-full max-w-[1400px] mx-auto pb-10">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 pb-6">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">Collaborative Workspaces</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">Collaborative Workspaces</h1>
           <p className="text-sm text-slate-500 mt-1 max-w-2xl">
             Secure, invite-only digital rooms where policymakers, GIS analysts, and researchers collaborate on land governance initiatives.
           </p>
         </div>
-        <button type="button" className="flex items-center justify-center gap-2 bg-[#0b2b50] text-white px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-[#164275] cursor-pointer transition-colors shadow-sm">
+        <button type="button" className="flex items-center justify-center gap-2 bg-[#0b2b50] text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-[#164275] cursor-pointer transition-colors shadow-sm">
           <PlusCircle className="w-4 h-4" /> Create Workspace
         </button>
       </div>
@@ -44,7 +44,7 @@ export default function WorkspacesPage() {
             className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-shadow"
           />
         </div>
-        <button className="flex items-center gap-2 bg-white border border-slate-300 px-4 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">
+        <button className="flex items-center gap-2 bg-white border border-slate-300 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">
           <Filter className="w-4 h-4" /> Filter
         </button>
       </div>
@@ -80,18 +80,18 @@ export default function WorkspacesPage() {
                   <Clock className="w-3 h-3" /> {ws.updated}
                 </span>
               </div>
-              <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-700 transition-colors">{ws.name}</h3>
+              <h3 className="text-base font-semibold text-slate-900 group-hover:text-blue-700 transition-colors">{ws.name}</h3>
               <p className="text-xs text-slate-500 mt-2 line-clamp-2 leading-relaxed">{ws.desc}</p>
             </div>
             
             <div className="bg-slate-50 border-t border-slate-100 p-4 flex items-center justify-between mt-auto">
               <div className="flex items-center gap-1.5">
                 <Users className="w-4 h-4 text-slate-400" />
-                <span className="text-xs font-bold text-slate-600">{ws.members} members</span>
+                <span className="text-xs font-medium text-slate-600">{ws.members} members</span>
               </div>
               <Link 
                 href={`/dashboard/workspaces/${ws.id}`}
-                className="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1"
+                className="text-xs font-medium text-blue-600 hover:text-blue-800 flex items-center gap-1"
               >
                 Enter Workspace →
               </Link>

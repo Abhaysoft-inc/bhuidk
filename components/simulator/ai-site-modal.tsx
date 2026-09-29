@@ -119,6 +119,21 @@ export function AiSiteModal({
   const [advancedExpanded, setAdvancedExpanded] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
 
+  const selectedStateDistricts = useMemo(() => {
+    const foundState = statesCatalog?.find(
+      (s) => s.name.toLowerCase() === (criteria.preferredState || "").toLowerCase()
+    );
+    if (foundState && foundState.districts.length > 0) {
+      return foundState.districts.map((d) => d.name);
+    }
+    return (
+      STATE_OPTIONS.find(
+        (s) => s.state.toLowerCase() === (criteria.preferredState || "").toLowerCase()
+      )?.districts || STATE_OPTIONS[0]?.districts || ["Pune"]
+    );
+  }, [criteria.preferredState, statesCatalog]);
+
+  // Early return AFTER all hooks to comply with Rules of Hooks
   if (!isOpen) return null;
 
   // NLP Heuristic Extraction Trigger
@@ -170,20 +185,6 @@ export function AiSiteModal({
     }, 400);
   };
 
-  const selectedStateDistricts = useMemo(() => {
-    const foundState = statesCatalog?.find(
-      (s) => s.name.toLowerCase() === (criteria.preferredState || "").toLowerCase()
-    );
-    if (foundState && foundState.districts.length > 0) {
-      return foundState.districts.map((d) => d.name);
-    }
-    return (
-      STATE_OPTIONS.find(
-        (s) => s.state.toLowerCase() === (criteria.preferredState || "").toLowerCase()
-      )?.districts || STATE_OPTIONS[0]?.districts || ["Pune"]
-    );
-  }, [criteria.preferredState, statesCatalog]);
-
   return (
     <div className="ux4g-modal-backdrop ux4g-modal-backdrop-50">
       <div className="ux4g-modal-box ux4g-modal-l max-w-2xl max-h-[92vh]">
@@ -199,7 +200,7 @@ export function AiSiteModal({
                 Non-Autonomous
               </span>
             </div>
-            <h3 className="text-xl font-black text-[#0b2b50] tracking-tight mt-1">
+            <h3 className="text-xl font-bold text-[#0b2b50] tracking-tight mt-1">
               AI Site Selection
             </h3>
             <p className="text-xs text-slate-500 mt-0.5">
@@ -288,7 +289,7 @@ export function AiSiteModal({
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {/* Project Type */}
                 <div>
-                  <label className="text-[10px] font-bold text-slate-600 block mb-1">
+                  <label className="text-[10px] font-medium text-slate-600 block mb-1">
                     Project Type:
                   </label>
                   <select
@@ -311,7 +312,7 @@ export function AiSiteModal({
 
                 {/* Required Area */}
                 <div>
-                  <label className="text-[10px] font-bold text-slate-600 block mb-1">
+                  <label className="text-[10px] font-medium text-slate-600 block mb-1">
                     Required Area:
                   </label>
                   <div className="flex items-center gap-1.5">
@@ -328,7 +329,7 @@ export function AiSiteModal({
                       }}
                       className="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#0b2b50]/20 focus:border-[#0b2b50]"
                     />
-                    <span className="text-[11px] font-bold text-slate-500 shrink-0">acres</span>
+                    <span className="text-[11px] font-medium text-slate-500 shrink-0">acres</span>
                   </div>
                   <div className="text-[10px] text-slate-400 mt-0.5">
                     ≈ {criteria.requiredAreaHa} Hectares
@@ -337,7 +338,7 @@ export function AiSiteModal({
 
                 {/* Preferred Geography */}
                 <div>
-                  <label className="text-[10px] font-bold text-slate-600 block mb-1">
+                  <label className="text-[10px] font-medium text-slate-600 block mb-1">
                     Preferred State:
                   </label>
                   <select
@@ -372,14 +373,14 @@ export function AiSiteModal({
               {/* Inferred Priorities Tags */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                 <div>
-                  <span className="text-[10px] font-bold text-slate-500 block mb-1">
+                  <span className="text-[10px] font-medium text-slate-500 block mb-1">
                     Infrastructure Access Priorities:
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {criteria.infrastructureNeeds.map((item, idx) => (
                       <span
                         key={idx}
-                        className="bg-blue-50 text-blue-800 border border-blue-200 text-[10px] font-bold px-2 py-0.5 rounded-md"
+                        className="bg-blue-50 text-blue-800 border border-blue-200 text-[10px] font-medium px-2 py-0.5 rounded-md"
                       >
                         ✓ {item}
                       </span>
@@ -388,14 +389,14 @@ export function AiSiteModal({
                 </div>
 
                 <div>
-                  <span className="text-[10px] font-bold text-slate-500 block mb-1">
+                  <span className="text-[10px] font-medium text-slate-500 block mb-1">
                     Minimization Targets:
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {criteria.minimizePriorities.map((item, idx) => (
                       <span
                         key={idx}
-                        className="bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px] font-bold px-2 py-0.5 rounded-md"
+                        className="bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px] font-medium px-2 py-0.5 rounded-md"
                       >
                         ↓ {item}
                       </span>
@@ -576,7 +577,7 @@ export function AiSiteModal({
               <div className="p-3.5 space-y-3 bg-white text-xs border-t border-slate-200">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="text-[10px] font-bold text-slate-600 block mb-1">
+                    <label className="text-[10px] font-medium text-slate-600 block mb-1">
                       Max Distance from Highway:
                     </label>
                     <div className="flex items-center gap-1.5">
@@ -601,7 +602,7 @@ export function AiSiteModal({
                   </div>
 
                   <div>
-                    <label className="text-[10px] font-bold text-slate-600 block mb-1">
+                    <label className="text-[10px] font-medium text-slate-600 block mb-1">
                       Max Flood Exposure Tolerance:
                     </label>
                     <select
@@ -624,7 +625,7 @@ export function AiSiteModal({
                   </div>
 
                   <div>
-                    <label className="text-[10px] font-bold text-slate-600 block mb-1">
+                    <label className="text-[10px] font-medium text-slate-600 block mb-1">
                       Max Agricultural Land Conversion:
                     </label>
                     <div className="flex items-center gap-1.5">
@@ -649,7 +650,7 @@ export function AiSiteModal({
                   </div>
 
                   <div>
-                    <label className="text-[10px] font-bold text-slate-600 block mb-1">
+                    <label className="text-[10px] font-medium text-slate-600 block mb-1">
                       Protected Buffer Zone (Forest/Wetland):
                     </label>
                     <div className="flex items-center gap-1.5">
@@ -693,7 +694,7 @@ export function AiSiteModal({
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 p-3 bg-slate-50 border border-slate-200 rounded-xl">
               <div>
-                <span className="text-[10px] font-bold text-slate-500 block mb-1">
+                <span className="text-[10px] font-medium text-slate-500 block mb-1">
                   Target State:
                 </span>
                 <select
@@ -722,7 +723,7 @@ export function AiSiteModal({
               </div>
 
               <div>
-                <span className="text-[10px] font-bold text-slate-500 block mb-1">
+                <span className="text-[10px] font-medium text-slate-500 block mb-1">
                   Target District:
                 </span>
                 <select

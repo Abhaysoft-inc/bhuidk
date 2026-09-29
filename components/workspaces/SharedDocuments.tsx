@@ -82,7 +82,7 @@ export default function SharedDocuments() {
         {/* Editor Canvas Simulation */}
         <div className="flex-1 overflow-y-auto p-8 md:p-12 relative cursor-text">
           <div className="max-w-3xl mx-auto">
-            <h1 className="text-3xl font-black text-slate-900 mb-6 focus:outline-none" contentEditable suppressContentEditableWarning>
+            <h1 className="text-3xl font-bold text-slate-900 mb-6 focus:outline-none" contentEditable suppressContentEditableWarning>
               {documents.find(d => d.id === activeDoc)?.title}
             </h1>
             

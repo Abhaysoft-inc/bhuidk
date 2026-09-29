@@ -228,11 +228,11 @@ export default function Home() {
           <div className="flex items-center gap-5">
             <div className="w-12 h-16 bg-contain bg-no-repeat bg-center opacity-90" style={{backgroundImage: 'url("https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg")'}}></div>
             <div>
-              <h1 className="text-2xl font-black text-slate-900 leading-tight tracking-tight">
+              <h1 className="text-2xl font-bold text-slate-900 leading-tight tracking-tight">
                 VEDA <span className="text-blue-700">Platform</span>
               </h1>
-              <p className="text-xs font-semibold text-slate-500 mt-0.5">Digital Land Records & Geospatial Intelligence</p>
-              <p className="text-[10px] text-slate-400 font-medium">Dept. of Land Resources (DoLR) • Ministry of Rural Development • Govt. of India</p>
+              <p className="text-xs font-medium text-slate-500 mt-0.5">Digital Land Records & Geospatial Intelligence</p>
+              <p className="text-[10px] text-slate-400 font-normal">Dept. of Land Resources (DoLR) • Ministry of Rural Development • Govt. of India</p>
             </div>
           </div>
           <div className="hidden md:flex items-center gap-6">
@@ -240,17 +240,17 @@ export default function Home() {
             <div className="text-right border-l border-slate-100 pl-6">
               {currentUser ? (
                 <div>
-                  <div className="text-xs font-bold text-slate-800">Welcome, {currentUser.name}</div>
+                  <div className="text-xs font-semibold text-slate-800">Welcome, {currentUser.name}</div>
                   <div className="text-[10px] text-slate-500">{currentUser.designation}</div>
                   <div className="flex gap-3 mt-1 justify-end">
-                    <Link href="/dashboard" className="text-[10px] text-blue-700 hover:underline font-bold">Dashboard</Link>
-                    <button onClick={handleSignOut} className="text-[10px] text-red-600 hover:underline font-bold">Logout</button>
+                    <Link href="/dashboard" className="text-[10px] text-blue-700 hover:underline font-semibold">Dashboard</Link>
+                    <button onClick={handleSignOut} className="text-[10px] text-red-600 hover:underline font-semibold">Logout</button>
                   </div>
                 </div>
               ) : (
                 <div className="flex gap-2">
-                  <Link href="/login" className="text-xs font-semibold text-slate-700 border border-slate-200 px-3 py-1.5 rounded-lg hover:border-blue-300 hover:text-blue-700 transition-colors">Sign In</Link>
-                  <Link href="/signup" className="text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 px-3 py-1.5 rounded-lg transition-colors">Register</Link>
+                  <Link href="/login" className="text-xs font-medium text-slate-700 border border-slate-200 px-3 py-1.5 rounded-lg hover:border-blue-300 hover:text-blue-700 transition-colors">Sign In</Link>
+                  <Link href="/signup" className="text-xs font-medium text-white bg-emerald-600 hover:bg-emerald-700 px-3 py-1.5 rounded-lg transition-colors">Register</Link>
                 </div>
               )}
             </div>
@@ -266,7 +266,7 @@ export default function Home() {
       ══════════════════════════════════════════════════════ */}
       <nav className="bg-gradient-to-r from-orange-50/80 via-white to-emerald-50/80 backdrop-blur-md text-slate-800 sticky top-0 z-50 border-b border-slate-200 shadow-sm">
         <div className="max-w-screen-2xl mx-auto flex items-center overflow-x-auto scrollbar-none">
-          <Link href="/" className="flex items-center gap-1.5 px-5 py-3 text-xs font-bold bg-emerald-50 text-emerald-700 whitespace-nowrap shrink-0 border-r border-emerald-100/50">
+          <Link href="/" className="flex items-center gap-1.5 px-5 py-3 text-xs font-semibold bg-emerald-50 text-emerald-700 whitespace-nowrap shrink-0 border-r border-emerald-100/50">
             <HomeIcon className="w-3.5 h-3.5" /> Home
           </Link>
           {[
@@ -277,17 +277,17 @@ export default function Home() {
             { label: "Innovation", href: getDestination("/dashboard/grants") },
             { label: "Analytics", href: getDestination("/dashboard/analytics") },
           ].map((item) => (
-            <Link key={item.href} href={item.href} className="px-4 py-3 text-xs font-semibold text-slate-600 hover:bg-white/60 hover:text-emerald-700 transition-colors whitespace-nowrap border-r border-slate-100/50 shrink-0">
+            <Link key={item.href} href={item.href} className="px-4 py-3 text-xs font-medium text-slate-600 hover:bg-white/60 hover:text-emerald-700 transition-colors whitespace-nowrap border-r border-slate-100/50 shrink-0">
               {item.label}
             </Link>
           ))}
           <div className="ml-auto px-5 py-3 shrink-0">
             {currentUser ? (
-              <Link href="/dashboard" className="flex items-center gap-1.5 text-xs font-bold bg-slate-100 text-slate-800 hover:bg-slate-200 px-3 py-1 rounded-lg transition-colors">
+              <Link href="/dashboard" className="flex items-center gap-1.5 text-xs font-semibold bg-slate-100 text-slate-800 hover:bg-slate-200 px-3 py-1 rounded-lg transition-colors">
                 <LayoutDashboard className="w-3.5 h-3.5" /> Dashboard
               </Link>
             ) : (
-              <Link href="/login" className="flex items-center gap-1.5 text-xs font-bold bg-amber-500 hover:bg-amber-600 text-white px-3 py-1 rounded-lg transition-colors shadow-sm">
+              <Link href="/login" className="flex items-center gap-1.5 text-xs font-semibold bg-amber-500 hover:bg-amber-600 text-white px-3 py-1 rounded-lg transition-colors shadow-sm">
                 <Lock className="w-3.5 h-3.5" /> Officer Login
               </Link>
             )}
@@ -322,28 +322,28 @@ export default function Home() {
               
               {/* Left Content - Typography & CTA */}
               <div className="max-w-2xl relative z-10">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-50 text-orange-700 text-[10px] font-bold uppercase tracking-wider mb-6 border border-orange-200 shadow-sm">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-50 text-orange-700 text-[10px] font-semibold uppercase tracking-wider mb-6 border border-orange-200 shadow-sm">
                    <ShieldCheck className="w-3.5 h-3.5" />
                    Official Platform • Dept. of Land Resources
                 </div>
                 
-                <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-black text-slate-900 leading-[1.1] tracking-tight mb-4">
+                <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-bold text-slate-900 leading-[1.1] tracking-tight mb-4">
                   Digital Land Records <br/>
                   <span className="text-[#00A859]">Modernization</span>
                 </h1>
                 
-                <p className="text-lg text-slate-800 font-bold mb-3 border-l-4 border-amber-500 pl-3">डिजिटल भूमि अभिलेख आधुनिकीकरण (DILRMP)</p>
+                <p className="text-lg text-slate-800 font-semibold mb-3 border-l-4 border-amber-500 pl-3">डिजिटल भूमि अभिलेख आधुनिकीकरण (DILRMP)</p>
                 
-                <p className="text-sm text-slate-600 leading-relaxed mb-8 max-w-lg font-medium">
+                <p className="text-sm text-slate-600 leading-relaxed mb-8 max-w-lg font-normal">
                   India's unified platform for land governance. Search 32,000+ land laws, inspect Bhu-Aadhaar parcels, simulate policy reforms, and access geospatial intelligence.
                 </p>
                 
                 <div className="flex flex-wrap items-center gap-3">
-                  <Link href={getDestination("/dashboard")} className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3.5 rounded-xl font-bold text-sm transition-colors shadow-lg shadow-blue-900/20 flex items-center gap-2">
+                  <Link href={getDestination("/dashboard")} className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3.5 rounded-xl font-semibold text-sm transition-colors shadow-lg shadow-blue-900/20 flex items-center gap-2">
                     <LayoutDashboard className="w-4 h-4" />
                     Access Platform
                   </Link>
-                  <a href="#services" className="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-6 py-3.5 rounded-xl font-bold text-sm transition-colors shadow-sm flex items-center gap-2">
+                  <a href="#services" className="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-6 py-3.5 rounded-xl font-semibold text-sm transition-colors shadow-sm flex items-center gap-2">
                     Explore Services <ArrowRight className="w-4 h-4" />
                   </a>
                 </div>
@@ -396,7 +396,7 @@ export default function Home() {
                       >
                         <img src={slide.img} alt={slide.caption} className="w-full h-full object-cover" />
                         <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent p-5 pt-16">
-                          <p className="text-white font-extrabold text-sm tracking-wide">{slide.caption}</p>
+                          <p className="text-white font-semibold text-sm tracking-wide">{slide.caption}</p>
                         </div>
                       </div>
                     ))}
@@ -435,7 +435,7 @@ export default function Home() {
                         <Icon className="w-5 h-5" />
                       </div>
                     </div>
-                    <div className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">{s.value}</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">{s.value}</div>
                     <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-1">{s.label}</div>
                   </div>
                 );
@@ -451,7 +451,7 @@ export default function Home() {
           <div className="max-w-screen-2xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-12">
               <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-blue-700 bg-blue-50 border border-blue-100 px-3 py-1 rounded-full mb-3">Our Services / हमारी सेवाएं</span>
-              <h2 className="text-3xl font-black text-slate-900 tracking-tight">Key Platform Services</h2>
+              <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Key Platform Services</h2>
               <p className="text-slate-500 text-sm mt-2">Access all national land governance tools from one secure platform</p>
             </div>
 
@@ -464,7 +464,7 @@ export default function Home() {
                       <div className={`w-12 h-12 rounded-xl ${svc.lightColor} ${svc.textColor} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                         <Icon className="w-6 h-6" />
                       </div>
-                      <h3 className="font-extrabold text-slate-900 text-base mb-0.5">{svc.title}</h3>
+                      <h3 className="font-semibold text-slate-900 text-base mb-0.5">{svc.title}</h3>
                       <p className={`text-xs font-bold ${svc.textColor} mb-3 opacity-80`}>{svc.hindi}</p>
                       <p className="text-xs text-slate-500 leading-relaxed flex-1">{svc.desc}</p>
                       <div className={`mt-4 flex items-center gap-1.5 text-xs font-bold ${svc.textColor} group-hover:gap-2.5 transition-all`}>
@@ -485,7 +485,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-10">
               <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-emerald-700 bg-emerald-50 border border-emerald-100 px-3 py-1 rounded-full mb-3">National Schemes</span>
-              <h2 className="text-3xl font-black text-slate-900 tracking-tight">Flagship Government Initiatives</h2>
+              <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Flagship Government Initiatives</h2>
               <p className="text-slate-500 text-sm mt-2">Supported by the Dept. of Land Resources under DILRMP 3.0</p>
             </div>
 
@@ -508,12 +508,12 @@ export default function Home() {
                 <img src={schemes[activeScheme].img} alt={schemes[activeScheme].name} className="absolute inset-0 w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent lg:bg-gradient-to-t lg:from-black/60 lg:to-transparent"></div>
                 <div className="absolute bottom-5 left-5">
-                  <span className="text-3xl font-black text-white">{schemes[activeScheme].name}</span>
+                  <span className="text-3xl font-bold text-white">{schemes[activeScheme].name}</span>
                   <div className="text-white/70 text-xs mt-1 font-medium">{schemes[activeScheme].stats}</div>
                 </div>
               </div>
               <div className="bg-white p-8 flex flex-col justify-center">
-                <h3 className="text-xl font-extrabold text-slate-900 mb-2">{schemes[activeScheme].full}</h3>
+                <h3 className="text-xl font-semibold text-slate-900 mb-2">{schemes[activeScheme].full}</h3>
                 <p className="text-slate-600 text-sm leading-relaxed mb-6">{schemes[activeScheme].desc}</p>
                 <div className="flex gap-3">
                   <Link href={getDestination("/dashboard")} className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition-colors">
@@ -536,7 +536,7 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-rose-700 bg-rose-50 border border-rose-100 px-3 py-1 rounded-full mb-4">Why VEDA Platform</span>
-                <h2 className="text-3xl font-black text-slate-900 tracking-tight mb-4">One Platform for All Land Governance Needs</h2>
+                <h2 className="text-3xl font-bold text-slate-900 tracking-tight mb-4">One Platform for All Land Governance Needs</h2>
                 <p className="text-slate-500 text-sm leading-relaxed mb-8">
                   VEDA integrates all national land governance programs into a single, secure, officer-grade workspace for Revenue Departments, IAS officers, Policy Researchers, and GIS Surveyors.
                 </p>
@@ -572,7 +572,7 @@ export default function Home() {
                 <div className="absolute bottom-6 left-6 right-6">
                   <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 text-white">
                     <div className="text-xs font-semibold text-white/70 mb-1">Currently Active On Platform</div>
-                    <div className="text-2xl font-black">1,240+ Officers</div>
+                    <div className="text-2xl font-bold">1,240+ Officers</div>
                     <div className="text-xs text-white/60 mt-0.5">Across 28 States & 8 UTs</div>
                   </div>
                 </div>
@@ -590,7 +590,7 @@ export default function Home() {
             <div className="inline-flex items-center gap-2 bg-amber-100 border border-amber-200 text-amber-700 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-5">
               <Lock className="w-3 h-3" /> Secure Officer Access
             </div>
-            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-4 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
               Ready to Access the Platform?
             </h2>
             <p className="text-slate-600 text-sm mb-8 max-w-lg mx-auto">

@@ -109,7 +109,7 @@ export function NationalMetrics({ language }: NationalMetricsProps) {
             <span className="text-[11px] font-bold text-amber-800 uppercase tracking-widest block">
               {language === "hi" ? "राष्ट्रीय प्रदर्शन संकेतक" : "National Performance Indicators"}
             </span>
-            <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight">
+            <h3 className="text-lg sm:text-xl font-semibold text-slate-900 tracking-tight">
               {language === "hi"
                 ? "भारतीय भूमि प्रशासन का वास्तविक सांख्यिकी तंत्र"
                 : "Real-Time National Land Governance & Research Matrix"}
@@ -133,7 +133,7 @@ export function NationalMetrics({ language }: NationalMetricsProps) {
                 className="p-3.5 rounded border border-slate-200 bg-slate-50/60 hover:bg-white hover:border-slate-300 hover:shadow-xs transition-all flex flex-col justify-between"
               >
                 <div className="flex items-start justify-between gap-2">
-                  <span className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                  <span className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
                     {item.value}
                   </span>
                   <div className={`p-1.5 rounded border ${item.accent} shrink-0`}>

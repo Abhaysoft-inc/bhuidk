@@ -82,7 +82,7 @@ export function HeroSearch({ language, onSearch, onNavigateTab }: HeroSearchProp
 
         {/* Hero Title and Mandate */}
         <div className="max-w-4xl">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white tracking-tight leading-tight">
             {language === "hi" ? (
               <>
                 अनुसंधान, नीति नवाचार एवं साक्ष्य-आधारित भूमि शासन हेतु{" "}
