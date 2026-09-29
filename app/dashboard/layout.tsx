@@ -135,19 +135,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
         {/* Main Content Area */}
         <main className="flex-1 w-full px-4 sm:px-6 lg:px-8 py-6 space-y-6">
-          
-          {/* Marquee Updates - Soft Alert */}
-          <div className="bg-amber-50/80 border border-amber-200/60 rounded-2xl flex items-center overflow-hidden shadow-sm">
-            <div className="bg-amber-100/80 text-amber-800 px-4 py-2.5 text-xs font-bold whitespace-nowrap border-r border-amber-200/60 shrink-0">
-              Latest Updates
-            </div>
-            <marquee className="py-2.5 font-medium text-xs text-amber-700/80" onMouseOver={(e: any) => e.currentTarget.stop()} onMouseOut={(e: any) => e.currentTarget.start()}>
-              <span className="mx-4">✨ New ULPIN Bhu-Aadhaar integration guidelines published.</span>
-              <span className="mx-4">📊 Maharashtra Cadastral Resurvey data updated for Pune region.</span>
-              <span className="mx-4">🔧 Scheduled maintenance for GIS servers on Sunday 2:00 AM.</span>
-            </marquee>
-          </div>
-
           {children}
         </main>
 

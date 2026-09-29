@@ -95,9 +95,22 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
+      
+      {/* Ultra-compact Marquee Updates (Dashboard Only) */}
+      <div className="bg-amber-50 border border-amber-200/60 rounded-lg flex items-center overflow-hidden shadow-sm h-8">
+        <div className="bg-amber-100 text-amber-800 px-3 py-0 h-full flex items-center text-[10px] uppercase font-extrabold tracking-wider whitespace-nowrap border-r border-amber-200/60 shrink-0">
+          Alerts
+        </div>
+        <marquee className="flex-1 font-medium text-xs text-amber-700/80 leading-8" onMouseOver={(e: any) => e.currentTarget.stop()} onMouseOut={(e: any) => e.currentTarget.start()}>
+          <span className="mx-4">✨ New ULPIN Bhu-Aadhaar integration guidelines published.</span>
+          <span className="mx-4">📊 Maharashtra Cadastral Resurvey data updated for Pune region.</span>
+          <span className="mx-4">🔧 Scheduled maintenance for GIS servers on Sunday 2:00 AM.</span>
+        </marquee>
+      </div>
+
       {/* Page Title */}
-      <div className="flex items-center gap-3 pb-2">
+      <div className="flex items-center gap-3 pb-1">
         <h2 className="text-2xl font-extrabold text-slate-800 tracking-tight">Dashboard</h2>
         <span className="text-2xl font-medium text-slate-300">/</span>
         <h2 className="text-lg font-bold text-slate-500 tracking-wide">मुख्य पृष्ठ</h2>
@@ -258,11 +271,16 @@ export default function DashboardPage() {
         {/* Right Column: Citizen Support Profile */}
         <div className="space-y-6">
           <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden flex flex-col text-center">
-            <div className="w-full h-40 relative bg-slate-100 overflow-hidden">
-               {/* Real image of customer support */}
-               <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80" alt="Citizen Support" className="w-full h-full object-cover object-center relative z-10" />
+            <div className="w-full h-40 relative bg-indigo-600 overflow-hidden rounded-t-2xl">
+               {/* Abstract Modern Gradient & Pattern for Support */}
+               <div className="absolute inset-0 bg-gradient-to-br from-indigo-800 via-indigo-600 to-indigo-900 z-10"></div>
+               {/* Dot Pattern overlay */}
+               <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] z-20"></div>
+               {/* Large background icon */}
+               <Headset className="absolute -bottom-6 -right-4 w-36 h-36 text-white opacity-10 z-20 rotate-12" />
+               
                <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-slate-900/80 to-transparent z-20"></div>
-               <h3 className="absolute bottom-4 left-5 text-white font-bold text-sm tracking-wide z-30 text-left leading-tight">Help & Support Desk<br/><span className="text-[10px] font-medium text-white/80">Officer Assistance</span></h3>
+               <h3 className="absolute bottom-4 left-5 text-white font-bold text-sm tracking-wide z-30 text-left leading-tight">Help & Support Desk<br/><span className="text-[10px] font-medium text-indigo-200">Officer Assistance</span></h3>
             </div>
             
             <div className="p-5 flex flex-col items-center">
