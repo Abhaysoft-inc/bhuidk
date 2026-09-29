@@ -5,19 +5,20 @@ import Link from "next/link";
 import {
   FileText,
   MapPin,
-  BarChart3,
-  TrendingUp,
   Users,
-  Clock,
-  ArrowUpRight,
-  Database,
   Sparkles,
+  ChevronRight,
+  Download,
+  AlertCircle,
+  FileCheck,
+  Building,
+  Landmark,
   ShieldCheck,
-  Building2,
-  KeyRound,
-  GraduationCap,
-  Compass,
-  ArrowRight,
+  FileSignature,
+  Database,
+  Headset,
+  PhoneCall,
+  ArrowRight
 } from "lucide-react";
 
 export default function DashboardPage() {
@@ -29,229 +30,259 @@ export default function DashboardPage() {
   });
 
   useEffect(() => {
-    const loadUser = () => {
-      if (typeof window !== "undefined") {
-        const stored = localStorage.getItem("veda_user");
-        if (stored) {
-          try {
-            setCurrentUser(JSON.parse(stored));
-          } catch (e) {
-            console.error(e);
-          }
-        }
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("veda_user");
+      if (stored) {
+        try {
+          setCurrentUser(JSON.parse(stored));
+        } catch (e) {}
       }
-    };
-
-    loadUser();
-
-    // Listen for storage or custom events
-    const handleStorageChange = () => loadUser();
-    window.addEventListener("storage", handleStorageChange);
-    window.addEventListener("veda_user_updated", handleStorageChange);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-      window.removeEventListener("veda_user_updated", handleStorageChange);
-    };
+    }
   }, []);
 
   const stats = [
-    { label: "Research Papers", value: "14,250", change: "+124 this month", icon: FileText, color: "text-blue-600 bg-blue-50" },
-    { label: "Geospatial Datasets", value: "852", change: "+18 this month", icon: MapPin, color: "text-emerald-600 bg-emerald-50" },
-    { label: "Active Workspaces", value: "1,240", change: "+56 this month", icon: Users, color: "text-indigo-600 bg-indigo-50" },
-    { label: "Policy Simulations", value: "328", change: "+12 this month", icon: Sparkles, color: "text-amber-600 bg-amber-50" },
+    { label: "Total ULPIN Generated", value: "8.4 Cr", icon: ShieldCheck, bg: "bg-indigo-50", text: "text-indigo-900", iconColor: "text-indigo-400" },
+    { label: "Land Records Digitized", value: "94.2%", icon: FileCheck, bg: "bg-emerald-50", text: "text-emerald-900", iconColor: "text-emerald-400" },
+    { label: "Villages Surveyed (SVAMITVA)", value: "2,45,120", icon: Building, bg: "bg-amber-50", text: "text-amber-900", iconColor: "text-amber-400" },
+    { label: "Active Mutations", value: "12,450", icon: FileSignature, bg: "bg-purple-50", text: "text-purple-900", iconColor: "text-purple-400" },
   ];
 
   const recentActivity = [
-    { title: "ULPIN Bhu-Aadhaar Integration Study uploaded", time: "2 hours ago", type: "Paper" },
-    { title: "Maharashtra cadastral resurvey dataset updated", time: "5 hours ago", type: "Dataset" },
-    { title: "New policy simulation: Model Tenancy Act", time: "Yesterday", type: "Simulation" },
-    { title: "Rajasthan climate vulnerability report published", time: "2 days ago", type: "Report" },
-    { title: "Workspace WG-04: Pune corridor study reviewed", time: "3 days ago", type: "Workspace" },
+    { title: "ULPIN Bhu-Aadhaar Integration Study uploaded", date: "29-09-2026", dept: "DoLR Central" },
+    { title: "Maharashtra cadastral resurvey dataset updated", date: "28-09-2026", dept: "Revenue Dept, MH" },
+    { title: "New policy simulation: Model Tenancy Act", date: "27-09-2026", dept: "Policy Cell" },
+    { title: "Rajasthan climate vulnerability report published", date: "25-09-2026", dept: "NIC Rajasthan" },
+    { title: "Workspace WG-04: Pune corridor study reviewed", date: "22-09-2026", dept: "Collectorate, Pune" },
+  ];
+
+  const coreServices = [
+    { 
+      title: "National Repository", 
+      hindi: "राष्ट्रीय भंडार",
+      desc: "Browse Policies & Datasets", 
+      href: "/dashboard/repository", 
+      img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+      icon: Database,
+      color: "from-blue-600/80 to-blue-900/90"
+    },
+    { 
+      title: "Bhu-Naksha (GIS)", 
+      hindi: "भू-नक्शा",
+      desc: "Geospatial Land Viewer", 
+      href: "/dashboard/gis", 
+      img: "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80",
+      icon: MapPin,
+      color: "from-emerald-600/80 to-emerald-900/90"
+    },
+    { 
+      title: "Policy Simulator", 
+      hindi: "नीति सिम्युलेटर",
+      desc: "Test Policy Scenarios", 
+      href: "/dashboard/simulator", 
+      img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+      icon: Sparkles,
+      color: "from-purple-600/80 to-purple-900/90"
+    },
+    { 
+      title: "Workspaces", 
+      hindi: "कार्यस्थल",
+      desc: "Collaborative Projects", 
+      href: "/dashboard/workspaces", 
+      img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
+      icon: Users,
+      color: "from-amber-600/80 to-amber-900/90"
+    }
   ];
 
   return (
-    <div className="space-y-6">
-      {/* Dynamic User & Role Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-5 rounded-xl border border-slate-200 shadow-2xs">
-        <div>
-          <div className="flex items-center gap-2.5 flex-wrap">
-            <h1 className="text-xl font-extrabold text-slate-900 tracking-tight">
-              Dashboard
-            </h1>
-            {/* Dynamic Role Badge */}
-            {currentUser.role === "admin" && (
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#f4f0ff] text-[#4A2BC2] border border-[#eae4ff]">
-                <KeyRound className="w-3.5 h-3.5" />
-                PLATFORM ADMINISTRATOR
-              </span>
-            )}
-            {currentUser.role === "officer" && (
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
-                <Building2 className="w-3.5 h-3.5" />
-                REVENUE OFFICER
-              </span>
-            )}
-            {currentUser.role === "researcher" && (
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-800 border border-blue-200">
-                <GraduationCap className="w-3.5 h-3.5" />
-                POLICY RESEARCHER
-              </span>
-            )}
-            {currentUser.role === "surveyor" && (
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-teal-50 text-teal-800 border border-teal-200">
-                <Compass className="w-3.5 h-3.5" />
-                GIS SURVEY SPECIALIST
-              </span>
-            )}
-          </div>
-          <p className="text-xs text-slate-500 mt-1">
-            Welcome back, <strong className="text-slate-800">{currentUser.name}</strong> •{" "}
-            <span>{currentUser.department || "Ministry of Rural Development"}</span>
-          </p>
-        </div>
-
-        {currentUser.role === "admin" && (
-          <Link
-            href="/dashboard/users"
-            className="inline-flex items-center gap-2 bg-[#4A2BC2] hover:bg-[#3C1FA4] text-white px-3.5 py-2 rounded-lg text-xs font-bold transition-all shadow-xs self-start sm:self-center"
-          >
-            <ShieldCheck className="w-4 h-4 text-[#b9a4ff]" />
-            <span>Manage Users (Admin)</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
-        )}
+    <div className="space-y-8">
+      {/* Page Title */}
+      <div className="flex items-center gap-3 pb-2">
+        <h2 className="text-2xl font-extrabold text-slate-800 tracking-tight">Dashboard</h2>
+        <span className="text-2xl font-medium text-slate-300">/</span>
+        <h2 className="text-lg font-bold text-slate-500 tracking-wide">मुख्य पृष्ठ</h2>
       </div>
 
-      {/* Admin Quick Notification Banner */}
-      {currentUser.role === "admin" && (
-        <div className="bg-[#f4f0ff] border border-[#d6cbff] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[#4A2BC2] text-white flex items-center justify-center shrink-0">
-              <ShieldCheck className="w-4 h-4" />
+      {/* Core Services Blocks - Real Images with Frosted Glass */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {coreServices.map((service, i) => (
+          <Link key={i} href={service.href} className="group block rounded-2xl shadow-sm overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1 relative h-48">
+            <img src={service.img} alt={service.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            
+            {/* Smooth dark gradient at the bottom for contrast */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            
+            <div className="absolute inset-0 flex flex-col justify-between z-10">
+               <div className="p-4 flex justify-between items-start">
+                 <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 shadow-sm">
+                   <service.icon className="w-5 h-5 text-white" />
+                 </div>
+                 <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity border border-white/20">
+                   <ArrowRight className="w-4 h-4 text-white" />
+                 </div>
+               </div>
+               
+               {/* Frosted Glass Text Panel */}
+               <div className="p-4 bg-black/30 backdrop-blur-md border-t border-white/10 group-hover:bg-black/40 transition-colors">
+                 <h3 className="font-extrabold text-lg tracking-tight mb-0.5 text-white drop-shadow-sm">{service.title}</h3>
+                 <div className="flex items-center gap-2">
+                   <span className="text-[11px] font-bold uppercase tracking-wider text-white/90">{service.hindi}</span>
+                   <span className="w-1 h-1 rounded-full bg-white/50"></span>
+                   <span className="text-[10px] text-white/80 font-medium">{service.desc}</span>
+                 </div>
+               </div>
             </div>
-            <div>
-              <span className="font-bold text-[#4A2BC2]">Central Administrative Privileges Active:</span>{" "}
-              <span className="text-slate-700">
-                You have access to User &amp; Role Governance, district authorization logs, and federated API connectors.
-              </span>
-            </div>
-          </div>
-          <Link
-            href="/dashboard/users"
-            className="text-xs font-bold text-[#4A2BC2] hover:underline whitespace-nowrap"
-          >
-            Open User Console ➔
           </Link>
-        </div>
-      )}
+        ))}
+      </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {stats.map((stat) => {
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {stats.map((stat, i) => {
           const Icon = stat.icon;
           return (
-            <div
-              key={stat.label}
-              className="bg-white rounded-xl border border-slate-200 p-5 hover:shadow-sm transition-shadow"
-            >
-              <div className="flex items-center justify-between">
-                <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${stat.color}`}>
-                  <Icon className="w-4 h-4" />
-                </div>
-                <span className="text-[10px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full flex items-center gap-0.5">
-                  <TrendingUp className="w-3 h-3" />
-                  {stat.change}
-                </span>
+            <div key={i} className={`${stat.bg} ${stat.text} rounded-2xl p-5 border border-white/50 shadow-sm flex items-center justify-between transition-all hover:shadow-md`}>
+              <div>
+                <div className="text-3xl font-black tracking-tight">{stat.value}</div>
+                <div className="text-[11px] font-bold uppercase mt-1 opacity-80 tracking-wider">{stat.label}</div>
               </div>
-              <div className="mt-3">
-                <div className="text-2xl font-extrabold text-slate-900">{stat.value}</div>
-                <div className="text-xs text-slate-500 font-medium mt-0.5">{stat.label}</div>
+              <div className={`p-3 bg-white/60 rounded-xl ${stat.iconColor}`}>
+                <Icon className="w-6 h-6" />
               </div>
             </div>
           );
         })}
       </div>
 
-      {/* Two-column layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Recent Activity */}
-        <div className="lg:col-span-2 bg-white rounded-xl border border-slate-200 p-5">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-sm font-bold text-slate-900">Recent Activity</h2>
-            <button type="button" className="text-[11px] font-semibold text-[#4A2BC2] hover:underline cursor-pointer">
-              View all
-            </button>
-          </div>
-          <div className="space-y-1">
-            {recentActivity.map((item, i) => (
-              <div
-                key={i}
-                className="flex items-center justify-between py-3 border-b border-slate-100 last:border-0"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-500">
-                    <Database className="w-3.5 h-3.5" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-semibold text-slate-800">{item.title}</div>
-                    <div className="text-[10px] text-slate-400 flex items-center gap-1 mt-0.5">
-                      <Clock className="w-3 h-3" />
-                      {item.time}
-                    </div>
-                  </div>
-                </div>
-                <span className="text-[10px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full shrink-0">
-                  {item.type}
-                </span>
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        
+        {/* Left/Middle Column: Recent Activity & Data */}
+        <div className="lg:col-span-3 space-y-6">
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* Quick Links Box */}
+            <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden flex flex-col">
+              <div className="bg-emerald-50/50 border-b border-emerald-100 px-5 py-4">
+                <h3 className="font-bold text-emerald-800 text-sm flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  Quick Links / त्वरित लिंक
+                </h3>
               </div>
-            ))}
+              <div className="p-2 flex-1">
+                <ul className="space-y-1">
+                  {[
+                    { label: "Update Revenue Records", href: "#" },
+                    { label: "Download ULPIN Guidelines", href: "#" },
+                    { label: "View Mutation Status", href: "#" },
+                    { label: "Village Map Directory", href: "#" },
+                    { label: "SVAMITVA Drone Survey Reports", href: "#" },
+                  ].map((link, idx) => (
+                    <li key={idx}>
+                      <Link href={link.href} className="flex items-center justify-between px-4 py-3 text-xs text-slate-600 hover:bg-emerald-50/50 rounded-xl font-semibold hover:text-emerald-700 transition-all group">
+                        <span className="flex items-center gap-2">
+                          <div className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-emerald-400 transition-colors"></div>
+                          {link.label}
+                        </span>
+                        <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-emerald-600 group-hover:translate-x-0.5 transition-all" /> 
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Important Notice */}
+            <div className="bg-white rounded-2xl border border-rose-100 shadow-sm overflow-hidden relative flex flex-col">
+              <div className="absolute top-0 left-0 w-1 h-full bg-rose-400"></div>
+              <div className="px-5 py-4 flex items-center gap-2 border-b border-rose-50/50">
+                <div className="p-1.5 bg-rose-100 text-rose-600 rounded-lg">
+                  <AlertCircle className="w-4 h-4" />
+                </div>
+                <h3 className="font-bold text-slate-800 text-sm">Important Notice</h3>
+              </div>
+              <div className="p-5 text-xs text-slate-600 leading-relaxed bg-white flex-1 flex flex-col justify-between">
+                <div>
+                  <p className="mb-3">
+                    <strong className="text-slate-800 block mb-1">Attention all revenue officers:</strong>
+                    The ULPIN linkage for the remaining cadastral parcels must be completed by <strong className="text-rose-600 bg-rose-50 px-1 rounded">31-10-2026</strong>. Please utilize the Bhu-Naksha GIS tool to verify discrepancies.
+                  </p>
+                </div>
+                <button className="w-full bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 font-bold px-4 py-2.5 rounded-xl flex items-center justify-center gap-2 transition-colors mt-4">
+                  <Download className="w-3.5 h-3.5" /> Download Circular
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden flex flex-col">
+            <div className="bg-slate-50/50 border-b border-slate-100 px-6 py-4 flex justify-between items-center">
+              <h3 className="font-bold text-slate-800 text-sm flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-indigo-500"></span>
+                National Activity Log / नवीनतम गतिविधियां
+              </h3>
+              <button className="text-[11px] font-bold text-indigo-600 hover:text-indigo-800 transition-colors uppercase tracking-wider">
+                View All
+              </button>
+            </div>
+            <div className="p-0 overflow-x-auto flex-1">
+              <table className="w-full text-xs text-left whitespace-nowrap">
+                <thead className="bg-slate-50 text-slate-500 font-semibold border-b border-slate-100">
+                  <tr>
+                    <th className="py-3 px-6 font-semibold">Sr. No.</th>
+                    <th className="py-3 px-6 font-semibold">Subject</th>
+                    <th className="py-3 px-6 font-semibold">Department</th>
+                    <th className="py-3 px-6 font-semibold">Date</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {recentActivity.map((item, i) => (
+                    <tr key={i} className="hover:bg-slate-50/80 transition-colors group">
+                      <td className="py-3 px-6 text-slate-400 font-medium">{i + 1}</td>
+                      <td className="py-3 px-6 text-slate-700 font-semibold group-hover:text-indigo-600 cursor-pointer transition-colors">
+                        {item.title}
+                      </td>
+                      <td className="py-3 px-6 text-slate-500">
+                        <span className="bg-slate-100 text-slate-600 px-2 py-1 rounded-md text-[10px] font-bold">
+                          {item.dept}
+                        </span>
+                      </td>
+                      <td className="py-3 px-6 text-slate-400 font-medium">{item.date}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 
-        {/* Quick Actions */}
-        <div className="bg-white rounded-xl border border-slate-200 p-5">
-          <h2 className="text-sm font-bold text-slate-900 mb-4">Quick Actions</h2>
-          <div className="space-y-2">
-            {[
-              ...(currentUser.role === "admin"
-                ? [
-                    {
-                      label: "User & Role Governance",
-                      desc: "Manage officers & permissions",
-                      icon: ShieldCheck,
-                      href: "/dashboard/users",
-                    },
-                  ]
-                : []),
-              { label: "Search Repository", desc: "Browse papers & datasets", icon: Database, href: "/dashboard/repository" },
-              { label: "Run Simulation", desc: "Test a policy scenario", icon: Sparkles, href: "/dashboard/simulator" },
-              { label: "Open GIS Viewer", desc: "Explore spatial layers", icon: MapPin, href: "/dashboard/gis" },
-              { label: "View Analytics", desc: "National dashboards", icon: BarChart3, href: "/dashboard/analytics" },
-            ].map((action) => {
-              const Icon = action.icon;
-              return (
-                <Link
-                  key={action.label}
-                  href={action.href}
-                  className="w-full flex items-center justify-between p-3 rounded-lg border border-slate-200 hover:border-[#b9a4ff] hover:bg-[#f4f0ff]/30 transition-all text-left cursor-pointer group"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-[#f4f0ff] text-[#4A2BC2] flex items-center justify-center group-hover:bg-[#4A2BC2] group-hover:text-white transition-colors">
-                      <Icon className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-800">{action.label}</div>
-                      <div className="text-[10px] text-slate-500">{action.desc}</div>
-                    </div>
-                  </div>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#4A2BC2] transition-colors shrink-0" />
-                </Link>
-              );
-            })}
+        {/* Right Column: Citizen Support Profile */}
+        <div className="space-y-6">
+          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden flex flex-col text-center">
+            <div className="w-full h-40 relative bg-slate-100 overflow-hidden">
+               {/* Real image of customer support */}
+               <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80" alt="Citizen Support" className="w-full h-full object-cover object-center relative z-10" />
+               <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-slate-900/80 to-transparent z-20"></div>
+               <h3 className="absolute bottom-4 left-5 text-white font-bold text-sm tracking-wide z-30 text-left leading-tight">Help & Support Desk<br/><span className="text-[10px] font-medium text-white/80">Officer Assistance</span></h3>
+            </div>
+            
+            <div className="p-5 flex flex-col items-center">
+              <div className="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center mb-3">
+                <Headset className="w-6 h-6" />
+              </div>
+              <h4 className="font-extrabold text-slate-800 text-sm">Need Assistance?</h4>
+              <p className="text-[10px] text-slate-500 font-medium mt-1 mb-4">Our dedicated technical support team is available 24/7 for revenue officers.</p>
+              
+              <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-4 py-2.5 rounded-xl flex items-center justify-center gap-2 transition-colors">
+                <PhoneCall className="w-3.5 h-3.5" /> Call Toll Free
+              </button>
+              <div className="mt-4 pt-4 border-t border-slate-100 w-full">
+                 <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Helpdesk: 1800-11-2233</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      
     </div>
   );
 }
