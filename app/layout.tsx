@@ -17,17 +17,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" data-theme="light" className={`${jakarta.variable} ${jakarta.className} h-full antialiased`}>
-      <head>
-        <style>{`
-          /* Hide Google Translate UI elements */
-          .goog-te-banner-frame.skiptranslate { display: none !important; }
-          body { top: 0px !important; }
-          .goog-logo-link { display:none !important; }
-          .goog-te-gadget { color: transparent !important; }
-          .goog-te-gadget .goog-te-combo { opacity: 0; position: absolute; pointer-events: none; }
-          #google_translate_element { position: absolute; z-index: -999; opacity: 0; width: 0; height: 0; overflow: hidden; }
-        `}</style>
-      </head>
+
       <body className="min-h-full flex flex-col font-normal text-slate-800 bg-[#f8fafc]">
         {children}
 

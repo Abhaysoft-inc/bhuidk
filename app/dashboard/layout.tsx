@@ -32,17 +32,35 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [authChecked, setAuthChecked] = useState(false);
+  const [currentLang, setCurrentLang] = useState("en");
+
+  // Initialize language from googtrans cookie on mount
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      const match = document.cookie.match(/googtrans=(?:\/[a-z]{2,4})?\/([a-z]{2,4})/i);
+      if (match && match[1]) setCurrentLang(match[1]);
+    }
+  }, []);
 
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const lang = e.target.value;
-    const select = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-    if (select) {
-      select.value = lang;
-      select.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
-    } else {
-      // Fallback: reload with Google Translate cookie
+    setCurrentLang(lang);
+    if (typeof window !== "undefined") {
+      const hostname = window.location.hostname;
       document.cookie = `googtrans=/en/${lang}; path=/`;
-      window.location.reload();
+      document.cookie = `googtrans=/en/${lang}; path=/; domain=${hostname}`;
+      if (lang === "en") {
+        document.cookie = `googtrans=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC`;
+        document.cookie = `googtrans=; path=/; domain=${hostname}; expires=Thu, 01 Jan 1970 00:00:00 UTC`;
+      }
+      const select = document.querySelector('.goog-te-combo') as HTMLSelectElement | null;
+      if (select) {
+        select.value = lang;
+        select.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
+      } else {
+        // Fallback: reload with Google Translate cookie
+        window.location.reload();
+      }
     }
   };
 
@@ -100,7 +118,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                   <button className="bg-white border border-slate-200 rounded text-slate-600 hover:bg-slate-50 w-5 h-5 flex items-center justify-center text-[10px] transition-colors">A</button>
                   <button className="bg-white border border-slate-200 rounded text-slate-600 hover:bg-slate-50 w-5 h-5 flex items-center justify-center text-[11px] transition-colors">A+</button>
                 </span>
-                <select onChange={handleLanguageChange} className="bg-transparent text-slate-600 border-none text-[11px] outline-none font-medium cursor-pointer hover:text-indigo-600">
+                <select value={currentLang} onChange={handleLanguageChange} className="bg-transparent text-slate-600 border-none text-[11px] outline-none font-medium cursor-pointer hover:text-indigo-600">
                   <option value="en">English</option>
                   <option value="hi">हिन्दी</option>
                 </select>
@@ -151,13 +169,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`flex items-center gap-2 px-3 sm:px-4 py-3.5 text-[11px] sm:text-xs transition-all border-b-2 whitespace-nowrap shrink-0 ${
+                    className={`flex items-center gap-2 px-3.5 sm:px-4.5 py-3.5 text-xs sm:text-[13px] md:text-sm transition-all border-b-2 whitespace-nowrap shrink-0 ${
                       isActive
-                        ? 'border-emerald-500 text-emerald-700 bg-emerald-50/50 font-semibold'
-                        : 'border-transparent text-slate-600 hover:text-emerald-600 hover:bg-white/60 font-medium'
+                        ? 'border-emerald-600 text-emerald-800 bg-emerald-50/70 font-bold'
+                        : 'border-transparent text-slate-700 hover:text-emerald-700 hover:bg-slate-50/80 font-semibold'
                     }`}
                   >
-                    <Icon className="w-4 h-4" />
+                    <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5 shrink-0" />
                     {item.label}
                   </Link>
                 )
@@ -167,7 +185,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             {/* Compact Profile & Language for Tools */}
             {!isHome && (
                <div className="hidden lg:flex items-center gap-4 pl-4 ml-4 border-l border-slate-200 shrink-0">
-                  <select onChange={handleLanguageChange} className="bg-transparent text-slate-600 border border-slate-200 rounded px-1.5 py-1 text-[10px] outline-none cursor-pointer hover:border-emerald-300 font-medium">
+                  <select value={currentLang} onChange={handleLanguageChange} className="bg-transparent text-slate-700 border border-slate-200 rounded px-2 py-1 text-[11px] outline-none cursor-pointer hover:border-emerald-300 font-medium">
                     <option value="en">English</option>
                     <option value="hi">हिन्दी</option>
                   </select>

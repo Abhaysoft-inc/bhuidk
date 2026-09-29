@@ -42,17 +42,35 @@ export default function Home() {
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [heroSearchQuery, setHeroSearchQuery] = useState("");
   const [activeScheme, setActiveScheme] = useState(0);
+  const [currentLang, setCurrentLang] = useState("en");
+
+  // Initialize language from googtrans cookie on mount
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      const match = document.cookie.match(/googtrans=(?:\/[a-z]{2,4})?\/([a-z]{2,4})/i);
+      if (match && match[1]) setCurrentLang(match[1]);
+    }
+  }, []);
 
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const lang = e.target.value;
-    const select = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-    if (select) {
-      select.value = lang;
-      select.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
-    } else {
-      // Fallback: reload with Google Translate cookie
+    setCurrentLang(lang);
+    if (typeof window !== "undefined") {
+      const hostname = window.location.hostname;
       document.cookie = `googtrans=/en/${lang}; path=/`;
-      window.location.reload();
+      document.cookie = `googtrans=/en/${lang}; path=/; domain=${hostname}`;
+      if (lang === "en") {
+        document.cookie = `googtrans=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC`;
+        document.cookie = `googtrans=; path=/; domain=${hostname}; expires=Thu, 01 Jan 1970 00:00:00 UTC`;
+      }
+      const select = document.querySelector('.goog-te-combo') as HTMLSelectElement | null;
+      if (select) {
+        select.value = lang;
+        select.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
+      } else {
+        // Fallback: reload with Google Translate cookie
+        window.location.reload();
+      }
     }
   };
 
@@ -200,7 +218,7 @@ export default function Home() {
                 <button key={a} className="w-5 h-5 bg-white hover:bg-slate-50 border border-slate-300 rounded text-[9px] text-slate-700 transition-colors">{a}</button>
               ))}
             </div>
-            <select onChange={handleLanguageChange} className="bg-transparent text-slate-600 text-[10px] border-none outline-none cursor-pointer hover:text-slate-900 transition-colors">
+            <select value={currentLang} onChange={handleLanguageChange} className="bg-transparent text-slate-600 text-[10px] border-none outline-none cursor-pointer hover:text-slate-900 transition-colors">
               <option value="en">English</option>
               <option value="hi">हिन्दी</option>
             </select>
@@ -254,7 +272,7 @@ export default function Home() {
       ══════════════════════════════════════════════════════ */}
       <nav className="bg-white backdrop-blur-md text-slate-800 sticky top-0 z-50 border-b border-slate-200 shadow-sm">
         <div className="max-w-screen-2xl mx-auto flex items-center overflow-x-auto scrollbar-none">
-          <Link href="/" className="flex items-center gap-1.5 px-5 py-3 text-xs font-semibold bg-emerald-50 text-emerald-700 whitespace-nowrap shrink-0 border-r border-emerald-100/50">
+          <Link href="/" className="flex items-center gap-1.5 px-5 py-3 text-xs sm:text-[13px] md:text-sm font-bold bg-emerald-50 text-emerald-700 whitespace-nowrap shrink-0 border-r border-emerald-100/50">
             <HomeIcon className="w-3.5 h-3.5" /> Home
           </Link>
           {[
@@ -265,17 +283,17 @@ export default function Home() {
             { label: "Innovation", href: getDestination("/dashboard/grants") },
             { label: "Analytics", href: getDestination("/dashboard/analytics") },
           ].map((item) => (
-            <Link key={item.href} href={item.href} className="px-4 py-3 text-xs font-medium text-slate-600 hover:bg-white/60 hover:text-emerald-700 transition-colors whitespace-nowrap border-r border-slate-100/50 shrink-0">
+            <Link key={item.href} href={item.href} className="px-4.5 py-3 text-xs sm:text-[13px] md:text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-emerald-700 transition-colors whitespace-nowrap border-r border-slate-100/50 shrink-0">
               {item.label}
             </Link>
           ))}
           <div className="ml-auto px-5 py-3 shrink-0">
             {currentUser ? (
-              <Link href="/dashboard" className="flex items-center gap-1.5 text-xs font-semibold bg-slate-100 text-slate-800 hover:bg-slate-200 px-3 py-1 rounded-lg transition-colors">
+              <Link href="/dashboard" className="flex items-center gap-1.5 text-xs sm:text-[13px] font-semibold bg-slate-100 text-slate-800 hover:bg-slate-200 px-3 py-1 rounded-lg transition-colors">
                 <LayoutDashboard className="w-3.5 h-3.5" /> Dashboard
               </Link>
             ) : (
-              <Link href="/login" className="flex items-center gap-1.5 text-xs font-semibold bg-amber-500 hover:bg-amber-600 text-white px-3 py-1 rounded-lg transition-colors shadow-sm">
+              <Link href="/login" className="flex items-center gap-1.5 text-xs sm:text-[13px] font-semibold bg-amber-500 hover:bg-amber-600 text-white px-3 py-1 rounded-lg transition-colors shadow-sm">
                 <Lock className="w-3.5 h-3.5" /> Officer Login
               </Link>
             )}
@@ -291,7 +309,7 @@ export default function Home() {
             { label: "Bhu-Naksha (GIS)", href: getDestination("/dashboard/gis") },
             { label: "Policy Simulator", href: getDestination("/dashboard/simulator") },
           ].map(item => (
-            <Link key={item.href} href={item.href} onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-slate-600 hover:text-amber-600 hover:bg-slate-50 rounded-lg">
+            <Link key={item.href} href={item.href} onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm font-semibold text-slate-700 hover:text-emerald-700 hover:bg-slate-50 rounded-lg">
               {item.label}
             </Link>
           ))}
