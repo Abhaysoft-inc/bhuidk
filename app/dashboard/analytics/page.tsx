@@ -130,7 +130,7 @@ export default function AnalyticsDashboard() {
 
   const fadeUp = {
     hidden: { opacity: 0, y: 20 },
-    show:   (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.07, type: "spring", stiffness: 260, damping: 22 } }),
+    show:   (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.07, type: "spring" as const, stiffness: 260, damping: 22 } }),
   };
 
   return (

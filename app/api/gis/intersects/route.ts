@@ -21,7 +21,14 @@ export async function POST(request: Request) {
     let queryGeometry = geometry;
     if (bufferDistance) {
       // bufferDistance in km
-      queryGeometry = buffer(geometry, bufferDistance, { units: 'kilometers' }).geometry;
+      const buffered = buffer(geometry, bufferDistance, { units: 'kilometers' });
+      if (buffered) {
+        if ('geometry' in buffered && buffered.geometry) {
+          queryGeometry = buffered.geometry;
+        } else if ('features' in buffered && (buffered as any).features?.[0]?.geometry) {
+          queryGeometry = (buffered as any).features[0].geometry;
+        }
+      }
     }
 
     // Perform ST_Intersects simulation using Turf.js

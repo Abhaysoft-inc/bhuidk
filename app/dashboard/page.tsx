@@ -21,6 +21,8 @@ import {
   ArrowRight
 } from "lucide-react";
 
+const Marquee = "marquee" as any;
+
 export default function DashboardPage() {
   const [currentUser, setCurrentUser] = useState({
     name: "Dr. Ashok Sharma",
@@ -102,11 +104,11 @@ export default function DashboardPage() {
         <div className="bg-amber-100 text-amber-800 px-3 py-0 h-full flex items-center text-[10px] uppercase font-bold tracking-wider whitespace-nowrap border-r border-amber-200/60 shrink-0">
           Alerts
         </div>
-        <marquee className="flex-1 font-normal text-xs text-amber-800/80 leading-8" onMouseOver={(e: any) => e.currentTarget.stop()} onMouseOut={(e: any) => e.currentTarget.start()}>
+        <Marquee className="flex-1 font-normal text-xs text-amber-800/80 leading-8" onMouseOver={(e: any) => e.currentTarget.stop()} onMouseOut={(e: any) => e.currentTarget.start()}>
           <span className="mx-4">✨ New ULPIN Bhu-Aadhaar integration guidelines published.</span>
           <span className="mx-4">📊 Maharashtra Cadastral Resurvey data updated for Pune region.</span>
           <span className="mx-4">🔧 Scheduled maintenance for GIS servers on Sunday 2:00 AM.</span>
-        </marquee>
+        </Marquee>
       </div>
 
       {/* Page Title */}

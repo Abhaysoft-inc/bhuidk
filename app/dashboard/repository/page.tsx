@@ -107,18 +107,18 @@ const containerVariants = {
 
 const cardVariants = {
   hidden: { opacity: 0, y: 24, scale: 0.97 },
-  show:   { opacity: 1, y: 0,  scale: 1, transition: { type: "spring", stiffness: 260, damping: 24 } },
+  show:   { opacity: 1, y: 0,  scale: 1, transition: { type: "spring" as const, stiffness: 260, damping: 24 } },
   exit:   { opacity: 0, y: -12, scale: 0.96, transition: { duration: 0.18 } },
 };
 
 const headerVariants = {
   hidden: { opacity: 0, y: -16 },
-  show:   { opacity: 1, y: 0, transition: { type: "spring", stiffness: 260, damping: 24 } },
+  show:   { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 260, damping: 24 } },
 };
 
 const tabVariants = {
   hidden: { opacity: 0, x: -12 },
-  show:   (i: number) => ({ opacity: 1, x: 0, transition: { delay: i * 0.04, type: "spring", stiffness: 300, damping: 26 } }),
+  show:   (i: number) => ({ opacity: 1, x: 0, transition: { delay: i * 0.04, type: "spring" as const, stiffness: 300, damping: 26 } }),
 };
 
 // ─── Component ───────────────────────────────────────────────────────────────
