@@ -42,7 +42,6 @@ export default function Home() {
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [heroSearchQuery, setHeroSearchQuery] = useState("");
   const [activeScheme, setActiveScheme] = useState(0);
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const lang = e.target.value;
@@ -57,31 +56,7 @@ export default function Home() {
     }
   };
 
-  const heroSlides = [
-    {
-      img: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80",
-      caption: "Digital Land Records Repository"
-    },
-    {
-      img: "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80",
-      caption: "Bhu-Naksha GIS Mapping"
-    },
-    {
-      img: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=800&q=80",
-      caption: "Secure Officer Workspaces"
-    },
-    {
-      img: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&q=80",
-      caption: "SVAMITVA Drone Surveys"
-    }
-  ];
 
-  useEffect(() => {
-    const slideTimer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % 4);
-    }, 3500);
-    return () => clearInterval(slideTimer);
-  }, []);
 
   useEffect(() => {
     const loadUser = () => {
@@ -117,8 +92,8 @@ export default function Home() {
   };
 
   const schemes = [
-    { 
-      name: "DILRMP", 
+    {
+      name: "DILRMP",
       full: "Digital India Land Records Modernization",
       desc: "A centralized programme to digitize all land records, cadastral maps, and ensure complete interoperability across states.",
       color: "border-blue-500 bg-blue-50",
@@ -126,8 +101,8 @@ export default function Home() {
       stats: "3.15L+ Villages",
       img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80"
     },
-    { 
-      name: "SVAMITVA", 
+    {
+      name: "SVAMITVA",
       full: "Survey of Villages Abadi & Mapping",
       desc: "Drone-based survey of inhabited land in rural villages, providing property rights to rural households.",
       color: "border-emerald-500 bg-emerald-50",
@@ -135,8 +110,8 @@ export default function Home() {
       stats: "2.45L+ Villages",
       img: "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1200&q=80"
     },
-    { 
-      name: "ULPIN / Bhu-Aadhaar", 
+    {
+      name: "ULPIN / Bhu-Aadhaar",
       full: "Unique Land Parcel Identification Number",
       desc: "A 14-digit unique identification number assigned to every land parcel in India, enabling seamless integration across systems.",
       color: "border-amber-500 bg-amber-50",
@@ -144,8 +119,8 @@ export default function Home() {
       stats: "8.4 Cr+ Generated",
       img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80"
     },
-    { 
-      name: "NGDRS", 
+    {
+      name: "NGDRS",
       full: "National Generic Document Registration",
       desc: "A standardized, IT-enabled document registration system that streamlines property registration across states.",
       color: "border-rose-500 bg-rose-50",
@@ -239,7 +214,7 @@ export default function Home() {
       <div className="bg-white border-b border-slate-100 shadow-sm py-3">
         <div className="max-w-screen-2xl mx-auto flex items-center justify-between px-6">
           <div className="flex items-center gap-5">
-            <div className="w-12 h-16 bg-contain bg-no-repeat bg-center opacity-90" style={{backgroundImage: 'url("https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg")'}}></div>
+            <div className="w-12 h-16 bg-contain bg-no-repeat bg-center opacity-90" style={{ backgroundImage: 'url("https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg")' }}></div>
             <div>
               <h1 className="text-2xl font-bold text-slate-900 leading-tight tracking-tight">
                 VEDA <span className="text-blue-700">Platform</span>
@@ -249,7 +224,7 @@ export default function Home() {
             </div>
           </div>
           <div className="hidden md:flex items-center gap-6">
-            <div className="w-24 h-10 bg-contain bg-no-repeat bg-center opacity-80" style={{backgroundImage: 'url("https://upload.wikimedia.org/wikipedia/commons/f/fc/Digital_India_logo.svg")'}}></div>
+            <div className="w-24 h-10 bg-contain bg-no-repeat bg-center opacity-80" style={{ backgroundImage: 'url("https://upload.wikimedia.org/wikipedia/commons/f/fc/Digital_India_logo.svg")' }}></div>
             <div className="text-right border-l border-slate-100 pl-6">
               {currentUser ? (
                 <div>
@@ -277,7 +252,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════
           HORIZONTAL NAV BAR (GOI style)
       ══════════════════════════════════════════════════════ */}
-      <nav className="bg-gradient-to-r from-orange-50/80 via-white to-emerald-50/80 backdrop-blur-md text-slate-800 sticky top-0 z-50 border-b border-slate-200 shadow-sm">
+      <nav className="bg-white backdrop-blur-md text-slate-800 sticky top-0 z-50 border-b border-slate-200 shadow-sm">
         <div className="max-w-screen-2xl mx-auto flex items-center overflow-x-auto scrollbar-none">
           <Link href="/" className="flex items-center gap-1.5 px-5 py-3 text-xs font-semibold bg-emerald-50 text-emerald-700 whitespace-nowrap shrink-0 border-r border-emerald-100/50">
             <HomeIcon className="w-3.5 h-3.5" /> Home
@@ -326,109 +301,132 @@ export default function Home() {
       <main id="main" className="flex-1">
 
         {/* ═══════════════════════════════════════════════════════
-            HERO SECTION — Bright, Official, GoI Style
+            HERO SECTION — Split Layout, Official GoI Style
         ══════════════════════════════════════════════════════ */}
-        <section className="bg-gradient-to-b from-[#f8faff] via-white to-white pt-16 pb-24 overflow-hidden border-b border-slate-100">
-          <div className="max-w-screen-2xl mx-auto px-6 lg:px-8 relative">
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              
-              {/* Left Content - Typography & CTA */}
-              <div className="max-w-2xl relative z-10">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-50 text-orange-700 text-[10px] font-semibold uppercase tracking-wider mb-6 border border-orange-200 shadow-sm">
-                   <ShieldCheck className="w-3.5 h-3.5" />
-                   Official Platform • Dept. of Land Resources
-                </div>
-                
-                <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-bold text-slate-900 leading-[1.1] tracking-tight mb-4">
-                  Digital Land Records <br/>
-                  <span className="text-[#00A859]">Modernization</span>
+        <section className="relative bg-white pt-14 pb-16 border-b border-slate-100 overflow-hidden">
+
+          {/* Subtle dot grid */}
+          <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #64748b 1px, transparent 0)', backgroundSize: '28px 28px' }}></div>
+
+          <div className="max-w-screen-xl mx-auto px-6 lg:px-8 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+              {/* ── Left: Text Content ── */}
+              <div>
+                {/* Badge */}
+                {/* <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 text-slate-500 text-[11px] font-medium border border-slate-200 mb-6">
+                  <Landmark className="w-3.5 h-3.5" />
+                  Dept. of Land Resources • Ministry of Rural Development
+                </div> */}
+
+                {/* Heading */}
+                <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-slate-900 leading-[1.12] tracking-tight mb-4">
+                  National Digital Platform{" "}
+                  <br className="hidden sm:block" />
+                  for <span className="text-[#138808]">Land Governance</span>
                 </h1>
-                
-                <p className="text-lg text-slate-800 font-semibold mb-3 border-l-4 border-amber-500 pl-3">डिजिटल भूमि अभिलेख आधुनिकीकरण (DILRMP)</p>
-                
-                <p className="text-sm text-slate-600 leading-relaxed mb-8 max-w-lg font-normal">
-                  India's unified platform for land governance. Search 32,000+ land laws, inspect Bhu-Aadhaar parcels, simulate policy reforms, and access geospatial intelligence.
+
+                {/* Hindi */}
+                <p className="text-sm text-slate-400 font-medium mb-4">
+                  भूमि शासन हेतु राष्ट्रीय डिजिटल मंच (DILRMP)
                 </p>
-                
-                <div className="flex flex-wrap items-center gap-3">
-                  <Link href={getDestination("/dashboard")} className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3.5 rounded-xl font-semibold text-sm transition-colors shadow-lg shadow-blue-900/20 flex items-center gap-2">
+
+                {/* Description */}
+                <p className="text-sm text-slate-500 leading-relaxed mb-8 max-w-md">
+                  Access land records, cadastral maps, policy research, and governance analytics across all states and union territories — in one unified, secure platform.
+                </p>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-wrap items-center gap-3 mb-8">
+                  <Link href={getDestination("/dashboard")} className="bg-[#0b2b50] hover:bg-[#071e3d] text-white px-6 py-3 rounded-xl font-semibold text-sm transition-colors shadow-sm flex items-center gap-2">
                     <LayoutDashboard className="w-4 h-4" />
                     Access Platform
                   </Link>
-                  <a href="#services" className="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-6 py-3.5 rounded-xl font-semibold text-sm transition-colors shadow-sm flex items-center gap-2">
+                  <a href="#services" className="bg-white hover:bg-slate-50 text-slate-600 border border-slate-200 px-6 py-3 rounded-xl font-semibold text-sm transition-colors flex items-center gap-2">
                     Explore Services <ArrowRight className="w-4 h-4" />
                   </a>
                 </div>
-                
-                {/* Quick Search Widget */}
-                <div className="mt-10 p-3 bg-white rounded-2xl border border-slate-200 shadow-xl shadow-slate-200/40 flex items-center gap-3 max-w-lg relative group focus-within:border-blue-400 transition-colors">
-                   <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center shrink-0">
-                     <Search className="w-5 h-5 text-blue-600" />
-                   </div>
-                   <div className="flex-1">
-                     <form onSubmit={(e) => {
-                        e.preventDefault();
+
+                {/* Search Bar */}
+                <div className="max-w-md">
+                  <div className="p-1.5 bg-white rounded-xl border border-slate-200 shadow-md shadow-slate-100/50 flex items-center gap-2 focus-within:border-slate-300 transition-colors">
+                    <div className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center shrink-0">
+                      <Search className="w-3.5 h-3.5 text-slate-400" />
+                    </div>
+                    <form onSubmit={(e) => {
+                      e.preventDefault();
+                      if (heroSearchQuery.trim()) {
+                        router.push(getDestination(`/dashboard/repository?query=${encodeURIComponent(heroSearchQuery.trim())}`));
+                      }
+                    }} className="flex-1">
+                      <input
+                        type="text"
+                        value={heroSearchQuery}
+                        onChange={(e) => setHeroSearchQuery(e.target.value)}
+                        placeholder="Search Khasra no, ULPIN, laws…"
+                        className="w-full text-[13px] outline-none text-slate-700 placeholder-slate-400 font-medium bg-transparent"
+                      />
+                    </form>
+                    <button
+                      onClick={() => {
                         if (heroSearchQuery.trim()) {
                           router.push(getDestination(`/dashboard/repository?query=${encodeURIComponent(heroSearchQuery.trim())}`));
                         }
-                      }}>
-                       <input 
-                         type="text" 
-                         value={heroSearchQuery}
-                         onChange={(e) => setHeroSearchQuery(e.target.value)}
-                         placeholder="Search Khasra no, ULPIN, or Laws..." 
-                         className="w-full text-sm outline-none text-slate-700 placeholder-slate-400 font-semibold bg-transparent" 
-                       />
-                     </form>
-                   </div>
-                   <button 
-                     onClick={() => {
-                        if (heroSearchQuery.trim()) {
-                          router.push(getDestination(`/dashboard/repository?query=${encodeURIComponent(heroSearchQuery.trim())}`));
-                        }
-                     }}
-                     className="bg-slate-900 text-white px-5 py-2.5 rounded-xl text-xs font-bold hover:bg-slate-800 transition-colors shrink-0"
-                   >
-                     Search
-                   </button>
+                      }}
+                      className="bg-slate-900 text-white px-4 py-2 rounded-lg text-xs font-semibold hover:bg-slate-800 transition-colors shrink-0"
+                    >
+                      Search
+                    </button>
+                  </div>
+                  <p className="text-[10px] text-slate-400 mt-2 pl-1">
+                    32,000+ land laws, policies, circulars and research documents
+                  </p>
                 </div>
               </div>
-              
-              {/* Right Content - Visual Composition */}
-              <div className="relative hidden lg:block">
-                 {/* Soft glow background */}
-                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-tr from-blue-200/50 to-emerald-100/50 rounded-full blur-3xl opacity-60"></div>
-                 
-                 {/* Main Image Container - Slideshow */}
-                 <div className="relative z-10 w-full aspect-[4/3] rounded-3xl shadow-2xl shadow-blue-900/10 border-[6px] border-white overflow-hidden bg-slate-100">
-                    {heroSlides.map((slide, idx) => (
-                      <div 
-                        key={idx}
-                        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${currentSlide === idx ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
-                      >
-                        <img src={slide.img} alt={slide.caption} className="w-full h-full object-cover" />
-                        <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent p-5 pt-16">
-                          <p className="text-white font-semibold text-sm tracking-wide">{slide.caption}</p>
-                        </div>
-                      </div>
-                    ))}
-                    
-                    {/* Slide Indicators */}
-                    <div className="absolute bottom-5 right-5 z-20 flex gap-2">
-                      {heroSlides.map((_, idx) => (
-                        <button 
-                          key={idx}
-                          onClick={() => setCurrentSlide(idx)}
-                          className={`h-2 rounded-full transition-all duration-300 ${currentSlide === idx ? 'bg-white w-6 shadow-sm' : 'bg-white/40 w-2 hover:bg-white/80'}`}
-                          aria-label={`Go to slide ${idx + 1}`}
-                        />
-                      ))}
+
+              {/* ── Right: India Map Illustration ── */}
+              <div className="relative hidden lg:flex items-center justify-center">
+                {/* Map Image */}
+                <div className="relative w-full max-w-md">
+                  <img
+                    src="/images/india-map.jpg"
+                    alt="India — Connected Land Governance Network"
+                    className="w-full h-auto object-contain"
+                  />
+
+                  {/* Floating stat badges */}
+                  <div className="absolute top-6 -left-4 bg-white rounded-xl border border-slate-100 shadow-lg px-3.5 py-2.5 flex items-center gap-2.5 animate-[fadeInUp_0.6s_ease-out]">
+                    <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center">
+                      <Globe className="w-4 h-4 text-blue-600" />
                     </div>
-                 </div>
-                 
+                    <div>
+                      <div className="text-sm font-bold text-slate-900">3.15L+</div>
+                      <div className="text-[10px] text-slate-400 font-medium">Villages Digitized</div>
+                    </div>
+                  </div>
+
+                  <div className="absolute top-1/3 -right-6 bg-white rounded-xl border border-slate-100 shadow-lg px-3.5 py-2.5 flex items-center gap-2.5 animate-[fadeInUp_0.8s_ease-out]">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center">
+                      <FileCheck className="w-4 h-4 text-emerald-600" />
+                    </div>
+                    <div>
+                      <div className="text-sm font-bold text-slate-900">95.8%</div>
+                      <div className="text-[10px] text-slate-400 font-medium">Records Digitized</div>
+                    </div>
+                  </div>
+
+                  <div className="absolute bottom-12 -left-2 bg-white rounded-xl border border-slate-100 shadow-lg px-3.5 py-2.5 flex items-center gap-2.5 animate-[fadeInUp_1s_ease-out]">
+                    <div className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center">
+                      <ShieldCheck className="w-4 h-4 text-amber-600" />
+                    </div>
+                    <div>
+                      <div className="text-sm font-bold text-slate-900">32.8 Cr+</div>
+                      <div className="text-[10px] text-slate-400 font-medium">ULPIN Generated</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              
+
             </div>
           </div>
         </section>
@@ -576,7 +574,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-100 h-[420px]">
-                <img 
+                <img
                   src="/images/indian_officers.jpg"
                   alt="Indian Revenue Officers reviewing digital land records"
                   className="w-full h-full object-cover"
@@ -631,7 +629,7 @@ export default function Home() {
         <div className="max-w-screen-2xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-10 bg-contain bg-no-repeat bg-center opacity-80" style={{backgroundImage: 'url("https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg")'}}></div>
+              <div className="w-8 h-10 bg-contain bg-no-repeat bg-center opacity-80" style={{ backgroundImage: 'url("https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg")' }}></div>
               <div>
                 <div className="font-bold text-sm text-slate-900">VEDA Platform</div>
                 <div className="text-[10px] text-slate-500">Dept. of Land Resources, MoRD</div>
