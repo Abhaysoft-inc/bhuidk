@@ -31,6 +31,19 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [authChecked, setAuthChecked] = useState(false);
 
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const lang = e.target.value;
+    const select = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+    if (select) {
+      select.value = lang;
+      select.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
+    } else {
+      // Fallback: reload with Google Translate cookie
+      document.cookie = `googtrans=/en/${lang}; path=/`;
+      window.location.reload();
+    }
+  };
+
   useEffect(() => {
     const checkAuth = () => {
       if (typeof window !== "undefined") {
@@ -82,9 +95,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <button className="bg-white border border-slate-200 rounded text-slate-600 hover:bg-slate-50 w-5 h-5 flex items-center justify-center text-[10px] transition-colors">A</button>
               <button className="bg-white border border-slate-200 rounded text-slate-600 hover:bg-slate-50 w-5 h-5 flex items-center justify-center text-[11px] transition-colors">A+</button>
             </span>
-            <select className="bg-transparent text-slate-600 border-none text-[11px] outline-none font-medium cursor-pointer hover:text-indigo-600">
-              <option>English</option>
-              <option>हिन्दी</option>
+            <select onChange={handleLanguageChange} className="bg-transparent text-slate-600 border-none text-[11px] outline-none font-medium cursor-pointer hover:text-indigo-600">
+              <option value="en">English</option>
+              <option value="hi">हिन्दी</option>
             </select>
           </div>
         </div>

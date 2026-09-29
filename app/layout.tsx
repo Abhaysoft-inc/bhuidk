@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -16,7 +17,41 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" data-theme="light" className={`${jakarta.variable} ${jakarta.className} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-normal text-slate-800 bg-[#f8fafc]">{children}</body>
+      <head>
+        <style>{`
+          /* Hide Google Translate UI elements */
+          .goog-te-banner-frame.skiptranslate { display: none !important; }
+          body { top: 0px !important; }
+          .goog-logo-link { display:none !important; }
+          .goog-te-gadget { color: transparent !important; }
+          .goog-te-gadget .goog-te-combo { opacity: 0; position: absolute; pointer-events: none; }
+          #google_translate_element { position: absolute; z-index: -999; opacity: 0; width: 0; height: 0; overflow: hidden; }
+        `}</style>
+      </head>
+      <body className="min-h-full flex flex-col font-normal text-slate-800 bg-[#f8fafc]">
+        {children}
+
+        {/* Google Translate Hidden Element */}
+        <div id="google_translate_element"></div>
+
+        {/* Google Translate Scripts */}
+        <Script
+          src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+          strategy="afterInteractive"
+        />
+        <Script id="google-translate-init" strategy="afterInteractive">
+          {`
+            function googleTranslateElementInit() {
+              new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,hi',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+              }, 'google_translate_element');
+            }
+          `}
+        </Script>
+      </body>
     </html>
   );
 }
