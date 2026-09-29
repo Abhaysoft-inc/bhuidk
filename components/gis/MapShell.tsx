@@ -143,6 +143,7 @@ export default function MapShell({ onAnalytics }: MapShellProps) {
   // Selection State
   const [selectionStats, setSelectionStats] = useState<any>(null);
   const [isSelecting, setIsSelecting] = useState(false);
+  const [drawMode, setDrawMode] = useState<string>('simple_select');
 
   // Time Machine State
   const [timeMachineParcel, setTimeMachineParcel] = useState<any>(null);
@@ -194,6 +195,10 @@ export default function MapShell({ onAnalytics }: MapShellProps) {
     setSelectionStats(null);
   }, []);
 
+  const handleModeChange = useCallback((e: any) => {
+    setDrawMode(e.mode);
+  }, []);
+
   const onMapClick = useCallback((event: MapLayerMouseEvent) => {
     const feature = event.features && event.features[0];
     if (feature && feature.layer.id === 'parcels-fill') {
@@ -230,8 +235,9 @@ export default function MapShell({ onAnalytics }: MapShellProps) {
   }), [mapStyleKey]);
 
   const interactiveLayers = useMemo(() => {
+    if (drawMode === 'draw_polygon' || drawMode === 'draw_line_string') return [];
     return activeToggles.has('parcels') ? ['parcels-fill'] : [];
-  }, [activeToggles]);
+  }, [activeToggles, drawMode]);
 
   // Filter parcels by timePeriod — parcels have a `year_registered` field or we simulate via index
   const filteredLayersData = useMemo(() => {
@@ -444,6 +450,7 @@ export default function MapShell({ onAnalytics }: MapShellProps) {
           onCreate={handleDrawUpdate}
           onUpdate={handleDrawUpdate}
           onDelete={handleDrawDelete}
+          onModeChange={handleModeChange}
         />
 
         <NavigationControl position="bottom-right" />
