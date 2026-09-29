@@ -262,7 +262,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════
           HORIZONTAL NAV BAR (GOI style)
       ══════════════════════════════════════════════════════ */}
-      <nav className="bg-white text-slate-800 sticky top-0 z-50 border-b-4 border-amber-500 shadow-md">
+      <nav className="bg-gradient-to-r from-orange-50/80 via-white to-emerald-50/80 backdrop-blur-md text-slate-800 sticky top-0 z-50 border-b border-slate-200 shadow-sm">
         <div className="max-w-7xl mx-auto flex items-center overflow-x-auto scrollbar-none">
           <Link href="/" className="flex items-center gap-1.5 px-5 py-3 text-xs font-bold bg-amber-500 text-white whitespace-nowrap shrink-0 border-r border-amber-400/40">
             <HomeIcon className="w-3.5 h-3.5" /> Home
