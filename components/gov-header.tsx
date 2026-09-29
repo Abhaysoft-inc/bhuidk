@@ -19,7 +19,7 @@ export function GovHeader({ language }: GovHeaderProps) {
 
           <div className="h-14 w-[1px] bg-slate-200 hidden sm:block shrink-0" />
           
-          <img src="/logo.jpg" alt="BhoomiIntel Logo" className="h-14 w-14 rounded-lg object-cover hidden sm:block shrink-0 shadow-sm" />
+          <img src="/logo.svg" alt="VEDA Symbol" className="h-12 w-12 rounded-xl object-contain hidden sm:block shrink-0 shadow-xs" />
 
           <div className="h-14 w-[1px] bg-slate-200 hidden sm:block shrink-0" />
 
